@@ -1,31 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Football Manager Browser</title>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101827"><title>Football Manager Browser</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
-    <h1>⚽ Football Manager Browser</h1>
-    <p>Temporada 2025/26</p>
-  </header>
-
-  <nav>
-    <button data-view="dashboard">Início</button>
-    <button data-view="squad">Elenco</button>
-    <button data-view="tactics">Táticas</button>
-    <button data-view="market">Mercado</button>
-    <button data-view="table">Tabelas</button>
-    <button data-view="calendar">Calendário</button>
-  </nav>
-
-  <main id="app">
-    <h2>Bem-vindo, treinador!</h2>
-    <p>Prepare sua equipe para conquistar o mundo.</p>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">FM</span><div><strong>FOOTBALL</strong><small>MANAGER BROWSER</small></div></div>
+    <div class="club-chip"><div class="club-crest">F</div><div><strong id="club-name">Carregando...</strong><small>Temporada 2025/26</small></div></div>
+    <nav id="main-nav" aria-label="Menu principal">
+      <button class="nav-item active" data-view="dashboard">▦ <span>Dashboard</span></button>
+      <button class="nav-item" data-view="squad">♙ <span>Elenco / Táticas</span></button>
+      <button class="nav-item" data-view="market">⇄ <span>Mercado</span></button>
+      <button class="nav-item" data-view="table">☷ <span>Tabela</span></button>
+      <button class="nav-item" data-view="calendar">▣ <span>Calendário</span></button>
+    </nav>
+    <div class="sidebar-footer"><span class="status-dot"></span> Projeto em desenvolvimento <small>Versão 0.1.0</small></div>
+  </aside>
+  <main class="main-content">
+    <header class="topbar"><div><p class="eyebrow">CENTRAL DO TREINADOR</p><h1 id="page-title">Dashboard</h1></div>
+      <div class="top-actions"><div class="date-pill"><span>📅</span><strong id="current-date">01 JUL 2025</strong></div><button id="advance-day" class="primary-btn">Avançar 1 dia <span>→</span></button></div>
+    </header>
+    <section id="view-root" aria-live="polite"><div class="loading">Carregando banco de dados...</div></section>
   </main>
-
-  <script src="js/app.js"></script>
-</body>
-</html>
+</div>
+<script src="js/app.js"></script>
+</body></html>
