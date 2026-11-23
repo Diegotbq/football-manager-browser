@@ -1,0 +1,1469 @@
+{
+  "meta": {
+    "gameTitle": "Football Manager Browser",
+    "version": "0.1.0",
+    "season": "2025/26",
+    "currency": "EUR",
+    "note": "Base demonstrativa. Overalls, valores e alguns vínculos de elenco são parâmetros fictícios de jogo; confira os elencos reais antes de usar como simulação histórica."
+  },
+  "leagues": [
+    {
+      "id": "brasileirao",
+      "name": "Brasileirão Série A",
+      "country": "Brasil",
+      "type": "league",
+      "format": "round_robin",
+      "teams": [
+        "flamengo"
+      ],
+      "points": {
+        "win": 3,
+        "draw": 1,
+        "loss": 0
+      }
+    },
+    {
+      "id": "premier-league",
+      "name": "Premier League",
+      "country": "Inglaterra",
+      "type": "league",
+      "format": "round_robin",
+      "teams": [
+        "man-city"
+      ],
+      "points": {
+        "win": 3,
+        "draw": 1,
+        "loss": 0
+      }
+    },
+    {
+      "id": "la-liga",
+      "name": "La Liga",
+      "country": "Espanha",
+      "type": "league",
+      "format": "round_robin",
+      "teams": [
+        "real-madrid",
+        "barcelona"
+      ],
+      "points": {
+        "win": 3,
+        "draw": 1,
+        "loss": 0
+      }
+    },
+    {
+      "id": "champions-league",
+      "name": "UEFA Champions League",
+      "country": "Europa",
+      "type": "cup",
+      "format": "league_phase_then_knockout",
+      "teams": [
+        "flamengo",
+        "man-city",
+        "real-madrid",
+        "barcelona"
+      ],
+      "points": {
+        "win": 3,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "teams": [
+    {
+      "id": "flamengo",
+      "name": "Flamengo",
+      "shortName": "FLA",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Maracanã",
+      "budget": 85000000,
+      "reputation": 88,
+      "color": "#d71920",
+      "players": [
+        {
+          "id": "flamengo-p01",
+          "name": "Agustín Rossi",
+          "position": "GK",
+          "age": 30,
+          "overall": 82,
+          "marketValue": 8500000,
+          "teamId": "flamengo",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "flamengo-p02",
+          "name": "Matheus Cunha",
+          "position": "GK",
+          "age": 24,
+          "overall": 73,
+          "marketValue": 1800000,
+          "teamId": "flamengo",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "flamengo-p03",
+          "name": "Guillermo Varela",
+          "position": "RB",
+          "age": 32,
+          "overall": 77,
+          "marketValue": 3500000,
+          "teamId": "flamengo",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "flamengo-p04",
+          "name": "Danilo",
+          "position": "CB",
+          "age": 34,
+          "overall": 80,
+          "marketValue": 2500000,
+          "teamId": "flamengo",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "flamengo-p05",
+          "name": "Léo Ortiz",
+          "position": "CB",
+          "age": 29,
+          "overall": 81,
+          "marketValue": 9000000,
+          "teamId": "flamengo",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "flamengo-p06",
+          "name": "Alex Sandro",
+          "position": "LB",
+          "age": 34,
+          "overall": 78,
+          "marketValue": 1800000,
+          "teamId": "flamengo",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "flamengo-p07",
+          "name": "Erick Pulgar",
+          "position": "DM",
+          "age": 31,
+          "overall": 81,
+          "marketValue": 8500000,
+          "teamId": "flamengo",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "flamengo-p08",
+          "name": "Jorginho",
+          "position": "CM",
+          "age": 33,
+          "overall": 82,
+          "marketValue": 6000000,
+          "teamId": "flamengo",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "flamengo-p09",
+          "name": "De la Cruz",
+          "position": "CM",
+          "age": 28,
+          "overall": 83,
+          "marketValue": 16000000,
+          "teamId": "flamengo",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "flamengo-p10",
+          "name": "Arrascaeta",
+          "position": "AM",
+          "age": 31,
+          "overall": 86,
+          "marketValue": 18000000,
+          "teamId": "flamengo",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "flamengo-p11",
+          "name": "Giorgian de Arrascaeta",
+          "position": "AM",
+          "age": 31,
+          "overall": 86,
+          "marketValue": 18000000,
+          "teamId": "flamengo",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "flamengo-p12",
+          "name": "Bruno Henrique",
+          "position": "LW",
+          "age": 34,
+          "overall": 80,
+          "marketValue": 3500000,
+          "teamId": "flamengo",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "flamengo-p13",
+          "name": "Everton Cebolinha",
+          "position": "LW",
+          "age": 29,
+          "overall": 81,
+          "marketValue": 9000000,
+          "teamId": "flamengo",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "flamengo-p14",
+          "name": "Pedro",
+          "position": "ST",
+          "age": 28,
+          "overall": 84,
+          "marketValue": 16000000,
+          "teamId": "flamengo",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "flamengo-p15",
+          "name": "Gonzalo Plata",
+          "position": "RW",
+          "age": 24,
+          "overall": 79,
+          "marketValue": 8500000,
+          "teamId": "flamengo",
+          "nationality": "—",
+          "injured": false
+        }
+      ]
+    },
+    {
+      "id": "man-city",
+      "name": "Manchester City",
+      "shortName": "MCI",
+      "country": "Inglaterra",
+      "leagueId": "premier-league",
+      "stadium": "Etihad Stadium",
+      "budget": 150000000,
+      "reputation": 96,
+      "color": "#6cabdd",
+      "players": [
+        {
+          "id": "man-city-p01",
+          "name": "Ederson",
+          "position": "GK",
+          "age": 32,
+          "overall": 86,
+          "marketValue": 25000000,
+          "teamId": "man-city",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "man-city-p02",
+          "name": "Stefan Ortega",
+          "position": "GK",
+          "age": 32,
+          "overall": 79,
+          "marketValue": 5000000,
+          "teamId": "man-city",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "man-city-p03",
+          "name": "Rico Lewis",
+          "position": "RB",
+          "age": 20,
+          "overall": 78,
+          "marketValue": 22000000,
+          "teamId": "man-city",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "man-city-p04",
+          "name": "Rúben Dias",
+          "position": "CB",
+          "age": 28,
+          "overall": 88,
+          "marketValue": 65000000,
+          "teamId": "man-city",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "man-city-p05",
+          "name": "John Stones",
+          "position": "CB",
+          "age": 31,
+          "overall": 84,
+          "marketValue": 28000000,
+          "teamId": "man-city",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "man-city-p06",
+          "name": "Josko Gvardiol",
+          "position": "LB",
+          "age": 23,
+          "overall": 87,
+          "marketValue": 70000000,
+          "teamId": "man-city",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "man-city-p07",
+          "name": "Rodri",
+          "position": "DM",
+          "age": 29,
+          "overall": 91,
+          "marketValue": 110000000,
+          "teamId": "man-city",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "man-city-p08",
+          "name": "Mateo Kovacic",
+          "position": "CM",
+          "age": 31,
+          "overall": 82,
+          "marketValue": 18000000,
+          "teamId": "man-city",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "man-city-p09",
+          "name": "Bernardo Silva",
+          "position": "AM",
+          "age": 31,
+          "overall": 88,
+          "marketValue": 45000000,
+          "teamId": "man-city",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "man-city-p10",
+          "name": "Phil Foden",
+          "position": "AM",
+          "age": 25,
+          "overall": 89,
+          "marketValue": 95000000,
+          "teamId": "man-city",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "man-city-p11",
+          "name": "Kevin De Bruyne",
+          "position": "AM",
+          "age": 34,
+          "overall": 89,
+          "marketValue": 25000000,
+          "teamId": "man-city",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "man-city-p12",
+          "name": "Jeremy Doku",
+          "position": "LW",
+          "age": 23,
+          "overall": 84,
+          "marketValue": 55000000,
+          "teamId": "man-city",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "man-city-p13",
+          "name": "Savinho",
+          "position": "RW",
+          "age": 21,
+          "overall": 82,
+          "marketValue": 45000000,
+          "teamId": "man-city",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "man-city-p14",
+          "name": "Erling Haaland",
+          "position": "ST",
+          "age": 25,
+          "overall": 92,
+          "marketValue": 180000000,
+          "teamId": "man-city",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "man-city-p15",
+          "name": "Omar Marmoush",
+          "position": "ST",
+          "age": 26,
+          "overall": 83,
+          "marketValue": 45000000,
+          "teamId": "man-city",
+          "nationality": "—",
+          "injured": false
+        }
+      ]
+    },
+    {
+      "id": "real-madrid",
+      "name": "Real Madrid",
+      "shortName": "RMA",
+      "country": "Espanha",
+      "leagueId": "la-liga",
+      "stadium": "Santiago Bernabéu",
+      "budget": 180000000,
+      "reputation": 98,
+      "color": "#e8e8e8",
+      "players": [
+        {
+          "id": "real-madrid-p01",
+          "name": "Thibaut Courtois",
+          "position": "GK",
+          "age": 33,
+          "overall": 90,
+          "marketValue": 35000000,
+          "teamId": "real-madrid",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "real-madrid-p02",
+          "name": "Andriy Lunin",
+          "position": "GK",
+          "age": 26,
+          "overall": 80,
+          "marketValue": 18000000,
+          "teamId": "real-madrid",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "real-madrid-p03",
+          "name": "Dani Carvajal",
+          "position": "RB",
+          "age": 33,
+          "overall": 84,
+          "marketValue": 10000000,
+          "teamId": "real-madrid",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "real-madrid-p04",
+          "name": "Éder Militão",
+          "position": "CB",
+          "age": 27,
+          "overall": 86,
+          "marketValue": 50000000,
+          "teamId": "real-madrid",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "real-madrid-p05",
+          "name": "Antonio Rüdiger",
+          "position": "CB",
+          "age": 32,
+          "overall": 87,
+          "marketValue": 25000000,
+          "teamId": "real-madrid",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "real-madrid-p06",
+          "name": "Ferland Mendy",
+          "position": "LB",
+          "age": 30,
+          "overall": 83,
+          "marketValue": 18000000,
+          "teamId": "real-madrid",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "real-madrid-p07",
+          "name": "Aurélien Tchouaméni",
+          "position": "DM",
+          "age": 25,
+          "overall": 86,
+          "marketValue": 65000000,
+          "teamId": "real-madrid",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "real-madrid-p08",
+          "name": "Federico Valverde",
+          "position": "CM",
+          "age": 27,
+          "overall": 90,
+          "marketValue": 120000000,
+          "teamId": "real-madrid",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "real-madrid-p09",
+          "name": "Eduardo Camavinga",
+          "position": "CM",
+          "age": 22,
+          "overall": 85,
+          "marketValue": 70000000,
+          "teamId": "real-madrid",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "real-madrid-p10",
+          "name": "Jude Bellingham",
+          "position": "AM",
+          "age": 22,
+          "overall": 92,
+          "marketValue": 160000000,
+          "teamId": "real-madrid",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "real-madrid-p11",
+          "name": "Arda Güler",
+          "position": "AM",
+          "age": 20,
+          "overall": 82,
+          "marketValue": 45000000,
+          "teamId": "real-madrid",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "real-madrid-p12",
+          "name": "Vinícius Júnior",
+          "position": "LW",
+          "age": 25,
+          "overall": 92,
+          "marketValue": 170000000,
+          "teamId": "real-madrid",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "real-madrid-p13",
+          "name": "Rodrygo",
+          "position": "RW",
+          "age": 24,
+          "overall": 88,
+          "marketValue": 90000000,
+          "teamId": "real-madrid",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "real-madrid-p14",
+          "name": "Kylian Mbappé",
+          "position": "ST",
+          "age": 26,
+          "overall": 93,
+          "marketValue": 180000000,
+          "teamId": "real-madrid",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "real-madrid-p15",
+          "name": "Endrick",
+          "position": "ST",
+          "age": 19,
+          "overall": 78,
+          "marketValue": 35000000,
+          "teamId": "real-madrid",
+          "nationality": "—",
+          "injured": false
+        }
+      ]
+    },
+    {
+      "id": "barcelona",
+      "name": "Barcelona",
+      "shortName": "BAR",
+      "country": "Espanha",
+      "leagueId": "la-liga",
+      "stadium": "Estadi Olímpic / Camp Nou",
+      "budget": 95000000,
+      "reputation": 94,
+      "color": "#a50044",
+      "players": [
+        {
+          "id": "barcelona-p01",
+          "name": "Marc-André ter Stegen",
+          "position": "GK",
+          "age": 33,
+          "overall": 88,
+          "marketValue": 22000000,
+          "teamId": "barcelona",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "barcelona-p02",
+          "name": "Iñaki Peña",
+          "position": "GK",
+          "age": 26,
+          "overall": 77,
+          "marketValue": 7000000,
+          "teamId": "barcelona",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "barcelona-p03",
+          "name": "Jules Koundé",
+          "position": "RB",
+          "age": 26,
+          "overall": 87,
+          "marketValue": 55000000,
+          "teamId": "barcelona",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "barcelona-p04",
+          "name": "Ronald Araújo",
+          "position": "CB",
+          "age": 26,
+          "overall": 87,
+          "marketValue": 55000000,
+          "teamId": "barcelona",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "barcelona-p05",
+          "name": "Pau Cubarsí",
+          "position": "CB",
+          "age": 18,
+          "overall": 82,
+          "marketValue": 50000000,
+          "teamId": "barcelona",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "barcelona-p06",
+          "name": "Alejandro Balde",
+          "position": "LB",
+          "age": 21,
+          "overall": 83,
+          "marketValue": 45000000,
+          "teamId": "barcelona",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "barcelona-p07",
+          "name": "Frenkie de Jong",
+          "position": "CM",
+          "age": 28,
+          "overall": 87,
+          "marketValue": 55000000,
+          "teamId": "barcelona",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "barcelona-p08",
+          "name": "Pedri",
+          "position": "CM",
+          "age": 22,
+          "overall": 90,
+          "marketValue": 120000000,
+          "teamId": "barcelona",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "barcelona-p09",
+          "name": "Gavi",
+          "position": "CM",
+          "age": 21,
+          "overall": 85,
+          "marketValue": 70000000,
+          "teamId": "barcelona",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "barcelona-p10",
+          "name": "Dani Olmo",
+          "position": "AM",
+          "age": 27,
+          "overall": 86,
+          "marketValue": 60000000,
+          "teamId": "barcelona",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "barcelona-p11",
+          "name": "Fermín López",
+          "position": "AM",
+          "age": 22,
+          "overall": 82,
+          "marketValue": 35000000,
+          "teamId": "barcelona",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "barcelona-p12",
+          "name": "Raphinha",
+          "position": "RW",
+          "age": 28,
+          "overall": 87,
+          "marketValue": 60000000,
+          "teamId": "barcelona",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "barcelona-p13",
+          "name": "Lamine Yamal",
+          "position": "RW",
+          "age": 18,
+          "overall": 91,
+          "marketValue": 150000000,
+          "teamId": "barcelona",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "barcelona-p14",
+          "name": "Robert Lewandowski",
+          "position": "ST",
+          "age": 37,
+          "overall": 87,
+          "marketValue": 15000000,
+          "teamId": "barcelona",
+          "nationality": "—",
+          "injured": false
+        },
+        {
+          "id": "barcelona-p15",
+          "name": "Ferran Torres",
+          "position": "ST",
+          "age": 25,
+          "overall": 82,
+          "marketValue": 30000000,
+          "teamId": "barcelona",
+          "nationality": "—",
+          "injured": false
+        }
+      ]
+    }
+  ],
+  "players": [
+    {
+      "id": "flamengo-p01",
+      "name": "Agustín Rossi",
+      "position": "GK",
+      "age": 30,
+      "overall": 82,
+      "marketValue": 8500000,
+      "teamId": "flamengo",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "flamengo-p02",
+      "name": "Matheus Cunha",
+      "position": "GK",
+      "age": 24,
+      "overall": 73,
+      "marketValue": 1800000,
+      "teamId": "flamengo",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "flamengo-p03",
+      "name": "Guillermo Varela",
+      "position": "RB",
+      "age": 32,
+      "overall": 77,
+      "marketValue": 3500000,
+      "teamId": "flamengo",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "flamengo-p04",
+      "name": "Danilo",
+      "position": "CB",
+      "age": 34,
+      "overall": 80,
+      "marketValue": 2500000,
+      "teamId": "flamengo",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "flamengo-p05",
+      "name": "Léo Ortiz",
+      "position": "CB",
+      "age": 29,
+      "overall": 81,
+      "marketValue": 9000000,
+      "teamId": "flamengo",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "flamengo-p06",
+      "name": "Alex Sandro",
+      "position": "LB",
+      "age": 34,
+      "overall": 78,
+      "marketValue": 1800000,
+      "teamId": "flamengo",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "flamengo-p07",
+      "name": "Erick Pulgar",
+      "position": "DM",
+      "age": 31,
+      "overall": 81,
+      "marketValue": 8500000,
+      "teamId": "flamengo",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "flamengo-p08",
+      "name": "Jorginho",
+      "position": "CM",
+      "age": 33,
+      "overall": 82,
+      "marketValue": 6000000,
+      "teamId": "flamengo",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "flamengo-p09",
+      "name": "De la Cruz",
+      "position": "CM",
+      "age": 28,
+      "overall": 83,
+      "marketValue": 16000000,
+      "teamId": "flamengo",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "flamengo-p10",
+      "name": "Arrascaeta",
+      "position": "AM",
+      "age": 31,
+      "overall": 86,
+      "marketValue": 18000000,
+      "teamId": "flamengo",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "flamengo-p11",
+      "name": "Giorgian de Arrascaeta",
+      "position": "AM",
+      "age": 31,
+      "overall": 86,
+      "marketValue": 18000000,
+      "teamId": "flamengo",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "flamengo-p12",
+      "name": "Bruno Henrique",
+      "position": "LW",
+      "age": 34,
+      "overall": 80,
+      "marketValue": 3500000,
+      "teamId": "flamengo",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "flamengo-p13",
+      "name": "Everton Cebolinha",
+      "position": "LW",
+      "age": 29,
+      "overall": 81,
+      "marketValue": 9000000,
+      "teamId": "flamengo",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "flamengo-p14",
+      "name": "Pedro",
+      "position": "ST",
+      "age": 28,
+      "overall": 84,
+      "marketValue": 16000000,
+      "teamId": "flamengo",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "flamengo-p15",
+      "name": "Gonzalo Plata",
+      "position": "RW",
+      "age": 24,
+      "overall": 79,
+      "marketValue": 8500000,
+      "teamId": "flamengo",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "man-city-p01",
+      "name": "Ederson",
+      "position": "GK",
+      "age": 32,
+      "overall": 86,
+      "marketValue": 25000000,
+      "teamId": "man-city",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "man-city-p02",
+      "name": "Stefan Ortega",
+      "position": "GK",
+      "age": 32,
+      "overall": 79,
+      "marketValue": 5000000,
+      "teamId": "man-city",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "man-city-p03",
+      "name": "Rico Lewis",
+      "position": "RB",
+      "age": 20,
+      "overall": 78,
+      "marketValue": 22000000,
+      "teamId": "man-city",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "man-city-p04",
+      "name": "Rúben Dias",
+      "position": "CB",
+      "age": 28,
+      "overall": 88,
+      "marketValue": 65000000,
+      "teamId": "man-city",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "man-city-p05",
+      "name": "John Stones",
+      "position": "CB",
+      "age": 31,
+      "overall": 84,
+      "marketValue": 28000000,
+      "teamId": "man-city",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "man-city-p06",
+      "name": "Josko Gvardiol",
+      "position": "LB",
+      "age": 23,
+      "overall": 87,
+      "marketValue": 70000000,
+      "teamId": "man-city",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "man-city-p07",
+      "name": "Rodri",
+      "position": "DM",
+      "age": 29,
+      "overall": 91,
+      "marketValue": 110000000,
+      "teamId": "man-city",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "man-city-p08",
+      "name": "Mateo Kovacic",
+      "position": "CM",
+      "age": 31,
+      "overall": 82,
+      "marketValue": 18000000,
+      "teamId": "man-city",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "man-city-p09",
+      "name": "Bernardo Silva",
+      "position": "AM",
+      "age": 31,
+      "overall": 88,
+      "marketValue": 45000000,
+      "teamId": "man-city",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "man-city-p10",
+      "name": "Phil Foden",
+      "position": "AM",
+      "age": 25,
+      "overall": 89,
+      "marketValue": 95000000,
+      "teamId": "man-city",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "man-city-p11",
+      "name": "Kevin De Bruyne",
+      "position": "AM",
+      "age": 34,
+      "overall": 89,
+      "marketValue": 25000000,
+      "teamId": "man-city",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "man-city-p12",
+      "name": "Jeremy Doku",
+      "position": "LW",
+      "age": 23,
+      "overall": 84,
+      "marketValue": 55000000,
+      "teamId": "man-city",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "man-city-p13",
+      "name": "Savinho",
+      "position": "RW",
+      "age": 21,
+      "overall": 82,
+      "marketValue": 45000000,
+      "teamId": "man-city",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "man-city-p14",
+      "name": "Erling Haaland",
+      "position": "ST",
+      "age": 25,
+      "overall": 92,
+      "marketValue": 180000000,
+      "teamId": "man-city",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "man-city-p15",
+      "name": "Omar Marmoush",
+      "position": "ST",
+      "age": 26,
+      "overall": 83,
+      "marketValue": 45000000,
+      "teamId": "man-city",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "real-madrid-p01",
+      "name": "Thibaut Courtois",
+      "position": "GK",
+      "age": 33,
+      "overall": 90,
+      "marketValue": 35000000,
+      "teamId": "real-madrid",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "real-madrid-p02",
+      "name": "Andriy Lunin",
+      "position": "GK",
+      "age": 26,
+      "overall": 80,
+      "marketValue": 18000000,
+      "teamId": "real-madrid",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "real-madrid-p03",
+      "name": "Dani Carvajal",
+      "position": "RB",
+      "age": 33,
+      "overall": 84,
+      "marketValue": 10000000,
+      "teamId": "real-madrid",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "real-madrid-p04",
+      "name": "Éder Militão",
+      "position": "CB",
+      "age": 27,
+      "overall": 86,
+      "marketValue": 50000000,
+      "teamId": "real-madrid",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "real-madrid-p05",
+      "name": "Antonio Rüdiger",
+      "position": "CB",
+      "age": 32,
+      "overall": 87,
+      "marketValue": 25000000,
+      "teamId": "real-madrid",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "real-madrid-p06",
+      "name": "Ferland Mendy",
+      "position": "LB",
+      "age": 30,
+      "overall": 83,
+      "marketValue": 18000000,
+      "teamId": "real-madrid",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "real-madrid-p07",
+      "name": "Aurélien Tchouaméni",
+      "position": "DM",
+      "age": 25,
+      "overall": 86,
+      "marketValue": 65000000,
+      "teamId": "real-madrid",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "real-madrid-p08",
+      "name": "Federico Valverde",
+      "position": "CM",
+      "age": 27,
+      "overall": 90,
+      "marketValue": 120000000,
+      "teamId": "real-madrid",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "real-madrid-p09",
+      "name": "Eduardo Camavinga",
+      "position": "CM",
+      "age": 22,
+      "overall": 85,
+      "marketValue": 70000000,
+      "teamId": "real-madrid",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "real-madrid-p10",
+      "name": "Jude Bellingham",
+      "position": "AM",
+      "age": 22,
+      "overall": 92,
+      "marketValue": 160000000,
+      "teamId": "real-madrid",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "real-madrid-p11",
+      "name": "Arda Güler",
+      "position": "AM",
+      "age": 20,
+      "overall": 82,
+      "marketValue": 45000000,
+      "teamId": "real-madrid",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "real-madrid-p12",
+      "name": "Vinícius Júnior",
+      "position": "LW",
+      "age": 25,
+      "overall": 92,
+      "marketValue": 170000000,
+      "teamId": "real-madrid",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "real-madrid-p13",
+      "name": "Rodrygo",
+      "position": "RW",
+      "age": 24,
+      "overall": 88,
+      "marketValue": 90000000,
+      "teamId": "real-madrid",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "real-madrid-p14",
+      "name": "Kylian Mbappé",
+      "position": "ST",
+      "age": 26,
+      "overall": 93,
+      "marketValue": 180000000,
+      "teamId": "real-madrid",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "real-madrid-p15",
+      "name": "Endrick",
+      "position": "ST",
+      "age": 19,
+      "overall": 78,
+      "marketValue": 35000000,
+      "teamId": "real-madrid",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "barcelona-p01",
+      "name": "Marc-André ter Stegen",
+      "position": "GK",
+      "age": 33,
+      "overall": 88,
+      "marketValue": 22000000,
+      "teamId": "barcelona",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "barcelona-p02",
+      "name": "Iñaki Peña",
+      "position": "GK",
+      "age": 26,
+      "overall": 77,
+      "marketValue": 7000000,
+      "teamId": "barcelona",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "barcelona-p03",
+      "name": "Jules Koundé",
+      "position": "RB",
+      "age": 26,
+      "overall": 87,
+      "marketValue": 55000000,
+      "teamId": "barcelona",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "barcelona-p04",
+      "name": "Ronald Araújo",
+      "position": "CB",
+      "age": 26,
+      "overall": 87,
+      "marketValue": 55000000,
+      "teamId": "barcelona",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "barcelona-p05",
+      "name": "Pau Cubarsí",
+      "position": "CB",
+      "age": 18,
+      "overall": 82,
+      "marketValue": 50000000,
+      "teamId": "barcelona",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "barcelona-p06",
+      "name": "Alejandro Balde",
+      "position": "LB",
+      "age": 21,
+      "overall": 83,
+      "marketValue": 45000000,
+      "teamId": "barcelona",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "barcelona-p07",
+      "name": "Frenkie de Jong",
+      "position": "CM",
+      "age": 28,
+      "overall": 87,
+      "marketValue": 55000000,
+      "teamId": "barcelona",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "barcelona-p08",
+      "name": "Pedri",
+      "position": "CM",
+      "age": 22,
+      "overall": 90,
+      "marketValue": 120000000,
+      "teamId": "barcelona",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "barcelona-p09",
+      "name": "Gavi",
+      "position": "CM",
+      "age": 21,
+      "overall": 85,
+      "marketValue": 70000000,
+      "teamId": "barcelona",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "barcelona-p10",
+      "name": "Dani Olmo",
+      "position": "AM",
+      "age": 27,
+      "overall": 86,
+      "marketValue": 60000000,
+      "teamId": "barcelona",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "barcelona-p11",
+      "name": "Fermín López",
+      "position": "AM",
+      "age": 22,
+      "overall": 82,
+      "marketValue": 35000000,
+      "teamId": "barcelona",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "barcelona-p12",
+      "name": "Raphinha",
+      "position": "RW",
+      "age": 28,
+      "overall": 87,
+      "marketValue": 60000000,
+      "teamId": "barcelona",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "barcelona-p13",
+      "name": "Lamine Yamal",
+      "position": "RW",
+      "age": 18,
+      "overall": 91,
+      "marketValue": 150000000,
+      "teamId": "barcelona",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "barcelona-p14",
+      "name": "Robert Lewandowski",
+      "position": "ST",
+      "age": 37,
+      "overall": 87,
+      "marketValue": 15000000,
+      "teamId": "barcelona",
+      "nationality": "—",
+      "injured": false
+    },
+    {
+      "id": "barcelona-p15",
+      "name": "Ferran Torres",
+      "position": "ST",
+      "age": 25,
+      "overall": 82,
+      "marketValue": 30000000,
+      "teamId": "barcelona",
+      "nationality": "—",
+      "injured": false
+    }
+  ],
+  "calendar": {
+    "seasonStart": "2025-07-01",
+    "seasonEnd": "2026-06-30",
+    "transferWindows": [
+      {
+        "name": "Janela de verão",
+        "start": "2025-07-01",
+        "end": "2025-09-01"
+      },
+      {
+        "name": "Janela de inverno",
+        "start": "2026-01-01",
+        "end": "2026-02-02"
+      }
+    ],
+    "events": []
+  },
+  "userClubId": "flamengo"
+}
