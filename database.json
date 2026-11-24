@@ -5,7 +5,7 @@
     "season": "2026/27",
     "currency": "EUR",
     "note": "Nomes e vínculos de elenco baseados em listas oficiais/publicadas para 2026/27. Idades não preenchidas quando não verificadas; overall e valores são estimativas fictícias de jogo. Clubes da Premier League e LALIGA 2026/27 incluídos conforme listas oficiais das ligas; elencos desses clubes ainda serão preenchidos. Orçamentos e reputações são parâmetros fictícios de jogo. Participantes da Série B 2026 cadastrados conforme relação oficial da CBF; elencos ainda serão preenchidos e parâmetros financeiros/desportivos são estimativas de jogo. Clubes europeus adicionais adicionados para ampliar a Champions League. Nomes/posições conferidos em listas oficiais de clubes e UEFA/DFB; overall, valores e idades não publicados no cadastro são parâmetros estimados do jogo. Clubes sul-americanos adicionais incorporados para ampliar as competições continentais. Nomes e posições são baseados nas listas consultadas; overall, valores e idades não verificados são estimativas/omitidos. Ligas nacionais adicionais de Argentina, Uruguai, Equador, Paraguai, Chile e Colômbia adicionadas com clubes e estádios reais; elencos individuais ainda pendentes de validação e inclusão. Política de integridade do elenco: cadastrar somente jogadores identificáveis em fontes públicas confiáveis (preferência por páginas oficiais dos clubes, ligas e UEFA); não completar elencos com nomes inventados. Idade, nacionalidade e demais dados não confirmados devem permanecer nulos/indisponíveis. Overall e valor de mercado são atributos fictícios de gameplay e devem ser claramente tratados como estimativas, não dados oficiais. Elencos antigos precisam de auditoria para duplicidades, vínculos incorretos e transferências antes de serem considerados completos. Correção de integridade em 24/11/2026: IDs duplicados de John Stones e Curtis Jones no elenco do Inter foram corrigidos; identificadores de jogadores agora são únicos na lista principal.",
-    "dataStatus": "Calendário das rodadas finais 36–38 do Brasileirão 2026 revisado conforme tabela detalhada oficial da CBF. Partidas jogáveis na carreira quando envolverem o clube escolhido; resultados simulados são fictícios e salvos localmente. Elenco do Mirassol preenchido com nomes e posições publicados pelo próprio clube; idade não publicada foi deixada em branco; overall e valor de mercado são estimativas de jogo. Lista de participantes da Premier League 2026/27 conferida no site oficial da liga; lista da LALIGA EA SPORTS 2026/27 conferida no site oficial. Clubes recém-incluídos ainda sem elenco cadastrado. Lista dos 20 participantes do Campeonato Brasileiro Série B 2026 conferida na relação oficial da CBF e tabela detalhada; clubes adicionados sem jogadores até validação individual dos elencos. Novos elencos europeus cadastrados com nomes reais e posições conforme fontes oficiais 2026/27; overall e valores são estimativas de gameplay, não avaliações oficiais. Elencos sul-americanos adicionados com nomes reais e posições conforme fontes consultadas em 2026; atributos de jogo são estimativas. Seis ligas sul-americanas adicionais adicionadas como grupos iniciais de clubes reais; elencos não verificados não foram inventados. Auditoria de integridade dos elencos iniciada: a base atual contém 546 registros de jogadores, mas ainda não pode ser considerada completa ou inteiramente validada; duplicidades e vínculos de clube devem ser verificados. Próxima etapa: revisar clube a clube com fontes oficiais e incluir apenas atletas confirmados. IDs duplicados encontrados no elenco do Inter foram corrigidos em 24/11/2026; revisão de transferências e vínculos de todos os clubes ainda está em andamento.",
+    "dataStatus": "Calendário das rodadas finais 36–38 do Brasileirão 2026 revisado conforme tabela detalhada oficial da CBF. Partidas jogáveis na carreira quando envolverem o clube escolhido; resultados simulados são fictícios e salvos localmente. Elenco do Mirassol preenchido com nomes e posições publicados pelo próprio clube; idade não publicada foi deixada em branco; overall e valor de mercado são estimativas de jogo. Lista de participantes da Premier League 2026/27 conferida no site oficial da liga; lista da LALIGA EA SPORTS 2026/27 conferida no site oficial. Clubes recém-incluídos ainda sem elenco cadastrado. Lista dos 20 participantes do Campeonato Brasileiro Série B 2026 conferida na relação oficial da CBF e tabela detalhada; clubes adicionados sem jogadores até validação individual dos elencos. Novos elencos europeus cadastrados com nomes reais e posições conforme fontes oficiais 2026/27; overall e valores são estimativas de gameplay, não avaliações oficiais. Elencos sul-americanos adicionados com nomes reais e posições conforme fontes consultadas em 2026; atributos de jogo são estimativas. Seis ligas sul-americanas adicionais adicionadas como grupos iniciais de clubes reais; elencos não verificados não foram inventados. Auditoria de integridade dos elencos iniciada: a base atual contém 546 registros de jogadores, mas ainda não pode ser considerada completa ou inteiramente validada; duplicidades e vínculos de clube devem ser verificados. Próxima etapa: revisar clube a clube com fontes oficiais e incluir apenas atletas confirmados. IDs duplicados encontrados no elenco do Inter foram corrigidos em 24/11/2026; revisão de transferências e vínculos de todos os clubes ainda está em andamento. Dados de idade e nacionalidade do elenco do Inter preenchidos para os atletas presentes na base com base na lista oficial UEFA 2026/27; atletas não confirmados permanecem sem dados.",
     "lastDataReview": "2026-11-24",
     "sources": [
       "Folha: levantamento de estrangeiros por clube, publicado em 22/09/2026",
@@ -5627,253 +5627,253 @@
           "id": "inter-202627-01",
           "name": "Josep Martínez",
           "position": "GK",
-          "age": null,
+          "age": 28,
           "overall": 84,
           "marketValue": 37845000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-02",
           "name": "Raffaele Di Gennaro",
           "position": "GK",
-          "age": null,
+          "age": 33,
           "overall": 86,
           "marketValue": 43245000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "ITA",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-04",
           "name": "Alessandro Bastoni",
           "position": "CB",
-          "age": null,
+          "age": 27,
           "overall": 90,
           "marketValue": 55125000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "ITA",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-05",
           "name": "Manuel Akanji",
           "position": "CB",
-          "age": null,
+          "age": 31,
           "overall": 92,
           "marketValue": 61605000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "SUI",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-06",
           "name": "Benjamin Pavard",
           "position": "CB",
-          "age": null,
+          "age": 30,
           "overall": 84,
           "marketValue": 37845000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "FRA",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-07",
           "name": "Yann-Aurel Bisseck",
           "position": "CB",
-          "age": null,
+          "age": 25,
           "overall": 86,
           "marketValue": 43245000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "GER",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-08",
           "name": "Federico Dimarco",
           "position": "LB",
-          "age": null,
+          "age": 29,
           "overall": 88,
           "marketValue": 49005000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "ITA",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-10",
           "name": "Carlos Augusto",
           "position": "LB",
-          "age": null,
+          "age": 27,
           "overall": 92,
           "marketValue": 61605000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "BRA",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-11",
           "name": "Nicolò Barella",
           "position": "CM",
-          "age": null,
+          "age": 29,
           "overall": 84,
           "marketValue": 37845000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "ITA",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-12",
           "name": "Hakan Çalhanoğlu",
           "position": "DM",
-          "age": null,
+          "age": 32,
           "overall": 86,
           "marketValue": 43245000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "TUR",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-13",
           "name": "Piotr Zieliński",
           "position": "CM",
-          "age": null,
+          "age": 32,
           "overall": 88,
           "marketValue": 49005000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "POL",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-14",
           "name": "Henrikh Mkhitaryan",
           "position": "CM",
-          "age": null,
+          "age": 37,
           "overall": 90,
           "marketValue": 55125000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "ARM",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-15",
           "name": "Petar Sučić",
           "position": "CM",
-          "age": null,
+          "age": 23,
           "overall": 92,
           "marketValue": 61605000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "CRO",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-16",
           "name": "Lautaro Martínez",
           "position": "ST",
-          "age": null,
+          "age": 29,
           "overall": 84,
           "marketValue": 37845000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "ARG",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-17",
           "name": "Marcus Thuram",
           "position": "ST",
-          "age": null,
+          "age": 29,
           "overall": 86,
           "marketValue": 43245000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "FRA",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-18",
           "name": "Ange-Yoan Bonny",
           "position": "ST",
-          "age": null,
+          "age": 23,
           "overall": 88,
           "marketValue": 49005000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "CIV",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-19",
           "name": "Luis Henrique",
           "position": "RW",
-          "age": null,
+          "age": 24,
           "overall": 90,
           "marketValue": 55125000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "BRA",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-22",
           "name": "John Stones",
           "position": "CB",
-          "age": null,
+          "age": 32,
           "overall": 87,
           "marketValue": 12000000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "ENG",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-23",
           "name": "Curtis Jones",
           "position": "CM",
-          "age": null,
+          "age": 25,
           "overall": 87,
           "marketValue": 12000000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "ENG",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-20",
           "name": "Andy Diouf",
           "position": "CM",
-          "age": null,
+          "age": 23,
           "overall": 87,
           "marketValue": 12000000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "FRA",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         },
         {
           "id": "inter-202627-21",
           "name": "Ivan Provedel",
           "position": "GK",
-          "age": null,
+          "age": 32,
           "overall": 87,
           "marketValue": 12000000,
           "teamId": "inter",
-          "nationality": "—",
+          "nationality": "ITA",
           "injured": false,
-          "dataSource": "official-club-squad-2026-27"
+          "dataSource": "Inter/UEFA Champions League squad list 2026/27"
         }
       ]
     },
@@ -12797,205 +12797,205 @@
       "id": "inter-202627-01",
       "name": "Josep Martínez",
       "position": "GK",
-      "age": null,
+      "age": 28,
       "overall": 84,
       "marketValue": 37845000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-02",
       "name": "Raffaele Di Gennaro",
       "position": "GK",
-      "age": null,
+      "age": 33,
       "overall": 86,
       "marketValue": 43245000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "ITA",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-04",
       "name": "Alessandro Bastoni",
       "position": "CB",
-      "age": null,
+      "age": 27,
       "overall": 90,
       "marketValue": 55125000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "ITA",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-05",
       "name": "Manuel Akanji",
       "position": "CB",
-      "age": null,
+      "age": 31,
       "overall": 92,
       "marketValue": 61605000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "SUI",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-06",
       "name": "Benjamin Pavard",
       "position": "CB",
-      "age": null,
+      "age": 30,
       "overall": 84,
       "marketValue": 37845000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "FRA",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-07",
       "name": "Yann-Aurel Bisseck",
       "position": "CB",
-      "age": null,
+      "age": 25,
       "overall": 86,
       "marketValue": 43245000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "GER",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-08",
       "name": "Federico Dimarco",
       "position": "LB",
-      "age": null,
+      "age": 29,
       "overall": 88,
       "marketValue": 49005000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "ITA",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-10",
       "name": "Carlos Augusto",
       "position": "LB",
-      "age": null,
+      "age": 27,
       "overall": 92,
       "marketValue": 61605000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "BRA",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-11",
       "name": "Nicolò Barella",
       "position": "CM",
-      "age": null,
+      "age": 29,
       "overall": 84,
       "marketValue": 37845000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "ITA",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-12",
       "name": "Hakan Çalhanoğlu",
       "position": "DM",
-      "age": null,
+      "age": 32,
       "overall": 86,
       "marketValue": 43245000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "TUR",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-13",
       "name": "Piotr Zieliński",
       "position": "CM",
-      "age": null,
+      "age": 32,
       "overall": 88,
       "marketValue": 49005000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "POL",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-14",
       "name": "Henrikh Mkhitaryan",
       "position": "CM",
-      "age": null,
+      "age": 37,
       "overall": 90,
       "marketValue": 55125000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "ARM",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-15",
       "name": "Petar Sučić",
       "position": "CM",
-      "age": null,
+      "age": 23,
       "overall": 92,
       "marketValue": 61605000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "CRO",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-16",
       "name": "Lautaro Martínez",
       "position": "ST",
-      "age": null,
+      "age": 29,
       "overall": 84,
       "marketValue": 37845000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "ARG",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-17",
       "name": "Marcus Thuram",
       "position": "ST",
-      "age": null,
+      "age": 29,
       "overall": 86,
       "marketValue": 43245000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "FRA",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-18",
       "name": "Ange-Yoan Bonny",
       "position": "ST",
-      "age": null,
+      "age": 23,
       "overall": 88,
       "marketValue": 49005000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "CIV",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-19",
       "name": "Luis Henrique",
       "position": "RW",
-      "age": null,
+      "age": 24,
       "overall": 90,
       "marketValue": 55125000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "BRA",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "ac-milan-202627-01",
@@ -13553,49 +13553,49 @@
       "id": "inter-202627-22",
       "name": "John Stones",
       "position": "CB",
-      "age": null,
+      "age": 32,
       "overall": 87,
       "marketValue": 12000000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "ENG",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-23",
       "name": "Curtis Jones",
       "position": "CM",
-      "age": null,
+      "age": 25,
       "overall": 87,
       "marketValue": 12000000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "ENG",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-20",
       "name": "Andy Diouf",
       "position": "CM",
-      "age": null,
+      "age": 23,
       "overall": 87,
       "marketValue": 12000000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "FRA",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "inter-202627-21",
       "name": "Ivan Provedel",
       "position": "GK",
-      "age": null,
+      "age": 32,
       "overall": 87,
       "marketValue": 12000000,
       "teamId": "inter",
-      "nationality": "—",
+      "nationality": "ITA",
       "injured": false,
-      "dataSource": "official-club-squad-2026-27"
+      "dataSource": "Inter/UEFA Champions League squad list 2026/27"
     },
     {
       "id": "boca-juniors-202627-01",
