@@ -27,3 +27,8 @@
 .pitch-player{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;width:74px;min-height:53px;padding:4px 3px;border:1px solid rgba(255,255,255,.8);border-radius:10px;background:#12243b;color:#fff;box-shadow:0 3px 9px #06130c99;cursor:grab;z-index:2}
 .pitch-player:active{cursor:grabbing}.pitch-player strong{font-size:10px;max-width:68px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pitch-player small{font-size:9px;color:#c4d7ce}.pitch-number{display:grid;place-items:center;width:17px;height:17px;border-radius:50%;background:#d6a843;color:#172333;font-size:10px;font-weight:800}.pitch-player.is-selected{outline:3px solid #f5d76e;z-index:3;transform:translate(-50%,-50%) scale(1.08)}.tactical-hint{text-align:center;font-size:12px}
 @media(max-width:620px){.tactical-pitch{height:510px}.pitch-player{width:62px;min-height:48px}.pitch-player strong{max-width:57px;font-size:9px}}
+
+.tactical-instructions{margin:24px 0;padding:16px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025)}
+.instruction-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}
+.instruction-grid .lineup-slot select{width:100%;min-width:0;background:#0d1727;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:11px;font:inherit}
+@media(max-width:620px){.instruction-grid{grid-template-columns:1fr}}
