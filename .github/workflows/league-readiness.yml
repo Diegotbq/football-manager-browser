@@ -1,0 +1,35 @@
+name: League readiness tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "database.json"
+      - "scripts/check-league-readiness.mjs"
+      - "scripts/test-league-readiness.mjs"
+      - ".github/workflows/league-readiness.yml"
+  pull_request:
+    paths:
+      - "database.json"
+      - "scripts/check-league-readiness.mjs"
+      - "scripts/test-league-readiness.mjs"
+      - ".github/workflows/league-readiness.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  readiness-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run league readiness regression tests
+        run: node scripts/test-league-readiness.mjs
+      - name: Validate current database readiness report
+        run: node scripts/check-league-readiness.mjs
