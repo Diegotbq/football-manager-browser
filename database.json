@@ -5,7 +5,7 @@
     "season": "2026/27",
     "currency": "EUR",
     "note": "Nomes e vínculos de elenco baseados em listas oficiais/publicadas para 2026/27. Idades não preenchidas quando não verificadas; overall e valores são estimativas fictícias de jogo. Clubes da Premier League e LALIGA 2026/27 incluídos conforme listas oficiais das ligas; elencos desses clubes ainda serão preenchidos. Orçamentos e reputações são parâmetros fictícios de jogo. Participantes da Série B 2026 cadastrados conforme relação oficial da CBF; elencos ainda serão preenchidos e parâmetros financeiros/desportivos são estimativas de jogo. Clubes europeus adicionais adicionados para ampliar a Champions League. Nomes/posições conferidos em listas oficiais de clubes e UEFA/DFB; overall, valores e idades não publicados no cadastro são parâmetros estimados do jogo. Clubes sul-americanos adicionais incorporados para ampliar as competições continentais. Nomes e posições são baseados nas listas consultadas; overall, valores e idades não verificados são estimativas/omitidos. Ligas nacionais adicionais de Argentina, Uruguai, Equador, Paraguai, Chile e Colômbia adicionadas com clubes e estádios reais; elencos individuais ainda pendentes de validação e inclusão. Política de integridade do elenco: cadastrar somente jogadores identificáveis em fontes públicas confiáveis (preferência por páginas oficiais dos clubes, ligas e UEFA); não completar elencos com nomes inventados. Idade, nacionalidade e demais dados não confirmados devem permanecer nulos/indisponíveis. Overall e valor de mercado são atributos fictícios de gameplay e devem ser claramente tratados como estimativas, não dados oficiais. Elencos antigos precisam de auditoria para duplicidades, vínculos incorretos e transferências antes de serem considerados completos. Correção de integridade em 24/11/2026: IDs duplicados de John Stones e Curtis Jones no elenco do Inter foram corrigidos; identificadores de jogadores agora são únicos na lista principal.",
-    "dataStatus": "Elenco do Barcelona 2026/27 revisado com lista oficial do clube e registros UEFA; jovens da Lista B incluídos. Dados sujeitos a revisão contínua.",
+    "dataStatus": "Elenco do Barcelona 2026/27 conferido com lista oficial do clube e relação UEFA; jogadores da lista B incluídos; dados sujeitos a revisões contínuas.",
     "lastDataReview": "2026-11-24",
     "sources": [
       "Folha: levantamento de estrangeiros por clube, publicado em 22/09/2026",
@@ -35,7 +35,9 @@
       "UEFA: lista de jogadores do FC Barcelona 2026/27 com idades e nacionalidades, consultada em 24/11/2026",
       "LALIGA: plantilla oficial do FC Barcelona 2026/27, consultada em 24/11/2026",
       "FC Barcelona: elenco oficial do primeiro time e números de camisa 2026/27, consultados em 24/11/2026",
-      "UEFA Champions League: elenco do Barcelona 2026/27, idades, nacionalidades e Lista B, consultado em 24/11/2026"
+      "UEFA Champions League: elenco do Barcelona 2026/27, idades, nacionalidades e Lista B, consultado em 24/11/2026",
+      "FC Barcelona: números e lista oficial do primeiro elenco 2026/27, consultados em 24/11/2026",
+      "UEFA Champions League: elenco do Barcelona 2026/27, incluindo jogadores da lista B, consultado em 24/11/2026"
     ]
   },
   "leagues": [
@@ -1441,7 +1443,7 @@
       "shortName": "BAR",
       "country": "Espanha",
       "leagueId": "la-liga",
-      "stadium": "Estadi Olímpic / Camp Nou",
+      "stadium": "Spotify Camp Nou",
       "budget": 95000000,
       "reputation": 94,
       "color": "#a50044",
