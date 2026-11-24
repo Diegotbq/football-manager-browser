@@ -726,7 +726,9 @@ function saveTransferCareer() {
       savedLineups: state.savedLineups,
       playerConditions: state.playerConditions,
       generatedFixtures: state.generatedFixtures,
-      cupCompetitions: state.cupCompetitions
+      cupCompetitions: state.cupCompetitions,
+      seasonHistory: state.seasonHistory,
+      seasonMeta: {season:state.db.meta?.season,seasonStart:state.db.calendar?.seasonStart,leagueTeams:(state.db.leagues||[]).map(l=>[l.id,[...(l.teams||[])]])}
     }));
   } catch (_) {
     alert("Não foi possível salvar a transferência neste dispositivo. Verifique o espaço disponível.");
@@ -757,6 +759,13 @@ function loadTransferCareer() {
     state.playerConditions = saved.playerConditions && typeof saved.playerConditions === "object" ? saved.playerConditions : {};
     state.generatedFixtures = Array.isArray(saved.generatedFixtures) ? saved.generatedFixtures : [];
     state.cupCompetitions = Array.isArray(saved.cupCompetitions) ? saved.cupCompetitions : [];
+    state.seasonHistory = Array.isArray(saved.seasonHistory) ? saved.seasonHistory : [];
+    if(saved.seasonMeta){
+      if(saved.seasonMeta.season)state.db.meta.season=saved.seasonMeta.season;
+      if(saved.seasonMeta.seasonStart){state.db.calendar=state.db.calendar||{};state.db.calendar.seasonStart=saved.seasonMeta.seasonStart;}
+      (saved.seasonMeta.leagueTeams||[]).forEach(([id,teams])=>{const l=state.db.leagues.find(x=>x.id===id);if(l)l.teams=[...teams];});
+      state.db.teams.forEach(t=>{const l=state.db.leagues.find(x=>x.teams.some(id=>String(id)===String(t.id)));if(l)t.leagueId=l.id;});
+    }
     state.academyProspects.forEach(p => {
       if (!state.db.players.some(existing => String(existing.id) === String(p.id))) state.db.players.push(p);
       const team = state.db.teams.find(t => String(t.id) === String(p.teamId));
@@ -1057,6 +1066,59 @@ function renderTable(leagueFilter) {
   `);
 }
 
+
+// TEMPORADAS: premiações, acesso e rebaixamento
+function seasonStandings(league) {
+  const ids=new Set((league.teams||[]).map(String));
+  const rows=(league.teams||[]).map(id=>({id:String(id),pts:0,gf:0,ga:0}));
+  state.matchHistory.filter(m=>ids.has(String(m.homeId))&&ids.has(String(m.awayId))&&m.competition===league.name).forEach(m=>{
+    const h=rows.find(r=>r.id===String(m.homeId)),a=rows.find(r=>r.id===String(m.awayId));if(!h||!a)return;
+    h.gf+=Number(m.homeScore);h.ga+=Number(m.awayScore);a.gf+=Number(m.awayScore);a.ga+=Number(m.homeScore);
+    if(m.homeScore>m.awayScore)h.pts+=3;else if(m.homeScore<m.awayScore)a.pts+=3;else{h.pts++;a.pts++;}
+  });
+  return rows.sort((a,b)=>b.pts-a.pts||(b.gf-b.ga)-(a.gf-a.ga)||b.gf-a.gf);
+}
+function finishSeason() {
+  if(!confirm("Encerrar a temporada? Os jogos de liga restantes serão simulados, as premiações pagas e uma nova temporada começará."))return;
+  state.generatedFixtures.filter(f=>!f.isCup&&f.competitionId).forEach(f=>{
+    if(state.matchHistory.some(m=>m.fixtureId===f.id))return;
+    const home=state.db.teams.find(t=>String(t.id)===String(f.homeTeamId)),away=state.db.teams.find(t=>String(t.id)===String(f.awayTeamId));
+    const hp=teamCupStrength(home),ap=teamCupStrength(away);
+    const h=Math.max(0,Math.round(Math.random()*2+(hp-ap)/24)),a=Math.max(0,Math.round(Math.random()*2+(ap-hp)/24));
+    state.matchHistory.push({homeId:f.homeTeamId,awayId:f.awayTeamId,homeScore:h,awayScore:a,date:f.date,fixtureId:f.id,competition:f.competition,round:f.round,autoSimulated:true});
+  });
+  const season=state.db.meta?.season||"2026/27",prizes=[];
+  (state.db.leagues||[]).filter(l=>l.type==="league").forEach(league=>{
+    seasonStandings(league).forEach((row,index)=>{
+      const club=state.db.teams.find(t=>String(t.id)===row.id);if(!club)return;
+      const award=Math.round(1800000*(league.teams.length-index)/league.teams.length);
+      club.budget=Number(club.budget||0)+award;if(index===0)club.reputation=Math.min(99,Number(club.reputation||50)+2);
+      prizes.push({clubId:club.id,clubName:club.name,competition:league.name,position:index+1,award});
+    });
+  });
+  (state.cupCompetitions||[]).forEach(cup=>{if(!cup.champion)return;const club=state.db.teams.find(t=>String(t.id)===String(cup.champion));if(club){club.budget=Number(club.budget||0)+5000000;club.reputation=Math.min(99,Number(club.reputation||50)+2);prizes.push({clubId:club.id,clubName:club.name,competition:cup.name,position:1,award:5000000,trophy:true});}});
+  const top=state.db.leagues.find(l=>l.id==="brasileirao"),second=state.db.leagues.find(l=>l.id==="brasileirao-serie-b");
+  let promoted=[],relegated=[];
+  if(top&&second){promoted=seasonStandings(second).slice(0,4).map(r=>r.id);relegated=seasonStandings(top).slice(-4).map(r=>r.id);
+    top.teams=[...top.teams.filter(id=>!relegated.includes(String(id))),...promoted];
+    second.teams=[...second.teams.filter(id=>!promoted.includes(String(id))),...relegated];
+    state.db.teams.forEach(t=>{if(top.teams.some(id=>String(id)===String(t.id)))t.leagueId=top.id;else if(second.teams.some(id=>String(id)===String(t.id)))t.leagueId=second.id;});
+  }
+  state.seasonHistory.unshift({season,prizes,promoted,relegated});
+  const match=String(season).match(/(\d{4})\/(\d{2,4})/),year=match?Number(match[1])+1:state.day.getFullYear()+1;
+  const nextSeason=year+"/"+String((year+1)%100).padStart(2,"0");
+  state.db.meta.season=nextSeason;state.db.calendar=state.db.calendar||{};state.db.calendar.seasonStart=year+"-07-01";
+  state.day=new Date(state.db.calendar.seasonStart+"T12:00:00");state.generatedFixtures=[];state.cupCompetitions=[];state.matchHistory=[];
+  try{localStorage.setItem("fmb-match-history","[]");localStorage.setItem("fmb-current-day",state.db.calendar.seasonStart);}catch(_){}
+  ensureGeneratedFixtures();ensureCupCompetitions();saveTransferCareer();
+  alert("Temporada "+season+" encerrada! Premiações, acessos e rebaixamentos aplicados. Começou "+nextSeason+".");
+  state.view="dashboard";render();
+}
+function renderSeasonPanel() {
+  const last=state.seasonHistory[0];
+  return `<article class="card span-12"><div class="section-head"><h2>🏆 Encerramento da temporada</h2><span class="tag">${state.db.meta?.season||"Temporada atual"}</span></div><p class="subtle">Simule os jogos restantes, distribua premiações por posição, reconheça campeões de copas e aplique acesso/rebaixamento entre as Séries A e B do Brasil.</p><button class="primary-btn" onclick="finishSeason()">ENCERRAR TEMPORADA E COMEÇAR OUTRA</button>${last?`<p class="subtle">Última temporada: ${last.season} · ${last.prizes.length} premiações · ${last.promoted.length} promovidos · ${last.relegated.length} rebaixados.</p>`:""}</article>`;
+}
+
 // GERAÇÃO DE CALENDÁRIOS DE LIGA (tabela fictícia de carreira, não calendário oficial)
 function ensureGeneratedFixtures() {
   if (!state.db || state.generatedFixtures.length) return;
@@ -1217,7 +1279,7 @@ function renderCalendar(competitionFilter) {
         <select id="calendar-competition" onchange="renderCalendar(this.value)">
           ${competitions.map(name => `<option value="${name.replace(/&/g,"&amp;").replace(/"/g,"&quot;")}" ${name === selectedCompetition ? "selected" : ""}>${name}</option>`).join("")}
         </select>
-        <div class="section-head"><h2>Copas e troféus</h2><span class="tag">${state.cupCompetitions.length} competições</span></div>${cupSummary}<div class="section-head"><h2>Janelas de transferências</h2></div>
+        ${renderSeasonPanel()}\n        <div class="section-head"><h2>Copas e troféus</h2><span class="tag">${state.cupCompetitions.length} competições</span></div>${cupSummary}<div class="section-head"><h2>Janelas de transferências</h2></div>
         ${windows.length ? windows.map(w => `
           <div class="fixture"><div><strong>${w.name}</strong><div class="subtle">${w.start} até ${w.end}</div></div><span class="tag">Planejada</span></div>
         `).join("") : `<div class="empty">Nenhuma janela cadastrada.</div>`}
