@@ -41,6 +41,12 @@ async function init() {
 
     const seasonStart = state.db.calendar?.seasonStart;
     if (seasonStart) state.day = new Date(`${seasonStart}T12:00:00`);
+    try {
+      const savedDay = localStorage.getItem("fmb-current-day");
+      if (savedDay && !Number.isNaN(new Date(`${savedDay}T12:00:00`).getTime())) {
+        state.day = new Date(`${savedDay}T12:00:00`);
+      }
+    } catch (_) {}
 
     if (!Array.isArray(state.db.teams) || !state.db.teams.length) {
       throw new Error("Nenhum clube encontrado no banco de dados.");
@@ -264,6 +270,9 @@ function filterClubChoices() {
 
 function advanceDay() {
   state.day.setDate(state.day.getDate() + 1);
+  try {
+    localStorage.setItem("fmb-current-day", state.day.toISOString().slice(0, 10));
+  } catch (_) {}
 
   const currentDate = $("#current-date");
 
