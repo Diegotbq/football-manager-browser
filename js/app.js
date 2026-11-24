@@ -395,6 +395,7 @@ function resolveAIPlayerOffer(offerId,action) {
   state.db.teams.forEach(team=>{if(!Array.isArray(team.players))return;team.players=team.players.filter(p=>String(p.id)!==String(player.id));if(String(team.id)===String(buyer.id))team.players.push(player);});
   offer.status="accepted";offer.agreedFee=fee;
   state.pendingOffers.filter(o=>String(o.playerId)===String(player.id)&&o.status==="pending").forEach(o=>o.status="withdrawn");
+  state.playerRequests.filter(r=>String(r.playerId)===String(player.id)&&r.status==="listed").forEach(r=>r.status="sold");
   state.transferHistory.push({playerId:player.id,playerName:player.name,fromTeamId:fromId,fromName:seller.name,toTeamId:buyer.id,toName:buyer.name,fee,date:today,userSale:true});
   saveTransferCareer();alert("Venda concluída! "+player.name+" foi transferido para "+buyer.name+".");renderMarket();
 }
@@ -445,8 +446,8 @@ function updateSquadMorale(){
     const contract=state.contracts[player.id];
     if(contract&&new Date(contract.expiresAt+"T12:00:00")-new Date(today+"T12:00:00")<180*86400000)change-=1;
     state.playerMorale[player.id]=Math.max(0,Math.min(100,morale+change));
-    const pending=state.playerRequests.some(r=>String(r.playerId)===String(player.id)&&r.status==="pending");
-    if(state.playerMorale[player.id]<=28&&unused>=3&&!pending)state.playerRequests.push({playerId:player.id,playerName:player.name,clubId:club.id,status:"pending",reason:"Poucas oportunidades em campo e moral muito baixa",date:today});
+    const recentRequest=state.playerRequests.some(r=>String(r.playerId)===String(player.id)&&((r.status==="pending"||r.status==="listed")||(r.date&&((new Date(today+"T12:00:00")-new Date(r.date+"T12:00:00"))/86400000)<30)));
+    if(state.playerMorale[player.id]<=28&&unused>=3&&!recentRequest)state.playerRequests.push({playerId:player.id,playerName:player.name,clubId:club.id,status:"pending",reason:"Poucas oportunidades em campo e moral muito baixa",date:today});
   });
   state.playerPromises.filter(p=>p.status==="pending").forEach(p=>{
     const clubMatches=state.matchHistory.filter(m=>String(m.homeId)===String(p.clubId)&&String(m.awayId)!==String(p.clubId)||String(m.awayId)===String(p.clubId)&&String(m.homeId)!==String(p.clubId));
