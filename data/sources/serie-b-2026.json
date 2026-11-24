@@ -82,5 +82,45 @@
       "londrina": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/62726?tab=atletas",
       "vilaNova": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20079"
     }
+  },
+  "sourceResearch": {
+    "checkedAt": "2026-11-24",
+    "findings": [
+      {
+        "source": "API pública do BID do Avaí",
+        "url": "https://bid.avaifc.com/docs",
+        "scope": "Registros do BID vinculados ao Avaí Futebol Clube (clube CBF 20058), não um serviço nacional para os 20 clubes da Série B.",
+        "authentication": "Bearer API key obrigatória",
+        "usefulFields": [
+          "nome",
+          "apelido",
+          "data_nascimento",
+          "idade",
+          "situação de registro no BID"
+        ],
+        "unavailableRequiredFields": [
+          "posição",
+          "nacionalidade"
+        ],
+        "decision": "Não usar como fonte geral nem importar jogadores de outros clubes a partir desta API. Pode servir apenas como referência técnica para compreender registros do BID; dados de elenco exigem confirmação em fonte adequada ao clube."
+      },
+      {
+        "source": "Páginas oficiais de atletas da CBF",
+        "url": "https://www.cbf.com.br/futebol-brasileiro/atletas/campeonato-brasileiro/serie-a/2026",
+        "scope": "Listagem por competição",
+        "visibleFields": [
+          "nome",
+          "apelido",
+          "clube atual"
+        ],
+        "unavailableRequiredFields": [
+          "posição",
+          "data de nascimento",
+          "nacionalidade"
+        ],
+        "decision": "Usar para descoberta e conferência do vínculo atual, nunca como única fonte para completar metadados."
+      }
+    ],
+    "importRule": "Nenhuma descoberta de nome ou vínculo deve ser tratada como elenco completo. Só importar quando identidade, vínculo atual, posição, data de nascimento/idade e nacionalidade estiverem confirmados; não inferir campos ausentes."
   }
 }
