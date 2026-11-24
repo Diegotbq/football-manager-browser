@@ -1496,5 +1496,31 @@
       "players": 0
     }
   ],
-  "rosterValidationNote": "O mínimo de 18 registros mede cobertura estrutural; não confirma, por si só, a inscrição atual ou a identidade real de cada jogador."
+  "rosterValidationNote": "O mínimo de 18 registros mede cobertura estrutural; não confirma, por si só, a inscrição atual ou a identidade real de cada jogador.",
+  "playerMetadata": {
+    "name": {
+      "present": 3253,
+      "missing": 0
+    },
+    "position": {
+      "present": 3253,
+      "missing": 0
+    },
+    "age": {
+      "present": 615,
+      "missing": 2638
+    },
+    "overall": {
+      "present": 3253,
+      "missing": 0
+    },
+    "marketValue": {
+      "present": 3253,
+      "missing": 0
+    },
+    "nationality": {
+      "present": 3027,
+      "missing": 226
+    }
+  }
 }
