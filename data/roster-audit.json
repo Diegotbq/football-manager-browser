@@ -1522,5 +1522,771 @@
       "present": 3027,
       "missing": 226
     }
+  },
+  "readiness": {
+    "generatedAt": "2026-11-24",
+    "integrity": {
+      "duplicatePlayerIds": 0,
+      "invalidTeamLinks": 0
+    },
+    "leagues": {
+      "brasileirao": {
+        "clubs": 20,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 2,
+        "clubsBelowMinimum": [
+          {
+            "team": "Athletico Paranaense",
+            "players": 11
+          },
+          {
+            "team": "Atlético Mineiro",
+            "players": 9
+          },
+          {
+            "team": "Bahia",
+            "players": 9
+          },
+          {
+            "team": "Botafogo",
+            "players": 11
+          },
+          {
+            "team": "Chapecoense",
+            "players": 5
+          },
+          {
+            "team": "Corinthians",
+            "players": 7
+          },
+          {
+            "team": "Coritiba",
+            "players": 7
+          },
+          {
+            "team": "Cruzeiro",
+            "players": 8
+          },
+          {
+            "team": "Fluminense",
+            "players": 9
+          },
+          {
+            "team": "Grêmio",
+            "players": 10
+          },
+          {
+            "team": "Internacional",
+            "players": 12
+          },
+          {
+            "team": "Palmeiras",
+            "players": 8
+          },
+          {
+            "team": "Red Bull Bragantino",
+            "players": 8
+          },
+          {
+            "team": "Remo",
+            "players": 6
+          },
+          {
+            "team": "Santos",
+            "players": 6
+          },
+          {
+            "team": "São Paulo",
+            "players": 7
+          },
+          {
+            "team": "Vasco da Gama",
+            "players": 12
+          },
+          {
+            "team": "Vitória",
+            "players": 6
+          }
+        ]
+      },
+      "premier-league": {
+        "clubs": 20,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 20,
+        "clubsBelowMinimum": []
+      },
+      "la-liga": {
+        "clubs": 20,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 20,
+        "clubsBelowMinimum": []
+      },
+      "brasileirao-serie-b": {
+        "clubs": 20,
+        "minimumPlayersPerClub": 25,
+        "clubsMeetingMinimum": 0,
+        "clubsBelowMinimum": [
+          {
+            "team": "América Mineiro",
+            "players": 0
+          },
+          {
+            "team": "Athletic Club",
+            "players": 0
+          },
+          {
+            "team": "Atlético Goianiense",
+            "players": 0
+          },
+          {
+            "team": "Avaí",
+            "players": 0
+          },
+          {
+            "team": "Botafogo de Ribeirão Preto",
+            "players": 0
+          },
+          {
+            "team": "Ceará",
+            "players": 0
+          },
+          {
+            "team": "CRB",
+            "players": 0
+          },
+          {
+            "team": "Criciúma",
+            "players": 0
+          },
+          {
+            "team": "Cuiabá",
+            "players": 0
+          },
+          {
+            "team": "Fortaleza",
+            "players": 0
+          },
+          {
+            "team": "Goiás",
+            "players": 0
+          },
+          {
+            "team": "Juventude",
+            "players": 0
+          },
+          {
+            "team": "Londrina",
+            "players": 0
+          },
+          {
+            "team": "Náutico",
+            "players": 0
+          },
+          {
+            "team": "Grêmio Novorizontino",
+            "players": 0
+          },
+          {
+            "team": "Operário Ferroviário",
+            "players": 0
+          },
+          {
+            "team": "Ponte Preta",
+            "players": 0
+          },
+          {
+            "team": "São Bernardo FC",
+            "players": 0
+          },
+          {
+            "team": "Sport Recife",
+            "players": 0
+          },
+          {
+            "team": "Vila Nova",
+            "players": 0
+          }
+        ]
+      },
+      "ligue-1": {
+        "clubs": 18,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 18,
+        "clubsBelowMinimum": []
+      },
+      "champions-league": {
+        "clubs": 4,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 4,
+        "clubsBelowMinimum": []
+      },
+      "primeira-liga": {
+        "clubs": 18,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 18,
+        "clubsBelowMinimum": []
+      },
+      "libertadores": {
+        "clubs": 5,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 5,
+        "clubsBelowMinimum": []
+      },
+      "argentina": {
+        "clubs": 8,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 0,
+        "clubsBelowMinimum": [
+          {
+            "team": "Independiente",
+            "players": 0
+          },
+          {
+            "team": "Racing Club",
+            "players": 0
+          },
+          {
+            "team": "San Lorenzo",
+            "players": 0
+          },
+          {
+            "team": "Estudiantes de La Plata",
+            "players": 0
+          },
+          {
+            "team": "Rosario Central",
+            "players": 0
+          },
+          {
+            "team": "Newell's Old Boys",
+            "players": 0
+          },
+          {
+            "team": "Vélez Sarsfield",
+            "players": 0
+          },
+          {
+            "team": "Talleres",
+            "players": 0
+          }
+        ]
+      },
+      "uruguay": {
+        "clubs": 8,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 0,
+        "clubsBelowMinimum": [
+          {
+            "team": "Defensor Sporting",
+            "players": 0
+          },
+          {
+            "team": "Liverpool FC",
+            "players": 0
+          },
+          {
+            "team": "Danubio",
+            "players": 0
+          },
+          {
+            "team": "Cerro Largo",
+            "players": 0
+          },
+          {
+            "team": "Montevideo Wanderers",
+            "players": 0
+          },
+          {
+            "team": "Cerro",
+            "players": 0
+          },
+          {
+            "team": "Racing Club de Montevideo",
+            "players": 0
+          },
+          {
+            "team": "Plaza Colonia",
+            "players": 0
+          }
+        ]
+      },
+      "ecuador": {
+        "clubs": 8,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 0,
+        "clubsBelowMinimum": [
+          {
+            "team": "LDU Quito",
+            "players": 0
+          },
+          {
+            "team": "Barcelona SC",
+            "players": 0
+          },
+          {
+            "team": "Emelec",
+            "players": 0
+          },
+          {
+            "team": "Aucas",
+            "players": 0
+          },
+          {
+            "team": "El Nacional",
+            "players": 0
+          },
+          {
+            "team": "Deportivo Cuenca",
+            "players": 0
+          },
+          {
+            "team": "Universidad Católica",
+            "players": 0
+          },
+          {
+            "team": "Orense SC",
+            "players": 0
+          }
+        ]
+      },
+      "paraguay": {
+        "clubs": 8,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 0,
+        "clubsBelowMinimum": [
+          {
+            "team": "Cerro Porteño",
+            "players": 0
+          },
+          {
+            "team": "Olimpia",
+            "players": 0
+          },
+          {
+            "team": "Libertad",
+            "players": 0
+          },
+          {
+            "team": "Guaraní",
+            "players": 0
+          },
+          {
+            "team": "Nacional",
+            "players": 0
+          },
+          {
+            "team": "Sportivo Luqueño",
+            "players": 0
+          },
+          {
+            "team": "General Caballero JLM",
+            "players": 0
+          },
+          {
+            "team": "2 de Mayo",
+            "players": 0
+          }
+        ]
+      },
+      "chile": {
+        "clubs": 8,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 0,
+        "clubsBelowMinimum": [
+          {
+            "team": "Colo-Colo",
+            "players": 0
+          },
+          {
+            "team": "Universidad de Chile",
+            "players": 0
+          },
+          {
+            "team": "Universidad Católica",
+            "players": 0
+          },
+          {
+            "team": "Unión Española",
+            "players": 0
+          },
+          {
+            "team": "Audax Italiano",
+            "players": 0
+          },
+          {
+            "team": "Everton de Viña del Mar",
+            "players": 0
+          },
+          {
+            "team": "Huachipato",
+            "players": 0
+          },
+          {
+            "team": "Palestino",
+            "players": 0
+          }
+        ]
+      },
+      "colombia": {
+        "clubs": 8,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 0,
+        "clubsBelowMinimum": [
+          {
+            "team": "Atlético Nacional",
+            "players": 0
+          },
+          {
+            "team": "Millonarios",
+            "players": 0
+          },
+          {
+            "team": "América de Cali",
+            "players": 0
+          },
+          {
+            "team": "Independiente Medellín",
+            "players": 0
+          },
+          {
+            "team": "Junior de Barranquilla",
+            "players": 0
+          },
+          {
+            "team": "Deportivo Cali",
+            "players": 0
+          },
+          {
+            "team": "Independiente Santa Fe",
+            "players": 0
+          },
+          {
+            "team": "Once Caldas",
+            "players": 0
+          }
+        ]
+      },
+      "eredivisie": {
+        "clubs": 18,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 18,
+        "clubsBelowMinimum": []
+      },
+      "belgian-pro-league": {
+        "clubs": 18,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 0,
+        "clubsBelowMinimum": [
+          {
+            "team": "RSC Anderlecht",
+            "players": 0
+          },
+          {
+            "team": "Royal Antwerp FC",
+            "players": 0
+          },
+          {
+            "team": "SK Beveren",
+            "players": 0
+          },
+          {
+            "team": "Cercle Brugge",
+            "players": 0
+          },
+          {
+            "team": "Club Brugge",
+            "players": 0
+          },
+          {
+            "team": "Sporting Charleroi",
+            "players": 0
+          },
+          {
+            "team": "KRC Genk",
+            "players": 0
+          },
+          {
+            "team": "KAA Gent",
+            "players": 0
+          },
+          {
+            "team": "KV Kortrijk",
+            "players": 0
+          },
+          {
+            "team": "RAAL La Louvière",
+            "players": 0
+          },
+          {
+            "team": "KV Mechelen",
+            "players": 0
+          },
+          {
+            "team": "OH Leuven",
+            "players": 0
+          },
+          {
+            "team": "Lommel SK",
+            "players": 0
+          },
+          {
+            "team": "Sint-Truidense VV",
+            "players": 0
+          },
+          {
+            "team": "Standard Liège",
+            "players": 0
+          },
+          {
+            "team": "Union Saint-Gilloise",
+            "players": 0
+          },
+          {
+            "team": "KVC Westerlo",
+            "players": 0
+          },
+          {
+            "team": "SV Zulte Waregem",
+            "players": 0
+          }
+        ]
+      },
+      "scottish-premiership": {
+        "clubs": 12,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 0,
+        "clubsBelowMinimum": [
+          {
+            "team": "Celtic FC",
+            "players": 0
+          },
+          {
+            "team": "Rangers FC",
+            "players": 0
+          },
+          {
+            "team": "Falkirk FC",
+            "players": 0
+          },
+          {
+            "team": "Heart of Midlothian",
+            "players": 0
+          },
+          {
+            "team": "Dundee United",
+            "players": 0
+          },
+          {
+            "team": "St Johnstone FC",
+            "players": 0
+          },
+          {
+            "team": "Dundee FC",
+            "players": 0
+          },
+          {
+            "team": "Aberdeen FC",
+            "players": 0
+          },
+          {
+            "team": "St Mirren FC",
+            "players": 0
+          },
+          {
+            "team": "Motherwell FC",
+            "players": 0
+          },
+          {
+            "team": "Hibernian FC",
+            "players": 0
+          },
+          {
+            "team": "Kilmarnock FC",
+            "players": 0
+          }
+        ]
+      },
+      "swiss-super-league": {
+        "clubs": 12,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 0,
+        "clubsBelowMinimum": [
+          {
+            "team": "BSC Young Boys",
+            "players": 0
+          },
+          {
+            "team": "FC Basel 1893",
+            "players": 0
+          },
+          {
+            "team": "FC St. Gallen 1879",
+            "players": 0
+          },
+          {
+            "team": "FC Luzern",
+            "players": 0
+          },
+          {
+            "team": "FC Zürich",
+            "players": 0
+          },
+          {
+            "team": "Servette FC",
+            "players": 0
+          },
+          {
+            "team": "FC Sion",
+            "players": 0
+          },
+          {
+            "team": "FC Lugano",
+            "players": 0
+          },
+          {
+            "team": "Grasshopper Club Zürich",
+            "players": 0
+          },
+          {
+            "team": "FC Thun",
+            "players": 0
+          },
+          {
+            "team": "FC Lausanne-Sport",
+            "players": 0
+          },
+          {
+            "team": "FC Vaduz",
+            "players": 0
+          }
+        ]
+      },
+      "super-lig": {
+        "clubs": 18,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 0,
+        "clubsBelowMinimum": [
+          {
+            "team": "Alanyaspor",
+            "players": 0
+          },
+          {
+            "team": "Amed Sportif Faaliyetler",
+            "players": 0
+          },
+          {
+            "team": "İstanbul Başakşehir FK",
+            "players": 0
+          },
+          {
+            "team": "Beşiktaş JK",
+            "players": 0
+          },
+          {
+            "team": "Çaykur Rizespor",
+            "players": 0
+          },
+          {
+            "team": "Erzurumspor FK",
+            "players": 0
+          },
+          {
+            "team": "Eyüpspor",
+            "players": 0
+          },
+          {
+            "team": "Fenerbahçe SK",
+            "players": 0
+          },
+          {
+            "team": "Galatasaray SK",
+            "players": 0
+          },
+          {
+            "team": "Gaziantep FK",
+            "players": 0
+          },
+          {
+            "team": "Gençlerbirliği",
+            "players": 0
+          },
+          {
+            "team": "Göztepe SK",
+            "players": 0
+          },
+          {
+            "team": "Kasımpaşa SK",
+            "players": 0
+          },
+          {
+            "team": "Kocaelispor",
+            "players": 0
+          },
+          {
+            "team": "Konyaspor",
+            "players": 0
+          },
+          {
+            "team": "Samsunspor",
+            "players": 0
+          },
+          {
+            "team": "Trabzonspor",
+            "players": 0
+          },
+          {
+            "team": "Çorum FK",
+            "players": 0
+          }
+        ]
+      },
+      "hnl-croatia": {
+        "clubs": 10,
+        "minimumPlayersPerClub": 18,
+        "clubsMeetingMinimum": 0,
+        "clubsBelowMinimum": [
+          {
+            "team": "GNK Dinamo Zagreb",
+            "players": 0
+          },
+          {
+            "team": "HNK Gorica",
+            "players": 0
+          },
+          {
+            "team": "HNK Hajduk Split",
+            "players": 0
+          },
+          {
+            "team": "NK Istra 1961",
+            "players": 0
+          },
+          {
+            "team": "NK Lokomotiva",
+            "players": 0
+          },
+          {
+            "team": "NK Osijek",
+            "players": 0
+          },
+          {
+            "team": "HNK Rijeka",
+            "players": 0
+          },
+          {
+            "team": "NK Rudeš",
+            "players": 0
+          },
+          {
+            "team": "NK Slaven Belupo",
+            "players": 0
+          },
+          {
+            "team": "NK Varaždin",
+            "players": 0
+          }
+        ]
+      }
+    }
   }
 }
