@@ -1803,7 +1803,7 @@ function advanceCupTournaments() {
         const pairs=[];
         if(teams.length>16){cup.byes=teams.slice(8);for(let i=0;i<8;i+=2)pairs.push([teams[i],teams[i+1]]);}
         else{if(!Array.isArray(cup.byes)||!cup.byes.length)cup.byes=[];for(let i=0;i<teams.length;i+=2)pairs.push([teams[i],teams[i+1]]);}
-        pairs.forEach((pair,index)=>state.generatedFixtures.push({id:"cup-"+cup.id+"-"+cup.round+"-"+index,cupId:cup.id,cupRound:cup.round,competition:cup.name,round:cupRoundName(teams.length),date:cupDate(cup.round),homeTeamId:pair[0],awayTeamId:pair[1],generated:true,isCup:true}));
+        pairs.forEach((pair,index)=>state.generatedFixtures.push({id:"cup-"+cup.id+"-"+cup.round+"-"+index,cupId:cup.id,cupRound:cup.round,competition:cup.name,round:cup.format==="uefa-league"&&cup.round===8?"Playoffs da fase eliminatória":cupRoundName(teams.length),date:cupDate(cup.round),homeTeamId:pair[0],awayTeamId:pair[1],generated:true,isCup:true}));
         fixtures=state.generatedFixtures.filter(f=>f.cupId===cup.id&&f.cupRound===cup.round);
       }
       const playedIds=new Set(state.matchHistory.map(m=>m.fixtureId));
@@ -1853,7 +1853,7 @@ function renderCalendar(competitionFilter) {
   const stageLabel = f => f.isCup ? f.round : `${f.round}ª rodada`;
   const cupSummary = (state.cupCompetitions || []).map(cup => {
     const champion = cup.champion ? teamName(cup.champion) : null;
-    const stage = cup.finished ? "Campeão definido" : cupRoundName(cup.activeTeams.length);
+    const stage = cup.finished ? "Campeão definido" : cup.phase==="league" ? "Fase de liga · rodada "+(cup.round+1)+"/8" : cup.format==="uefa-league"&&cup.round===8 ? "Playoffs eliminatórios" : cupRoundName(cup.activeTeams.length);
     return `<div class="fixture"><div><strong>🏆 ${cup.name}</strong><div class="subtle">${champion ? "Campeão: " + champion : "Fase atual: " + stage}</div></div><span class="tag">${cup.finished ? "Encerrada" : "Em disputa"}</span></div>`;
   }).join("");
   setPage("Calendário", `
