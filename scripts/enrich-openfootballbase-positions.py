@@ -87,12 +87,26 @@ def normalize_player_name(value: object) -> str:
 
 def enrich_positions(staging: dict, fetcher=api_get, pause: float = 1.5, database=None) -> dict:
     candidates = staging.get("candidates", [])
-    qids = sorted({
-        str(c.get("sourcePlayerQid"))
-        for c in candidates
-        if c.get("sourcePlayerQid") and c.get("eligibleForManualReview")
+    qid_counts = Counter(
+        str(c.get("sourcePlayerQid")) for c in candidates if c.get("sourcePlayerQid")
+    )
+    existing_names = set()
+    if database is not None:
+        existing_names = {
+            normalize_player_name(p.get("name"))
+            for p in database.get("players", [])
+            if normalize_player_name(p.get("name"))
+        }
+    lookup_candidates = [
+        c for c in candidates
+        if c.get("sourcePlayerQid")
+        and qid_counts[str(c.get("sourcePlayerQid"))] == 1
+        and c.get("eligibleForManualReview")
         and (c.get("clubMapping") or {}).get("status") == "exact-name-match-review-required"
-    })
+        and (database is None or normalize_player_name(c.get("name")) not in existing_names)
+    ]
+    qids = sorted({str(c.get("sourcePlayerQid")) for c in lookup_candidates})
+    lookup_qid_set = set(qids)
     player_claims = {}
     for index, batch in enumerate(batches(qids)):
         payload = fetcher({
