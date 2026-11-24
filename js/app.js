@@ -7,7 +7,8 @@ const state = {
   match: null,
   matchTimer: null,
   matchHistory: [],
-  transferHistory: []
+  transferHistory: [],
+  contracts: {}
 };
 
 const $ = selector => document.querySelector(selector);
@@ -272,6 +273,16 @@ function filterClubChoices() {
 
 function advanceDay() {
   state.day.setDate(state.day.getDate() + 1);
+  if (state.day.getDay() === 1) {
+    const club = userClub();
+    if (club) {
+      const weeklyPayroll = state.db.players
+        .filter(p => String(p.teamId) === String(club.id))
+        .reduce((sum,p) => sum + Number(getPlayerContract(p).weeklyWage || 0),0);
+      club.budget = Number(club.budget || 0) - weeklyPayroll;
+      saveTransferCareer();
+    }
+  }
   try {
     localStorage.setItem("fmb-current-day", state.day.toISOString().slice(0, 10));
   } catch (_) {}
@@ -454,63 +465,66 @@ function playerRow(p) {
 // ELENCO
 
 function renderSquad() {
-  const roster = [...clubPlayers()].sort(
-    (a, b) => b.overall - a.overall
-  );
-
-  const squadContent = roster.length
-    ? `
-      <div class="card">
-        <div class="section-head">
-          <h2>Elenco principal</h2>
-          <span class="tag">${roster.length} jogadores</span>
-        </div>
-
+  const roster = [...clubPlayers()].sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));
+  const totalWage = roster.reduce((sum,p)=>sum+Number(getPlayerContract(p).weeklyWage||0),0);
+  const squadContent = roster.length ? `
+    <div class="card">
+      <div class="section-head"><h2>Elenco principal</h2><span class="tag">${roster.length} jogadores</span></div>
+      <p class="subtle">Folha salarial estimada: ${money(totalWage)} por semana. Os salários são valores de simulação do jogo.</p>
+      <div style="overflow-x:auto">
         <table class="table">
-          <thead>
-            <tr>
-              <th>Jogador</th>
-              <th>POS</th>
-              <th>IDADE</th>
-              <th>OVR</th>
-              <th>VALOR</th>
-            </tr>
-          </thead>
-
+          <thead><tr><th>JOGADOR</th><th>POS</th><th>IDADE</th><th>OVR</th><th>SALÁRIO/SEM.</th><th>CONTRATO ATÉ</th><th>AÇÃO</th></tr></thead>
           <tbody>
-            ${roster.map(p => `
-              <tr>
-                <td class="club-name">${p.name}</td>
-                <td>${p.position}</td>
-                <td>${p.age == null ? "—" : p.age}</td>
-                <td class="positive">${p.overall}</td>
-                <td>${money(p.marketValue)}</td>
-              </tr>
-            `).join("")}
+            ${roster.map(p=>{
+              const c=getPlayerContract(p);
+              return `<tr>
+                <td class="club-name">${p.name}</td><td>${p.position||"—"}</td>
+                <td>${p.age==null?"—":p.age}</td><td class="positive">${p.overall||"—"}</td>
+                <td>${money(c.weeklyWage)}</td><td>${new Date(c.expiresAt+"T12:00:00").toLocaleDateString("pt-BR")}</td>
+                <td><button class="primary-btn" onclick="renewPlayerContract('${p.id}')">RENOVAR</button></td>
+              </tr>`;
+            }).join("")}
           </tbody>
         </table>
       </div>
-    `
-    : `
-      <div class="card">
-        <div class="section-head">
-          <h2>Elenco em atualização</h2>
-          <span class="tag">Dados pendentes</span>
-        </div>
-        <p class="view-intro">
-          Ainda não cadastramos jogadores confirmados para este clube.
-          Estamos preparando a base de elencos reais. Nenhum jogador
-          fictício será apresentado como se fosse real.
-        </p>
-      </div>
-    `;
-
-  setPage("Elenco / Táticas", `
-    <p class="view-intro">
-      Jogadores do ${userClub().name}.
-    </p>
+    </div>` : `
+    <div class="card"><div class="section-head"><h2>Elenco em atualização</h2><span class="tag">Dados pendentes</span></div>
+    <p class="view-intro">Ainda não cadastramos jogadores confirmados para este clube. Nenhum jogador fictício será apresentado como real.</p></div>`;
+  setPage("Elenco / Contratos", `
+    <p class="view-intro">Gerencie os jogadores, acompanhe os salários e renove contratos do ${userClub().name}.</p>
     ${squadContent}
   `);
+}
+
+function getPlayerContract(player) {
+  if (!state.contracts[player.id]) {
+    const wage = Math.max(500, Math.round((Number(player.marketValue)||50000)*0.00035/50)*50);
+    const expiry = new Date(state.day);
+    expiry.setFullYear(expiry.getFullYear()+2);
+    state.contracts[player.id] = {weeklyWage:wage,expiresAt:expiry.toISOString().slice(0,10)};
+    saveTransferCareer();
+  }
+  return state.contracts[player.id];
+}
+
+function renewPlayerContract(playerId) {
+  const player=state.db.players.find(p=>String(p.id)===String(playerId));
+  if(!player||String(player.teamId)!==String(userClub()?.id))return;
+  const current=getPlayerContract(player);
+  const wageInput=prompt("Renovação de "+player.name+"\\nSalário semanal atual: "+money(current.weeklyWage)+"\\nDigite o novo salário semanal em euros:",String(current.weeklyWage));
+  if(wageInput===null)return;
+  const wage=Number(wageInput.replace(/[€.\\s]/g,"").replace(/,/g,"."));
+  if(!Number.isFinite(wage)||wage<=0){alert("Informe um salário válido.");return;}
+  const yearsInput=prompt("Duração do novo contrato (1 a 5 anos):","3");
+  if(yearsInput===null)return;
+  const years=Number(yearsInput);
+  if(!Number.isInteger(years)||years<1||years>5){alert("Escolha uma duração entre 1 e 5 anos.");return;}
+  const expiry=new Date(state.day);expiry.setFullYear(expiry.getFullYear()+years);
+  if(!confirm("Confirmar renovação de "+player.name+" por "+years+" ano(s), com salário semanal de "+money(wage)+"?"))return;
+  state.contracts[player.id]={weeklyWage:wage,expiresAt:expiry.toISOString().slice(0,10)};
+  saveTransferCareer();
+  alert("Contrato renovado com sucesso!");
+  renderSquad();
 }
 
 // MERCADO DE TRANSFERÊNCIAS
@@ -594,7 +608,8 @@ function saveTransferCareer() {
     localStorage.setItem("fmb-transfer-save", JSON.stringify({
       playerTeams: state.db.players.map(p => [p.id, p.teamId]),
       budgets: state.db.teams.map(t => [t.id, t.budget]),
-      history: state.transferHistory
+      history: state.transferHistory,
+      contracts: state.contracts
     }));
   } catch (_) {
     alert("Não foi possível salvar a transferência neste dispositivo. Verifique o espaço disponível.");
@@ -615,8 +630,10 @@ function loadTransferCareer() {
       if (team && Number.isFinite(Number(budget))) team.budget = Number(budget);
     });
     state.transferHistory = Array.isArray(saved.history) ? saved.history : [];
+    state.contracts = saved.contracts && typeof saved.contracts === "object" ? saved.contracts : {};
   } catch (_) {
     state.transferHistory = [];
+    state.contracts = {};
   }
 }
 
