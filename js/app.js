@@ -634,7 +634,9 @@ function setMatchSpeed(speed) {
   if(!state.match||state.match.finished)return;
   state.match.speed=Number(speed);if(!state.match.paused)runMatchClock();renderMatch();
 }
-function newMatch() { if(state.matchTimer) clearInterval(state.matchTimer); state.matchTimer=null; state.match=null; renderMatch(); }\n\nfunction renderMatch() {
+function newMatch() { if(state.matchTimer) clearInterval(state.matchTimer); state.matchTimer=null; state.match=null; renderMatch(); }
+
+function renderMatch() {
   const m=state.match;
   if(!m){
     const opponents=state.db.teams.filter(t=>String(t.id)!==String(state.db.userClubId));
