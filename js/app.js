@@ -1730,7 +1730,7 @@ function ensureCupCompetitions() {
     if(Array.isArray(def.qualifiedTeams)&&def.qualifiedTeams.length>0&&def.qualifiedTeams.length<2)return;
     const seed = def.id.split("").reduce((sum,ch)=>sum+ch.charCodeAt(0),0);
     participants.sort((a,b)=>cupSeed(a,seed)-cupSeed(b,seed));
-    state.cupCompetitions.push({id:def.id,name:def.name,leagueId:def.leagueId,participants,activeTeams:[...participants],round:0,finished:false,champion:null,byes:[]});
+    state.cupCompetitions.push({id:def.id,name:def.name,leagueId:def.leagueId,participants,activeTeams:[...participants],round:0,finished:false,champion:null,byes:[],format:def.format||null,phase:def.format==="uefa-league"?"league":null,pots:def.format==="uefa-league"?buildUEFAPots(participants):null});
   });
   advanceCupTournaments();
   saveTransferCareer();
