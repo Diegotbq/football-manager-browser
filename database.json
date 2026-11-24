@@ -19812,96 +19812,288 @@
           "name": "Joel Robles",
           "position": "GK",
           "age": null,
-          "overall": 69,
-          "marketValue": 1200000,
+          "overall": 68,
+          "marketValue": 1000000,
           "teamId": "estoril",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "estoril-202627-02",
           "name": "Martin Turk",
           "position": "GK",
           "age": null,
-          "overall": 69,
-          "marketValue": 1200000,
+          "overall": 68,
+          "marketValue": 1000000,
           "teamId": "estoril",
           "nationality": "SVN",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "estoril-202627-03",
           "name": "Diogo Dias",
           "position": "GK",
           "age": null,
-          "overall": 69,
-          "marketValue": 1200000,
+          "overall": 68,
+          "marketValue": 1000000,
           "teamId": "estoril",
           "nationality": "POR",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "estoril-202627-04",
           "name": "Fletcher Lowe",
           "position": "GK",
           "age": null,
-          "overall": 69,
-          "marketValue": 1200000,
+          "overall": 68,
+          "marketValue": 1000000,
           "teamId": "estoril",
           "nationality": "RSA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "estoril-202627-05",
-          "name": "Milan Pascale",
+          "name": "Ismael Sierra",
           "position": "CB",
           "age": null,
-          "overall": 68,
-          "marketValue": 1200000,
+          "overall": 67,
+          "marketValue": 1000000,
           "teamId": "estoril",
-          "nationality": "FRA",
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "estoril-202627-06",
-          "name": "Nail Omerovic",
+          "name": "Tiago Parente",
           "position": "LB",
           "age": null,
-          "overall": 68,
-          "marketValue": 1200000,
+          "overall": 67,
+          "marketValue": 1000000,
           "teamId": "estoril",
-          "nationality": "BIH",
+          "nationality": "POR",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "estoril-202627-07",
-          "name": "Gusttavo de Sousa Oliveira",
-          "position": "CB",
+          "name": "Ricard Sánchez",
+          "position": "RB",
           "age": null,
-          "overall": 68,
-          "marketValue": 1200000,
+          "overall": 67,
+          "marketValue": 1000000,
           "teamId": "estoril",
-          "nationality": "BRA",
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "estoril-202627-08",
-          "name": "Roko Jurisic",
+          "name": "Roko Jurišić",
           "position": "LB",
           "age": null,
-          "overall": 68,
-          "marketValue": 1200000,
+          "overall": 67,
+          "marketValue": 1000000,
           "teamId": "estoril",
           "nationality": "CRO",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-09",
+          "name": "Pedro Carvalho",
+          "position": "CB",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-10",
+          "name": "Jan Montes",
+          "position": "CB",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "ESP",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-11",
+          "name": "Stelios Andreou",
+          "position": "CB",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "CYP",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-12",
+          "name": "Fernando Medrano",
+          "position": "LB",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "ESP",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-13",
+          "name": "Samuel Amissah",
+          "position": "CB",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "ENG",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-14",
+          "name": "Ferro",
+          "position": "CB",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-15",
+          "name": "Jordan Arnoldin",
+          "position": "CB",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-16",
+          "name": "Xavi Sintes",
+          "position": "CB",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "ESP",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-17",
+          "name": "Gusttavo Sousa",
+          "position": "ST",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "BRA",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-18",
+          "name": "Jordan Holsgrove",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "SCO",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-19",
+          "name": "João Carvalho",
+          "position": "AM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-20",
+          "name": "Milan Robin",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "FRA",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-21",
+          "name": "Rafik Guitane",
+          "position": "RW",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "ALG",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-22",
+          "name": "André Lacximicant",
+          "position": "ST",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-23",
+          "name": "Yanis Begraoui",
+          "position": "ST",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "MAR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "estoril-202627-24",
+          "name": "Fabrício Garcia",
+          "position": "RW",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "estoril",
+          "nationality": "THA",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         }
       ]
     },
@@ -20505,7 +20697,7 @@
           "teamId": "maritimo",
           "nationality": "POR",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "maritimo-202627-02",
@@ -20517,7 +20709,7 @@
           "teamId": "maritimo",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "maritimo-202627-03",
@@ -20529,7 +20721,7 @@
           "teamId": "maritimo",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "maritimo-202627-04",
@@ -20541,7 +20733,7 @@
           "teamId": "maritimo",
           "nationality": "MOZ",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "maritimo-202627-05",
@@ -20553,7 +20745,7 @@
           "teamId": "maritimo",
           "nationality": "POR",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "maritimo-202627-06",
@@ -20565,19 +20757,307 @@
           "teamId": "maritimo",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "maritimo-202627-07",
-          "name": "Lucas França",
-          "position": "GK",
+          "name": "Gábor Szalai",
+          "position": "CB",
           "age": null,
-          "overall": 68,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "HUN",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-08",
+          "name": "Paulo Henrique",
+          "position": "CB",
+          "age": null,
+          "overall": 67,
           "marketValue": 1000000,
           "teamId": "maritimo",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-09",
+          "name": "Nathanael Ogbeta",
+          "position": "LB",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "ENG",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-10",
+          "name": "Rafael Fernandes",
+          "position": "CB",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-11",
+          "name": "Romain Correia",
+          "position": "CB",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-12",
+          "name": "Nilton Varela",
+          "position": "LB",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-13",
+          "name": "Raphael Guzzo",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-14",
+          "name": "Francisco Silva",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-15",
+          "name": "Vladan Danilović",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "BIH",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-16",
+          "name": "Ibrahim Alani",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "NGA",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-17",
+          "name": "Yellu Santiago",
+          "position": "AM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "ESP",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-18",
+          "name": "Rodrigo Andrade",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-19",
+          "name": "Israel Ayuma",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "NGA",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-20",
+          "name": "Nélio Batista",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-21",
+          "name": "Maxime Dominguez",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "SUI",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-22",
+          "name": "Martín Tejón",
+          "position": "AM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "ESP",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-23",
+          "name": "Simo Bouzaidi",
+          "position": "LW",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "MAR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-24",
+          "name": "Mons Bassouamina",
+          "position": "ST",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "CGO",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-25",
+          "name": "Adrián Butzke",
+          "position": "ST",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "ESP",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-26",
+          "name": "Francisco Gomes",
+          "position": "ST",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-27",
+          "name": "Samuel Bamba",
+          "position": "RW",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "GER",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-28",
+          "name": "Bryan Limbombe",
+          "position": "LW",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "BEL",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-29",
+          "name": "Peña Zauner",
+          "position": "RW",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "VEN",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-30",
+          "name": "José Melro",
+          "position": "ST",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "maritimo-202627-31",
+          "name": "Maurice Boakye",
+          "position": "ST",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "maritimo",
+          "nationality": "GER",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         }
       ]
     },
@@ -20602,7 +21082,7 @@
           "teamId": "moreirense",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "moreirense-202627-02",
@@ -20614,7 +21094,7 @@
           "teamId": "moreirense",
           "nationality": "POR",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "moreirense-202627-03",
@@ -20626,7 +21106,7 @@
           "teamId": "moreirense",
           "nationality": "POR",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "moreirense-202627-04",
@@ -20638,7 +21118,7 @@
           "teamId": "moreirense",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "moreirense-202627-05",
@@ -20650,7 +21130,7 @@
           "teamId": "moreirense",
           "nationality": "POR",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "moreirense-202627-06",
@@ -20662,7 +21142,7 @@
           "teamId": "moreirense",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "moreirense-202627-07",
@@ -20674,7 +21154,7 @@
           "teamId": "moreirense",
           "nationality": "POR",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "moreirense-202627-08",
@@ -20686,7 +21166,7 @@
           "teamId": "moreirense",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "moreirense-202627-09",
@@ -20698,7 +21178,7 @@
           "teamId": "moreirense",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "moreirense-202627-10",
@@ -20710,7 +21190,7 @@
           "teamId": "moreirense",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "moreirense-202627-11",
@@ -20722,7 +21202,7 @@
           "teamId": "moreirense",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "moreirense-202627-12",
@@ -20734,7 +21214,7 @@
           "teamId": "moreirense",
           "nationality": "GNB",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "moreirense-202627-13",
@@ -20746,7 +21226,7 @@
           "teamId": "moreirense",
           "nationality": "POR",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "moreirense-202627-14",
@@ -20758,19 +21238,199 @@
           "teamId": "moreirense",
           "nationality": "ENG",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "moreirense-202627-15",
-          "name": "Chipyoka Songa",
+          "name": "João Veloso",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "moreirense",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "moreirense-202627-16",
+          "name": "Rodrigo Alonso",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "moreirense",
+          "nationality": "ESP",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "moreirense-202627-17",
+          "name": "Nile John",
+          "position": "AM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "moreirense",
+          "nationality": "ENG",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "moreirense-202627-18",
+          "name": "Afonso Assis",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "moreirense",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "moreirense-202627-19",
+          "name": "Chipoyka Songa",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "moreirense",
+          "nationality": "ZAM",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "moreirense-202627-20",
+          "name": "Jimi Gower",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "moreirense",
+          "nationality": "ENG",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "moreirense-202627-21",
+          "name": "Guilherme Liberato",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "moreirense",
+          "nationality": "BRA",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "moreirense-202627-22",
+          "name": "Manuel Mendonça",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "moreirense",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "moreirense-202627-23",
+          "name": "Mateja Stjepanović",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "moreirense",
+          "nationality": "SRB",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "moreirense-202627-24",
+          "name": "Miguel Silva",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "moreirense",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "moreirense-202627-25",
+          "name": "Afonso Carvalho",
           "position": "ST",
           "age": null,
           "overall": 67,
           "marketValue": 1000000,
           "teamId": "moreirense",
-          "nationality": "COD",
+          "nationality": "POR",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "moreirense-202627-26",
+          "name": "Kiko Bondoso",
+          "position": "LW",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "moreirense",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "moreirense-202627-27",
+          "name": "Landerson",
+          "position": "LW",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "moreirense",
+          "nationality": "BRA",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "moreirense-202627-28",
+          "name": "Tiago Andrade",
+          "position": "ST",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "moreirense",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "moreirense-202627-29",
+          "name": "Michael González",
+          "position": "ST",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "moreirense",
+          "nationality": "ESP",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "moreirense-202627-30",
+          "name": "Leonardo Vonic",
+          "position": "ST",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "moreirense",
+          "nationality": "CRO",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         }
       ]
     },
@@ -21434,7 +22094,7 @@
           "teamId": "santa-clara",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "santa-clara-202627-02",
@@ -21446,7 +22106,7 @@
           "teamId": "santa-clara",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "santa-clara-202627-03",
@@ -21458,7 +22118,7 @@
           "teamId": "santa-clara",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "santa-clara-202627-04",
@@ -21470,7 +22130,7 @@
           "teamId": "santa-clara",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "santa-clara-202627-05",
@@ -21482,7 +22142,7 @@
           "teamId": "santa-clara",
           "nationality": "POR",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "santa-clara-202627-06",
@@ -21494,7 +22154,7 @@
           "teamId": "santa-clara",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "santa-clara-202627-07",
@@ -21506,7 +22166,7 @@
           "teamId": "santa-clara",
           "nationality": "POR",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "santa-clara-202627-08",
@@ -21518,7 +22178,7 @@
           "teamId": "santa-clara",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "santa-clara-202627-09",
@@ -21530,7 +22190,7 @@
           "teamId": "santa-clara",
           "nationality": "MOZ",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "santa-clara-202627-10",
@@ -21542,7 +22202,7 @@
           "teamId": "santa-clara",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "santa-clara-202627-11",
@@ -21554,7 +22214,7 @@
           "teamId": "santa-clara",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         },
         {
           "id": "santa-clara-202627-12",
@@ -21566,7 +22226,163 @@
           "teamId": "santa-clara",
           "nationality": "BRA",
           "injured": false,
-          "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "santa-clara-202627-13",
+          "name": "Guilherme Romão",
+          "position": "LB",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "santa-clara",
+          "nationality": "BRA",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "santa-clara-202627-14",
+          "name": "Fernando",
+          "position": "ST",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "santa-clara",
+          "nationality": "BRA",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "santa-clara-202627-15",
+          "name": "Vinícius Lopes",
+          "position": "ST",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "santa-clara",
+          "nationality": "BRA",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "santa-clara-202627-16",
+          "name": "Pedro Ferreira",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "santa-clara",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "santa-clara-202627-17",
+          "name": "Pedro Pacheco",
+          "position": "CB",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "santa-clara",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "santa-clara-202627-18",
+          "name": "Tiago Ribeiro",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "santa-clara",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "santa-clara-202627-19",
+          "name": "Djé Tavares",
+          "position": "LW",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "santa-clara",
+          "nationality": "NED",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "santa-clara-202627-20",
+          "name": "Gonçalo Paciência",
+          "position": "ST",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "santa-clara",
+          "nationality": "POR",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "santa-clara-202627-21",
+          "name": "Vitinho",
+          "position": "RW",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "santa-clara",
+          "nationality": "BRA",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "santa-clara-202627-22",
+          "name": "Welinton Torrão",
+          "position": "LW",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "santa-clara",
+          "nationality": "BRA",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "santa-clara-202627-23",
+          "name": "Léo Jacó",
+          "position": "ST",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "santa-clara",
+          "nationality": "BRA",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "santa-clara-202627-24",
+          "name": "Daniel Borges",
+          "position": "CM",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "santa-clara",
+          "nationality": "BRA",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+        },
+        {
+          "id": "santa-clara-202627-25",
+          "name": "Lucas Soares",
+          "position": "RB",
+          "age": null,
+          "overall": 67,
+          "marketValue": 1000000,
+          "teamId": "santa-clara",
+          "nationality": "BRA",
+          "injured": false,
+          "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
         }
       ]
     },
@@ -51679,102 +52495,6 @@
       "dataSource": "Liga Portugal 2026/27 official squad match sheets and UEFA squad lists; age left blank when not verified; overall and market value are game estimates"
     },
     {
-      "id": "estoril-202627-01",
-      "name": "Joel Robles",
-      "position": "GK",
-      "age": null,
-      "overall": 69,
-      "marketValue": 1200000,
-      "teamId": "estoril",
-      "nationality": "ESP",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "estoril-202627-02",
-      "name": "Martin Turk",
-      "position": "GK",
-      "age": null,
-      "overall": 69,
-      "marketValue": 1200000,
-      "teamId": "estoril",
-      "nationality": "SVN",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "estoril-202627-03",
-      "name": "Diogo Dias",
-      "position": "GK",
-      "age": null,
-      "overall": 69,
-      "marketValue": 1200000,
-      "teamId": "estoril",
-      "nationality": "POR",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "estoril-202627-04",
-      "name": "Fletcher Lowe",
-      "position": "GK",
-      "age": null,
-      "overall": 69,
-      "marketValue": 1200000,
-      "teamId": "estoril",
-      "nationality": "RSA",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "estoril-202627-05",
-      "name": "Milan Pascale",
-      "position": "CB",
-      "age": null,
-      "overall": 68,
-      "marketValue": 1200000,
-      "teamId": "estoril",
-      "nationality": "FRA",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "estoril-202627-06",
-      "name": "Nail Omerovic",
-      "position": "LB",
-      "age": null,
-      "overall": 68,
-      "marketValue": 1200000,
-      "teamId": "estoril",
-      "nationality": "BIH",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "estoril-202627-07",
-      "name": "Gusttavo de Sousa Oliveira",
-      "position": "CB",
-      "age": null,
-      "overall": 68,
-      "marketValue": 1200000,
-      "teamId": "estoril",
-      "nationality": "BRA",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "estoril-202627-08",
-      "name": "Roko Jurisic",
-      "position": "LB",
-      "age": null,
-      "overall": 68,
-      "marketValue": 1200000,
-      "teamId": "estoril",
-      "nationality": "CRO",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
       "id": "gil-vicente-202627-01",
       "name": "Nayan Campos",
       "position": "GK",
@@ -52519,186 +53239,6 @@
       "dataSource": "Liga Portugal official 2026/27 match squad sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
-      "id": "moreirense-202627-01",
-      "name": "Aranha",
-      "position": "GK",
-      "age": null,
-      "overall": 68,
-      "marketValue": 1000000,
-      "teamId": "moreirense",
-      "nationality": "BRA",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "moreirense-202627-02",
-      "name": "Francisco Barbosa",
-      "position": "GK",
-      "age": null,
-      "overall": 68,
-      "marketValue": 1000000,
-      "teamId": "moreirense",
-      "nationality": "POR",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "moreirense-202627-03",
-      "name": "André Ferreira",
-      "position": "GK",
-      "age": null,
-      "overall": 68,
-      "marketValue": 1000000,
-      "teamId": "moreirense",
-      "nationality": "POR",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "moreirense-202627-04",
-      "name": "Álvaro Martínez",
-      "position": "CB",
-      "age": null,
-      "overall": 67,
-      "marketValue": 1000000,
-      "teamId": "moreirense",
-      "nationality": "ESP",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "moreirense-202627-05",
-      "name": "Leandro Santos",
-      "position": "RB",
-      "age": null,
-      "overall": 67,
-      "marketValue": 1000000,
-      "teamId": "moreirense",
-      "nationality": "POR",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "moreirense-202627-06",
-      "name": "Maracás",
-      "position": "CB",
-      "age": null,
-      "overall": 67,
-      "marketValue": 1000000,
-      "teamId": "moreirense",
-      "nationality": "BRA",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "moreirense-202627-07",
-      "name": "Francisco Domingues",
-      "position": "LB",
-      "age": null,
-      "overall": 67,
-      "marketValue": 1000000,
-      "teamId": "moreirense",
-      "nationality": "POR",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "moreirense-202627-08",
-      "name": "Pedro Jesus",
-      "position": "CB",
-      "age": null,
-      "overall": 67,
-      "marketValue": 1000000,
-      "teamId": "moreirense",
-      "nationality": "BRA",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "moreirense-202627-09",
-      "name": "Janderson",
-      "position": "CB",
-      "age": null,
-      "overall": 67,
-      "marketValue": 1000000,
-      "teamId": "moreirense",
-      "nationality": "BRA",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "moreirense-202627-10",
-      "name": "Rabello",
-      "position": "CB",
-      "age": null,
-      "overall": 67,
-      "marketValue": 1000000,
-      "teamId": "moreirense",
-      "nationality": "BRA",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "moreirense-202627-11",
-      "name": "Kevyn",
-      "position": "LB",
-      "age": null,
-      "overall": 67,
-      "marketValue": 1000000,
-      "teamId": "moreirense",
-      "nationality": "BRA",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "moreirense-202627-12",
-      "name": "Gilberto Batista",
-      "position": "CB",
-      "age": null,
-      "overall": 67,
-      "marketValue": 1000000,
-      "teamId": "moreirense",
-      "nationality": "GNB",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "moreirense-202627-13",
-      "name": "Dinis Pinto",
-      "position": "RB",
-      "age": null,
-      "overall": 67,
-      "marketValue": 1000000,
-      "teamId": "moreirense",
-      "nationality": "POR",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "moreirense-202627-14",
-      "name": "Koby Mottoth",
-      "position": "CB",
-      "age": null,
-      "overall": 67,
-      "marketValue": 1000000,
-      "teamId": "moreirense",
-      "nationality": "ENG",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
-      "id": "moreirense-202627-15",
-      "name": "Chipyoka Songa",
-      "position": "ST",
-      "age": null,
-      "overall": 67,
-      "marketValue": 1000000,
-      "teamId": "moreirense",
-      "nationality": "COD",
-      "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
-    },
-    {
       "id": "estrela-amadora-202627-01",
       "name": "David Grilo",
       "position": "GK",
@@ -52783,6 +53323,366 @@
       "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
+      "id": "moreirense-202627-01",
+      "name": "Aranha",
+      "position": "GK",
+      "age": null,
+      "overall": 68,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-02",
+      "name": "Francisco Barbosa",
+      "position": "GK",
+      "age": null,
+      "overall": 68,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-03",
+      "name": "André Ferreira",
+      "position": "GK",
+      "age": null,
+      "overall": 68,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-04",
+      "name": "Álvaro Martínez",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "ESP",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-05",
+      "name": "Leandro Santos",
+      "position": "RB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-06",
+      "name": "Maracás",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-07",
+      "name": "Francisco Domingues",
+      "position": "LB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-08",
+      "name": "Pedro Jesus",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-09",
+      "name": "Janderson",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-10",
+      "name": "Rabello",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-11",
+      "name": "Kevyn",
+      "position": "LB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-12",
+      "name": "Gilberto Batista",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "GNB",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-13",
+      "name": "Dinis Pinto",
+      "position": "RB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-14",
+      "name": "Koby Mottoth",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "ENG",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-15",
+      "name": "João Veloso",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-16",
+      "name": "Rodrigo Alonso",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "ESP",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-17",
+      "name": "Nile John",
+      "position": "AM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "ENG",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-18",
+      "name": "Afonso Assis",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-19",
+      "name": "Chipoyka Songa",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "ZAM",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-20",
+      "name": "Jimi Gower",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "ENG",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-21",
+      "name": "Guilherme Liberato",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-22",
+      "name": "Manuel Mendonça",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-23",
+      "name": "Mateja Stjepanović",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "SRB",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-24",
+      "name": "Miguel Silva",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-25",
+      "name": "Afonso Carvalho",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-26",
+      "name": "Kiko Bondoso",
+      "position": "LW",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-27",
+      "name": "Landerson",
+      "position": "LW",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-28",
+      "name": "Tiago Andrade",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-29",
+      "name": "Michael González",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "ESP",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "moreirense-202627-30",
+      "name": "Leonardo Vonic",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "moreirense",
+      "nationality": "CRO",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
       "id": "maritimo-202627-01",
       "name": "Gonçalo Tabuaço",
       "position": "GK",
@@ -52792,7 +53692,7 @@
       "teamId": "maritimo",
       "nationality": "POR",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "maritimo-202627-02",
@@ -52804,7 +53704,7 @@
       "teamId": "maritimo",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "maritimo-202627-03",
@@ -52816,7 +53716,7 @@
       "teamId": "maritimo",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "maritimo-202627-04",
@@ -52828,7 +53728,7 @@
       "teamId": "maritimo",
       "nationality": "MOZ",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "maritimo-202627-05",
@@ -52840,7 +53740,7 @@
       "teamId": "maritimo",
       "nationality": "POR",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "maritimo-202627-06",
@@ -52852,19 +53752,307 @@
       "teamId": "maritimo",
       "nationality": "BRA",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "maritimo-202627-07",
-      "name": "Lucas França",
-      "position": "GK",
+      "name": "Gábor Szalai",
+      "position": "CB",
       "age": null,
-      "overall": 68,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "HUN",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-08",
+      "name": "Paulo Henrique",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
       "marketValue": 1000000,
       "teamId": "maritimo",
       "nationality": "BRA",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-09",
+      "name": "Nathanael Ogbeta",
+      "position": "LB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "ENG",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-10",
+      "name": "Rafael Fernandes",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-11",
+      "name": "Romain Correia",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-12",
+      "name": "Nilton Varela",
+      "position": "LB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-13",
+      "name": "Raphael Guzzo",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-14",
+      "name": "Francisco Silva",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-15",
+      "name": "Vladan Danilović",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "BIH",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-16",
+      "name": "Ibrahim Alani",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "NGA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-17",
+      "name": "Yellu Santiago",
+      "position": "AM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "ESP",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-18",
+      "name": "Rodrigo Andrade",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-19",
+      "name": "Israel Ayuma",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "NGA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-20",
+      "name": "Nélio Batista",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-21",
+      "name": "Maxime Dominguez",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "SUI",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-22",
+      "name": "Martín Tejón",
+      "position": "AM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "ESP",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-23",
+      "name": "Simo Bouzaidi",
+      "position": "LW",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "MAR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-24",
+      "name": "Mons Bassouamina",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "CGO",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-25",
+      "name": "Adrián Butzke",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "ESP",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-26",
+      "name": "Francisco Gomes",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-27",
+      "name": "Samuel Bamba",
+      "position": "RW",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "GER",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-28",
+      "name": "Bryan Limbombe",
+      "position": "LW",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "BEL",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-29",
+      "name": "Peña Zauner",
+      "position": "RW",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "VEN",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-30",
+      "name": "José Melro",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "maritimo-202627-31",
+      "name": "Maurice Boakye",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "maritimo",
+      "nationality": "GER",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "santa-clara-202627-01",
@@ -52876,7 +54064,7 @@
       "teamId": "santa-clara",
       "nationality": "BRA",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "santa-clara-202627-02",
@@ -52888,7 +54076,7 @@
       "teamId": "santa-clara",
       "nationality": "BRA",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "santa-clara-202627-03",
@@ -52900,7 +54088,7 @@
       "teamId": "santa-clara",
       "nationality": "BRA",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "santa-clara-202627-04",
@@ -52912,7 +54100,7 @@
       "teamId": "santa-clara",
       "nationality": "BRA",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "santa-clara-202627-05",
@@ -52924,7 +54112,7 @@
       "teamId": "santa-clara",
       "nationality": "POR",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "santa-clara-202627-06",
@@ -52936,7 +54124,7 @@
       "teamId": "santa-clara",
       "nationality": "BRA",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "santa-clara-202627-07",
@@ -52948,7 +54136,7 @@
       "teamId": "santa-clara",
       "nationality": "POR",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "santa-clara-202627-08",
@@ -52960,7 +54148,7 @@
       "teamId": "santa-clara",
       "nationality": "BRA",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "santa-clara-202627-09",
@@ -52972,7 +54160,7 @@
       "teamId": "santa-clara",
       "nationality": "MOZ",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "santa-clara-202627-10",
@@ -52984,7 +54172,7 @@
       "teamId": "santa-clara",
       "nationality": "BRA",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "santa-clara-202627-11",
@@ -52996,7 +54184,7 @@
       "teamId": "santa-clara",
       "nationality": "BRA",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     },
     {
       "id": "santa-clara-202627-12",
@@ -53008,7 +54196,451 @@
       "teamId": "santa-clara",
       "nationality": "BRA",
       "injured": false,
-      "dataSource": "Liga Portugal official 2026/27 match sheets; age left blank when not verified; overall and market value are game estimates"
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "santa-clara-202627-13",
+      "name": "Guilherme Romão",
+      "position": "LB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "santa-clara",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "santa-clara-202627-14",
+      "name": "Fernando",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "santa-clara",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "santa-clara-202627-15",
+      "name": "Vinícius Lopes",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "santa-clara",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "santa-clara-202627-16",
+      "name": "Pedro Ferreira",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "santa-clara",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "santa-clara-202627-17",
+      "name": "Pedro Pacheco",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "santa-clara",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "santa-clara-202627-18",
+      "name": "Tiago Ribeiro",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "santa-clara",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "santa-clara-202627-19",
+      "name": "Djé Tavares",
+      "position": "LW",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "santa-clara",
+      "nationality": "NED",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "santa-clara-202627-20",
+      "name": "Gonçalo Paciência",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "santa-clara",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "santa-clara-202627-21",
+      "name": "Vitinho",
+      "position": "RW",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "santa-clara",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "santa-clara-202627-22",
+      "name": "Welinton Torrão",
+      "position": "LW",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "santa-clara",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "santa-clara-202627-23",
+      "name": "Léo Jacó",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "santa-clara",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "santa-clara-202627-24",
+      "name": "Daniel Borges",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "santa-clara",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "santa-clara-202627-25",
+      "name": "Lucas Soares",
+      "position": "RB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "santa-clara",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-01",
+      "name": "Joel Robles",
+      "position": "GK",
+      "age": null,
+      "overall": 68,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "ESP",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-02",
+      "name": "Martin Turk",
+      "position": "GK",
+      "age": null,
+      "overall": 68,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "SVN",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-03",
+      "name": "Diogo Dias",
+      "position": "GK",
+      "age": null,
+      "overall": 68,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-04",
+      "name": "Fletcher Lowe",
+      "position": "GK",
+      "age": null,
+      "overall": 68,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "RSA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-05",
+      "name": "Ismael Sierra",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "ESP",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-06",
+      "name": "Tiago Parente",
+      "position": "LB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-07",
+      "name": "Ricard Sánchez",
+      "position": "RB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "ESP",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-08",
+      "name": "Roko Jurišić",
+      "position": "LB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "CRO",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-09",
+      "name": "Pedro Carvalho",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-10",
+      "name": "Jan Montes",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "ESP",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-11",
+      "name": "Stelios Andreou",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "CYP",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-12",
+      "name": "Fernando Medrano",
+      "position": "LB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "ESP",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-13",
+      "name": "Samuel Amissah",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "ENG",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-14",
+      "name": "Ferro",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-15",
+      "name": "Jordan Arnoldin",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-16",
+      "name": "Xavi Sintes",
+      "position": "CB",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "ESP",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-17",
+      "name": "Gusttavo Sousa",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "BRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-18",
+      "name": "Jordan Holsgrove",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "SCO",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-19",
+      "name": "João Carvalho",
+      "position": "AM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-20",
+      "name": "Milan Robin",
+      "position": "CM",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "FRA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-21",
+      "name": "Rafik Guitane",
+      "position": "RW",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "ALG",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-22",
+      "name": "André Lacximicant",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "POR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-23",
+      "name": "Yanis Begraoui",
+      "position": "ST",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "MAR",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
+    },
+    {
+      "id": "estoril-202627-24",
+      "name": "Fabrício Garcia",
+      "position": "RW",
+      "age": null,
+      "overall": 67,
+      "marketValue": 1000000,
+      "teamId": "estoril",
+      "nationality": "THA",
+      "injured": false,
+      "dataSource": "Liga Portugal official 2026/27 squad match sheets; age left blank when not verified; overall and market value are game estimates"
     }
   ],
   "calendar": {
