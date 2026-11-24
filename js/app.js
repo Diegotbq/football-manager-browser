@@ -9,7 +9,8 @@ const state = {
   matchHistory: [],
   transferHistory: [],
   contracts: {},
-  loanRecords: []
+  loanRecords: [],
+  trainingRecords: {}
 };
 
 const $ = selector => document.querySelector(selector);
@@ -483,6 +484,7 @@ function renderSquad() {
                 <td class="club-name">${p.name}</td><td>${p.position||"—"}</td>
                 <td>${p.age==null?"—":p.age}</td><td class="positive">${p.overall||"—"}</td>
                 <td>${money(c.weeklyWage)}</td><td>${new Date(c.expiresAt+"T12:00:00").toLocaleDateString("pt-BR")}</td>
+                <td><button class="secondary-btn" onclick="trainPlayer('${p.id}')">TREINAR</button></td>
                 <td><button class="primary-btn" onclick="renewPlayerContract('${p.id}')">RENOVAR</button></td>
               </tr>`;
             }).join("")}
@@ -507,6 +509,30 @@ function getPlayerContract(player) {
     saveTransferCareer();
   }
   return state.contracts[player.id];
+}
+
+function trainPlayer(playerId) {
+  const player = state.db.players.find(p => String(p.id) === String(playerId));
+  if (!player || String(player.teamId) !== String(userClub()?.id)) return;
+  const previous = state.trainingRecords[player.id];
+  const today = state.day.toISOString().slice(0, 10);
+  if (previous?.date) {
+    const elapsed = Math.floor((new Date(today + "T12:00:00") - new Date(previous.date + "T12:00:00")) / 86400000);
+    if (elapsed < 7) { alert("Este jogador já treinou recentemente. Próximo treino em " + (7 - elapsed) + " dia(s)."); return; }
+  }
+  const choices = ["Finalização", "Passe", "Defesa", "Físico", "Controle de bola"];
+  const choice = prompt("Escolha o foco: 1 Finalização, 2 Passe, 3 Defesa, 4 Físico, 5 Controle de bola", "1");
+  if (choice === null) return;
+  const index = Number(choice) - 1;
+  if (!Number.isInteger(index) || index < 0 || index >= choices.length) { alert("Escolha uma opção de 1 a 5."); return; }
+  const age = Number(player.age) || 25, rating = Number(player.overall) || 50;
+  const chance = Math.max(0.12, Math.min(0.72, 0.68 - Math.max(0, age - 21) * 0.025 - Math.max(0, rating - 75) * 0.012));
+  const improved = Math.random() < chance && rating < 99;
+  if (improved) { player.overall = Math.min(99, rating + 1); player.marketValue = Math.round((Number(player.marketValue) || 50000) * 1.08); }
+  state.trainingRecords[player.id] = { date: today, focus: choices[index], improved };
+  saveTransferCareer();
+  alert(improved ? player.name + " evoluiu para overall " + player.overall + "!" : "Treino concluído! O jogador trabalhou " + choices[index] + ", mas não ganhou overall desta vez.");
+  renderSquad();
 }
 
 function renewPlayerContract(playerId) {
@@ -612,7 +638,8 @@ function saveTransferCareer() {
       budgets: state.db.teams.map(t => [t.id, t.budget]),
       history: state.transferHistory,
       contracts: state.contracts,
-      loanRecords: state.loanRecords
+      loanRecords: state.loanRecords,
+      trainingRecords: state.trainingRecords
     }));
   } catch (_) {
     alert("Não foi possível salvar a transferência neste dispositivo. Verifique o espaço disponível.");
@@ -635,10 +662,12 @@ function loadTransferCareer() {
     state.transferHistory = Array.isArray(saved.history) ? saved.history : [];
     state.contracts = saved.contracts && typeof saved.contracts === "object" ? saved.contracts : {};
     state.loanRecords = Array.isArray(saved.loanRecords) ? saved.loanRecords : [];
+    state.trainingRecords = saved.trainingRecords && typeof saved.trainingRecords === "object" ? saved.trainingRecords : {};
   } catch (_) {
     state.transferHistory = [];
     state.contracts = {};
     state.loanRecords = [];
+    state.trainingRecords = {};
   }
 }
 
