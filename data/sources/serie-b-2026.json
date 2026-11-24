@@ -21,10 +21,14 @@
     "operario-pr": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20106",
     "novorizontino": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/31514?tab=atletas",
     "sao-bernardo": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/31790",
-    "sport": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20010"
+    "sport": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20010",
+    "athletic-mg": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/59896",
+    "fortaleza": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/63238?tab=atletas",
+    "londrina": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/62726?tab=atletas",
+    "vila-nova": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20079"
   },
-  "remainingClubs": 4,
-  "status": "16-of-20-official-team-pages-verified",
+  "remainingClubs": 0,
+  "status": "20-of-20-official-team-pages-verified",
   "updatedAt": "2026-11-24",
-  "validationNote": "URLs foram confirmadas por páginas oficiais da CBF e busca indexada. A listagem de atletas inclui registros históricos; importar apenas quem estiver com Clube Atual igual ao clube. Idades/posições/nacionalidades exigem validação em perfil oficial do atleta antes de cadastrar."
+  "validationNote": "As 20 páginas oficiais da CBF foram localizadas. A listagem de atletas inclui registros históricos; importar apenas quem estiver com Clube Atual igual ao clube. Idades, posições e nacionalidades exigem validação em perfil oficial do atleta antes de cadastrar."
 }
