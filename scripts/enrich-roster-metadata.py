@@ -117,16 +117,18 @@ def enrich(database: dict, staging: dict) -> tuple[dict, dict]:
                     filled_nationality = True
                 elif target.get("nationality") != candidate["nationality"] and target is player:
                     report["existingValuesPreserved"] += 1
-            target["identitySource"] = {
-                "provider": "OpenFootballBase",
-                "season": staging.get("season"),
-                "playerQid": candidate["sourcePlayerQid"],
-                "pageTitle": candidate.get("sourceTitle"),
-                "pageRevision": candidate.get("sourceRevision"),
-                "language": candidate.get("sourceLanguage"),
-                "section": candidate.get("sourceSection"),
-                "license": "Squad data derived from Wikipedia (CC BY-SA 4.0); Wikidata fields CC0",
-            }
+        if filled_age or filled_nationality:
+            for target in targets:
+                target["identitySource"] = {
+                    "provider": "OpenFootballBase",
+                    "season": staging.get("season"),
+                    "playerQid": candidate["sourcePlayerQid"],
+                    "pageTitle": candidate.get("sourceTitle"),
+                    "pageRevision": candidate.get("sourceRevision"),
+                    "language": candidate.get("sourceLanguage"),
+                    "section": candidate.get("sourceSection"),
+                    "license": "Squad data derived from Wikipedia (CC BY-SA 4.0); Wikidata fields CC0",
+                }
         if filled_age:
             report["agesFilled"] += 1
             team_updates[team_id] += 1
