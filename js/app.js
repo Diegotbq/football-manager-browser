@@ -399,7 +399,7 @@ function processAITransfers() {
   const options=[];
   buyers.forEach(buyer=>{
     const average=buyer.players.reduce((n,p)=>n+Number(p.overall||0),0)/buyer.players.length;
-    const positions=["GK","CB","LB","RB","DM","CM","AM","LW","RW","ST"];
+    const positions=["GK","CB","LB","RB","DM","CM","AM","LW","RW","ST","DF","MF","FW"];
     const counts=positions.map(pos=>({pos,count:buyer.players.filter(p=>p.position===pos).length}));
     const need=counts.sort((a,b)=>a.count-b.count)[0]?.pos;
     sellers.forEach(seller=>{
@@ -810,7 +810,7 @@ function playerRow(p) {
     <div class="player-row">
       <div>
         <strong>${p.name}</strong>
-        <small>${p.position} · ${p.age == null ? "idade não informada" : p.age + " anos"}</small>
+        <small>${p.positionName||p.position} · ${p.age == null ? "idade não informada" : p.age + " anos"}</small>
       </div>
       <span class="rating">${p.overall}</span>
       <span class="subtle">${money(p.marketValue)}</span>
@@ -836,7 +836,7 @@ function renderSquad() {
               const a=getPlayerAttributes(p);
               const condition=getPlayerCondition(p);
               return `<tr>
-                <td class="club-name">${p.name}<div class="subtle">${moraleLabel(getPlayerMorale(p))} · Moral ${getPlayerMorale(p)}/100</div></td><td>${p.position||"—"}</td>
+                <td class="club-name">${p.name}<div class="subtle">${moraleLabel(getPlayerMorale(p))} · Moral ${getPlayerMorale(p)}/100</div></td><td>${p.positionName||p.position||"—"}</td>
                 <td>${p.age==null?"—":p.age}</td><td class="positive">${p.overall||"—"}</td><td>${conditionLabel(p)} · ${condition.fitness}%</td><td>${condition.yellowCards}/5</td>
                 <td>${a.pace}</td><td>${a.shooting}</td><td>${a.passing}</td><td>${a.dribbling}</td><td>${a.defending}</td><td>${a.physical}</td>
                 <td>${money(c.weeklyWage)}</td><td>${new Date(c.expiresAt+"T12:00:00").toLocaleDateString("pt-BR")}</td>
@@ -879,7 +879,7 @@ function renderYouthAcademy() {
       <button class="primary-btn" onclick="generateAcademyProspects()">OBSERVAR NOVA GERAÇÃO · ${money(250000)}</button>
       ${prospects.length ? prospects.map(p=>`
         <div class="fixture">
-          <div><strong>${p.name}</strong><div class="subtle">${p.position} · ${p.age} anos · Potencial ${p.potential}/100</div></div>
+          <div><strong>${p.name}</strong><div class="subtle">${p.positionName||p.position} · ${p.age} anos · Potencial ${p.potential}/100</div></div>
           <span class="rating">${p.overall}</span>
         </div>`).join("") : '<p class="subtle">Ainda não há jovens gerados nesta carreira.</p>'}
     </div>`;
@@ -1037,7 +1037,7 @@ function renderMarket(searchTerm) {
                   : `<button class="secondary-btn" onclick="scoutPlayer('${p.id}')">OBSERVAR</button>`;
                 return `<tr data-market-player data-market-search="${searchData}">
                   <td class="club-name">${p.name}</td><td>${team ? team.shortName || team.name : "—"}</td>
-                  <td>${p.position || "—"}</td><td class="positive">${p.overall || "—"}</td>
+                  <td>${p.positionName||p.position||"—"}</td><td class="positive">${p.overall || "—"}</td>
                   <td>${money(p.marketValue)}</td>
                   <td>${scoutAction}<button class="primary-btn" onclick="makeTransferOffer('${p.id}')">COMPRAR</button><button class="secondary-btn" onclick="makeLoanOffer('${p.id}')">EMPRÉSTIMO</button></td>
                 </tr>`;
@@ -1199,12 +1199,12 @@ function getPlayerAttributes(player) {
   const overall = Math.max(25, Math.min(90, Number(player.overall) || 50));
   const position = String(player.position || "").toUpperCase();
   const boosts = {
-    pace: ["LW","RW","LB","RB"].includes(position) ? 13 : ["CB","DM"].includes(position) ? -3 : 3,
-    shooting: ["ST","CF","LW","RW","AM"].includes(position) ? 13 : ["GK","CB","LB","RB"].includes(position) ? -10 : 0,
-    passing: ["CM","AM","DM"].includes(position) ? 11 : position === "GK" ? -8 : 0,
-    dribbling: ["LW","RW","AM"].includes(position) ? 12 : ["CB","GK"].includes(position) ? -8 : 0,
-    defending: ["CB","LB","RB","DM"].includes(position) ? 14 : ["ST","LW","RW"].includes(position) ? -12 : 0,
-    physical: ["CB","ST","DM"].includes(position) ? 9 : 2
+    pace: ["LW","RW","LB","RB","FW"].includes(position) ? 13 : ["CB","DM","DF"].includes(position) ? -3 : 3,
+    shooting: ["ST","CF","LW","RW","AM","FW"].includes(position) ? 13 : ["GK","CB","LB","RB","DF"].includes(position) ? -10 : 0,
+    passing: ["CM","AM","DM","MF"].includes(position) ? 11 : position === "GK" ? -8 : 0,
+    dribbling: ["LW","RW","AM","FW"].includes(position) ? 12 : ["CB","GK","DF"].includes(position) ? -8 : 0,
+    defending: ["CB","LB","RB","DM","DF"].includes(position) ? 14 : ["ST","LW","RW","FW"].includes(position) ? -12 : 0,
+    physical: ["CB","ST","DM","DF","FW"].includes(position) ? 9 : 2
   };
   const seed = String(player.id).split("").reduce((sum,ch)=>sum+ch.charCodeAt(0),0);
   const keys = ["pace","shooting","passing","dribbling","defending","physical"];
@@ -1932,9 +1932,9 @@ const FORMATIONS = {
   ]
 };
 const POSITION_ALIASES = {
-  GK:["GK","GOL"],LB:["LB","LWB","WB","FB"],RB:["RB","RWB","WB","FB"],CB:["CB","DEF"],
-  DM:["DM","CDM","VOL"],CM:["CM","MC","LM","RM"],AM:["AM","CAM","SS"],LM:["LM","LW"],RM:["RM","RW"],
-  LW:["LW","LM","WF"],RW:["RW","RM","WF"],ST:["ST","CF","ATA","SS"]
+  GK:["GK","GOL"],LB:["LB","LWB","WB","FB","DF"],RB:["RB","RWB","WB","FB","DF"],CB:["CB","DEF","DF"],
+  DM:["DM","CDM","VOL","MF"],CM:["CM","MC","LM","RM","MF"],AM:["AM","CAM","SS","MF"],LM:["LM","LW","MF"],RM:["RM","RW","MF"],
+  LW:["LW","LM","WF","FW"],RW:["RW","RM","WF","FW"],ST:["ST","CF","ATA","SS","FW"]
 };
 function getLineupForFormation(teamId, formation) {
   const players=state.db.players.filter(p=>String(p.teamId)===String(teamId)&&!playerUnavailable(p)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));
@@ -2141,15 +2141,15 @@ function renderMatch() {
   if(m.setup){
     const slots=FORMATIONS[m.formation||"4-3-3"].slice(0,Math.min(11,roster.length));
     const chosen=new Set(m.lineup.map(String)),reserves=roster.filter(p=>!chosen.has(String(p.id)));
-    const opts=id=>roster.map(p=>`<option value="${p.id}" ${String(id)===String(p.id)?"selected":""}>${p.name} · ${p.position} · OVR ${p.overall}</option>`).join("");
+    const opts=id=>roster.map(p=>`<option value="${p.id}" ${String(id)===String(p.id)?"selected":""}>${p.name} · ${p.positionName||p.position} · OVR ${p.overall}</option>`).join("");
     const coords=FORMATION_COORDS[m.formation||"4-3-3"];
     const pitch=slots.map(([role],i)=>{const p=roster.find(x=>String(x.id)===String(m.lineup[i]));if(!p)return "";const [x,y]=coords[i];return `<button type="button" class="pitch-player ${tacticalSelectedSlot===i?"is-selected":""}" style="left:${x}%;top:${y}%" draggable="true" ondragstart="dragLineupSlot(event,${i})" ondragover="event.preventDefault()" ondrop="dropLineupSlot(event,${i})" onclick="selectLineupSlot(${i})" title="Toque em outro jogador para trocar de posição"><span class="pitch-number">${i+1}</span><strong>${p.name.split(" ")[0]}</strong><small>${role}</small></button>`;}).join("");
-    setPage("Escalação e tática",`<p class="view-intro">Organize seu time no campo: arraste um jogador para a posição de outro ou toque em dois jogadores para trocar. A escalação será salva na carreira.</p><article class="card"><div class="section-head"><h2>${m.homeName} × ${m.awayName}</h2><span class="tag">Pré-jogo</span></div><label class="lineup-slot"><span>FORMAÇÃO TÁTICA</span><select id="match-formation" onchange="changeMatchFormation(this.value)">${Object.keys(FORMATIONS).map(f=>`<option value="${f}" ${f===(m.formation||"4-3-3")?"selected":""}>${f}</option>`).join("")}</select></label><div class="tactical-pitch" aria-label="Campo tático"><div class="pitch-half"></div><div class="pitch-circle"></div><div class="pitch-box pitch-box-top"></div><div class="pitch-box pitch-box-bottom"></div>${pitch}</div>${renderTacticalInstructions(m)}<p class="subtle tactical-hint">${tacticalSelectedSlot===null?"Arraste os jogadores ou toque em dois para trocar as posições.":"Agora escolha outro jogador para concluir a troca."}</p><h3>Escalação titular · ${slots.length}/11</h3><div class="lineup-grid">${slots.map(([n],i)=>`<label class="lineup-slot"><span>${i+1}. ${n}</span><select data-xi>${opts(m.lineup[i])}</select></label>`).join("")}</div><div class="section-head"><h2>Banco de reservas</h2><span class="tag">Até 7 vagas</span></div><div class="bench-grid">${Array.from({length:7},(_,i)=>`<label class="lineup-slot"><span>Reserva ${i+1}</span><select data-sub><option value="">— Vazio —</option>${roster.filter(p=>!chosen.has(String(p.id))||String(m.bench[i])===String(p.id)).map(p=>`<option value="${p.id}" ${String(m.bench[i]||"")===String(p.id)?"selected":""}>${p.name} · ${p.position}</option>`).join("")}</select></label>`).join("")}</div><button class="primary-btn" onclick="kickoffMatch()">⚽ CONFIRMAR ESCALAÇÃO E JOGAR</button></article>`);
+    setPage("Escalação e tática",`<p class="view-intro">Organize seu time no campo: arraste um jogador para a posição de outro ou toque em dois jogadores para trocar. A escalação será salva na carreira.</p><article class="card"><div class="section-head"><h2>${m.homeName} × ${m.awayName}</h2><span class="tag">Pré-jogo</span></div><label class="lineup-slot"><span>FORMAÇÃO TÁTICA</span><select id="match-formation" onchange="changeMatchFormation(this.value)">${Object.keys(FORMATIONS).map(f=>`<option value="${f}" ${f===(m.formation||"4-3-3")?"selected":""}>${f}</option>`).join("")}</select></label><div class="tactical-pitch" aria-label="Campo tático"><div class="pitch-half"></div><div class="pitch-circle"></div><div class="pitch-box pitch-box-top"></div><div class="pitch-box pitch-box-bottom"></div>${pitch}</div>${renderTacticalInstructions(m)}<p class="subtle tactical-hint">${tacticalSelectedSlot===null?"Arraste os jogadores ou toque em dois para trocar as posições.":"Agora escolha outro jogador para concluir a troca."}</p><h3>Escalação titular · ${slots.length}/11</h3><div class="lineup-grid">${slots.map(([n],i)=>`<label class="lineup-slot"><span>${i+1}. ${n}</span><select data-xi>${opts(m.lineup[i])}</select></label>`).join("")}</div><div class="section-head"><h2>Banco de reservas</h2><span class="tag">Até 7 vagas</span></div><div class="bench-grid">${Array.from({length:7},(_,i)=>`<label class="lineup-slot"><span>Reserva ${i+1}</span><select data-sub><option value="">— Vazio —</option>${roster.filter(p=>!chosen.has(String(p.id))||String(m.bench[i])===String(p.id)).map(p=>`<option value="${p.id}" ${String(m.bench[i]||"")===String(p.id)?"selected":""}>${p.name} · ${p.positionName||p.position}</option>`).join("")}</select></label>`).join("")}</div><button class="primary-btn" onclick="kickoffMatch()">⚽ CONFIRMAR ESCALAÇÃO E JOGAR</button></article>`);
     return;
   }
   const starters=m.lineup.map(byId).filter(Boolean),bench=m.bench.map(byId).filter(Boolean);
   const sub=!m.finished&&m.substitutions.length<5&&bench.length?`<article class="card substitution-card"><div class="section-head"><h2>Substituições</h2><span class="tag">${m.substitutions.length}/5</span></div><div class="substitution-controls"><label>Sai<select id="sub-out">${starters.map(p=>`<option value="${p.id}">${p.name}</option>`).join("")}</select></label><label>Entra<select id="sub-in">${bench.map(p=>`<option value="${p.id}">${p.name}</option>`).join("")}</select></label><button class="primary-btn" onclick="makeSubstitution()">CONFIRMAR</button></div></article>`:"";
-  setPage("Central de Partidas",`<article class="card live-match"><div class="match-status">${m.finished?"TEMPO INTEGRAL":m.paused?"PARTIDA PAUSADA":"PARTIDA AO VIVO"}</div><div class="scoreboard"><div class="score-team"><strong>${m.homeName}</strong><span>${m.homeScore}</span></div><div class="score-clock">${String(m.minute).padStart(2,"0")}’</div><div class="score-team"><strong>${m.awayName}</strong><span>${m.awayScore}</span></div></div><div class="match-controls"><button class="primary-btn" onclick="pauseMatch()" ${m.finished?"disabled":""}>${m.paused?"▶ Continuar":"Ⅱ Pausar"}</button><button class="speed-btn" onclick="setMatchSpeed(1)">1x</button><button class="speed-btn" onclick="setMatchSpeed(2)">2x</button><button class="speed-btn" onclick="setMatchSpeed(4)">4x</button><button class="speed-btn" onclick="newMatch()">Nova partida</button></div></article><div class="grid match-squads"><article class="card span-6"><h2>Titulares · ${starters.length}/11</h2>${starters.map(p=>`<div class="player-row"><div><strong>${p.name}</strong><small>${p.position}</small></div><span class="rating">${p.overall}</span></div>`).join("")}</article><article class="card span-6"><h2>Reservas · ${bench.length}/7</h2>${bench.map(p=>`<div class="player-row"><div><strong>${p.name}</strong><small>${p.position}</small></div><span class="rating">${p.overall}</span></div>`).join("")}</article></div>${sub}<article class="card events-card"><div class="section-head"><h2>Relato da partida</h2><span class="tag">${m.events.length} eventos</span></div><div class="match-events">${m.events.map(e=>`<div class="match-event"><strong>${String(e.minute).padStart(2,"0")}’</strong><span>${e.text}</span></div>`).join("")}</div></article>`);
+  setPage("Central de Partidas",`<article class="card live-match"><div class="match-status">${m.finished?"TEMPO INTEGRAL":m.paused?"PARTIDA PAUSADA":"PARTIDA AO VIVO"}</div><div class="scoreboard"><div class="score-team"><strong>${m.homeName}</strong><span>${m.homeScore}</span></div><div class="score-clock">${String(m.minute).padStart(2,"0")}’</div><div class="score-team"><strong>${m.awayName}</strong><span>${m.awayScore}</span></div></div><div class="match-controls"><button class="primary-btn" onclick="pauseMatch()" ${m.finished?"disabled":""}>${m.paused?"▶ Continuar":"Ⅱ Pausar"}</button><button class="speed-btn" onclick="setMatchSpeed(1)">1x</button><button class="speed-btn" onclick="setMatchSpeed(2)">2x</button><button class="speed-btn" onclick="setMatchSpeed(4)">4x</button><button class="speed-btn" onclick="newMatch()">Nova partida</button></div></article><div class="grid match-squads"><article class="card span-6"><h2>Titulares · ${starters.length}/11</h2>${starters.map(p=>`<div class="player-row"><div><strong>${p.name}</strong><small>${p.positionName||p.position}</small></div><span class="rating">${p.overall}</span></div>`).join("")}</article><article class="card span-6"><h2>Reservas · ${bench.length}/7</h2>${bench.map(p=>`<div class="player-row"><div><strong>${p.name}</strong><small>${p.positionName||p.position}</small></div><span class="rating">${p.overall}</span></div>`).join("")}</article></div>${sub}<article class="card events-card"><div class="section-head"><h2>Relato da partida</h2><span class="tag">${m.events.length} eventos</span></div><div class="match-events">${m.events.map(e=>`<div class="match-event"><strong>${String(e.minute).padStart(2,"0")}’</strong><span>${e.text}</span></div>`).join("")}</div></article>`);
 }
 
 
