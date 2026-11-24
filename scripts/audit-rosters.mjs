@@ -32,6 +32,7 @@ const mainPlayersById = new Map(players.map(player => [String(player.id), player
 const leagues = {};
 const emptyTeams = [];
 const squadReferenceIssues = [];
+const clubsWithNonObjectSquadEntries = [];
 
 for (const team of teams) {
   const leagueId = team.leagueId || "sem-liga";
@@ -43,6 +44,7 @@ for (const team of teams) {
   else emptyTeams.push({ team: team.name, leagueId });
 
   const squad = Array.isArray(team.players) ? team.players : [];
+  if (squad.some(player => !player || typeof player !== "object")) clubsWithNonObjectSquadEntries.push(team.name);
   const squadIds = squad.map(player => {
     if (player && typeof player === "object") return String(player.id ?? "");
     return String(player ?? "");
@@ -77,13 +79,15 @@ const report = {
   integrity: {
     duplicatePlayerIds: duplicatePlayerIds.length,
     playersWithoutValidTeam: playersWithoutValidTeam.length,
-    clubsWithSquadReferenceIssues: squadReferenceIssues.length
+    clubsWithSquadReferenceIssues: squadReferenceIssues.length,
+    clubsWithNonObjectSquadEntries: clubsWithNonObjectSquadEntries.length
   },
   leagues,
   emptyTeams,
   duplicatePlayerIds,
   playersWithoutValidTeam,
-  squadReferenceIssues
+  squadReferenceIssues,
+  clubsWithNonObjectSquadEntries
 };
 
 
