@@ -91,6 +91,26 @@ const report = {
 };
 
 
+// Mede lacunas de metadados por liga sem inventar idade ou nacionalidade.
+for (const [leagueId, entry] of Object.entries(leagues)) {
+  const leagueTeamIds = new Set(teams
+    .filter(team => (team.leagueId || "sem-liga") === leagueId)
+    .map(team => String(team.id)));
+  const leaguePlayers = players.filter(player => leagueTeamIds.has(String(player.teamId)));
+  const missing = {
+    name: leaguePlayers.filter(player => !String(player.name || "").trim()).length,
+    position: leaguePlayers.filter(player => !String(player.position || "").trim()).length,
+    age: leaguePlayers.filter(player => !Number.isFinite(Number(player.age)) || Number(player.age) <= 0).length,
+    nationality: leaguePlayers.filter(player => !String(player.nationality || "").trim()).length
+  };
+  entry.metadataCompleteness = {
+    playerRecords: leaguePlayers.length,
+    missing,
+    present: Object.fromEntries(Object.entries(missing).map(([field, count]) =>
+      [field, leaguePlayers.length - count]))
+  };
+}
+
 // Aplica os mínimos operacionais específicos de cada competição.
 const defaultMinimum = 18;
 const minimumRosterSizeByLeague = {};
