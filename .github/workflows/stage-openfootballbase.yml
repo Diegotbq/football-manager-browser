@@ -8,6 +8,8 @@ on:
       - "scripts/stage-openfootballbase.py"
       - "scripts/reconcile-openfootballbase.py"
       - "scripts/enrich-roster-metadata.py"
+      - "scripts/enrich-openfootballbase-positions.py"
+      - "scripts/prepare-openfootballbase-roster-import.py"
       - "scripts/test_enrich_roster_metadata.py"
   workflow_dispatch:
     inputs:
@@ -85,6 +87,20 @@ jobs:
             --staging data/staging/openfootballbase-candidates.json \
             --out data/staging/openfootballbase-reconciliation.json
 
+      - name: Enrich candidates with specific football positions (Wikidata P413)
+        run: |
+          python scripts/enrich-openfootballbase-positions.py \
+            --input data/staging/openfootballbase-candidates.json \
+            --out data/staging/openfootballbase-position-enriched.json
+
+      - name: Prepare review-only new-player import preview
+        run: |
+          python scripts/prepare-openfootballbase-roster-import.py \
+            --database database.json \
+            --staging data/staging/openfootballbase-position-enriched.json \
+            --out data/staging/database-roster-import-preview.json \
+            --report data/staging/roster-import-preview-report.json
+
       - name: Prepare conservative metadata enrichment preview
         run: |
           python scripts/enrich-roster-metadata.py \
@@ -102,5 +118,8 @@ jobs:
             data/staging/openfootballbase-reconciliation.json
             data/staging/database-enriched-preview.json
             data/staging/metadata-enrichment-report.json
+            data/staging/openfootballbase-position-enriched.json
+            data/staging/database-roster-import-preview.json
+            data/staging/roster-import-preview-report.json
           if-no-files-found: error
           retention-days: 14
