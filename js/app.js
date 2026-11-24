@@ -16,7 +16,8 @@ const state = {
   playerAttributes: {},
   savedLineups: {},
   playerConditions: {},
-  generatedFixtures: []
+  generatedFixtures: [],
+  cupCompetitions: []
 };
 
 const $ = selector => document.querySelector(selector);
@@ -47,6 +48,7 @@ async function init() {
     loadTransferCareer();
     ensureGeneratedFixtures();
     try { state.matchHistory = JSON.parse(localStorage.getItem("fmb-match-history") || "[]"); } catch (_) { state.matchHistory = []; }
+    ensureCupCompetitions();
 
     const seasonLabel = document.querySelector(".club-chip small");
     if (seasonLabel) seasonLabel.textContent = `Temporada ${state.db.meta?.season || "2026/27"}`;
@@ -722,7 +724,8 @@ function saveTransferCareer() {
       playerAttributes: state.playerAttributes,
       savedLineups: state.savedLineups,
       playerConditions: state.playerConditions,
-      generatedFixtures: state.generatedFixtures
+      generatedFixtures: state.generatedFixtures,
+      cupCompetitions: state.cupCompetitions
     }));
   } catch (_) {
     alert("Não foi possível salvar a transferência neste dispositivo. Verifique o espaço disponível.");
@@ -752,6 +755,7 @@ function loadTransferCareer() {
     state.savedLineups = saved.savedLineups && typeof saved.savedLineups === "object" ? saved.savedLineups : {};
     state.playerConditions = saved.playerConditions && typeof saved.playerConditions === "object" ? saved.playerConditions : {};
     state.generatedFixtures = Array.isArray(saved.generatedFixtures) ? saved.generatedFixtures : [];
+    state.cupCompetitions = Array.isArray(saved.cupCompetitions) ? saved.cupCompetitions : [];
     state.academyProspects.forEach(p => {
       if (!state.db.players.some(existing => String(existing.id) === String(p.id))) state.db.players.push(p);
       const team = state.db.teams.find(t => String(t.id) === String(p.teamId));
@@ -768,6 +772,7 @@ function loadTransferCareer() {
     state.savedLineups = {};
     state.playerConditions = {};
     state.generatedFixtures = [];
+    state.cupCompetitions = [];
   }
 }
 
@@ -1090,6 +1095,93 @@ function ensureGeneratedFixtures() {
   saveTransferCareer();
 }
 
+// COPAS NACIONAIS — mata-mata com jogos do usuário e simulação dos demais confrontos
+function ensureCupCompetitions() {
+  if (state.cupCompetitions.length) { advanceCupTournaments(); return; }
+  const definitions = [
+    {id:"copa-do-brasil",name:"Copa do Brasil",leagueId:"brasileirao"},
+    {id:"fa-cup",name:"FA Cup",leagueId:"premier-league"},
+    {id:"copa-del-rey",name:"Copa del Rey",leagueId:"la-liga"}
+  ];
+  definitions.forEach(def => {
+    const league = state.db.leagues.find(l => l.id === def.leagueId);
+    if (!league || !Array.isArray(league.teams) || league.teams.length < 2) return;
+    const participants = [...league.teams];
+    const seed = def.id.split("").reduce((sum,ch)=>sum+ch.charCodeAt(0),0);
+    participants.sort((a,b)=>cupSeed(a,seed)-cupSeed(b,seed));
+    state.cupCompetitions.push({id:def.id,name:def.name,leagueId:def.leagueId,participants,activeTeams:[...participants],round:0,finished:false,champion:null,byes:[]});
+  });
+  advanceCupTournaments();
+  saveTransferCareer();
+}
+function cupSeed(id,seed) { return String(id).split("").reduce((sum,ch)=>sum*31+ch.charCodeAt(0),seed) >>> 0; }
+function cupRoundName(teamCount) {
+  if(teamCount>16)return "Fase preliminar";
+  if(teamCount===16)return "Oitavas de final";
+  if(teamCount===8)return "Quartas de final";
+  if(teamCount===4)return "Semifinal";
+  return "Final";
+}
+function cupDate(round) {
+  const date = new Date(state.db.calendar?.seasonStart || "2026-07-01");
+  date.setDate(date.getDate()+35+round*14);
+  return date.toISOString().slice(0,10);
+}
+function advanceCupTournaments() {
+  if (!state.db || !Array.isArray(state.cupCompetitions)) return;
+  const userId=String(state.db.userClubId||state.selectedClubId||"");
+  state.cupCompetitions.forEach(cup=>{
+    let guard=0;
+    while(!cup.finished && guard++<8) {
+      let fixtures=state.generatedFixtures.filter(f=>f.cupId===cup.id && f.cupRound===cup.round);
+      if(!fixtures.length) {
+        const teams=[...cup.activeTeams];
+        if(teams.length===1){cup.champion=teams[0];cup.finished=true;break;}
+        const pairs=[];
+        if(teams.length>16) {
+          cup.byes=teams.slice(8);
+          for(let i=0;i<8;i+=2)pairs.push([teams[i],teams[i+1]]);
+        } else {
+          cup.byes=[];
+          for(let i=0;i<teams.length;i+=2)pairs.push([teams[i],teams[i+1]]);
+        }
+        pairs.forEach((pair,index)=>state.generatedFixtures.push({
+          id:"cup-"+cup.id+"-"+cup.round+"-"+index,cupId:cup.id,cupRound:cup.round,
+          competition:cup.name,round:cupRoundName(teams.length),date:cupDate(cup.round),
+          homeTeamId:pair[0],awayTeamId:pair[1],generated:true,isCup:true
+        }));
+        fixtures=state.generatedFixtures.filter(f=>f.cupId===cup.id&&f.cupRound===cup.round);
+      }
+      const playedIds=new Set(state.matchHistory.map(m=>m.fixtureId));
+      const userFixture=fixtures.find(f=>String(f.homeTeamId)===userId||String(f.awayTeamId)===userId);
+      fixtures.forEach(f=>{
+        if(playedIds.has(f.id)||(userFixture&&f.id===userFixture.id))return;
+        const home=state.db.teams.find(t=>String(t.id)===String(f.homeTeamId));
+        const away=state.db.teams.find(t=>String(t.id)===String(f.awayTeamId));
+        const hp=teamCupStrength(home),ap=teamCupStrength(away);
+        let h=Math.max(0,Math.round(Math.random()*2+(hp-ap)/28));
+        let a=Math.max(0,Math.round(Math.random()*2+(ap-hp)/28));
+        if(h===a){if(Math.random()<0.5)h++;else a++;}
+        state.matchHistory.push({homeId:f.homeTeamId,awayId:f.awayTeamId,homeScore:h,awayScore:a,date:f.date,fixtureId:f.id,competition:cup.name,round:f.round});
+      });
+      if(!fixtures.every(f=>state.matchHistory.some(m=>m.fixtureId===f.id)))break;
+      const winners=fixtures.map(f=>{
+        const result=state.matchHistory.find(m=>m.fixtureId===f.id);
+        return result.homeScore>result.awayScore?f.homeTeamId:f.awayTeamId;
+      });
+      cup.activeTeams=[...(cup.byes||[]),...winners];cup.byes=[];cup.round++;
+      if(cup.activeTeams.length===1){cup.champion=cup.activeTeams[0];cup.finished=true;}
+    }
+  });
+  try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}
+  saveTransferCareer();
+}
+function teamCupStrength(team) {
+  if(!team)return 50;
+  const players=state.db.players.filter(p=>String(p.teamId)===String(team.id));
+  return players.length?players.reduce((sum,p)=>sum+Number(p.overall||50),0)/players.length:Number(team.reputation||50);
+}
+
 // CALENDÁRIO
 
 function renderCalendar(competitionFilter) {
@@ -1282,7 +1374,7 @@ function startFixture(fixtureId) {
   if(String(f.homeTeamId)!==clubId&&String(f.awayTeamId)!==clubId){alert("Este jogo não envolve seu clube.");return;}
   if(state.matchHistory.some(x=>x.fixtureId===fixtureId)){alert("Esta partida já foi disputada.");return;}
   const home=state.db.teams.find(t=>String(t.id)===String(f.homeTeamId)),away=state.db.teams.find(t=>String(t.id)===String(f.awayTeamId));
-  prepareMatch({homeId:home.id,awayId:away.id,homeName:home.name,awayName:away.name,fixtureId:f.id,competition:f.competition,round:f.round,fixtureDate:f.date});
+  prepareMatch({homeId:home.id,awayId:away.id,homeName:home.name,awayName:away.name,fixtureId:f.id,competition:f.competition,round:f.round,fixtureDate:f.date,isCup:!!f.isCup});
 }
 function prepareMatch(details) {
   if(state.matchTimer)clearInterval(state.matchTimer);
@@ -1352,7 +1444,7 @@ function tickMatch() {
   else if(Math.random()<awayChance){m.awayScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.awayName+"!"});}
   else if(Math.random()<0.11){const notes=["Boa chegada ao ataque.","Finalização defendida pelo goleiro.","A defesa afasta o perigo.","Bola recuperada no meio-campo.","Cobrança de falta para a área.","A equipe pressiona a saída de bola.","O time troca passes e controla o ritmo.","Contra-ataque em velocidade!"];m.events.unshift({minute:m.minute,text:notes[Math.floor(Math.random()*notes.length)]});}
   if(m.minute===45)m.events.unshift({minute:45,text:"Intervalo! Fim do primeiro tempo."});
-  if(m.minute>=90){m.minute=90;m.finished=true;finishMatchSuspensions(m);saveTransferCareer();m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:m.fixtureDate || dateLabel(state.day),fixtureId:m.fixtureId || null,competition:m.competition || "Amistoso",round:m.round || null});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}}clearInterval(state.matchTimer);state.matchTimer=null;}
+  if(m.minute>=90){m.minute=90;m.finished=true;finishMatchSuspensions(m);saveTransferCareer();m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:m.fixtureDate || dateLabel(state.day),fixtureId:m.fixtureId || null,competition:m.competition || "Amistoso",round:m.round || null});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}if(m.isCup)advanceCupTournaments();}clearInterval(state.matchTimer);state.matchTimer=null;}
   if(state.view === "match") renderMatch();
 }
 function pauseMatch() {
