@@ -10,7 +10,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 SUPPORTED = {"GK", "CB", "LB", "RB", "DM", "CM", "AM", "LM", "RM", "LW", "RW", "ST"}
-BROAD_POSITIONS = {"DF": "Defensor", "MF": "Meio-campista", "FW": "Atacante", "GK": "Goleiro"}
+BROAD_POSITIONS = {"DF": "Defensor", "MF": "Meio-campista", "FW": "Atacante"}
 MAX_ROSTER_SIZE = 30
 
 
@@ -71,15 +71,22 @@ def prepare_import(database: dict, enriched: dict) -> tuple[dict, dict]:
         if specific_position in SUPPORTED:
             position = specific_position
             position_precision = "specific"
+            position_provider = "Wikidata P413"
             position_name = {
                 "GK": "Goleiro", "CB": "Zagueiro", "LB": "Lateral-esquerdo",
                 "RB": "Lateral-direito", "DM": "Volante", "CM": "Meio-campista",
                 "AM": "Meia-atacante", "LM": "Meia-esquerdo", "RM": "Meia-direito",
                 "LW": "Ponta-esquerda", "RW": "Ponta-direita", "ST": "Atacante"
             }[position]
+        elif source_position == "GK":
+            position = "GK"
+            position_precision = "specific"
+            position_provider = "OpenFootballBase goalkeeper category"
+            position_name = "Goleiro"
         elif source_position in BROAD_POSITIONS:
             position = source_position
             position_precision = "broad-category"
+            position_provider = "OpenFootballBase squad category"
             position_name = BROAD_POSITIONS[position]
         else:
             skipped["no_supported_position_category"] += 1
@@ -132,7 +139,7 @@ def prepare_import(database: dict, enriched: dict) -> tuple[dict, dict]:
                 "language": candidate.get("sourceLanguage"),
                 "section": candidate.get("sourceSection"),
                 "license": "Squad data derived from Wikipedia (CC BY-SA 4.0); Wikidata fields CC0",
-                "positionProvider": "Wikidata P413" if position_precision == "specific" else "OpenFootballBase squad category",
+                "positionProvider": position_provider,
                 "positionPrecision": position_precision,
                 "positionQids": candidate.get("positionLookup", {}).get("positionQids", []),
             },
