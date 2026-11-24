@@ -551,39 +551,42 @@ function renderCalendar() {
   const windows = state.db.calendar?.transferWindows || [];
   const fixtures = (state.db.calendar?.events || [])
     .filter(e => e.competition === "Campeonato Brasileiro Série A")
-    .sort((a,b) => (a.date || "9999-12-31").localeCompare(b.date || "9999-12-31"));
+    .sort((a,b) => (a.date || "9999-12-31").localeCompare(b.date || "9999-12-31") || a.round-b.round);
   const teamName = id => state.db.teams.find(t => String(t.id) === String(id))?.name || "Clube";
+  const teamId = String(state.db.userClubId || state.selectedClubId || "");
+  const teamFixtures = fixtures.filter(f => String(f.homeTeamId) === teamId || String(f.awayTeamId) === teamId);
+  const played = id => state.matchHistory.find(m => m.fixtureId === id);
   const fixtureDate = f => f.date
     ? new Date(`${f.date}T12:00:00`).toLocaleDateString("pt-BR",{day:"2-digit",month:"short"})
-    : (f.dateRange ? "Data a confirmar (28–29 nov.)" : "Data a confirmar");
+    : "Data a confirmar";
   setPage("Calendário", `
-    <p class="view-intro">
-      Temporada ${state.db.meta.season}
-      · Calendário brasileiro separado do calendário europeu.
-    </p>
+    <p class="view-intro">Temporada ${state.db.meta.season} · Jogos oficiais do Brasileirão 2026. Os confrontos do seu clube podem ser disputados no motor de partidas.</p>
     <div class="grid">
       <article class="card span-5">
         <div class="section-head"><h2>Janelas de transferências</h2></div>
-        ${
-          windows.length ? windows.map(w => `
-            <div class="fixture"><div><strong>${w.name}</strong><div class="subtle">${w.start} até ${w.end}</div></div><span class="tag">Planejada</span></div>
-          `).join("") : `<div class="empty">Nenhuma janela cadastrada.</div>`
-        }
+        ${windows.length ? windows.map(w => `
+          <div class="fixture"><div><strong>${w.name}</strong><div class="subtle">${w.start} até ${w.end}</div></div><span class="tag">Planejada</span></div>
+        `).join("") : `<div class="empty">Nenhuma janela cadastrada.</div>`}
+        <div class="section-head"><h2>Jogos do seu clube</h2><span class="tag">${teamFixtures.length} partidas</span></div>
+        ${teamFixtures.length ? teamFixtures.map(f => {
+          const result = played(f.id);
+          return `<div class="fixture"><div><strong>${teamName(f.homeTeamId)} × ${teamName(f.awayTeamId)}</strong><div class="subtle">${f.round}ª rodada · ${fixtureDate(f)} · ${f.time || "horário a confirmar"}</div></div><span class="tag">${result ? result.homeScore + " × " + result.awayScore : "Pendente"}</span></div>`;
+        }).join("") : `<p class="subtle">O clube escolhido não participa desta competição.</p>`}
       </article>
       <article class="card span-7">
-        <div class="section-head"><h2>Próximos jogos oficiais</h2><span class="tag">Brasileirão 2026</span></div>
-        <p class="subtle">Rodadas finais conforme tabela da CBF. Campos sem confirmação oficial ficam como “a confirmar”.</p>
-        ${
-          fixtures.length ? fixtures.map(f => `
-            <div class="fixture">
-              <div>
-                <strong>${teamName(f.homeTeamId)} × ${teamName(f.awayTeamId)}</strong>
-                <div class="subtle">${f.round}ª rodada · ${fixtureDate(f)}${f.time ? " · " + f.time : ""}${f.stadium ? " · " + f.stadium : ""}</div>
-              </div>
-              <span class="tag">${f.status === "scheduled" ? "Agendado" : "A confirmar"}</span>
+        <div class="section-head"><h2>Rodadas finais</h2><span class="tag">CBF · 2026</span></div>
+        <p class="subtle">Selecione “JOGAR” nos confrontos do seu clube. Os demais jogos aparecem como programação da competição.</p>
+        ${fixtures.map(f => {
+          const result = played(f.id);
+          const mine = String(f.homeTeamId) === teamId || String(f.awayTeamId) === teamId;
+          return `<div class="fixture">
+            <div><strong>${teamName(f.homeTeamId)} × ${teamName(f.awayTeamId)}</strong>
+              <div class="subtle">${f.round}ª rodada · ${fixtureDate(f)} · ${f.time || "horário a confirmar"} · ${f.stadium || "estádio a confirmar"}</div>
+              ${result ? `<div class="positive">Resultado da sua carreira: ${result.homeScore} × ${result.awayScore}</div>` : ""}
             </div>
-          `).join("") : `<div class="empty">Nenhum jogo cadastrado.</div>`
-        }
+            ${result ? `<span class="tag">Concluído</span>` : mine ? `<button class="primary-btn" onclick="startFixture('${f.id}')">JOGAR</button>` : `<span class="tag">Programado</span>`}
+          </div>`;
+        }).join("")}
       </article>
     </div>
   `);
@@ -604,7 +607,28 @@ function startMatch() {
   if (!opponentId || String(opponentId) === String(state.db.userClubId)) return;
   const home = userClub();
   const away = state.db.teams.find(t=>String(t.id)===String(opponentId));
-  state.match = {homeId:home.id,awayId:away.id,homeName:home.name,awayName:away.name,homeScore:0,awayScore:0,minute:0,speed:1,paused:false,finished:false,events:[{minute:0,text:"O árbitro autoriza o início da partida!"}]};
+  launchMatch({homeId:home.id,awayId:away.id,homeName:home.name,awayName:away.name});
+}
+function startFixture(fixtureId) {
+  const fixture = (state.db.calendar?.events || []).find(f => f.id === fixtureId);
+  if (!fixture) return;
+  const clubId = String(state.db.userClubId || state.selectedClubId || "");
+  if (String(fixture.homeTeamId) !== clubId && String(fixture.awayTeamId) !== clubId) {
+    alert("Este confronto não envolve o clube da sua carreira.");
+    return;
+  }
+  if (state.matchHistory.some(m => m.fixtureId === fixtureId)) {
+    alert("Esta partida já foi disputada nesta carreira.");
+    return;
+  }
+  const home = state.db.teams.find(t => String(t.id) === String(fixture.homeTeamId));
+  const away = state.db.teams.find(t => String(t.id) === String(fixture.awayTeamId));
+  launchMatch({homeId:home.id,awayId:away.id,homeName:home.name,awayName:away.name,fixtureId:fixture.id,competition:fixture.competition,round:fixture.round,fixtureDate:fixture.date});
+}
+function launchMatch(details) {
+  if(state.matchTimer) clearInterval(state.matchTimer);
+  state.match = {...details,homeScore:0,awayScore:0,minute:0,speed:1,paused:false,finished:false,saved:false,events:[{minute:0,text:"O árbitro autoriza o início da partida!"}]};
+  state.view = "match";
   runMatchClock();
   renderMatch();
 }
@@ -621,7 +645,7 @@ function tickMatch() {
   else if(Math.random()<0.018+(as/total)*0.018){m.awayScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.awayName+"!"});}
   else if(Math.random()<0.11){const notes=["Boa chegada ao ataque.","Finalização defendida pelo goleiro.","A defesa afasta o perigo.","Bola recuperada no meio-campo.","Cobrança de falta para a área."];m.events.unshift({minute:m.minute,text:notes[Math.floor(Math.random()*notes.length)]});}
   if(m.minute===45)m.events.unshift({minute:45,text:"Intervalo! Fim do primeiro tempo."});
-  if(m.minute>=90){m.minute=90;m.finished=true;m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:dateLabel(state.day)});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}}clearInterval(state.matchTimer);state.matchTimer=null;}
+  if(m.minute>=90){m.minute=90;m.finished=true;m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:m.fixtureDate || dateLabel(state.day),fixtureId:m.fixtureId || null,competition:m.competition || "Amistoso",round:m.round || null});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}}clearInterval(state.matchTimer);state.matchTimer=null;}
   if(state.view === "match") renderMatch();
 }
 function pauseMatch() {
