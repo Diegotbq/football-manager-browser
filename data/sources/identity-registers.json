@@ -140,18 +140,30 @@
       ],
       "importPolicy": "Fonte complementar de alto valor para acelerar a cobertura, mas não importar em massa diretamente. Antes da integração, adicionar ao banco rastreabilidade por jogador (player_qid, temporada, source_title, source_revid, source_lang, stint), validar cada elenco contra o clube atual e regras da temporada 2026/27, rejeitar jogadores sem identidade/posição/nacionalidade/idade verificáveis e cumprir CC BY-SA 4.0. Nunca usar a cobertura de 100% como prova automática de elenco completo.",
       "importRoadmap": {
-        "status": "staging-pipeline-committed-not-yet-imported",
+        "status": "staging-artifact-generated-review-required-not-imported",
         "pipeline": "scripts/stage-openfootballbase.py",
-        "tests": "scripts/test-stage-openfootballbase.py",
+        "tests": "scripts/test_stage_openfootballbase.py",
         "ci": "Python unit tests added to .github/workflows/league-readiness.yml",
         "nextSteps": [
-          "Baixar e extrair a release oficial data-1.24.6; validar manifest.json e SHA-256.",
-          "Executar o staging para 2026/27 e revisar cobertura por competição.",
-          "Reconciliar sourceClub com os clubes do database.json; nenhum teamId é atribuído automaticamente.",
-          "Conferir manualmente o clube atual e cada jogador, inclusive os estados unknown, arrived_mid e loan_in.",
-          "Importar somente após validar QID, posição, nacionalidade e nascimento com precisão diária, preservando sourceTitle e sourceRevision.",
-          "Executar auditoria e readiness tests antes de considerar qualquer liga completa."
-        ]
+          "Revisar as 156 correspondências normalizadas e as 5 sugestões aproximadas contra a identidade e a temporada dos clubes.",
+          "Resolver os 49 clubes sem correspondência; não criar equipes nem transferir jogadores sem confirmação da competição e do clube.",
+          "Revisar os 5.055 candidatos com metadados básicos completos contra fontes oficiais de clube/competição e os vínculos da temporada.",
+          "Importar somente os jogadores individualmente aprovados, preservando QID, sourceTitle, sourceRevision, idioma e stint.",
+          "Executar auditoria e readiness tests após cada lote; nenhuma liga é completa até passar por todos os critérios."
+        ],
+        "lastSuccessfulRun": {
+          "date": "2026-11-24",
+          "workflowRunId": 45430410835,
+          "candidateCount": 6231,
+          "manualReviewEligibleCount": 5055,
+          "clubMapping": {
+            "exactNormalizedNameMatchesRequiringReview": 156,
+            "fuzzySuggestionsRequiringReview": 5,
+            "unmatched": 49,
+            "totalSourceClubs": 210
+          },
+          "note": "Correspondências são sugestões técnicas de nomes por liga, não confirmação oficial do clube atual nem autorização para importar."
+        }
       }
     }
   ],
