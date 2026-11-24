@@ -125,7 +125,31 @@
       "dateOfBirth": "2003-11-13",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/jugador/mikel-jauregizar"
+    },
+    {
+      "playerId": "athletic-club-202627-16",
+      "name": "Alejandro Rego",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2003-06-11",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/alejandro-rego"
+    },
+    {
+      "playerId": "athletic-club-202627-17",
+      "name": "Beñat Gerenabarrena",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2003-03-29",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/benat-gerenabarrena"
+    },
+    {
+      "playerId": "athletic-club-202627-18",
+      "name": "Peio Canales",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2005-01-17",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/peio-canales"
     }
   ],
-  "approvalRevision": 6
+  "approvalRevision": 7
 }
