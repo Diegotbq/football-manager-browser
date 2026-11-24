@@ -78,7 +78,14 @@ def batches(items: list[str], size: int = BATCH_SIZE):
         yield items[start:start + size]
 
 
-def enrich_positions(staging: dict, fetcher=api_get, pause: float = 1.5) -> dict:
+def normalize_player_name(value: object) -> str:
+    import unicodedata
+    normalized = unicodedata.normalize('NFKD', str(value or ''))
+    ascii_name = ''.join(ch for ch in normalized if not unicodedata.combining(ch))
+    return ' '.join(re.sub(r'[^a-z0-9]+', ' ', ascii_name.casefold()).split())
+
+
+def enrich_positions(staging: dict, fetcher=api_get, pause: float = 1.5, database=None) -> dict:
     candidates = staging.get("candidates", [])
     qids = sorted({
         str(c.get("sourcePlayerQid"))
