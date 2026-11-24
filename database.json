@@ -23080,7 +23080,15 @@
           "overall": 83,
           "marketValue": 124002000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 32,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/laporte",
+            "dateOfBirth": "1994-05-27",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-08",
@@ -23089,7 +23097,15 @@
           "overall": 69,
           "marketValue": 85698000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 23,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/hugo-rincon",
+            "dateOfBirth": "2003-01-27",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-09",
@@ -23098,7 +23114,15 @@
           "overall": 77,
           "marketValue": 106722000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 36,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/yuri-b",
+            "dateOfBirth": "1990-02-10",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-10",
@@ -116320,7 +116344,15 @@
       "overall": 83,
       "marketValue": 124002000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 32,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/laporte",
+        "dateOfBirth": "1994-05-27",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-08",
@@ -116329,7 +116361,15 @@
       "overall": 69,
       "marketValue": 85698000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 23,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/hugo-rincon",
+        "dateOfBirth": "2003-01-27",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-09",
@@ -116338,7 +116378,15 @@
       "overall": 77,
       "marketValue": 106722000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 36,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/yuri-b",
+        "dateOfBirth": "1990-02-10",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-10",
