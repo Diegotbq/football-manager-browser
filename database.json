@@ -4,8 +4,8 @@
     "version": "0.1.0",
     "season": "2026/27",
     "currency": "EUR",
-    "note": "Nomes e vínculos de elenco baseados em listas oficiais/publicadas para 2026/27. Idades não preenchidas quando não verificadas; overall e valores são estimativas fictícias de jogo. Clubes da Premier League e LALIGA 2026/27 incluídos conforme listas oficiais das ligas; elencos desses clubes ainda serão preenchidos. Orçamentos e reputações são parâmetros fictícios de jogo. Participantes da Série B 2026 cadastrados conforme relação oficial da CBF; elencos ainda serão preenchidos e parâmetros financeiros/desportivos são estimativas de jogo. Clubes europeus adicionais adicionados para ampliar a Champions League. Nomes/posições conferidos em listas oficiais de clubes e UEFA/DFB; overall, valores e idades não publicados no cadastro são parâmetros estimados do jogo. Clubes sul-americanos adicionais incorporados para ampliar as competições continentais. Nomes e posições são baseados nas listas consultadas; overall, valores e idades não verificados são estimativas/omitidos.",
-    "dataStatus": "Calendário das rodadas finais 36–38 do Brasileirão 2026 revisado conforme tabela detalhada oficial da CBF. Partidas jogáveis na carreira quando envolverem o clube escolhido; resultados simulados são fictícios e salvos localmente. Elenco do Mirassol preenchido com nomes e posições publicados pelo próprio clube; idade não publicada foi deixada em branco; overall e valor de mercado são estimativas de jogo. Lista de participantes da Premier League 2026/27 conferida no site oficial da liga; lista da LALIGA EA SPORTS 2026/27 conferida no site oficial. Clubes recém-incluídos ainda sem elenco cadastrado. Lista dos 20 participantes do Campeonato Brasileiro Série B 2026 conferida na relação oficial da CBF e tabela detalhada; clubes adicionados sem jogadores até validação individual dos elencos. Novos elencos europeus cadastrados com nomes reais e posições conforme fontes oficiais 2026/27; overall e valores são estimativas de gameplay, não avaliações oficiais. Elencos sul-americanos adicionados com nomes reais e posições conforme fontes consultadas em 2026; atributos de jogo são estimativas.",
+    "note": "Nomes e vínculos de elenco baseados em listas oficiais/publicadas para 2026/27. Idades não preenchidas quando não verificadas; overall e valores são estimativas fictícias de jogo. Clubes da Premier League e LALIGA 2026/27 incluídos conforme listas oficiais das ligas; elencos desses clubes ainda serão preenchidos. Orçamentos e reputações são parâmetros fictícios de jogo. Participantes da Série B 2026 cadastrados conforme relação oficial da CBF; elencos ainda serão preenchidos e parâmetros financeiros/desportivos são estimativas de jogo. Clubes europeus adicionais adicionados para ampliar a Champions League. Nomes/posições conferidos em listas oficiais de clubes e UEFA/DFB; overall, valores e idades não publicados no cadastro são parâmetros estimados do jogo. Clubes sul-americanos adicionais incorporados para ampliar as competições continentais. Nomes e posições são baseados nas listas consultadas; overall, valores e idades não verificados são estimativas/omitidos. Ligas nacionais adicionais de Argentina, Uruguai, Equador, Paraguai, Chile e Colômbia adicionadas com clubes e estádios reais; elencos individuais ainda pendentes de validação e inclusão.",
+    "dataStatus": "Calendário das rodadas finais 36–38 do Brasileirão 2026 revisado conforme tabela detalhada oficial da CBF. Partidas jogáveis na carreira quando envolverem o clube escolhido; resultados simulados são fictícios e salvos localmente. Elenco do Mirassol preenchido com nomes e posições publicados pelo próprio clube; idade não publicada foi deixada em branco; overall e valor de mercado são estimativas de jogo. Lista de participantes da Premier League 2026/27 conferida no site oficial da liga; lista da LALIGA EA SPORTS 2026/27 conferida no site oficial. Clubes recém-incluídos ainda sem elenco cadastrado. Lista dos 20 participantes do Campeonato Brasileiro Série B 2026 conferida na relação oficial da CBF e tabela detalhada; clubes adicionados sem jogadores até validação individual dos elencos. Novos elencos europeus cadastrados com nomes reais e posições conforme fontes oficiais 2026/27; overall e valores são estimativas de gameplay, não avaliações oficiais. Elencos sul-americanos adicionados com nomes reais e posições conforme fontes consultadas em 2026; atributos de jogo são estimativas. Seis ligas sul-americanas adicionais adicionadas como grupos iniciais de clubes reais; elencos não verificados não foram inventados.",
     "lastDataReview": "2026-11-24",
     "sources": [
       "Folha: levantamento de estrangeiros por clube, publicado em 22/09/2026",
@@ -25,7 +25,8 @@
       "River Plate: plantel profesional oficial e Liga Profesional AFA 2026, consultados em 24/11/2026",
       "Independiente del Valle: plantel oficial 2026, consultado em 24/11/2026",
       "Peñarol: lista de plantel principal 2026, consultada em 24/11/2026",
-      "Nacional: comunicados e plantel oficial 2026, consultados em 24/11/2026"
+      "Nacional: comunicados e plantel oficial 2026, consultados em 24/11/2026",
+      "Identidade, nomes e estádios dos clubes sul-americanos: cadastros institucionais e referências oficiais dos clubes/ligas; revisão de elencos pendente."
     ]
   },
   "leagues": [
@@ -192,6 +193,144 @@
         "draw": 1,
         "loss": 0
       }
+    },
+    {
+      "id": "argentina",
+      "name": "Liga Profesional Argentina",
+      "country": "Argentina",
+      "type": "league",
+      "format": "round_robin",
+      "teams": [
+        "independiente",
+        "racing-club",
+        "san-lorenzo",
+        "estudiantes-lp",
+        "rosario-central",
+        "newells-old-boys",
+        "velez-sarsfield",
+        "talleres"
+      ],
+      "points": {
+        "win": 3,
+        "draw": 1,
+        "loss": 0
+      },
+      "dataNote": "Grupo inicial de clubes reais para a simulação; elencos individuais serão adicionados após validação em fontes oficiais."
+    },
+    {
+      "id": "uruguay",
+      "name": "Primera División Uruguaya",
+      "country": "Uruguai",
+      "type": "league",
+      "format": "round_robin",
+      "teams": [
+        "defensor-sporting",
+        "liverpool-uru",
+        "danubio",
+        "cerro-largo",
+        "wanderers-uru",
+        "cerro-uru",
+        "racing-uru",
+        "plaza-colonia"
+      ],
+      "points": {
+        "win": 3,
+        "draw": 1,
+        "loss": 0
+      },
+      "dataNote": "Grupo inicial de clubes reais para a simulação; elencos individuais serão adicionados após validação em fontes oficiais."
+    },
+    {
+      "id": "ecuador",
+      "name": "LigaPro Serie A",
+      "country": "Equador",
+      "type": "league",
+      "format": "round_robin",
+      "teams": [
+        "ldu-quito",
+        "barcelona-sc",
+        "emelec",
+        "aucas",
+        "el-nacional",
+        "deportivo-cuenca",
+        "universidad-catolica-ecu",
+        "orense"
+      ],
+      "points": {
+        "win": 3,
+        "draw": 1,
+        "loss": 0
+      },
+      "dataNote": "Grupo inicial de clubes reais para a simulação; elencos individuais serão adicionados após validação em fontes oficiais."
+    },
+    {
+      "id": "paraguay",
+      "name": "Primera División Paraguaya",
+      "country": "Paraguai",
+      "type": "league",
+      "format": "round_robin",
+      "teams": [
+        "cerro-porteno",
+        "olimpia",
+        "libertad",
+        "guarani",
+        "nacional-par",
+        "sportivo-luqueno",
+        "general-caballero",
+        "2-de-mayo"
+      ],
+      "points": {
+        "win": 3,
+        "draw": 1,
+        "loss": 0
+      },
+      "dataNote": "Grupo inicial de clubes reais para a simulação; elencos individuais serão adicionados após validação em fontes oficiais."
+    },
+    {
+      "id": "chile",
+      "name": "Primera División Chilena",
+      "country": "Chile",
+      "type": "league",
+      "format": "round_robin",
+      "teams": [
+        "colo-colo",
+        "universidad-chile",
+        "universidad-catolica",
+        "union-espanola",
+        "audax-italiano",
+        "everton-chile",
+        "huachipato",
+        "palestino"
+      ],
+      "points": {
+        "win": 3,
+        "draw": 1,
+        "loss": 0
+      },
+      "dataNote": "Grupo inicial de clubes reais para a simulação; elencos individuais serão adicionados após validação em fontes oficiais."
+    },
+    {
+      "id": "colombia",
+      "name": "Categoría Primera A",
+      "country": "Colômbia",
+      "type": "league",
+      "format": "round_robin",
+      "teams": [
+        "atletico-nacional",
+        "millonarios",
+        "america-de-cali",
+        "independiente-medellin",
+        "junior",
+        "deportivo-cali",
+        "santa-fe",
+        "once-caldas"
+      ],
+      "points": {
+        "win": 3,
+        "draw": 1,
+        "loss": 0
+      },
+      "dataNote": "Grupo inicial de clubes reais para a simulação; elencos individuais serão adicionados após validação em fontes oficiais."
     }
   ],
   "teams": [
@@ -7880,6 +8019,582 @@
           "dataSource": "official-or-league-squad-list-2026"
         }
       ]
+    },
+    {
+      "id": "independiente",
+      "name": "Independiente",
+      "shortName": "CAI",
+      "country": "Argentina",
+      "leagueId": "argentina",
+      "stadium": "Estadio Libertadores de América – Ricardo Enrique Bochini",
+      "budget": 28000000,
+      "reputation": 78,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "racing-club",
+      "name": "Racing Club",
+      "shortName": "RAC",
+      "country": "Argentina",
+      "leagueId": "argentina",
+      "stadium": "Estadio Presidente Perón (El Cilindro)",
+      "budget": 32000000,
+      "reputation": 80,
+      "color": "#75aadb",
+      "players": []
+    },
+    {
+      "id": "san-lorenzo",
+      "name": "San Lorenzo",
+      "shortName": "SLO",
+      "country": "Argentina",
+      "leagueId": "argentina",
+      "stadium": "Estadio Pedro Bidegain (Nuevo Gasómetro)",
+      "budget": 18000000,
+      "reputation": 74,
+      "color": "#1b2d59",
+      "players": []
+    },
+    {
+      "id": "estudiantes-lp",
+      "name": "Estudiantes de La Plata",
+      "shortName": "EST",
+      "country": "Argentina",
+      "leagueId": "argentina",
+      "stadium": "Estadio Jorge Luis Hirschi",
+      "budget": 24000000,
+      "reputation": 79,
+      "color": "#e32636",
+      "players": []
+    },
+    {
+      "id": "rosario-central",
+      "name": "Rosario Central",
+      "shortName": "ROS",
+      "country": "Argentina",
+      "leagueId": "argentina",
+      "stadium": "Estadio Gigante de Arroyito",
+      "budget": 20000000,
+      "reputation": 77,
+      "color": "#f5c400",
+      "players": []
+    },
+    {
+      "id": "newells-old-boys",
+      "name": "Newell's Old Boys",
+      "shortName": "NOB",
+      "country": "Argentina",
+      "leagueId": "argentina",
+      "stadium": "Estadio Marcelo Bielsa",
+      "budget": 17000000,
+      "reputation": 74,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "velez-sarsfield",
+      "name": "Vélez Sarsfield",
+      "shortName": "VEL",
+      "country": "Argentina",
+      "leagueId": "argentina",
+      "stadium": "Estadio José Amalfitani",
+      "budget": 22000000,
+      "reputation": 78,
+      "color": "#1b2d59",
+      "players": []
+    },
+    {
+      "id": "talleres",
+      "name": "Talleres",
+      "shortName": "TAL",
+      "country": "Argentina",
+      "leagueId": "argentina",
+      "stadium": "Estadio Mario Alberto Kempes",
+      "budget": 23000000,
+      "reputation": 79,
+      "color": "#1b2d59",
+      "players": []
+    },
+    {
+      "id": "defensor-sporting",
+      "name": "Defensor Sporting",
+      "shortName": "DEF",
+      "country": "Uruguai",
+      "leagueId": "uruguay",
+      "stadium": "Estadio Luis Franzini",
+      "budget": 8000000,
+      "reputation": 69,
+      "color": "#5b2c83",
+      "players": []
+    },
+    {
+      "id": "liverpool-uru",
+      "name": "Liverpool FC",
+      "shortName": "LIV",
+      "country": "Uruguai",
+      "leagueId": "uruguay",
+      "stadium": "Estadio Belvedere",
+      "budget": 8000000,
+      "reputation": 70,
+      "color": "#111111",
+      "players": []
+    },
+    {
+      "id": "danubio",
+      "name": "Danubio",
+      "shortName": "DAN",
+      "country": "Uruguai",
+      "leagueId": "uruguay",
+      "stadium": "Estadio Jardines del Hipódromo",
+      "budget": 7000000,
+      "reputation": 68,
+      "color": "#ffffff",
+      "players": []
+    },
+    {
+      "id": "cerro-largo",
+      "name": "Cerro Largo",
+      "shortName": "CEL",
+      "country": "Uruguai",
+      "leagueId": "uruguay",
+      "stadium": "Estadio Arquitecto Antonio Eleuterio Ubilla",
+      "budget": 5000000,
+      "reputation": 64,
+      "color": "#1b2d59",
+      "players": []
+    },
+    {
+      "id": "wanderers-uru",
+      "name": "Montevideo Wanderers",
+      "shortName": "WAN",
+      "country": "Uruguai",
+      "leagueId": "uruguay",
+      "stadium": "Parque Alfredo Víctor Viera",
+      "budget": 6000000,
+      "reputation": 66,
+      "color": "#ffffff",
+      "players": []
+    },
+    {
+      "id": "cerro-uru",
+      "name": "Cerro",
+      "shortName": "CER",
+      "country": "Uruguai",
+      "leagueId": "uruguay",
+      "stadium": "Estadio Luis Tróccoli",
+      "budget": 4000000,
+      "reputation": 62,
+      "color": "#1b2d59",
+      "players": []
+    },
+    {
+      "id": "racing-uru",
+      "name": "Racing Club de Montevideo",
+      "shortName": "RACM",
+      "country": "Uruguai",
+      "leagueId": "uruguay",
+      "stadium": "Parque Osvaldo Roberto",
+      "budget": 4000000,
+      "reputation": 63,
+      "color": "#ffffff",
+      "players": []
+    },
+    {
+      "id": "plaza-colonia",
+      "name": "Plaza Colonia",
+      "shortName": "PLA",
+      "country": "Uruguai",
+      "leagueId": "uruguay",
+      "stadium": "Estadio Profesor Alberto Suppici",
+      "budget": 4000000,
+      "reputation": 62,
+      "color": "#16834b",
+      "players": []
+    },
+    {
+      "id": "ldu-quito",
+      "name": "LDU Quito",
+      "shortName": "LDU",
+      "country": "Equador",
+      "leagueId": "ecuador",
+      "stadium": "Estadio Rodrigo Paz Delgado",
+      "budget": 25000000,
+      "reputation": 80,
+      "color": "#ffffff",
+      "players": []
+    },
+    {
+      "id": "barcelona-sc",
+      "name": "Barcelona SC",
+      "shortName": "BSC",
+      "country": "Equador",
+      "leagueId": "ecuador",
+      "stadium": "Estadio Monumental Banco Pichincha",
+      "budget": 28000000,
+      "reputation": 81,
+      "color": "#f5c400",
+      "players": []
+    },
+    {
+      "id": "emelec",
+      "name": "Emelec",
+      "shortName": "EME",
+      "country": "Equador",
+      "leagueId": "ecuador",
+      "stadium": "Estadio George Capwell",
+      "budget": 18000000,
+      "reputation": 76,
+      "color": "#1769aa",
+      "players": []
+    },
+    {
+      "id": "aucas",
+      "name": "Aucas",
+      "shortName": "AUC",
+      "country": "Equador",
+      "leagueId": "ecuador",
+      "stadium": "Estadio Gonzalo Pozo Ripalda",
+      "budget": 9000000,
+      "reputation": 70,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "el-nacional",
+      "name": "El Nacional",
+      "shortName": "NAC",
+      "country": "Equador",
+      "leagueId": "ecuador",
+      "stadium": "Estadio Olímpico Atahualpa",
+      "budget": 7000000,
+      "reputation": 68,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "deportivo-cuenca",
+      "name": "Deportivo Cuenca",
+      "shortName": "CUE",
+      "country": "Equador",
+      "leagueId": "ecuador",
+      "stadium": "Estadio Alejandro Serrano Aguilar",
+      "budget": 6000000,
+      "reputation": 67,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "universidad-catolica-ecu",
+      "name": "Universidad Católica",
+      "shortName": "UCA",
+      "country": "Equador",
+      "leagueId": "ecuador",
+      "stadium": "Estadio Olímpico Atahualpa",
+      "budget": 8000000,
+      "reputation": 70,
+      "color": "#1b2d59",
+      "players": []
+    },
+    {
+      "id": "orense",
+      "name": "Orense SC",
+      "shortName": "ORE",
+      "country": "Equador",
+      "leagueId": "ecuador",
+      "stadium": "Estadio 9 de Mayo",
+      "budget": 6000000,
+      "reputation": 66,
+      "color": "#16834b",
+      "players": []
+    },
+    {
+      "id": "cerro-porteno",
+      "name": "Cerro Porteño",
+      "shortName": "CCP",
+      "country": "Paraguai",
+      "leagueId": "paraguay",
+      "stadium": "Estadio General Pablo Rojas (La Nueva Olla)",
+      "budget": 20000000,
+      "reputation": 78,
+      "color": "#1769aa",
+      "players": []
+    },
+    {
+      "id": "olimpia",
+      "name": "Olimpia",
+      "shortName": "OLI",
+      "country": "Paraguai",
+      "leagueId": "paraguay",
+      "stadium": "Estadio Osvaldo Domínguez Dibb",
+      "budget": 22000000,
+      "reputation": 79,
+      "color": "#ffffff",
+      "players": []
+    },
+    {
+      "id": "libertad",
+      "name": "Libertad",
+      "shortName": "LIB",
+      "country": "Paraguai",
+      "leagueId": "paraguay",
+      "stadium": "Estadio Tigo La Huerta",
+      "budget": 12000000,
+      "reputation": 74,
+      "color": "#f5c400",
+      "players": []
+    },
+    {
+      "id": "guarani",
+      "name": "Guaraní",
+      "shortName": "GUA",
+      "country": "Paraguai",
+      "leagueId": "paraguay",
+      "stadium": "Estadio Rogelio Livieres",
+      "budget": 8000000,
+      "reputation": 70,
+      "color": "#f5c400",
+      "players": []
+    },
+    {
+      "id": "nacional-par",
+      "name": "Nacional",
+      "shortName": "NAC",
+      "country": "Paraguai",
+      "leagueId": "paraguay",
+      "stadium": "Estadio Arsenio Erico",
+      "budget": 6000000,
+      "reputation": 67,
+      "color": "#ffffff",
+      "players": []
+    },
+    {
+      "id": "sportivo-luqueno",
+      "name": "Sportivo Luqueño",
+      "shortName": "SLU",
+      "country": "Paraguai",
+      "leagueId": "paraguay",
+      "stadium": "Estadio Feliciano Cáceres",
+      "budget": 6000000,
+      "reputation": 66,
+      "color": "#1769aa",
+      "players": []
+    },
+    {
+      "id": "general-caballero",
+      "name": "General Caballero JLM",
+      "shortName": "GCJ",
+      "country": "Paraguai",
+      "leagueId": "paraguay",
+      "stadium": "Estadio Ka'arendy",
+      "budget": 4000000,
+      "reputation": 63,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "2-de-mayo",
+      "name": "2 de Mayo",
+      "shortName": "2DM",
+      "country": "Paraguai",
+      "leagueId": "paraguay",
+      "stadium": "Estadio Río Parapití",
+      "budget": 4000000,
+      "reputation": 64,
+      "color": "#1769aa",
+      "players": []
+    },
+    {
+      "id": "colo-colo",
+      "name": "Colo-Colo",
+      "shortName": "COL",
+      "country": "Chile",
+      "leagueId": "chile",
+      "stadium": "Estadio Monumental David Arellano",
+      "budget": 30000000,
+      "reputation": 82,
+      "color": "#111111",
+      "players": []
+    },
+    {
+      "id": "universidad-chile",
+      "name": "Universidad de Chile",
+      "shortName": "UCH",
+      "country": "Chile",
+      "leagueId": "chile",
+      "stadium": "Estadio Nacional Julio Martínez Prádanos",
+      "budget": 27000000,
+      "reputation": 80,
+      "color": "#1769aa",
+      "players": []
+    },
+    {
+      "id": "universidad-catolica",
+      "name": "Universidad Católica",
+      "shortName": "UC",
+      "country": "Chile",
+      "leagueId": "chile",
+      "stadium": "Estadio Claro Arena",
+      "budget": 22000000,
+      "reputation": 78,
+      "color": "#ffffff",
+      "players": []
+    },
+    {
+      "id": "union-espanola",
+      "name": "Unión Española",
+      "shortName": "UE",
+      "country": "Chile",
+      "leagueId": "chile",
+      "stadium": "Estadio Santa Laura-Universidad SEK",
+      "budget": 8000000,
+      "reputation": 69,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "audax-italiano",
+      "name": "Audax Italiano",
+      "shortName": "AUD",
+      "country": "Chile",
+      "leagueId": "chile",
+      "stadium": "Estadio Bicentenario de La Florida",
+      "budget": 7000000,
+      "reputation": 68,
+      "color": "#16834b",
+      "players": []
+    },
+    {
+      "id": "everton-chile",
+      "name": "Everton de Viña del Mar",
+      "shortName": "EVE",
+      "country": "Chile",
+      "leagueId": "chile",
+      "stadium": "Estadio Sausalito",
+      "budget": 7000000,
+      "reputation": 68,
+      "color": "#f5c400",
+      "players": []
+    },
+    {
+      "id": "huachipato",
+      "name": "Huachipato",
+      "shortName": "HUA",
+      "country": "Chile",
+      "leagueId": "chile",
+      "stadium": "Estadio Huachipato-CAP Acero",
+      "budget": 8000000,
+      "reputation": 69,
+      "color": "#1769aa",
+      "players": []
+    },
+    {
+      "id": "palestino",
+      "name": "Palestino",
+      "shortName": "PAL",
+      "country": "Chile",
+      "leagueId": "chile",
+      "stadium": "Estadio Municipal de La Cisterna",
+      "budget": 9000000,
+      "reputation": 70,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "atletico-nacional",
+      "name": "Atlético Nacional",
+      "shortName": "ATN",
+      "country": "Colômbia",
+      "leagueId": "colombia",
+      "stadium": "Estadio Atanasio Girardot",
+      "budget": 28000000,
+      "reputation": 82,
+      "color": "#16834b",
+      "players": []
+    },
+    {
+      "id": "millonarios",
+      "name": "Millonarios",
+      "shortName": "MIL",
+      "country": "Colômbia",
+      "leagueId": "colombia",
+      "stadium": "Estadio Nemesio Camacho El Campín",
+      "budget": 24000000,
+      "reputation": 79,
+      "color": "#1769aa",
+      "players": []
+    },
+    {
+      "id": "america-de-cali",
+      "name": "América de Cali",
+      "shortName": "AME",
+      "country": "Colômbia",
+      "leagueId": "colombia",
+      "stadium": "Estadio Olímpico Pascual Guerrero",
+      "budget": 20000000,
+      "reputation": 77,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "independiente-medellin",
+      "name": "Independiente Medellín",
+      "shortName": "DIM",
+      "country": "Colômbia",
+      "leagueId": "colombia",
+      "stadium": "Estadio Atanasio Girardot",
+      "budget": 18000000,
+      "reputation": 76,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "junior",
+      "name": "Junior de Barranquilla",
+      "shortName": "JUN",
+      "country": "Colômbia",
+      "leagueId": "colombia",
+      "stadium": "Estadio Metropolitano Roberto Meléndez",
+      "budget": 22000000,
+      "reputation": 78,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "deportivo-cali",
+      "name": "Deportivo Cali",
+      "shortName": "CAL",
+      "country": "Colômbia",
+      "leagueId": "colombia",
+      "stadium": "Estadio Deportivo Cali",
+      "budget": 14000000,
+      "reputation": 73,
+      "color": "#16834b",
+      "players": []
+    },
+    {
+      "id": "santa-fe",
+      "name": "Independiente Santa Fe",
+      "shortName": "SFE",
+      "country": "Colômbia",
+      "leagueId": "colombia",
+      "stadium": "Estadio Nemesio Camacho El Campín",
+      "budget": 17000000,
+      "reputation": 75,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "once-caldas",
+      "name": "Once Caldas",
+      "shortName": "ONC",
+      "country": "Colômbia",
+      "leagueId": "colombia",
+      "stadium": "Estadio Palogrande",
+      "budget": 9000000,
+      "reputation": 70,
+      "color": "#ffffff",
+      "players": []
     }
   ],
   "players": [
