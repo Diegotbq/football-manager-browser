@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
- * Audita a cobertura e a integridade dos elencos em database.json.
+ * Audita cobertura, integridade e consistência entre a lista principal
+ * de jogadores e os elencos incorporados em cada clube.
  * Uso: node scripts/audit-rosters.mjs [caminho-do-database.json]
  */
 import fs from "node:fs";
@@ -10,32 +11,28 @@ const file = path.resolve(process.argv[2] || "database.json");
 const db = JSON.parse(fs.readFileSync(file, "utf8"));
 const teams = Array.isArray(db.teams) ? db.teams : [];
 const players = Array.isArray(db.players) ? db.players : [];
-const playersById = new Map();
+const ids = new Set();
 const duplicatePlayerIds = [];
-const orphanPlayers = [];
-const unknownTeamPlayers = [];
+const playersWithoutValidTeam = [];
 const teamCounts = new Map();
+const knownTeamIds = new Set(teams.map(team => String(team.id)));
 
 for (const player of players) {
   const id = String(player.id ?? "");
-  if (!id) duplicatePlayerIds.push({ id: "(vazio)", player: player.name });
-  else if (playersById.has(id)) duplicatePlayerIds.push({ id, player: player.name });
-  else playersById.set(id, player);
-
+  if (!id || ids.has(id)) duplicatePlayerIds.push({ id: id || "(vazio)", player: player.name });
+  ids.add(id);
   const teamId = String(player.teamId ?? "");
-  if (teamId) teamCounts.set(teamId, (teamCounts.get(teamId) || 0) + 1);
-}
-
-const knownTeamIds = new Set(teams.map(team => String(team.id)));
-for (const player of players) {
-  const teamId = String(player.teamId ?? "");
+  teamCounts.set(teamId, (teamCounts.get(teamId) || 0) + 1);
   if (!teamId || !knownTeamIds.has(teamId)) {
-    orphanPlayers.push({ player: player.name, teamId: teamId || null });
+    playersWithoutValidTeam.push({ player: player.name, teamId: teamId || null });
   }
 }
 
+const mainPlayersById = new Map(players.map(player => [String(player.id), player]));
 const leagues = {};
 const emptyTeams = [];
+const squadReferenceIssues = [];
+
 for (const team of teams) {
   const leagueId = team.leagueId || "sem-liga";
   const count = teamCounts.get(String(team.id)) || 0;
@@ -44,6 +41,28 @@ for (const team of teams) {
   entry.players += count;
   if (count) entry.clubsWithPlayers += 1;
   else emptyTeams.push({ team: team.name, leagueId });
+
+  const squad = Array.isArray(team.players) ? team.players : [];
+  const squadIds = squad.map(player => {
+    if (player && typeof player === "object") return String(player.id ?? "");
+    return String(player ?? "");
+  });
+  const expectedIds = players.filter(player => String(player.teamId) === String(team.id)).map(player => String(player.id));
+  const missingFromTeamSquad = expectedIds.filter(id => !squadIds.includes(id));
+  const unknownInTeamSquad = squadIds.filter(id => !mainPlayersById.has(id));
+  const duplicateInTeamSquad = squadIds.filter((id, index) => id && squadIds.indexOf(id) !== index);
+  const wrongTeamObjects = squad.filter(player => player && typeof player === "object" &&
+    String(player.teamId) !== String(team.id)).map(player => player.id || player.name);
+  if (missingFromTeamSquad.length || unknownInTeamSquad.length ||
+      duplicateInTeamSquad.length || wrongTeamObjects.length) {
+    squadReferenceIssues.push({
+      team: team.name,
+      missingFromTeamSquad,
+      unknownInTeamSquad,
+      duplicateInTeamSquad,
+      wrongTeamObjects
+    });
+  }
 }
 
 const report = {
@@ -57,12 +76,14 @@ const report = {
   },
   integrity: {
     duplicatePlayerIds: duplicatePlayerIds.length,
-    playersWithoutValidTeam: orphanPlayers.length
+    playersWithoutValidTeam: playersWithoutValidTeam.length,
+    clubsWithSquadReferenceIssues: squadReferenceIssues.length
   },
   leagues,
   emptyTeams,
   duplicatePlayerIds,
-  playersWithoutValidTeam: orphanPlayers
+  playersWithoutValidTeam,
+  squadReferenceIssues
 };
 
 const output = JSON.stringify(report, null, 2) + "\n";
