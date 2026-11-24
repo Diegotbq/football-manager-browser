@@ -37,7 +37,7 @@ def enrich(database: dict, staging: dict) -> tuple[dict, dict]:
             all_qid_rows[qid].append(candidate)
     duplicate_qids = {
         qid for qid, rows in all_qid_rows.items()
-        if len({(row.get("competition"), row.get("sourceClub")) for row in rows}) > 1
+        if len(rows) > 1
     }
 
     by_team_name: dict[tuple[str, str], list[dict]] = defaultdict(list)
@@ -110,12 +110,12 @@ def enrich(database: dict, staging: dict) -> tuple[dict, dict]:
             if is_missing(target.get("age")):
                 target["age"] = candidate["age"]
                 filled_age = True
-            elif target.get("age") != candidate["age"]:
+            elif target.get("age") != candidate["age"] and target is player:
                 report["existingValuesPreserved"] += 1
             if is_missing(target.get("nationality")):
                 target["nationality"] = candidate["nationality"]
                 filled_nationality = True
-            elif target.get("nationality") != candidate["nationality"]:
+            elif target.get("nationality") != candidate["nationality"] and target is player:
                 report["existingValuesPreserved"] += 1
             target["identitySource"] = {
                 "provider": "OpenFootballBase",
