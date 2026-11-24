@@ -72,8 +72,8 @@ def main():
     db = json.loads(Path(args.database).read_text(encoding="utf-8"))
     approval = json.loads(Path(args.approval).read_text(encoding="utf-8"))
     updated, report = apply(db, approval)
-    Path(args.out).write_text(json.dumps(updated, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
-    Path(args.report).write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    Path(args.out).write_text(json.dumps(updated, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    Path(args.report).write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
 
 if __name__ == "__main__":
