@@ -23335,7 +23335,15 @@
           "overall": 86,
           "marketValue": 133128000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 24,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/williams-jr",
+            "dateOfBirth": "2002-07-12",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-23",
@@ -23344,7 +23352,15 @@
           "overall": 78,
           "marketValue": 109512000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 30,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/guruzeta",
+            "dateOfBirth": "1996-09-12",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-24",
@@ -23353,7 +23369,15 @@
           "overall": 70,
           "marketValue": 88200000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 25,
+          "nationality": "MAR",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/maroan-sannadi",
+            "dateOfBirth": "2001-02-01",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-25",
@@ -116695,7 +116719,15 @@
       "overall": 86,
       "marketValue": 133128000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 24,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/williams-jr",
+        "dateOfBirth": "2002-07-12",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-23",
@@ -116704,7 +116736,15 @@
       "overall": 78,
       "marketValue": 109512000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 30,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/guruzeta",
+        "dateOfBirth": "1996-09-12",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-24",
@@ -116713,7 +116753,15 @@
       "overall": 70,
       "marketValue": 88200000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 25,
+      "nationality": "MAR",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/maroan-sannadi",
+        "dateOfBirth": "2001-02-01",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-25",
