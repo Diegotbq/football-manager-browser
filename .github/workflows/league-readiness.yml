@@ -37,6 +37,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Identify database snapshot
+        run: git log -1 --oneline -- database.json
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
