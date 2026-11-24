@@ -12,6 +12,7 @@ const state = {
   playerMorale: {},
   playerPromises: [],
   playerRequests: [],
+  playerAgentDemands: [],
   contracts: {},
   loanRecords: [],
   trainingRecords: {},
@@ -434,6 +435,70 @@ function handlePlayerRequest(playerId,action){
  else if(action==="list"){request.status="listed";request.resolvedDate=state.day.toISOString().slice(0,10);alert(player.name+" foi colocado na lista de transferências. Clubes interessados poderão apresentar propostas.");}
  saveTransferCareer();renderSquad();
 }
+function processPlayerAgentDemands(){
+  const club=userClub();if(!club)return;
+  const today=state.day.toISOString().slice(0,10);
+  state.db.players.filter(p=>String(p.teamId)===String(club.id)).forEach(player=>{
+    const contract=getPlayerContract(player);
+    const expiryDays=Math.floor((new Date(contract.expiresAt+"T12:00:00")-new Date(today+"T12:00:00"))/86400000);
+    const wage=Math.max(0,Number(contract.weeklyWage)||0);
+    const marketWage=Math.max(500,Math.round(((Number(player.marketValue)||50000)*0.00042)/50)*50);
+    const underpaid=wage<marketWage*0.86;
+    const expiring=expiryDays<=365;
+    const unhappy=getPlayerMorale(player)<42;
+    if(!underpaid&&!expiring&&!unhappy)return;
+    const active=state.playerAgentDemands.some(d=>String(d.playerId)===String(player.id)&&d.status==="pending");
+    if(active)return;
+    const previous=state.playerAgentDemands.filter(d=>String(d.playerId)===String(player.id)).sort((a,b)=>String(b.date).localeCompare(String(a.date)))[0];
+    if(previous&&Math.floor((new Date(today+"T12:00:00")-new Date(previous.date+"T12:00:00"))/86400000)<60)return;
+    if(Math.random()>(unhappy?0.42:expiring?0.3:0.18))return;
+    const demandedWage=Math.max(wage+Math.max(250,Math.round(wage*0.12/50)*50),Math.round(marketWage*1.08/50)*50);
+    const demandedYears=2+Math.floor(Math.random()*3);
+    state.playerAgentDemands.push({id:"agent-"+player.id+"-"+Date.now(),playerId:player.id,playerName:player.name,clubId:club.id,currentWage:wage,demandedWage,years:demandedYears,reason:underpaid&&expiring?"Salário abaixo do mercado e contrato perto do fim":underpaid?"O agente considera o salário abaixo do mercado":expiring?"Contrato perto do fim":"O jogador quer melhores condições",date:today,status:"pending"});
+  });
+  saveTransferCareer();
+}
+function resolvePlayerAgentDemand(playerId,action){
+  const demand=state.playerAgentDemands.find(d=>String(d.playerId)===String(playerId)&&d.status==="pending");
+  const player=state.db.players.find(p=>String(p.id)===String(playerId));
+  if(!demand||!player||String(player.teamId)!==String(userClub()?.id))return;
+  const current=getPlayerContract(player);
+  if(action==="accept"){
+    if(!confirm("Aceitar a exigência do agente de "+player.name+"? Novo salário: "+money(demand.demandedWage)+" por semana, por "+demand.years+" anos."))return;
+    const expiry=new Date(state.day);expiry.setFullYear(expiry.getFullYear()+demand.years);
+    state.contracts[player.id]={weeklyWage:demand.demandedWage,expiresAt:expiry.toISOString().slice(0,10)};
+    state.playerMorale[player.id]=Math.min(100,getPlayerMorale(player)+12);
+    demand.status="accepted";demand.resolvedDate=state.day.toISOString().slice(0,10);
+    alert("Acordo fechado! O agente confirmou a renovação.");
+  }else if(action==="counter"){
+    const raw=prompt("Contraproposta salarial para "+player.name+".\nPedido: "+money(demand.demandedWage)+" por semana.\nSalário atual: "+money(current.weeklyWage)+".\nDigite sua oferta semanal:",String(Math.round((current.weeklyWage+demand.demandedWage)/2)));
+    if(raw===null)return;
+    const offer=Number(String(raw).replace(/[€.\\s]/g,"").replace(/,/g,"."));
+    if(!Number.isFinite(offer)||offer<=0){alert("Digite um salário válido.");return;}
+    if(offer>=demand.demandedWage*0.94){
+      const years=new Date(state.day);years.setFullYear(years.getFullYear()+demand.years);
+      state.contracts[player.id]={weeklyWage:offer,expiresAt:years.toISOString().slice(0,10)};
+      state.playerMorale[player.id]=Math.min(100,getPlayerMorale(player)+8);
+      demand.status="accepted";demand.agreedWage=offer;demand.resolvedDate=state.day.toISOString().slice(0,10);
+      alert("O agente aceitou a contraproposta!");
+    }else{
+      demand.status="rejected";demand.resolvedDate=state.day.toISOString().slice(0,10);
+      state.playerMorale[player.id]=Math.max(0,getPlayerMorale(player)-10);
+      alert("O agente recusou. O jogador ficou frustrado com a negociação.");
+    }
+  }else if(action==="reject"){
+    demand.status="rejected";demand.resolvedDate=state.day.toISOString().slice(0,10);
+    state.playerMorale[player.id]=Math.max(0,getPlayerMorale(player)-14);
+    alert("Você recusou as exigências. A insatisfação do jogador aumentou.");
+  }else return;
+  saveTransferCareer();renderSquad();
+}
+function renderPlayerAgentPanel(){
+  const demands=state.playerAgentDemands.filter(d=>String(d.clubId)===String(userClub().id)&&d.status==="pending").slice(-8).reverse();
+  return '<div class="card"><div class="section-head"><h2>🤵 Agentes e renovações</h2><span class="tag">'+demands.length+' negociação(ões)</span></div>'+
+    '<p class="subtle">Agentes podem procurar o clube quando o salário está abaixo do mercado, o contrato se aproxima do fim ou a moral cai. Aceitar ou negociar altera a folha salarial e a satisfação do atleta.</p>'+
+    (demands.length?demands.map(d=>'<div class="fixture"><div><strong>'+d.playerName+'</strong><div class="subtle">'+d.reason+' · Atual: '+money(d.currentWage)+'/sem. · Pedido: '+money(d.demandedWage)+'/sem. · '+d.years+' anos</div></div><div><button class="primary-btn" onclick="resolvePlayerAgentDemand(&quot;'+d.playerId+'&quot;,&quot;accept&quot;)">ACEITAR</button><button class="secondary-btn" onclick="resolvePlayerAgentDemand(&quot;'+d.playerId+'&quot;,&quot;counter&quot;)">CONTRAPROPOSTA</button><button class="secondary-btn" onclick="resolvePlayerAgentDemand(&quot;'+d.playerId+'&quot;,&quot;reject&quot;)">RECUSAR</button></div></div>').join(""):'<p class="subtle">Nenhum agente solicitou reunião no momento.</p>')+'</div>';
+}
 function updateSquadMorale(){
   const club=userClub();if(!club)return;
   const today=state.day.toISOString().slice(0,10);
@@ -469,6 +534,7 @@ function advanceDay() {
     processAITransfers();
     processAIPlayerOffers();
     updateSquadMorale();
+    processPlayerAgentDemands();
     const club = userClub();
     if (club) {
       const weeklyPayroll = state.db.players
@@ -697,6 +763,7 @@ function renderSquad() {
       ${promiseUpdates.length?promiseUpdates.map(p=>`<div class="fixture"><div><strong>${p.playerName}</strong><div class="subtle">${p.label} · ${p.status==="pending"?"Aguardando 3 partidas":p.status==="fulfilled"?"Promessa cumprida":"Promessa não cumprida"}${p.status!=="pending"?" · "+(p.appearances||0)+" escalação(ões)":""}</div></div><span class="tag">${p.status==="pending"?"Ativa":p.status==="fulfilled"?"Cumprida":"Quebrada"}</span></div>`).join(""):'<p class="subtle">Ainda não há promessas registradas.</p>'}
     </div>
     ${renderPlayerRequestsPanel()}
+    ${renderPlayerAgentPanel()}
     ${renderYouthAcademy()}
   `);
 }
@@ -920,6 +987,7 @@ function saveTransferCareer() {
       playerMorale: state.playerMorale,
       playerPromises: state.playerPromises,
       playerRequests: state.playerRequests,
+      playerAgentDemands: state.playerAgentDemands,
       contracts: state.contracts,
       loanRecords: state.loanRecords,
       trainingRecords: state.trainingRecords,
@@ -957,6 +1025,7 @@ function loadTransferCareer() {
     state.playerMorale = saved.playerMorale && typeof saved.playerMorale === "object" ? saved.playerMorale : {};
     state.playerPromises = Array.isArray(saved.playerPromises) ? saved.playerPromises : [];
     state.playerRequests = Array.isArray(saved.playerRequests) ? saved.playerRequests : [];
+    state.playerAgentDemands = Array.isArray(saved.playerAgentDemands) ? saved.playerAgentDemands : [];
     state.contracts = saved.contracts && typeof saved.contracts === "object" ? saved.contracts : {};
     state.loanRecords = Array.isArray(saved.loanRecords) ? saved.loanRecords : [];
     state.trainingRecords = saved.trainingRecords && typeof saved.trainingRecords === "object" ? saved.trainingRecords : {};
