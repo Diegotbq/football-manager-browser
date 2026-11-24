@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/stage-openfootballbase.yml"
       - "scripts/stage-openfootballbase.py"
+      - "scripts/reconcile-openfootballbase.py"
   workflow_dispatch:
     inputs:
       season:
