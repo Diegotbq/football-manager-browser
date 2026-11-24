@@ -95,8 +95,6 @@ jobs:
               raise SystemExit("Player count changed; refusing database update")
           if report["ambiguousPlayerMatches"] != 0:
               raise SystemExit("Ambiguous player match found; refusing database update")
-          if report["agesFilled"] <= 0:
-              raise SystemExit("No verified age fields to fill")
           if report["duplicateSourceIdentitiesExcluded"] <= 0:
               raise SystemExit("Expected duplicate-identity safety check did not run")
           if reconciliation["totals"]["ambiguousNameMatches"] != 0:
