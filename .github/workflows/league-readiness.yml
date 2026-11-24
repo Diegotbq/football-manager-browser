@@ -9,6 +9,7 @@ on:
       - "scripts/test-league-readiness.mjs"
       - "scripts/stage-openfootballbase.py"
       - "scripts/test-stage-openfootballbase.py"
+      - "scripts/test_stage_openfootballbase.py"
       - "data/sources/identity-registers.json"
       - ".github/workflows/league-readiness.yml"
   pull_request:
@@ -18,6 +19,7 @@ on:
       - "scripts/test-league-readiness.mjs"
       - "scripts/stage-openfootballbase.py"
       - "scripts/test-stage-openfootballbase.py"
+      - "scripts/test_stage_openfootballbase.py"
       - "data/sources/identity-registers.json"
       - ".github/workflows/league-readiness.yml"
   workflow_dispatch:
