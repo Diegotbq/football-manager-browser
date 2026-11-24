@@ -1,0 +1,114 @@
+{
+  "generatedAt": "2026-11-24",
+  "season": "2026/27",
+  "scope": "Audit of roster coverage using database.players[].teamId; this measures presence, not factual accuracy or squad completeness.",
+  "totals": {
+    "clubs": 261,
+    "playerRecords": 3118,
+    "clubsWithAtLeastOnePlayer": 118,
+    "clubsWithoutPlayerRecords": 143
+  },
+  "leagues": {
+    "brasileirao": {
+      "teams": 20,
+      "teamsWithPlayers": 20,
+      "players": 217
+    },
+    "premier-league": {
+      "teams": 20,
+      "teamsWithPlayers": 20,
+      "players": 565
+    },
+    "la-liga": {
+      "teams": 20,
+      "teamsWithPlayers": 15,
+      "players": 474
+    },
+    "brasileirao-serie-b": {
+      "teams": 20,
+      "teamsWithPlayers": 0,
+      "players": 0
+    },
+    "ligue-1": {
+      "teams": 18,
+      "teamsWithPlayers": 18,
+      "players": 504
+    },
+    "champions-league": {
+      "teams": 4,
+      "teamsWithPlayers": 4,
+      "players": 108
+    },
+    "primeira-liga": {
+      "teams": 18,
+      "teamsWithPlayers": 18,
+      "players": 544
+    },
+    "libertadores": {
+      "teams": 5,
+      "teamsWithPlayers": 5,
+      "players": 130
+    },
+    "argentina": {
+      "teams": 8,
+      "teamsWithPlayers": 0,
+      "players": 0
+    },
+    "uruguay": {
+      "teams": 8,
+      "teamsWithPlayers": 0,
+      "players": 0
+    },
+    "ecuador": {
+      "teams": 8,
+      "teamsWithPlayers": 0,
+      "players": 0
+    },
+    "paraguay": {
+      "teams": 8,
+      "teamsWithPlayers": 0,
+      "players": 0
+    },
+    "chile": {
+      "teams": 8,
+      "teamsWithPlayers": 0,
+      "players": 0
+    },
+    "colombia": {
+      "teams": 8,
+      "teamsWithPlayers": 0,
+      "players": 0
+    },
+    "eredivisie": {
+      "teams": 18,
+      "teamsWithPlayers": 18,
+      "players": 576
+    },
+    "belgian-pro-league": {
+      "teams": 18,
+      "teamsWithPlayers": 0,
+      "players": 0
+    },
+    "scottish-premiership": {
+      "teams": 12,
+      "teamsWithPlayers": 0,
+      "players": 0
+    },
+    "swiss-super-league": {
+      "teams": 12,
+      "teamsWithPlayers": 0,
+      "players": 0
+    },
+    "super-lig": {
+      "teams": 18,
+      "teamsWithPlayers": 0,
+      "players": 0
+    },
+    "hnl-croatia": {
+      "teams": 10,
+      "teamsWithPlayers": 0,
+      "players": 0
+    }
+  },
+  "nextStep": "Complete each competition as a whole. Verify every roster against official club/league/UEFA sources; do not mark a league complete based only on player count."
+}
