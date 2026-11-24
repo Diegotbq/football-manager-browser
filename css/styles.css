@@ -5,3 +5,14 @@
 @media(max-width:620px){.app-shell{display:block}.sidebar{width:100%;padding:14px}.brand{padding:0 5px 14px}.club-chip{margin-bottom:12px}nav{grid-template-columns:repeat(3,1fr);gap:3px}.nav-item{padding:10px 4px;justify-content:center;flex-direction:column;gap:4px;font-size:9px}.nav-item span{white-space:nowrap}.sidebar-footer{display:none}.main-content{padding:23px 14px}.topbar{align-items:flex-start;gap:15px;flex-direction:column}.top-actions{width:100%;justify-content:space-between}.span-3,.span-4,.span-5,.span-7,.span-8{grid-column:span 12}.metric{font-size:24px}}
 
 .match-setup{display:grid;gap:16px;max-width:650px}.match-setup label{font-size:12px;color:var(--muted)}.match-setup select{background:#0d1727;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:14px;font:inherit}.live-match{background:linear-gradient(135deg,#172b36,#142033);padding:24px}.match-status{text-align:center;color:var(--green);font-size:10px;font-weight:900;letter-spacing:2px}.scoreboard{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;padding:26px 0}.score-team{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}.score-team strong{font-size:14px}.score-team span{font:800 42px Manrope}.score-clock{font:800 20px Manrope;color:var(--green)}.match-controls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.speed-btn{background:#24364d;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:10px 14px;cursor:pointer}.speed-btn.selected{background:var(--green);color:#14210e;font-weight:800}.events-card{margin-top:16px}.match-events{max-height:380px;overflow:auto}.match-event{display:flex;gap:14px;padding:12px 4px;border-bottom:1px solid var(--line);font-size:12px}.match-event strong{color:var(--green);min-width:30px}.match-event:last-child{border:0}
+
+
+.lineup-card,.substitution-card{display:grid;gap:16px}
+.lineup-grid,.bench-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.lineup-slot{display:grid;gap:6px;color:var(--muted);font-size:11px}
+.lineup-slot select,.substitution-controls select{width:100%;min-width:0;background:#0d1727;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:11px;font:inherit}
+.substitution-controls{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end}
+.substitution-controls label{display:grid;gap:6px;color:var(--muted);font-size:11px}
+.match-squads{margin-top:16px}
+.match-squads h2{font:700 15px Manrope;margin:0 0 12px}
+@media(max-width:620px){.lineup-grid,.bench-grid{grid-template-columns:1fr}.substitution-controls{grid-template-columns:1fr}.substitution-controls .primary-btn{width:100%}}
