@@ -132,8 +132,8 @@ for (const [leagueId, entry] of Object.entries(leagues)) {
     typeof player.identitySource.sourceUrl === "string" &&
     player.identitySource.sourceUrl.startsWith("https://www.laliga.com/")
   ).length;
-  // A cobertura de metadados é calculada sobre a coleção principal de jogadores;
-  // os espelhos dos elencos dos clubes não são somados novamente.
+  // A cobertura de metadados é calculada por jogador único na coleção principal;
+  // os espelhos dos elencos dos clubes não entram novamente na contagem.
   entry.metadataCompleteness = {
     playerRecords: leaguePlayers.length,
     missing,
