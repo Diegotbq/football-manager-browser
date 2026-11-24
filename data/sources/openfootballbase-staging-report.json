@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-24",
+  "source": {
+    "name": "OpenFootballBase-Data",
+    "release": "data-1.24.6",
+    "releaseDate": "2026-11-23",
+    "archiveSha256": "16539db3ce2b28ef3c0e4500ac31c24d90995a02eafab57daf4cef8b6b8680f9",
+    "license": "CC BY-SA 4.0 for Wikipedia-derived squad data; Wikidata fields CC0"
+  },
+  "season": "2026/27",
+  "workflowRun": {
+    "id": 45430410835,
+    "url": "https://github.com/Diegotbq/football-manager-browser/actions/runs/45430410835",
+    "result": "success",
+    "artifactId": 14936949473,
+    "artifactName": "openfootballbase-candidates-2026-27",
+    "artifactExpiresAt": "2026-12-08T15:52:01Z"
+  },
+  "totals": {
+    "competitions": 17,
+    "sourceClubs": 210,
+    "candidateRows": 6231,
+    "rowsWithCompleteBasicFieldsForManualReview": 5055
+  },
+  "clubReconciliation": {
+    "exactNormalizedNameMatchesRequiringManualReview": 156,
+    "approximateSuggestionsRequiringManualReview": 5,
+    "unmatched": 49,
+    "automaticTeamAssignments": 0
+  },
+  "status": "staging-only-not-imported",
+  "interpretation": [
+    "5.055 significa que os campos básicos usados pelo pipeline estão preenchidos e a linha pode entrar em revisão; não significa que o jogador ou o vínculo atual estejam confirmados por fonte oficial.",
+    "As 156 correspondências são normalizações de nomes restritas à mesma liga; todas ainda exigem revisão.",
+    "As 5 sugestões aproximadas são apenas pistas de revisão; não recebem teamId.",
+    "Os 49 clubes sem correspondência não foram associados a nenhuma equipe.",
+    "Nenhum jogador foi importado para database.json e nenhuma liga foi declarada completa."
+  ],
+  "ci": {
+    "workflowRunId": 45430559257,
+    "url": "https://github.com/Diegotbq/football-manager-browser/actions/runs/45430559257",
+    "result": "success",
+    "pythonStagingTests": 10,
+    "leagueReadinessRegressionTests": 5,
+    "databaseReadinessAudit": "success"
+  }
+}
