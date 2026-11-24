@@ -78,8 +78,23 @@ async function init() {
       });
     }
 
-    state.view = "club-selection";
-    renderClubSelection();
+    let savedClubId = null;
+    try { savedClubId = localStorage.getItem("fmb-selected-club"); } catch (_) {}
+    const savedClub = savedClubId
+      ? state.db.teams.find(t => String(t.id) === String(savedClubId))
+      : null;
+
+    if (savedClub) {
+      state.selectedClubId = savedClub.id;
+      state.db.userClubId = savedClub.id;
+      const clubName = $("#club-name");
+      if (clubName) clubName.textContent = savedClub.name;
+      state.view = "dashboard";
+      render();
+    } else {
+      state.view = "club-selection";
+      renderClubSelection();
+    }
 
   } catch (error) {
     const root = $("#view-root");
@@ -112,6 +127,7 @@ function selectClub(clubId) {
 
   state.selectedClubId = club.id;
   state.db.userClubId = club.id;
+  try { localStorage.setItem("fmb-selected-club", String(club.id)); } catch (_) {}
   state.view = "dashboard";
 
   const clubName = $("#club-name");
