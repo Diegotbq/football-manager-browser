@@ -29,6 +29,21 @@ class EnrichRosterMetadataTests(unittest.TestCase):
         self.assertEqual(report["nationalitiesFilled"], 1)
         self.assertEqual(len(result["players"]), 1)
 
+    def test_unrecognized_nationality_does_not_block_precise_age_fill(self):
+        player = {"id": "p1", "name": "Player One", "age": None, "nationality": None}
+        db = {"teams": [{"id": "t1", "name": "Team", "leagueId": "league",
+                         "players": [dict(player)]}], "players": [dict(player)]}
+        staging = {"season": "2026/27", "candidates": [{
+            "name": "Player One", "sourcePlayerQid": "Q1", "age": 25,
+            "nationality": "Vlag van Brazilië", "eligibleForManualReview": True,
+            "clubMapping": {"status": "exact-name-match-review-required", "teamId": "t1"}
+        }]}
+        result, report = enrich(db, staging)
+        self.assertEqual(result["players"][0]["age"], 25)
+        self.assertIsNone(result["players"][0]["nationality"])
+        self.assertEqual(report["agesFilled"], 1)
+        self.assertEqual(report["nationalitiesFilled"], 0)
+
     def test_never_overwrites_existing_metadata(self):
         player = {"id": "p1", "name": "Player One", "age": 24, "nationality": "ARG"}
         db = {"teams": [{"id": "t1", "name": "Team", "leagueId": "league",
