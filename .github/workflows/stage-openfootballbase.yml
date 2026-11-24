@@ -59,7 +59,7 @@ jobs:
             --data-dir /tmp/openfootballbase \
             --season "$STAGING_SEASON" \
             --as-of "$STAGING_AS_OF" \
-            --database database.json \\
+            --database database.json \
             --out data/staging/openfootballbase-candidates.json
           python - <<'PY'
           import json
