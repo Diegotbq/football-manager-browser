@@ -14,7 +14,8 @@ const state = {
   academyProspects: [],
   scoutingReports: [],
   playerAttributes: {},
-  savedLineups: {}
+  savedLineups: {},
+  playerConditions: {}
 };
 
 const $ = selector => document.querySelector(selector);
@@ -279,6 +280,7 @@ function filterClubChoices() {
 
 function advanceDay() {
   state.day.setDate(state.day.getDate() + 1);
+  recoverPlayerConditions();
   processLoanReturns();
   processScouting();
   if (state.day.getDay() === 1) {
@@ -481,14 +483,15 @@ function renderSquad() {
       <p class="subtle">Folha salarial estimada: ${money(totalWage)} por semana. Os seis atributos são estimativas de jogo, distribuídas conforme a posição — não são estatísticas oficiais. Treinos podem melhorá-los.</p>
       <div style="overflow-x:auto">
         <table class="table">
-          <thead><tr><th>JOGADOR</th><th>POS</th><th>IDADE</th><th>OVR</th><th>VELOC.</th><th>FINAL.</th><th>PASSE</th><th>DRIBLE</th><th>DEFESA</th><th>FÍSICO</th><th>SALÁRIO/SEM.</th><th>CONTRATO ATÉ</th><th>TREINO</th><th>AÇÃO</th></tr></thead>
+          <thead><tr><th>JOGADOR</th><th>POS</th><th>IDADE</th><th>OVR</th><th>CONDIÇÃO</th><th>AMARELOS</th><th>VELOC.</th><th>FINAL.</th><th>PASSE</th><th>DRIBLE</th><th>DEFESA</th><th>FÍSICO</th><th>SALÁRIO/SEM.</th><th>CONTRATO ATÉ</th><th>TREINO</th><th>AÇÃO</th></tr></thead>
           <tbody>
             ${roster.map(p=>{
               const c=getPlayerContract(p);
               const a=getPlayerAttributes(p);
+              const condition=getPlayerCondition(p);
               return `<tr>
                 <td class="club-name">${p.name}</td><td>${p.position||"—"}</td>
-                <td>${p.age==null?"—":p.age}</td><td class="positive">${p.overall||"—"}</td>
+                <td>${p.age==null?"—":p.age}</td><td class="positive">${p.overall||"—"}</td><td>${conditionLabel(p)} · ${condition.fitness}%</td><td>${condition.yellowCards}/5</td>
                 <td>${a.pace}</td><td>${a.shooting}</td><td>${a.passing}</td><td>${a.dribbling}</td><td>${a.defending}</td><td>${a.physical}</td>
                 <td>${money(c.weeklyWage)}</td><td>${new Date(c.expiresAt+"T12:00:00").toLocaleDateString("pt-BR")}</td>
                 <td><button class="secondary-btn" onclick="trainPlayer('${p.id}')">TREINAR</button></td>
@@ -714,7 +717,8 @@ function saveTransferCareer() {
       academyProspects: state.academyProspects,
       scoutingReports: state.scoutingReports,
       playerAttributes: state.playerAttributes,
-      savedLineups: state.savedLineups
+      savedLineups: state.savedLineups,
+      playerConditions: state.playerConditions
     }));
   } catch (_) {
     alert("Não foi possível salvar a transferência neste dispositivo. Verifique o espaço disponível.");
@@ -742,6 +746,7 @@ function loadTransferCareer() {
     state.scoutingReports = Array.isArray(saved.scoutingReports) ? saved.scoutingReports : [];
     state.playerAttributes = saved.playerAttributes && typeof saved.playerAttributes === "object" ? saved.playerAttributes : {};
     state.savedLineups = saved.savedLineups && typeof saved.savedLineups === "object" ? saved.savedLineups : {};
+    state.playerConditions = saved.playerConditions && typeof saved.playerConditions === "object" ? saved.playerConditions : {};
     state.academyProspects.forEach(p => {
       if (!state.db.players.some(existing => String(existing.id) === String(p.id))) state.db.players.push(p);
       const team = state.db.teams.find(t => String(t.id) === String(p.teamId));
@@ -756,9 +761,40 @@ function loadTransferCareer() {
     state.scoutingReports = [];
     state.playerAttributes = {};
     state.savedLineups = {};
+    state.playerConditions = {};
   }
 }
 
+function getPlayerCondition(playerOrId) {
+  const id=typeof playerOrId==="object"?playerOrId?.id:playerOrId;
+  if(id==null)return {fitness:100,injuryDays:0,yellowCards:0,suspendedMatches:0};
+  if(!state.playerConditions[id])state.playerConditions[id]={fitness:100,injuryDays:0,yellowCards:0,suspendedMatches:0};
+  const c=state.playerConditions[id];c.fitness=Math.max(0,Math.min(100,Number(c.fitness??100)));c.injuryDays=Math.max(0,Number(c.injuryDays)||0);c.yellowCards=Math.max(0,Number(c.yellowCards)||0);c.suspendedMatches=Math.max(0,Number(c.suspendedMatches)||0);
+  return c;
+}
+function playerUnavailable(player) { const c=getPlayerCondition(player);return c.injuryDays>0||c.suspendedMatches>0; }
+function conditionLabel(player) { const c=getPlayerCondition(player);if(c.injuryDays>0)return "Lesionado · "+c.injuryDays+" dia(s)";if(c.suspendedMatches>0)return "Suspenso · "+c.suspendedMatches+" jogo(s)";if(c.fitness<45)return "Muito cansado";if(c.fitness<70)return "Cansado";return "Disponível"; }
+function recoverPlayerConditions() {
+  state.db.players.forEach(p=>{const c=getPlayerCondition(p);if(c.injuryDays>0)c.injuryDays--;else c.fitness=Math.min(100,c.fitness+4);});
+  saveTransferCareer();
+}
+function applyMatchConditionEffects(m) {
+  if(m.minute%5===0){
+    const managed=String(state.db.userClubId||state.selectedClubId),homeManaged=String(m.homeId)===managed;
+    const ids=[{teamId:m.homeId,lineup:homeManaged?m.lineup:m.aiLineup},{teamId:m.awayId,lineup:homeManaged?m.aiLineup:m.lineup}];
+    ids.forEach(side=>(side.lineup||[]).forEach(id=>{const c=getPlayerCondition(id);c.fitness=Math.max(5,c.fitness-(m.instructions?.tempo==="fast"?3:2)-(m.instructions?.pressing==="high"?1:0));}));
+  }
+  const managed=String(state.db.userClubId||state.selectedClubId),sides=[{teamId:m.homeId,ids:String(m.homeId)===managed?m.lineup:m.aiLineup},{teamId:m.awayId,ids:String(m.awayId)===managed?m.lineup:m.aiLineup}];
+  sides.forEach(side=>{const ids=side.ids||[];if(!ids.length)return;
+    if(Math.random()<0.00045){const id=ids[Math.floor(Math.random()*ids.length)],p=state.db.players.find(x=>String(x.id)===String(id));if(p){const days=3+Math.floor(Math.random()*19);getPlayerCondition(p).injuryDays=days;m.events.unshift({minute:m.minute,text:"🚑 "+p.name+" sente uma lesão e ficará fora por "+days+" dias."});}}
+    if(Math.random()<0.008){const id=ids[Math.floor(Math.random()*ids.length)],p=state.db.players.find(x=>String(x.id)===String(id));if(p){const condition=getPlayerCondition(p);condition.yellowCards++;m.events.unshift({minute:m.minute,text:"🟨 Cartão amarelo para "+p.name+"."});if(condition.yellowCards>=5){condition.yellowCards=0;condition.suspendedMatches=Math.max(condition.suspendedMatches,1);m.events.unshift({minute:m.minute,text:"⛔ "+p.name+" atingiu cinco amarelos e está suspenso por uma partida."});}}}
+    if(Math.random()<0.00025){const id=ids[Math.floor(Math.random()*ids.length)],p=state.db.players.find(x=>String(x.id)===String(id));if(p){getPlayerCondition(p).suspendedMatches=Math.max(getPlayerCondition(p).suspendedMatches,2);m.sentOffIds=m.sentOffIds||[];m.sentOffIds.push(String(p.id));m.events.unshift({minute:m.minute,text:"🟥 Cartão vermelho! "+p.name+" expulso e suspenso por dois jogos."});}}
+  });
+}
+function finishMatchSuspensions(m) {
+  const teams=[m.homeId,m.awayId];
+  teams.forEach(teamId=>state.db.players.filter(p=>String(p.teamId)===String(teamId)).forEach(p=>{const c=getPlayerCondition(p);if(c.suspendedMatches>0&&!m.sentOffIds?.includes(String(p.id)))c.suspendedMatches=Math.max(0,c.suspendedMatches-1);}));
+}
 function getPlayerAttributes(player) {
   if (!player) return {pace:50,shooting:50,passing:50,dribbling:50,defending:50,physical:50};
   if (state.playerAttributes[player.id]) return state.playerAttributes[player.id];
@@ -1095,7 +1131,7 @@ const POSITION_ALIASES = {
   LW:["LW","LM","WF"],RW:["RW","RM","WF"],ST:["ST","CF","ATA","SS"]
 };
 function getLineupForFormation(teamId, formation) {
-  const players=state.db.players.filter(p=>String(p.teamId)===String(teamId)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));
+  const players=state.db.players.filter(p=>String(p.teamId)===String(teamId)&&!playerUnavailable(p)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));
   const slots=FORMATIONS[formation]||FORMATIONS["4-3-3"],used=new Set(),starters=[];
   slots.forEach(([,role])=>{
     const aliases=POSITION_ALIASES[role]||[role];
@@ -1107,7 +1143,7 @@ function getLineupForFormation(teamId, formation) {
 }
 function getLineup(teamId) {
   const saved=state.savedLineups[String(teamId)];
-  const players=state.db.players.filter(p=>String(p.teamId)===String(teamId));
+  const players=state.db.players.filter(p=>String(p.teamId)===String(teamId)&&!playerUnavailable(p));
   if(saved&&Array.isArray(saved.starters)){
     const valid=saved.starters.filter(id=>players.some(p=>String(p.id)===String(id)));
     if(valid.length===Math.min(11,players.length)){
@@ -1185,7 +1221,8 @@ function teamStrength(teamId) {
   const skills=chosen.reduce((sum,p)=>{const a=getPlayerAttributes(p);return sum+(a.passing+a.physical+a.defending+a.shooting+a.pace+a.dribbling)/6;},0)/chosen.length;
   const roles=chosen.filter(p=>String(p.position||"").toUpperCase()!=="").length;
   const tactical=isManaged?tacticalModifier(m.instructions):0;
-  return base*0.82+skills*0.15+(roles/chosen.length)*3+tactical;
+  const fitness=chosen.reduce((sum,p)=>sum+getPlayerCondition(p).fitness,0)/chosen.length;
+  return base*0.82+skills*0.15+(roles/chosen.length)*3+tactical+(fitness-100)*0.055;
 }
 function startMatch() {
   const opponentId=$("#match-opponent")?.value;
@@ -1212,11 +1249,11 @@ function kickoffMatch() {
   const m=state.match;if(!m||!m.setup)return;
   const starters=[...document.querySelectorAll("[data-xi]")].map(x=>x.value).filter(Boolean);
   const available=state.db.players.filter(p=>String(p.teamId)===String(state.db.userClubId||state.selectedClubId)).length;
-  const required=Math.min(11,available);
+  const required=Math.min(11,state.db.players.filter(p=>String(p.teamId)===String(state.db.userClubId||state.selectedClubId)&&!playerUnavailable(p)).length);
   if(required===0){alert("Este clube ainda não tem jogadores cadastrados no banco de dados.");return;}
   if(starters.length!==required||new Set(starters).size!==required){alert("Selecione "+required+" titulares diferentes.");return;}
-  const bench=[...document.querySelectorAll("[data-sub]")].map(x=>x.value).filter(Boolean).filter(id=>!starters.includes(id));
-  m.lineup=starters;m.bench=[...new Set(bench)].slice(0,7);const opponentId=String(m.homeId)===String(state.db.userClubId||state.selectedClubId)?m.awayId:m.homeId;const opponentPlayers=state.db.players.filter(p=>String(p.teamId)===String(opponentId)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));m.aiLineup=opponentPlayers.slice(0,11).map(p=>p.id);m.aiBench=opponentPlayers.slice(11,18).map(p=>p.id);m.aiSubstitutions=[];m.aiTactics={mentality:"balanced",pressing:"medium",defensiveLine:"standard",tempo:"normal",style:"balanced"};m.aiLastTacticChange=0;m.setup=false;m.paused=false;
+  const bench=[...document.querySelectorAll("[data-sub]")].map(x=>x.value).filter(Boolean).filter(id=>!starters.includes(id)&&!playerUnavailable(state.db.players.find(p=>String(p.id)===String(id))));
+  m.lineup=starters;m.bench=[...new Set(bench)].slice(0,7);const opponentId=String(m.homeId)===String(state.db.userClubId||state.selectedClubId)?m.awayId:m.homeId;const opponentPlayers=state.db.players.filter(p=>String(p.teamId)===String(opponentId)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));const eligibleOpponent=opponentPlayers.filter(p=>!playerUnavailable(p));m.aiLineup=eligibleOpponent.slice(0,11).map(p=>p.id);m.aiBench=eligibleOpponent.slice(11,18).map(p=>p.id);m.aiSubstitutions=[];m.aiTactics={mentality:"balanced",pressing:"medium",defensiveLine:"standard",tempo:"normal",style:"balanced"};m.aiLastTacticChange=0;m.sentOffIds=[];m.setup=false;m.paused=false;
   state.savedLineups[String(state.db.userClubId||state.selectedClubId)]={formation:m.formation||"4-3-3",starters:[...m.lineup],bench:[...m.bench],instructions:{...(m.instructions||{})}};saveTransferCareer();
   m.events.unshift({minute:0,text:"Escalação confirmada. Começa a partida!"});runMatchClock();renderMatch();
 }
@@ -1260,6 +1297,7 @@ function tickMatch() {
   const m=state.match;if(!m||m.paused||m.finished)return;
   m.minute++;
   runOpponentAI();
+  applyMatchConditionEffects(m);
   const hs=teamStrength(m.homeId),as=teamStrength(m.awayId),total=Math.max(1,hs+as);
   const managedClub=String(state.db.userClubId||state.selectedClubId),tacticalBias=tacticalModifier(m.instructions);
   const homeBias=String(m.homeId)===managedClub?tacticalBias:tacticalModifier(m.aiTactics),awayBias=String(m.awayId)===managedClub?tacticalBias:tacticalModifier(m.aiTactics);
@@ -1269,7 +1307,7 @@ function tickMatch() {
   else if(Math.random()<awayChance){m.awayScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.awayName+"!"});}
   else if(Math.random()<0.11){const notes=["Boa chegada ao ataque.","Finalização defendida pelo goleiro.","A defesa afasta o perigo.","Bola recuperada no meio-campo.","Cobrança de falta para a área.","A equipe pressiona a saída de bola.","O time troca passes e controla o ritmo.","Contra-ataque em velocidade!"];m.events.unshift({minute:m.minute,text:notes[Math.floor(Math.random()*notes.length)]});}
   if(m.minute===45)m.events.unshift({minute:45,text:"Intervalo! Fim do primeiro tempo."});
-  if(m.minute>=90){m.minute=90;m.finished=true;m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:m.fixtureDate || dateLabel(state.day),fixtureId:m.fixtureId || null,competition:m.competition || "Amistoso",round:m.round || null});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}}clearInterval(state.matchTimer);state.matchTimer=null;}
+  if(m.minute>=90){m.minute=90;m.finished=true;finishMatchSuspensions(m);saveTransferCareer();m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:m.fixtureDate || dateLabel(state.day),fixtureId:m.fixtureId || null,competition:m.competition || "Amistoso",round:m.round || null});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}}clearInterval(state.matchTimer);state.matchTimer=null;}
   if(state.view === "match") renderMatch();
 }
 function pauseMatch() {
@@ -1292,7 +1330,7 @@ function renderMatch() {
     setPage("Central de Partidas",`<p class="view-intro">Escolha um adversário e prepare sua equipe.</p><article class="card match-setup"><div class="section-head"><h2>Preparar partida</h2><span class="tag">Simulação</span></div><label for="match-opponent">Adversário</label><select id="match-opponent">${opponents.map(t=>`<option value="${t.id}">${t.name}</option>`).join("")}</select><button class="primary-btn" onclick="startMatch()">PREPARAR PARTIDA</button></article>`);
     return;
   }
-  const roster=state.db.players.filter(p=>String(p.teamId)===String(state.db.userClubId||state.selectedClubId)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));
+  const roster=state.db.players.filter(p=>String(p.teamId)===String(state.db.userClubId||state.selectedClubId)&&!playerUnavailable(p)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));
   const byId=id=>state.db.players.find(p=>String(p.id)===String(id));
   if(m.setup){
     const slots=FORMATIONS[m.formation||"4-3-3"].slice(0,Math.min(11,roster.length));
