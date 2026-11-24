@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "data/approvals/openfootballbase-enrichment-2026-27.json"
+      - ".github/workflows/apply-roster-metadata.yml"
 
 permissions:
   contents: write
