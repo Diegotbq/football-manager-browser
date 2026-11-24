@@ -91,18 +91,29 @@ const report = {
 };
 
 
-// Complementa a cobertura binária com um limiar mínimo operacional e
-// sinaliza que contagem não equivale a validação factual de cada atleta.
+// Aplica os mínimos operacionais específicos de cada competição.
+const defaultMinimum = 18;
+const minimumRosterSizeByLeague = {};
 for (const [leagueId, entry] of Object.entries(leagues)) {
   const leagueTeams = teams.filter(team => (team.leagueId || "sem-liga") === leagueId);
-  entry.clubsWithAtLeast18Players = leagueTeams.filter(team => (teamCounts.get(String(team.id)) || 0) >= 18).length;
-  entry.clubsBelow18Players = leagueTeams.filter(team => (teamCounts.get(String(team.id)) || 0) < 18).length;
+  const minimum = Math.max(1, Number(db.meta?.leagueMinimumRosterSizes?.[leagueId] || defaultMinimum));
+  minimumRosterSizeByLeague[leagueId] = minimum;
+  entry.minimumPlayersPerClub = minimum;
+  entry.clubsMeetingMinimum = leagueTeams.filter(team => (teamCounts.get(String(team.id)) || 0) >= minimum).length;
+  entry.clubsBelowMinimum = leagueTeams.filter(team => (teamCounts.get(String(team.id)) || 0) < minimum).length;
 }
-report.minimumRosterSize = 18;
+report.defaultMinimumRosterSize = defaultMinimum;
+report.minimumRosterSizeByLeague = minimumRosterSizeByLeague;
 report.clubsBelowMinimum = teams
-  .filter(team => (teamCounts.get(String(team.id)) || 0) < 18)
-  .map(team => ({ team: team.name, leagueId: team.leagueId || null, players: teamCounts.get(String(team.id)) || 0 }));
-report.rosterValidationNote = "O mínimo de 18 registros mede cobertura estrutural; não confirma, por si só, a inscrição atual ou a identidade real de cada jogador.";
+  .filter(team => (teamCounts.get(String(team.id)) || 0) <
+    Math.max(1, Number(db.meta?.leagueMinimumRosterSizes?.[team.leagueId] || defaultMinimum)))
+  .map(team => ({
+    team: team.name,
+    leagueId: team.leagueId || null,
+    players: teamCounts.get(String(team.id)) || 0,
+    minimum: Math.max(1, Number(db.meta?.leagueMinimumRosterSizes?.[team.leagueId] || defaultMinimum))
+  }));
+report.rosterValidationNote = "Os mínimos medem cobertura estrutural; não confirmam, por si só, a inscrição atual ou a identidade real de cada jogador.";
 
 const output = JSON.stringify(report, null, 2) + "\n";
 process.stdout.write(output);
