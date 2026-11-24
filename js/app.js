@@ -5,7 +5,8 @@ const state = {
   view: "club-selection",
   selectedClubId: null,
   match: null,
-  matchTimer: null
+  matchTimer: null,
+  matchHistory: []
 };
 
 const $ = selector => document.querySelector(selector);
@@ -33,6 +34,7 @@ async function init() {
     }
 
     state.db = await response.json();
+    try { state.matchHistory = JSON.parse(localStorage.getItem("fmb-match-history") || "[]"); } catch (_) { state.matchHistory = []; }
 
     const seasonLabel = document.querySelector(".club-chip small");
     if (seasonLabel) seasonLabel.textContent = `Temporada ${state.db.meta?.season || "2026/27"}`;
@@ -485,27 +487,27 @@ function renderMarket() {
 // CLASSIFICAÇÃO
 
 function renderTable() {
-  const rows = state.db.teams.map(t => ({
-    t,
-    pts: 0,
-    j: 0,
-    v: 0,
-    e: 0,
-    d: 0,
-    gp: 0,
-    gc: 0
-  }));
+  const rows = state.db.teams.map(t => ({t,pts:0,j:0,v:0,e:0,d:0,gp:0,gc:0}));
+  state.matchHistory.forEach(m => {
+    const home=rows.find(r=>String(r.t.id)===String(m.homeId));
+    const away=rows.find(r=>String(r.t.id)===String(m.awayId));
+    if(!home||!away)return;
+    home.j++;away.j++;home.gp+=m.homeScore;home.gc+=m.awayScore;away.gp+=m.awayScore;away.gc+=m.homeScore;
+    if(m.homeScore>m.awayScore){home.v++;away.d++;home.pts+=3;}
+    else if(m.homeScore<m.awayScore){away.v++;home.d++;away.pts+=3;}
+    else {home.e++;away.e++;home.pts++;away.pts++;}
+  });
+  rows.sort((a,b)=>b.pts-a.pts||(b.gp-b.gc)-(a.gp-a.gc)||b.gp-a.gp||a.t.name.localeCompare(b.t.name,"pt-BR"));
 
   setPage("Tabela", `
     <p class="view-intro">
-      Classificação de demonstração.
-      Os resultados serão preenchidos pelo motor de partidas.
+      Classificação atualizada com os resultados das partidas disputadas nesta carreira.
     </p>
 
     <div class="card">
       <div class="section-head">
-        <h2>Clubes cadastrados</h2>
-        <span class="tag">Pré-temporada</span>
+        <h2>Classificação da carreira</h2>
+        <span class="tag">${state.matchHistory.length} partidas registradas</span>
       </div>
 
       <table class="table">
@@ -528,12 +530,12 @@ function renderTable() {
               <tr>
                 <td>${i + 1}</td>
                 <td class="club-name">${r.t.name}</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="positive">0</td>
+                <td>${r.j}</td>
+                <td>${r.v}</td>
+                <td>${r.e}</td>
+                <td>${r.d}</td>
+                <td>${r.gp-r.gc}</td>
+                <td class="positive">${r.pts}</td>
               </tr>
             `).join("")
           }
@@ -629,7 +631,7 @@ function tickMatch() {
   else if(Math.random()<0.018+(as/total)*0.018){m.awayScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.awayName+"!"});}
   else if(Math.random()<0.11){const notes=["Boa chegada ao ataque.","Finalização defendida pelo goleiro.","A defesa afasta o perigo.","Bola recuperada no meio-campo.","Cobrança de falta para a área."];m.events.unshift({minute:m.minute,text:notes[Math.floor(Math.random()*notes.length)]});}
   if(m.minute===45)m.events.unshift({minute:45,text:"Intervalo! Fim do primeiro tempo."});
-  if(m.minute>=90){m.minute=90;m.finished=true;m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});clearInterval(state.matchTimer);state.matchTimer=null;}
+  if(m.minute>=90){m.minute=90;m.finished=true;m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:dateLabel(state.day)});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}}clearInterval(state.matchTimer);state.matchTimer=null;}
   if(state.view === "match") renderMatch();
 }
 function pauseMatch() {
