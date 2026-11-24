@@ -545,8 +545,15 @@ function renderMarket() {
 // CLASSIFICAÇÃO
 
 function renderTable() {
-  const rows = state.db.teams.map(t => ({t,pts:0,j:0,v:0,e:0,d:0,gp:0,gc:0}));
+  const currentClub = userClub();
+  const currentLeagueId = currentClub?.leagueId;
+  const leagueTeams = currentLeagueId
+    ? state.db.teams.filter(t => t.leagueId === currentLeagueId)
+    : state.db.teams;
+  const leagueTeamIds = new Set(leagueTeams.map(t => String(t.id)));
+  const rows = leagueTeams.map(t => ({t,pts:0,j:0,v:0,e:0,d:0,gp:0,gc:0}));
   state.matchHistory.forEach(m => {
+    if (!leagueTeamIds.has(String(m.homeId)) || !leagueTeamIds.has(String(m.awayId))) return;
     const home=rows.find(r=>String(r.t.id)===String(m.homeId));
     const away=rows.find(r=>String(r.t.id)===String(m.awayId));
     if(!home||!away)return;
