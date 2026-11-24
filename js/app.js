@@ -447,31 +447,27 @@ function renderSquad() {
     (a, b) => b.overall - a.overall
   );
 
-  setPage("Elenco / Táticas", `
-    <p class="view-intro">
-      Jogadores do ${userClub().name}.
-    </p>
+  const squadContent = roster.length
+    ? `
+      <div class="card">
+        <div class="section-head">
+          <h2>Elenco principal</h2>
+          <span class="tag">${roster.length} jogadores</span>
+        </div>
 
-    <div class="card">
-      <div class="section-head">
-        <h2>Elenco principal</h2>
-        <span class="tag">${roster.length} jogadores</span>
-      </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Jogador</th>
+              <th>POS</th>
+              <th>IDADE</th>
+              <th>OVR</th>
+              <th>VALOR</th>
+            </tr>
+          </thead>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Jogador</th>
-            <th>POS</th>
-            <th>IDADE</th>
-            <th>OVR</th>
-            <th>VALOR</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          ${
-            roster.map(p => `
+          <tbody>
+            ${roster.map(p => `
               <tr>
                 <td class="club-name">${p.name}</td>
                 <td>${p.position}</td>
@@ -479,11 +475,30 @@ function renderSquad() {
                 <td class="positive">${p.overall}</td>
                 <td>${money(p.marketValue)}</td>
               </tr>
-            `).join("")
-          }
-        </tbody>
-      </table>
-    </div>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    `
+    : `
+      <div class="card">
+        <div class="section-head">
+          <h2>Elenco em atualização</h2>
+          <span class="tag">Dados pendentes</span>
+        </div>
+        <p class="view-intro">
+          Ainda não cadastramos jogadores confirmados para este clube.
+          Estamos preparando a base de elencos reais. Nenhum jogador
+          fictício será apresentado como se fosse real.
+        </p>
+      </div>
+    `;
+
+  setPage("Elenco / Táticas", `
+    <p class="view-intro">
+      Jogadores do ${userClub().name}.
+    </p>
+    ${squadContent}
   `);
 }
 
