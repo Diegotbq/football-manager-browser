@@ -1581,15 +1581,16 @@ function ensureCupCompetitions() {
     {id:"copa-del-rey",name:"Copa del Rey",leagueId:"la-liga"}
   ];
   const qualified=state.continentalQualifiers||{};
+  const europeanPool=state.db.leagues.find(l=>l.id==="champions-league");
   definitions.push(
     {id:"libertadores",name:"CONMEBOL Libertadores",leagueId:"brasileirao",qualifiedTeams:qualified.libertadores||[]},
     {id:"sudamericana",name:"CONMEBOL Sudamericana",leagueId:"brasileirao",qualifiedTeams:qualified.sudamericana||[]},
-    {id:"champions-league",name:"UEFA Champions League",leagueId:"premier-league",qualifiedTeams:qualified.champions||[]}
+    {id:"champions-league",name:"UEFA Champions League",leagueId:"premier-league",teamIds:europeanPool?.teams||[],qualifiedTeams:qualified.champions||[]}
   );
   definitions.forEach(def => {
     const league = state.db.leagues.find(l => l.id === def.leagueId);
     if (!league || !Array.isArray(league.teams) || league.teams.length < 2) return;
-    const participants = def.qualifiedTeams?.length ? [...def.qualifiedTeams] : [...league.teams];
+    const participants = def.qualifiedTeams?.length ? [...def.qualifiedTeams] : def.teamIds?.length ? [...def.teamIds] : [...league.teams];
     if(def.qualifiedTeams && def.qualifiedTeams.length<2)return;
     const seed = def.id.split("").reduce((sum,ch)=>sum+ch.charCodeAt(0),0);
     participants.sort((a,b)=>cupSeed(a,seed)-cupSeed(b,seed));
