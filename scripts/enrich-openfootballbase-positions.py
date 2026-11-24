@@ -154,6 +154,8 @@ def enrich_positions(staging: dict, fetcher=api_get, pause: float = 1.5, databas
         })
         labels = [position_labels[q] for q in target_qids if q in position_labels]
         specific, status = map_position_labels(labels)
+        if qid not in lookup_qid_set:
+            status = "not-looked-up-existing-or-duplicate"
         row["positionLookup"] = {
             "provider": "Wikidata",
             "property": "P413",
@@ -187,9 +189,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--database", type=Path, help="Evita consultar jogadores já existentes no banco")
     args = parser.parse_args()
     staging = json.loads(args.input.read_text(encoding="utf-8"))
-    result = enrich_positions(staging)
+    database = json.loads(args.database.read_text(encoding="utf-8")) if args.database else None
+    result = enrich_positions(staging, database=database)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({key: result[key] for key in (
