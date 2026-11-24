@@ -20,6 +20,7 @@ const counts = new Map();
 const ids = new Set();
 const duplicateIds = [];
 const invalidTeamLinks = [];
+const playerIdsByTeam = new Map();
 
 for (const player of players) {
   const id = String(player.id || "");
@@ -32,6 +33,32 @@ for (const player of players) {
     teamId: teamId || null
   });
   counts.set(teamId, (counts.get(teamId) || 0) + 1);
+  if (!playerIdsByTeam.has(teamId)) playerIdsByTeam.set(teamId, []);
+  playerIdsByTeam.get(teamId).push(id);
+}
+
+const squadReferenceIssues = [];
+for (const team of teams) {
+  const teamId = String(team.id);
+  const expected = playerIdsByTeam.get(teamId) || [];
+  const actualPlayers = Array.isArray(team.players) ? team.players : [];
+  const actual = actualPlayers.map(player => String(
+    player && typeof player === "object" ? player.id || "" : player || ""
+  ));
+  const expectedSet = new Set(expected);
+  const actualSet = new Set(actual);
+  const missing = expected.filter(id => !actualSet.has(id));
+  const unexpected = actual.filter(id => !expectedSet.has(id));
+  const duplicateSquadIds = actual.filter((id, index) => id && actual.indexOf(id) !== index);
+  if (missing.length || unexpected.length || duplicateSquadIds.length) {
+    squadReferenceIssues.push({
+      teamId: team.id,
+      team: team.name,
+      missingFromSquad: missing.length,
+      unexpectedInSquad: unexpected.length,
+      duplicateInSquad: duplicateSquadIds.length
+    });
+  }
 }
 
 const leagues = new Map();
@@ -41,19 +68,22 @@ for (const team of teams) {
   leagues.get(leagueId).push({
     id: team.id,
     name: team.name,
-    players: counts.get(String(team.id)) || 0
+    players: counts.get(String(team.id)) || 0,
+    squadReferenceIssues: squadReferenceIssues.filter(issue => String(issue.teamId) === String(team.id)).length
   });
 }
 
 const results = [...leagues.entries()].map(([leagueId, clubs]) => {
   const minimum = Math.max(1, Number(db.meta?.leagueMinimumRosterSizes?.[leagueId] || defaultMinimum));
   const belowMinimum = clubs.filter(club => club.players < minimum);
-  const complete = belowMinimum.length === 0 &&
+  const squadIssues = clubs.reduce((sum, club) => sum + club.squadReferenceIssues, 0);
+  const complete = belowMinimum.length === 0 && squadIssues === 0 &&
     duplicateIds.length === 0 && invalidTeamLinks.length === 0;
   return {
     leagueId,
     clubs: clubs.length,
     clubsMeetingMinimum: clubs.length - belowMinimum.length,
+    squadReferenceIssues: squadIssues,
     minimumPlayersPerClub: minimum,
     complete,
     clubsBelowMinimum: belowMinimum
@@ -63,10 +93,11 @@ const results = [...leagues.entries()].map(([leagueId, clubs]) => {
 const report = {
   season: db.meta?.season || null,
   generatedAt: new Date().toISOString(),
-  rule: `Mínimo padrão de ${defaultMinimum} jogadores, com exceções por liga em meta.leagueMinimumRosterSizes; IDs únicos; vínculos válidos.`,
+  rule: `Mínimo padrão de ${defaultMinimum} jogadores, com exceções por liga em meta.leagueMinimumRosterSizes; IDs únicos; vínculos válidos; arrays team.players iguais ao cadastro mestre.`,
   integrity: {
     duplicatePlayerIds: duplicateIds.length,
-    invalidTeamLinks: invalidTeamLinks.length
+    invalidTeamLinks: invalidTeamLinks.length,
+    squadReferenceIssues: squadReferenceIssues.length
   },
   completeLeagues: results.filter(item => item.complete).map(item => item.leagueId),
   pendingLeagues: results.filter(item => !item.complete),
