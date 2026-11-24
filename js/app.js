@@ -284,12 +284,68 @@ function filterClubChoices() {
 
 // FUNÇÕES PRINCIPAIS
 
+// MERCADO MUNDIAL — negociações automáticas entre clubes controlados pela IA
+function processAITransfers() {
+  const today=state.day.toISOString().slice(0,10);
+  const windows=state.db.calendar?.transferWindows||[];
+  if(!windows.some(w=>today>=w.start&&today<=w.end))return;
+  if(Math.random()>0.42)return;
+  const userId=String(state.db.userClubId||state.selectedClubId||"");
+  const squads=state.db.teams.map(team=>({
+    team,
+    players:state.db.players.filter(p=>String(p.teamId)===String(team.id))
+  })).filter(x=>x.players.length>0&&String(x.team.id)!==userId);
+  const buyers=squads.filter(x=>x.players.length<26&&Number(x.team.budget||0)>500000);
+  const sellers=squads.filter(x=>x.players.length>15);
+  if(!buyers.length||!sellers.length)return;
+  const options=[];
+  buyers.forEach(buyer=>{
+    const average=buyer.players.reduce((n,p)=>n+Number(p.overall||0),0)/buyer.players.length;
+    const positions=["GK","CB","LB","RB","DM","CM","AM","LW","RW","ST"];
+    const counts=positions.map(pos=>({pos,count:buyer.players.filter(p=>p.position===pos).length}));
+    const need=counts.sort((a,b)=>a.count-b.count)[0]?.pos;
+    sellers.forEach(seller=>{
+      if(String(seller.team.id)===String(buyer.team.id))return;
+      seller.players.forEach(player=>{
+        if(player.position!==need||player.injured)return;
+        const value=Number(player.marketValue)||0;
+        const fee=Math.round(value*(1.02+Math.random()*0.22));
+        if(Number(buyer.team.budget||0)<fee)return;
+        const sellerAtPosition=seller.players.filter(p=>p.position===player.position).length;
+        if(sellerAtPosition<=1||seller.players.length<=16)return;
+        if(Number(player.overall||0)<average-4)return;
+        options.push({buyer,seller,player,fee,score:Number(player.overall||0)+Math.random()*8});
+      });
+    });
+  });
+  if(!options.length)return;
+  options.sort((a,b)=>b.score-a.score);
+  const shortlist=options.slice(0,Math.min(12,options.length));
+  const deal=shortlist[Math.floor(Math.random()*shortlist.length)];
+  const {buyer,seller,player,fee}=deal;
+  buyer.team.budget=Number(buyer.team.budget||0)-fee;
+  seller.team.budget=Number(seller.team.budget||0)+fee;
+  player.teamId=buyer.team.id;
+  state.db.teams.forEach(team=>{
+    if(!Array.isArray(team.players))return;
+    team.players=team.players.filter(p=>String(p.id)!==String(player.id));
+    if(String(team.id)===String(buyer.team.id))team.players.push(player);
+  });
+  state.transferHistory.push({
+    playerId:player.id,playerName:player.name,fromTeamId:seller.team.id,fromName:seller.team.name,
+    toTeamId:buyer.team.id,toName:buyer.team.name,fee,date:today,aiTransfer:true
+  });
+  if(state.transferHistory.length>250)state.transferHistory=state.transferHistory.slice(-250);
+  saveTransferCareer();
+}
+
 function advanceDay() {
   state.day.setDate(state.day.getDate() + 1);
   recoverPlayerConditions();
   processLoanReturns();
   processScouting();
   if (state.day.getDay() === 1) {
+    processAITransfers();
     const club = userClub();
     if (club) {
       const weeklyPayroll = state.db.players
