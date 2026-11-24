@@ -62,8 +62,7 @@ def enrich(database: dict, staging: dict) -> tuple[dict, dict]:
             candidate_counts["skipped_invalid_age"] += 1
             continue
         if not is_valid_nationality_code(candidate.get("nationality")):
-            candidate_counts["skipped_unrecognized_nationality"] += 1
-            continue
+            candidate_counts["source_nationality_not_code"] += 1
         key = normalize_player_name(candidate.get("name"))
         if not key:
             candidate_counts["skipped_empty_name"] += 1
@@ -112,11 +111,12 @@ def enrich(database: dict, staging: dict) -> tuple[dict, dict]:
                 filled_age = True
             elif target.get("age") != candidate["age"] and target is player:
                 report["existingValuesPreserved"] += 1
-            if is_missing(target.get("nationality")):
-                target["nationality"] = candidate["nationality"]
-                filled_nationality = True
-            elif target.get("nationality") != candidate["nationality"] and target is player:
-                report["existingValuesPreserved"] += 1
+            if is_valid_nationality_code(candidate.get("nationality")):
+                if is_missing(target.get("nationality")):
+                    target["nationality"] = candidate["nationality"]
+                    filled_nationality = True
+                elif target.get("nationality") != candidate["nationality"] and target is player:
+                    report["existingValuesPreserved"] += 1
             target["identitySource"] = {
                 "provider": "OpenFootballBase",
                 "season": staging.get("season"),
