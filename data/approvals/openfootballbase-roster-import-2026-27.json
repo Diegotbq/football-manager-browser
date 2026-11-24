@@ -1,0 +1,22 @@
+{
+  "approved": true,
+  "operation": "add-verified-real-players-to-existing-clubs",
+  "source": "OpenFootballBase",
+  "release": "data-1.24.6",
+  "season": "2026/27",
+  "ageCalculatedAsOf": "2026-11-24",
+  "clubMatchPolicy": "exact-normalized-club-name-within-same-league-only",
+  "identityPolicy": "unique-source-QID; exclude repeated identities and ambiguous names",
+  "metadataPolicy": "require-precise-birth-date-age-and-three-letter-ISO-nationality",
+  "positionPolicy": "use-specific-Wikidata-P413-position-when-available; otherwise-preserve-OpenFootballBase-DF-MF-FW-broad-category",
+  "rosterPolicy": "maximum-30-players-per-team-after-import; never-add-to-rosters-already-at-cap",
+  "duplicatePolicy": "do-not-add-any-name-already-present-anywhere-in-database",
+  "noExistingPlayerOverwrites": true,
+  "noExistingPlayerRemovals": true,
+  "noClubAdditions": true,
+  "preserveExistingPositions": true,
+  "preserveExistingOverallAndMarketValue": true,
+  "sourceAttribution": true,
+  "gameplayEstimatePolicy": "new-player-overall-and-market-value-are-explicit-gameplay-estimates",
+  "approvalRevision": 1
+}
