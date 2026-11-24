@@ -12,6 +12,8 @@ on:
       - "scripts/test_stage_openfootballbase.py"
       - "scripts/reconcile-openfootballbase.py"
       - "scripts/test_reconcile_openfootballbase.py"
+      - "scripts/enrich-roster-metadata.py"
+      - "scripts/test_enrich_roster_metadata.py"
       - "data/sources/identity-registers.json"
       - ".github/workflows/league-readiness.yml"
   pull_request:
@@ -44,6 +46,9 @@ jobs:
 
       - name: Run roster reconciliation unit tests
         run: python scripts/test_reconcile_openfootballbase.py
+
+      - name: Run metadata enrichment unit tests
+        run: python scripts/test_enrich_roster_metadata.py
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
