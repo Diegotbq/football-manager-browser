@@ -636,22 +636,32 @@ function renderTable() {
 
 // CALENDÁRIO
 
-function renderCalendar() {
+function renderCalendar(competitionFilter) {
   const windows = state.db.calendar?.transferWindows || [];
-  const fixtures = (state.db.calendar?.events || [])
-    .filter(e => e.competition === "Campeonato Brasileiro Série A")
+  const allFixtures = state.db.calendar?.events || [];
+  const competitions = [...new Set(allFixtures.map(e => e.competition).filter(Boolean))].sort();
+  const selectedCompetition = competitions.includes(competitionFilter)
+    ? competitionFilter
+    : (competitions[0] || "");
+  const fixtures = allFixtures
+    .filter(e => !selectedCompetition || e.competition === selectedCompetition)
     .sort((a,b) => (a.date || "9999-12-31").localeCompare(b.date || "9999-12-31") || a.round-b.round);
   const teamName = id => state.db.teams.find(t => String(t.id) === String(id))?.name || "Clube";
   const teamId = String(state.db.userClubId || state.selectedClubId || "");
   const teamFixtures = fixtures.filter(f => String(f.homeTeamId) === teamId || String(f.awayTeamId) === teamId);
   const played = id => state.matchHistory.find(m => m.fixtureId === id);
   const fixtureDate = f => f.date
-    ? new Date(`${f.date}T12:00:00`).toLocaleDateString("pt-BR",{day:"2-digit",month:"short"})
+    ? new Date(`${f.date}T12:00:00`).toLocaleDateString("pt-BR",{day:"2-digit",month:"short",year:"numeric"})
     : "Data a confirmar";
   setPage("Calendário", `
-    <p class="view-intro">Temporada ${state.db.meta.season} · Jogos oficiais do Brasileirão 2026. Os confrontos do seu clube podem ser disputados no motor de partidas.</p>
+    <p class="view-intro">Calendário da carreira · escolha uma competição para consultar os confrontos cadastrados e disputar os jogos do seu clube.</p>
     <div class="grid">
       <article class="card span-5">
+        <div class="section-head"><h2>Competições</h2><span class="tag">${competitions.length} cadastradas</span></div>
+        <label for="calendar-competition">Campeonato</label>
+        <select id="calendar-competition" onchange="renderCalendar(this.value)">
+          ${competitions.map(name => `<option value="${name.replace(/&/g,"&amp;").replace(/"/g,"&quot;")}" ${name === selectedCompetition ? "selected" : ""}>${name}</option>`).join("")}
+        </select>
         <div class="section-head"><h2>Janelas de transferências</h2></div>
         ${windows.length ? windows.map(w => `
           <div class="fixture"><div><strong>${w.name}</strong><div class="subtle">${w.start} até ${w.end}</div></div><span class="tag">Planejada</span></div>
@@ -659,13 +669,13 @@ function renderCalendar() {
         <div class="section-head"><h2>Jogos do seu clube</h2><span class="tag">${teamFixtures.length} partidas</span></div>
         ${teamFixtures.length ? teamFixtures.map(f => {
           const result = played(f.id);
-          return `<div class="fixture"><div><strong>${teamName(f.homeTeamId)} × ${teamName(f.awayTeamId)}</strong><div class="subtle">${f.round}ª rodada · ${fixtureDate(f)} · ${f.time || "horário a confirmar"}</div></div><span class="tag">${result ? result.homeScore + " × " + result.awayScore : "Pendente"}</span></div>`;
-        }).join("") : `<p class="subtle">O clube escolhido não participa desta competição.</p>`}
+          return `<div class="fixture"><div><strong>${teamName(f.homeTeamId)} × ${teamName(f.awayTeamId)}</strong><div class="subtle">${f.round}ª rodada · ${fixtureDate(f)}</div></div><span class="tag">${result ? result.homeScore + " × " + result.awayScore : "Pendente"}</span></div>`;
+        }).join("") : `<p class="subtle">Não há partidas cadastradas desta competição para o clube escolhido.</p>`}
       </article>
       <article class="card span-7">
-        <div class="section-head"><h2>Rodadas finais</h2><span class="tag">CBF · 2026</span></div>
-        <p class="subtle">Selecione “JOGAR” nos confrontos do seu clube. Os demais jogos aparecem como programação da competição.</p>
-        ${fixtures.map(f => {
+        <div class="section-head"><h2>${selectedCompetition || "Programação"}</h2><span class="tag">${fixtures.length} jogos</span></div>
+        <p class="subtle">Somente partidas presentes no banco de dados são exibidas. Jogos do seu clube podem ser disputados no simulador.</p>
+        ${fixtures.length ? fixtures.map(f => {
           const result = played(f.id);
           const mine = String(f.homeTeamId) === teamId || String(f.awayTeamId) === teamId;
           return `<div class="fixture">
@@ -675,7 +685,7 @@ function renderCalendar() {
             </div>
             ${result ? `<span class="tag">Concluído</span>` : mine ? `<button class="primary-btn" onclick="startFixture('${f.id}')">JOGAR</button>` : `<span class="tag">Programado</span>`}
           </div>`;
-        }).join("")}
+        }).join("") : `<div class="empty">Ainda não há partidas cadastradas para esta competição.</div>`}
       </article>
     </div>
   `);
