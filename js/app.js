@@ -1130,13 +1130,13 @@ function renderCalendar(competitionFilter) {
       </article>
       <article class="card span-7">
         <div class="section-head"><h2>${selectedCompetition || "Programação"}</h2><span class="tag">${fixtures.length} jogos</span></div>
-        <p class="subtle">Somente partidas presentes no banco de dados são exibidas. Jogos do seu clube podem ser disputados no simulador.</p>
+        <p class="subtle">Partidas oficiais cadastradas e calendário gerado para a carreira são exibidos separadamente. Os confrontos gerados seguem turno e returno, mas não representam datas oficiais. Jogos do seu clube podem ser disputados no simulador.</p>
         ${fixtures.length ? fixtures.map(f => {
           const result = played(f.id);
           const mine = String(f.homeTeamId) === teamId || String(f.awayTeamId) === teamId;
           return `<div class="fixture">
             <div><strong>${teamName(f.homeTeamId)} × ${teamName(f.awayTeamId)}</strong>
-              <div class="subtle">${f.round}ª rodada · ${fixtureDate(f)} · ${f.time || "horário a confirmar"} · ${f.stadium || "estádio a confirmar"}</div>
+              <div class="subtle">${f.round}ª rodada · ${fixtureDate(f)} · ${f.generated ? "Calendário de carreira" : (f.time || "horário a confirmar") + " · " + (f.stadium || "estádio a confirmar")}</div>
               ${result ? `<div class="positive">Resultado da sua carreira: ${result.homeScore} × ${result.awayScore}</div>` : ""}
             </div>
             ${result ? `<span class="tag">Concluído</span>` : mine ? `<button class="primary-btn" onclick="startFixture('${f.id}')">JOGAR</button>` : `<span class="tag">Programado</span>`}
