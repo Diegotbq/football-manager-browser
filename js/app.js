@@ -366,7 +366,7 @@ function playerRow(p) {
     <div class="player-row">
       <div>
         <strong>${p.name}</strong>
-        <small>${p.position} · ${p.age} anos</small>
+        <small>${p.position} · ${p.age == null ? "idade não informada" : p.age + " anos"}</small>
       </div>
       <span class="rating">${p.overall}</span>
       <span class="subtle">${money(p.marketValue)}</span>
@@ -409,7 +409,7 @@ function renderSquad() {
               <tr>
                 <td class="club-name">${p.name}</td>
                 <td>${p.position}</td>
-                <td>${p.age}</td>
+                <td>${p.age == null ? "—" : p.age}</td>
                 <td class="positive">${p.overall}</td>
                 <td>${money(p.marketValue)}</td>
               </tr>
