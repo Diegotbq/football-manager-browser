@@ -46,12 +46,12 @@ def apply(db, approval):
             if missing(target.get("age")):
                 target["age"] = age
                 report["agesFilled"] += 1
-            elif int(target["age"]) != age:
+            elif int(target["age"]) != age and target is player:
                 report["preservedExisting"] += 1
             if missing(target.get("nationality")):
                 target["nationality"] = row["nationality"]
                 report["nationalitiesFilled"] += 1
-            elif target["nationality"] != row["nationality"]:
+            elif target["nationality"] != row["nationality"] and target is player:
                 report["preservedExisting"] += 1
             target["identitySource"] = {
                 "provider": "LALIGA",
