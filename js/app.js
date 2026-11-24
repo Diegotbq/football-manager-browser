@@ -3,7 +3,9 @@ const state = {
   db: null,
   day: new Date("2026-07-01T12:00:00"),
   view: "club-selection",
-  selectedClubId: null
+  selectedClubId: null,
+  match: null,
+  matchTimer: null
 };
 
 const $ = selector => document.querySelector(selector);
@@ -250,7 +252,8 @@ function render() {
     squad: renderSquad,
     market: renderMarket,
     table: renderTable,
-    calendar: renderCalendar
+    calendar: renderCalendar,
+    match: renderMatch
   };
 
   const page = pages[state.view] || renderDashboard;
