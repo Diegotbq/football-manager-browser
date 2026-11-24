@@ -22,6 +22,7 @@ def reconcile(database: dict, staging: dict) -> dict:
     qid_rows: dict[str, list[dict]] = defaultdict(list)
     skipped_status = Counter()
     nationality_pairs = Counter()
+    missing_nationality_source_values = Counter()
     difference_examples = []
     for candidate in staging.get("candidates", []):
         mapping = candidate.get("clubMapping") or {}
@@ -75,6 +76,7 @@ def reconcile(database: dict, staging: dict) -> dict:
                     age_differences += 1
                 if existing_player.get("nationality") in (None, "", "—", "-"):
                     missing_nationality += 1
+                    missing_nationality_source_values[str(candidate.get("nationality"))] += 1
                 elif candidate.get("nationality") and existing_player.get("nationality") != candidate.get("nationality"):
                     nationality_differences += 1
                     nationality_pairs[f'{existing_player.get("nationality")} -> {candidate.get("nationality")}'] += 1
@@ -133,6 +135,7 @@ def reconcile(database: dict, staging: dict) -> dict:
         "skippedCandidateStatusCounts": dict(skipped_status),
         "duplicateSourceIdentityCount": len(duplicate_qids),
         "nationalityDifferencePairs": dict(nationality_pairs.most_common()),
+        "missingNationalitySourceValues": dict(missing_nationality_source_values.most_common()),
         "nationalityDifferenceExamples": difference_examples,
         "teams": team_reports,
     }
