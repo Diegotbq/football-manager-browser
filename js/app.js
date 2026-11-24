@@ -13,6 +13,7 @@ const state = {
   playerPromises: [],
   playerRequests: [],
   playerAgentDemands: [],
+  boardCareer: null,
   contracts: {},
   loanRecords: [],
   trainingRecords: {},
@@ -112,6 +113,7 @@ async function init() {
     if (savedClub) {
       state.selectedClubId = savedClub.id;
       state.db.userClubId = savedClub.id;
+      initializeBoardCareer(savedClub);
       ensureCupCompetitions();
       const clubName = $("#club-name");
       if (clubName) clubName.textContent = savedClub.name;
@@ -141,6 +143,71 @@ async function init() {
 
 // ESCOLHA DO CLUBE
 
+function initializeBoardCareer(club){
+  if(!club)return;
+  if(state.boardCareer&&String(state.boardCareer.clubId)===String(club.id)&&!state.boardCareer.fired)return;
+  const league=(state.db.leagues||[]).find(l=>l.id===club.leagueId&&l.type==="league");
+  const teams=league?(league.teams||[]).map(id=>state.db.teams.find(t=>String(t.id)===String(id))).filter(Boolean):[club];
+  const ranked=[...teams].sort((a,b)=>Number(b.reputation||0)-Number(a.reputation||0));
+  const reputationRank=Math.max(1,ranked.findIndex(t=>String(t.id)===String(club.id))+1);
+  const count=Math.max(1,teams.length);
+  const target=reputationRank<=2?Math.min(3,count):reputationRank<=Math.ceil(count*.35)?Math.max(3,Math.ceil(count*.3)):Math.max(1,Math.ceil(count*.65));
+  state.boardCareer={clubId:club.id,leagueId:league?.id||null,leagueName:league?.name||"Campeonato",targetPosition:target,confidence:65,fanSupport:65,lastConferenceDate:null,fired:false,review:"A diretoria espera uma temporada consistente."};
+  saveTransferCareer();
+}
+function getBoardLeaguePosition(){
+  const board=state.boardCareer,league=(state.db.leagues||[]).find(l=>l.id===board?.leagueId);
+  if(!league)return null;
+  const table=seasonStandings(league),index=table.findIndex(r=>String(r.id)===String(userClub()?.id));
+  return index<0?null:{position:index+1,total:table.length,points:table[index].pts};
+}
+function applyBoardMatchReview(match){
+  const board=state.boardCareer,club=userClub();if(!board||!club||String(board.clubId)!==String(club.id)||board.fired)return;
+  if(match.competition!==board.leagueName)return;
+  const isHome=String(match.homeId)===String(club.id),scored=Number(isHome?match.homeScore:match.awayScore),conceded=Number(isHome?match.awayScore:match.homeScore);
+  const opponent=state.db.teams.find(t=>String(t.id)===String(isHome?match.awayId:match.homeId));
+  const stronger=Number(opponent?.reputation||50)>Number(club.reputation||50)+8;
+  const change=scored>conceded?(stronger?5:3):scored===conceded?(stronger?2:-1):(stronger?-2:-5);
+  board.confidence=Math.max(0,Math.min(100,board.confidence+change));
+  board.fanSupport=Math.max(0,Math.min(100,board.fanSupport+(scored>conceded?4:scored===conceded?0:-4)));
+  board.review=scored>conceded?"A diretoria ficou satisfeita com a vitória.":scored===conceded?"A diretoria considerou o resultado apenas razoável.":"A diretoria está decepcionada com a derrota.";
+  if(board.confidence===0){board.fired=true;board.review="Você foi demitido após uma sequência de resultados abaixo das expectativas.";}
+  saveTransferCareer();
+}
+function holdPressConference(){
+  const board=state.boardCareer;if(!board||board.fired)return;
+  const today=state.day.toISOString().slice(0,10);
+  if(board.lastConferenceDate){
+    const elapsed=Math.floor((new Date(today+"T12:00:00")-new Date(board.lastConferenceDate+"T12:00:00"))/86400000);
+    if(elapsed<7){alert("Você já concedeu uma coletiva recentemente. Volte em "+(7-elapsed)+" dia(s).");return;}
+  }
+  const answer=prompt("COLETIVA DE IMPRENSA\n1 - Assumir a responsabilidade e prometer reação\n2 - Defender o elenco e pedir união\n3 - Cobrar publicamente uma resposta dos jogadores","1");
+  if(answer===null)return;
+  if(!["1","2","3"].includes(answer)){alert("Escolha 1, 2 ou 3.");return;}
+  if(answer==="1"){board.confidence=Math.min(100,board.confidence+3);board.fanSupport=Math.min(100,board.fanSupport+5);board.review="Você assumiu a responsabilidade e prometeu uma reação.";}
+  else if(answer==="2"){board.confidence=Math.min(100,board.confidence+2);board.fanSupport=Math.min(100,board.fanSupport+2);state.db.players.filter(p=>String(p.teamId)===String(userClub().id)).forEach(p=>state.playerMorale[p.id]=Math.min(100,getPlayerMorale(p)+3));board.review="Você protegeu o elenco e reforçou a união do grupo.";}
+  else{board.confidence=Math.max(0,board.confidence-2);board.fanSupport=Math.min(100,board.fanSupport+4);state.db.players.filter(p=>String(p.teamId)===String(userClub().id)).forEach(p=>state.playerMorale[p.id]=Math.max(0,getPlayerMorale(p)-2));board.review="A cobrança agradou parte da torcida, mas aumentou a pressão no vestiário.";}
+  board.lastConferenceDate=today;
+  if(board.confidence===0){board.fired=true;board.review="A diretoria encerrou seu trabalho após a coletiva.";}
+  saveTransferCareer();renderDashboard();
+}
+function returnToClubMarket(){
+  state.selectedClubId=null;state.db.userClubId=null;state.boardCareer=null;
+  try{localStorage.removeItem("fmb-selected-club");}catch(_){}
+  state.view="club-selection";renderClubSelection();
+}
+function renderBoardCareerPanel(){
+  const board=state.boardCareer;if(!board)return "";
+  const position=getBoardLeaguePosition();
+  if(board.fired)return '<article class="card span-12"><div class="section-head"><h2>📋 Fim de trabalho</h2><span class="tag">Demitido</span></div><p>'+board.review+'</p><button class="primary-btn" onclick="returnToClubMarket()">PROCURAR NOVO CLUBE</button></article>';
+  const confidence=Number(board.confidence||0),fans=Number(board.fanSupport||0);
+  const mood=value=>value>=75?"Excelente":value>=55?"Boa":value>=35?"Em alerta":"Crítica";
+  return '<article class="card span-12"><div class="section-head"><h2>🏛️ Diretoria e torcida</h2><span class="tag">'+mood(confidence)+' · '+confidence+'%</span></div>'+
+    '<div class="grid"><div class="card span-6"><div class="card-label">Confiança da diretoria</div><div class="metric">'+confidence+'%</div><div class="subtle">A confiança reage aos resultados do campeonato.</div></div>'+
+    '<div class="card span-6"><div class="card-label">Apoio da torcida</div><div class="metric">'+fans+'%</div><div class="subtle">'+mood(fans)+' · sentimento dos torcedores.</div></div></div>'+
+    '<div class="fixture"><div><strong>Objetivo da temporada</strong><div class="subtle">'+board.leagueName+': terminar entre os '+board.targetPosition+' primeiros</div></div><span class="tag">'+(position?"Atual: "+position.position+"º / "+position.total:"Sem jogos")+'</span></div>'+
+    '<p class="subtle">'+board.review+'</p><button class="primary-btn" onclick="holdPressConference()">🎙️ CONCEDER COLETIVA</button><p class="subtle">Coletivas disponíveis a cada 7 dias. Suas respostas afetam a confiança, a torcida e a moral do elenco.</p></article>';
+}
 function selectClub(clubId) {
   const club = state.db.teams.find(
     t => String(t.id) === String(clubId)
@@ -153,6 +220,7 @@ function selectClub(clubId) {
 
   state.selectedClubId = club.id;
   state.db.userClubId = club.id;
+  initializeBoardCareer(club);
   ensureCupCompetitions();
   try { localStorage.setItem("fmb-selected-club", String(club.id)); } catch (_) {}
   state.view = "dashboard";
@@ -622,6 +690,7 @@ function renderDashboard() {
 
   setPage("Dashboard", `
     <div class="grid">
+      ${renderBoardCareerPanel()}
 
       <article class="card span-3">
         <div class="card-label">Orçamento disponível</div>
@@ -988,6 +1057,7 @@ function saveTransferCareer() {
       playerPromises: state.playerPromises,
       playerRequests: state.playerRequests,
       playerAgentDemands: state.playerAgentDemands,
+      boardCareer: state.boardCareer,
       contracts: state.contracts,
       loanRecords: state.loanRecords,
       trainingRecords: state.trainingRecords,
@@ -1026,6 +1096,7 @@ function loadTransferCareer() {
     state.playerPromises = Array.isArray(saved.playerPromises) ? saved.playerPromises : [];
     state.playerRequests = Array.isArray(saved.playerRequests) ? saved.playerRequests : [];
     state.playerAgentDemands = Array.isArray(saved.playerAgentDemands) ? saved.playerAgentDemands : [];
+    state.boardCareer = saved.boardCareer && typeof saved.boardCareer === "object" ? saved.boardCareer : null;
     state.contracts = saved.contracts && typeof saved.contracts === "object" ? saved.contracts : {};
     state.loanRecords = Array.isArray(saved.loanRecords) ? saved.loanRecords : [];
     state.trainingRecords = saved.trainingRecords && typeof saved.trainingRecords === "object" ? saved.trainingRecords : {};
@@ -1815,7 +1886,7 @@ function tickMatch() {
   else if(Math.random()<awayChance){m.awayScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.awayName+"!"});}
   else if(Math.random()<0.11){const notes=["Boa chegada ao ataque.","Finalização defendida pelo goleiro.","A defesa afasta o perigo.","Bola recuperada no meio-campo.","Cobrança de falta para a área.","A equipe pressiona a saída de bola.","O time troca passes e controla o ritmo.","Contra-ataque em velocidade!"];m.events.unshift({minute:m.minute,text:notes[Math.floor(Math.random()*notes.length)]});}
   if(m.minute===45)m.events.unshift({minute:45,text:"Intervalo! Fim do primeiro tempo."});
-  if(m.minute>=90){m.minute=90;m.finished=true;finishMatchSuspensions(m);saveTransferCareer();m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:m.fixtureDate || dateLabel(state.day),fixtureId:m.fixtureId || null,competition:m.competition || "Amistoso",round:m.round || null,playerIds:[...(m.lineup||[])]});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}if(m.isCup)advanceCupTournaments();}clearInterval(state.matchTimer);state.matchTimer=null;}
+  if(m.minute>=90){m.minute=90;m.finished=true;finishMatchSuspensions(m);saveTransferCareer();m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:m.fixtureDate || dateLabel(state.day),fixtureId:m.fixtureId || null,competition:m.competition || "Amistoso",round:m.round || null,playerIds:[...(m.lineup||[])]});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}applyBoardMatchReview(state.matchHistory[state.matchHistory.length-1]);if(m.isCup)advanceCupTournaments();}clearInterval(state.matchTimer);state.matchTimer=null;}
   if(state.view === "match") renderMatch();
 }
 function pauseMatch() {
