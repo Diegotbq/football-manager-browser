@@ -1,0 +1,73 @@
+name: Stage OpenFootballBase candidates
+
+on:
+  workflow_dispatch:
+    inputs:
+      season:
+        description: "Temporada a preparar"
+        required: true
+        default: "2026/27"
+      as_of:
+        description: "Data de referência para calcular idades (YYYY-MM-DD)"
+        required: true
+        default: "2026-11-24"
+
+permissions:
+  contents: read
+
+jobs:
+  stage-candidates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download and verify pinned OpenFootballBase release
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 \
+            "https://github.com/florentfougeres/OpenFootballBase-Data/releases/download/data-1.24.6/openfootballbase-data.tar.gz" \
+            --output /tmp/openfootballbase-data.tar.gz
+          echo "16539db3ce2b28ef3c0e4500ac31c24d90995a02eafab57daf4cef8b6b8680f9  /tmp/openfootballbase-data.tar.gz" | sha256sum --check
+          mkdir -p /tmp/openfootballbase
+          tar -xzf /tmp/openfootballbase-data.tar.gz -C /tmp/openfootballbase
+          find /tmp/openfootballbase -maxdepth 3 -type f | head -40
+
+      - name: Install Parquet reader
+        run: python -m pip install duckdb
+
+      - name: Generate review-only candidate staging
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/stage-openfootballbase.py \
+            --data-dir /tmp/openfootballbase \
+            --season "${{ inputs.season }}" \
+            --as-of "${{ inputs.as_of }}" \
+            --out data/staging/openfootballbase-candidates.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("data/staging/openfootballbase-candidates.json").read_text())
+          print(json.dumps({
+              "status": report["status"],
+              "season": report["season"],
+              "candidateCount": report["candidateCount"],
+              "manualReviewEligibleCount": report["manualReviewEligibleCount"],
+              "competitions": report["coverage"]
+          }, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Upload review artifact (does not modify game database)
+        uses: actions/upload-artifact@v4
+        with:
+          name: openfootballbase-candidates-${{ inputs.season }}
+          path: data/staging/openfootballbase-candidates.json
+          if-no-files-found: error
+          retention-days: 14
