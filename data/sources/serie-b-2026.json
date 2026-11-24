@@ -30,5 +30,5 @@
   "remainingClubs": 0,
   "status": "20-of-20-official-team-pages-verified",
   "updatedAt": "2026-11-24",
-  "validationNote": "As 20 páginas oficiais da CBF foram localizadas. A listagem de atletas inclui registros históricos; importar apenas quem estiver com Clube Atual igual ao clube. Idades, posições e nacionalidades exigem validação em perfil oficial do atleta antes de cadastrar."
+  "validationNote": "20 páginas oficiais da CBF foram verificadas por consulta direta/indexação oficial, incluindo Athletic SAF (59896), Fortaleza SAF (63238), Londrina SAF (62726) e Vila Nova (20079). A listagem contém registros históricos: importar somente atletas cujo Clube Atual corresponda ao clube. Confirmar nome, posição, idade e nacionalidade em perfil individual oficial antes de inserir no database.json. Remover duplicatas de registros repetidos e não inferir posição/nacionalidade."
 }
