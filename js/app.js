@@ -1238,9 +1238,10 @@ function tickMatch() {
   const m=state.match;if(!m||m.paused||m.finished)return;
   m.minute++;
   const hs=teamStrength(m.homeId),as=teamStrength(m.awayId),total=Math.max(1,hs+as);
-  const managedHome=String(m.homeId)===String(state.db.userClubId||state.selectedClubId),bias=managedHome?tacticalModifier(m.instructions):0;
-  const homeChance=Math.max(0.008,Math.min(0.055,0.018+(hs/total)*0.018+bias*0.0015));
-  const awayChance=Math.max(0.008,Math.min(0.055,0.018+(as/total)*0.018-(managedHome?bias*0.001:0)));
+  const managedClub=String(state.db.userClubId||state.selectedClubId),tacticalBias=tacticalModifier(m.instructions);
+  const homeBias=String(m.homeId)===managedClub?tacticalBias:0,awayBias=String(m.awayId)===managedClub?tacticalBias:0;
+  const homeChance=Math.max(0.008,Math.min(0.055,0.018+(hs/total)*0.018+homeBias*0.0015));
+  const awayChance=Math.max(0.008,Math.min(0.055,0.018+(as/total)*0.018+awayBias*0.0015));
   if(Math.random()<homeChance){m.homeScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.homeName+"!"});}
   else if(Math.random()<awayChance){m.awayScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.awayName+"!"});}
   else if(Math.random()<0.11){const notes=["Boa chegada ao ataque.","Finalização defendida pelo goleiro.","A defesa afasta o perigo.","Bola recuperada no meio-campo.","Cobrança de falta para a área.","A equipe pressiona a saída de bola.","O time troca passes e controla o ritmo.","Contra-ataque em velocidade!"];m.events.unshift({minute:m.minute,text:notes[Math.floor(Math.random()*notes.length)]});}
