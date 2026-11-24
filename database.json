@@ -23386,7 +23386,15 @@
           "overall": 69,
           "marketValue": 85698000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 23,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/nicolas-serrano",
+            "dateOfBirth": "2003-03-05",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-26",
@@ -23395,7 +23403,15 @@
           "overall": 72,
           "marketValue": 93312000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 24,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/navarro-2",
+            "dateOfBirth": "2002-04-12",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-27",
@@ -23404,7 +23420,15 @@
           "overall": 73,
           "marketValue": 95922000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 27,
+          "nationality": "GNB",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/alvaro-djalo",
+            "dateOfBirth": "1999-08-16",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-28",
@@ -116770,7 +116794,15 @@
       "overall": 69,
       "marketValue": 85698000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 23,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/nicolas-serrano",
+        "dateOfBirth": "2003-03-05",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-26",
@@ -116779,7 +116811,15 @@
       "overall": 72,
       "marketValue": 93312000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 24,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/navarro-2",
+        "dateOfBirth": "2002-04-12",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-27",
@@ -116788,7 +116828,15 @@
       "overall": 73,
       "marketValue": 95922000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 27,
+      "nationality": "GNB",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/alvaro-djalo",
+        "dateOfBirth": "1999-08-16",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-28",
