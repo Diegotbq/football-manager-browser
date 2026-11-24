@@ -4,8 +4,8 @@
     "version": "0.1.0",
     "season": "2026/27",
     "currency": "EUR",
-    "note": "Nomes e vínculos de elenco baseados em listas oficiais/publicadas para 2026/27. Idades não preenchidas quando não verificadas; overall e valores são estimativas fictícias de jogo. Clubes da Premier League e LALIGA 2026/27 incluídos conforme listas oficiais das ligas; elencos desses clubes ainda serão preenchidos. Orçamentos e reputações são parâmetros fictícios de jogo. Participantes da Série B 2026 cadastrados conforme relação oficial da CBF; elencos ainda serão preenchidos e parâmetros financeiros/desportivos são estimativas de jogo. Clubes europeus adicionais adicionados para ampliar a Champions League. Nomes/posições conferidos em listas oficiais de clubes e UEFA/DFB; overall, valores e idades não publicados no cadastro são parâmetros estimados do jogo. Clubes sul-americanos adicionais incorporados para ampliar as competições continentais. Nomes e posições são baseados nas listas consultadas; overall, valores e idades não verificados são estimativas/omitidos. Ligas nacionais adicionais de Argentina, Uruguai, Equador, Paraguai, Chile e Colômbia adicionadas com clubes e estádios reais; elencos individuais ainda pendentes de validação e inclusão. Política de integridade do elenco: cadastrar somente jogadores identificáveis em fontes públicas confiáveis (preferência por páginas oficiais dos clubes, ligas e UEFA); não completar elencos com nomes inventados. Idade, nacionalidade e demais dados não confirmados devem permanecer nulos/indisponíveis. Overall e valor de mercado são atributos fictícios de gameplay e devem ser claramente tratados como estimativas, não dados oficiais. Elencos antigos precisam de auditoria para duplicidades, vínculos incorretos e transferências antes de serem considerados completos.",
-    "dataStatus": "Calendário das rodadas finais 36–38 do Brasileirão 2026 revisado conforme tabela detalhada oficial da CBF. Partidas jogáveis na carreira quando envolverem o clube escolhido; resultados simulados são fictícios e salvos localmente. Elenco do Mirassol preenchido com nomes e posições publicados pelo próprio clube; idade não publicada foi deixada em branco; overall e valor de mercado são estimativas de jogo. Lista de participantes da Premier League 2026/27 conferida no site oficial da liga; lista da LALIGA EA SPORTS 2026/27 conferida no site oficial. Clubes recém-incluídos ainda sem elenco cadastrado. Lista dos 20 participantes do Campeonato Brasileiro Série B 2026 conferida na relação oficial da CBF e tabela detalhada; clubes adicionados sem jogadores até validação individual dos elencos. Novos elencos europeus cadastrados com nomes reais e posições conforme fontes oficiais 2026/27; overall e valores são estimativas de gameplay, não avaliações oficiais. Elencos sul-americanos adicionados com nomes reais e posições conforme fontes consultadas em 2026; atributos de jogo são estimativas. Seis ligas sul-americanas adicionais adicionadas como grupos iniciais de clubes reais; elencos não verificados não foram inventados. Auditoria de integridade dos elencos iniciada: a base atual contém 546 registros de jogadores, mas ainda não pode ser considerada completa ou inteiramente validada; duplicidades e vínculos de clube devem ser verificados. Próxima etapa: revisar clube a clube com fontes oficiais e incluir apenas atletas confirmados.",
+    "note": "Nomes e vínculos de elenco baseados em listas oficiais/publicadas para 2026/27. Idades não preenchidas quando não verificadas; overall e valores são estimativas fictícias de jogo. Clubes da Premier League e LALIGA 2026/27 incluídos conforme listas oficiais das ligas; elencos desses clubes ainda serão preenchidos. Orçamentos e reputações são parâmetros fictícios de jogo. Participantes da Série B 2026 cadastrados conforme relação oficial da CBF; elencos ainda serão preenchidos e parâmetros financeiros/desportivos são estimativas de jogo. Clubes europeus adicionais adicionados para ampliar a Champions League. Nomes/posições conferidos em listas oficiais de clubes e UEFA/DFB; overall, valores e idades não publicados no cadastro são parâmetros estimados do jogo. Clubes sul-americanos adicionais incorporados para ampliar as competições continentais. Nomes e posições são baseados nas listas consultadas; overall, valores e idades não verificados são estimativas/omitidos. Ligas nacionais adicionais de Argentina, Uruguai, Equador, Paraguai, Chile e Colômbia adicionadas com clubes e estádios reais; elencos individuais ainda pendentes de validação e inclusão. Política de integridade do elenco: cadastrar somente jogadores identificáveis em fontes públicas confiáveis (preferência por páginas oficiais dos clubes, ligas e UEFA); não completar elencos com nomes inventados. Idade, nacionalidade e demais dados não confirmados devem permanecer nulos/indisponíveis. Overall e valor de mercado são atributos fictícios de gameplay e devem ser claramente tratados como estimativas, não dados oficiais. Elencos antigos precisam de auditoria para duplicidades, vínculos incorretos e transferências antes de serem considerados completos. Correção de integridade em 24/11/2026: IDs duplicados de John Stones e Curtis Jones no elenco do Inter foram corrigidos; identificadores de jogadores agora são únicos na lista principal.",
+    "dataStatus": "Calendário das rodadas finais 36–38 do Brasileirão 2026 revisado conforme tabela detalhada oficial da CBF. Partidas jogáveis na carreira quando envolverem o clube escolhido; resultados simulados são fictícios e salvos localmente. Elenco do Mirassol preenchido com nomes e posições publicados pelo próprio clube; idade não publicada foi deixada em branco; overall e valor de mercado são estimativas de jogo. Lista de participantes da Premier League 2026/27 conferida no site oficial da liga; lista da LALIGA EA SPORTS 2026/27 conferida no site oficial. Clubes recém-incluídos ainda sem elenco cadastrado. Lista dos 20 participantes do Campeonato Brasileiro Série B 2026 conferida na relação oficial da CBF e tabela detalhada; clubes adicionados sem jogadores até validação individual dos elencos. Novos elencos europeus cadastrados com nomes reais e posições conforme fontes oficiais 2026/27; overall e valores são estimativas de gameplay, não avaliações oficiais. Elencos sul-americanos adicionados com nomes reais e posições conforme fontes consultadas em 2026; atributos de jogo são estimativas. Seis ligas sul-americanas adicionais adicionadas como grupos iniciais de clubes reais; elencos não verificados não foram inventados. Auditoria de integridade dos elencos iniciada: a base atual contém 546 registros de jogadores, mas ainda não pode ser considerada completa ou inteiramente validada; duplicidades e vínculos de clube devem ser verificados. Próxima etapa: revisar clube a clube com fontes oficiais e incluir apenas atletas confirmados. IDs duplicados encontrados no elenco do Inter foram corrigidos em 24/11/2026; revisão de transferências e vínculos de todos os clubes ainda está em andamento.",
     "lastDataReview": "2026-11-24",
     "sources": [
       "Folha: levantamento de estrangeiros por clube, publicado em 22/09/2026",
@@ -5828,7 +5828,7 @@
           "dataSource": "official-club-squad-2026-27"
         },
         {
-          "id": "inter-202627-18",
+          "id": "inter-202627-22",
           "name": "John Stones",
           "position": "CB",
           "age": null,
@@ -5840,7 +5840,7 @@
           "dataSource": "official-club-squad-2026-27"
         },
         {
-          "id": "inter-202627-19",
+          "id": "inter-202627-23",
           "name": "Curtis Jones",
           "position": "CM",
           "age": null,
@@ -13550,7 +13550,7 @@
       "dataSource": "official-club-squad-2026-27"
     },
     {
-      "id": "inter-202627-18",
+      "id": "inter-202627-22",
       "name": "John Stones",
       "position": "CB",
       "age": null,
@@ -13562,7 +13562,7 @@
       "dataSource": "official-club-squad-2026-27"
     },
     {
-      "id": "inter-202627-19",
+      "id": "inter-202627-23",
       "name": "Curtis Jones",
       "position": "CM",
       "age": null,
