@@ -7,18 +7,16 @@
   "rosterMinimum": 25,
   "clubs": {
     "america-mg": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/59897",
-    "atletico-go": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/62261",
+    "atletico-go": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/62261?tab=atletas",
     "avai": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20058?tab=atletas",
     "botafogo-sp": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/56654",
     "ceara": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20031",
     "crb": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20032",
-    "cuiaba": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20800?tab=atletas",
-    "fortaleza": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/63238?tab=atletas",
-    "goias": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20028",
-    "nautico": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20023?tab=atletas",
-    "ponte-preta": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20037?tab=atletas"
+    "criciuma": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20019",
+    "cuiaba": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20800?tab=atletas"
   },
-  "remainingClubs": 9,
-  "status": "source-index-in-progress",
-  "updatedAt": "2026-11-24"
+  "remainingClubs": 12,
+  "status": "8-official-team-pages-verified",
+  "updatedAt": "2026-11-24",
+  "validationNote": "URLs foram confirmadas por páginas oficiais da CBF e busca indexada. A listagem de atletas inclui registros históricos; importar apenas quem estiver com Clube Atual igual ao clube. Idades/posições/nacionalidades exigem validação em perfil oficial do atleta antes de cadastrar."
 }
