@@ -1,4 +1,9 @@
-const state = { db:null, day:new Date("2025-07-01T12:00:00"), view:"dashboard" };
+const state = {
+  db:null,
+  day:new Date("2025-07-01T12:00:00"),
+  view:"dashboard",
+  selectedClubId:null
+};
 const $ = (selector) => document.querySelector(selector);
 const money = (n) => new Intl.NumberFormat("pt-BR",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(n);
 const dateLabel = (d) => d.toLocaleDateString("pt-BR",{day:"2-digit",month:"short",year:"numeric"}).replace(".","").toUpperCase();
@@ -7,8 +12,7 @@ async function init(){
     const response = await fetch("data/database.json");
     if(!response.ok) throw new Error("Não foi possível abrir data/database.json");
     state.db = await response.json();
-    const club = state.db.teams.find(t=>t.id===state.db.userClubId);
-    $("#club-name").textContent = club.name;
+  
     $("#advance-day").addEventListener("click",advanceDay);
     $("#main-nav").addEventListener("click",e=>{
       const button=e.target.closest("[data-view]");
@@ -20,14 +24,76 @@ async function init(){
     render();
   }catch(error){$("#view-root").innerHTML=`<div class="notice">Erro ao carregar os dados: ${error.message}<br>Abra o projeto usando um servidor local (por exemplo, Live Server), pois o navegador pode bloquear fetch em arquivos abertos diretamente.</div>`;}
 }
+function selectClub(clubId){
+  state.selectedClubId = clubId;
+  state.db.userClubId = clubId;
+  state.view = "dashboard";
+
+  const club = userClub();
+  $("#club-name").textContent = club.name;
+
+  document.querySelectorAll(".nav-item").forEach(b=>{
+    b.classList.toggle("active",b.dataset.view==="dashboard");
+  });
+
+  render();
+}
+  state.selectedClubId = clubId;
+  state.db.userClubId = clubId;
+
+  const club = userClub();
+  $("#club-name").textContent = club.name;
+
+  state.view = "club-selection";
+renderClubSelection();
+}
+
+function randomClub(){
+  const teams = state.db.teams;
+  const club = teams[Math.floor(Math.random()*teams.length)];
+  selectClub(club.id);
+}
+
+function renderClubSelection(){
+  const teams = state.db.teams;
+
+  setPage("Escolha seu clube",`
+    <div class="card">
+      <h2>Comece sua carreira!</h2>
+      <p>Escolha qualquer clube ou deixe o destino decidir.</p>
+
+      <button onclick="randomClub()">
+        🎲 Sortear clube aleatório
+      </button>
+
+      <h3>Escolha seu time</h3>
+
+      <select id="club-choice">
+        ${teams.map(t=>`
+          <option value="${t.id}">${t.name}</option>
+        `).join("")}
+      </select>
+
+      <button onclick="selectClub(document.getElementById('club-choice').value)">
+        Confirmar clube
+      </button>
+    </div>
+  `);
+}
 function advanceDay(){state.day.setDate(state.day.getDate()+1);$("#current-date").textContent=dateLabel(state.day);render();}
 function userClub(){return state.db.teams.find(t=>t.id===state.db.userClubId);}
 function clubPlayers(){return state.db.players.filter(p=>p.teamId===state.db.userClubId);}
 function setPage(title,html){$("#page-title").textContent=title;$("#view-root").innerHTML=html;}
 function render(){
   $("#current-date").textContent=dateLabel(state.day);
-  const pages={dashboard:renderDashboard,squad:renderSquad,market:renderMarket,table:renderTable,calendar:renderCalendar};
-  pages[state.view]();
+  const pages={
+  "club-selection":renderClubSelection,
+  dashboard:renderDashboard,
+  squad:renderSquad,
+  market:renderMarket,
+  table:renderTable,
+  calendar:renderCalendar
+};
 }
 function renderDashboard(){
  const club=userClub(), roster=clubPlayers(), avg=Math.round(roster.reduce((s,p)=>s+p.overall,0)/roster.length);
