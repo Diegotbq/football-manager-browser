@@ -596,6 +596,62 @@ function renderCalendar() {
   `);
 }
 
+
+// CENTRAL DE PARTIDAS — SIMULAÇÃO MINUTO A MINUTO
+function teamStrength(teamId) {
+  const players = state.db.players.filter(p => String(p.teamId) === String(teamId));
+  if (!players.length) {
+    const team = state.db.teams.find(t => String(t.id) === String(teamId));
+    return Number(team?.reputation || 55);
+  }
+  const top = [...players].sort((a,b) => Number(b.overall||0)-Number(a.overall||0)).slice(0,11);
+  return top.reduce((sum,p)=>sum+Number(p.overall||55),0)/top.length;
+}
+function startMatch() {
+  const opponentId = $("#match-opponent")?.value;
+  if (!opponentId || String(opponentId) === String(state.db.userClubId)) return;
+  const home = userClub();
+  const away = state.db.teams.find(t=>String(t.id)===String(opponentId));
+  state.match = {homeId:home.id,awayId:away.id,homeName:home.name,awayName:away.name,homeScore:0,awayScore:0,minute:0,speed:1,paused:false,finished:false,events:[{minute:0,text:"O árbitro autoriza o início da partida!"}]};
+  runMatchClock();
+  renderMatch();
+}
+function runMatchClock() {
+  if(state.matchTimer) clearInterval(state.matchTimer);
+  if(!state.match||state.match.paused||state.match.finished)return;
+  state.matchTimer=setInterval(tickMatch,Math.max(120,1000/state.match.speed));
+}
+function tickMatch() {
+  const m=state.match;if(!m||m.paused||m.finished)return;
+  m.minute++;
+  const hs=teamStrength(m.homeId),as=teamStrength(m.awayId),total=Math.max(1,hs+as);
+  if(Math.random()<0.018+(hs/total)*0.018){m.homeScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.homeName+"!"});}
+  else if(Math.random()<0.018+(as/total)*0.018){m.awayScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.awayName+"!"});}
+  else if(Math.random()<0.11){const notes=["Boa chegada ao ataque.","Finalização defendida pelo goleiro.","A defesa afasta o perigo.","Bola recuperada no meio-campo.","Cobrança de falta para a área."];m.events.unshift({minute:m.minute,text:notes[Math.floor(Math.random()*notes.length)]});}
+  if(m.minute===45)m.events.unshift({minute:45,text:"Intervalo! Fim do primeiro tempo."});
+  if(m.minute>=90){m.minute=90;m.finished=true;m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});clearInterval(state.matchTimer);state.matchTimer=null;}
+  renderMatch();
+}
+function pauseMatch() {
+  if(!state.match||state.match.finished)return;
+  state.match.paused=!state.match.paused;
+  if(state.match.paused){clearInterval(state.matchTimer);state.matchTimer=null;}else runMatchClock();
+  renderMatch();
+}
+function setMatchSpeed(speed) {
+  if(!state.match||state.match.finished)return;
+  state.match.speed=Number(speed);if(!state.match.paused)runMatchClock();renderMatch();
+}
+function renderMatch() {
+  const m=state.match;
+  if(!m){
+    const opponents=state.db.teams.filter(t=>String(t.id)!==String(state.db.userClubId));
+    setPage("Central de Partidas",`<p class="view-intro">Escolha um adversário e acompanhe a partida minuto a minuto.</p><article class="card match-setup"><div class="section-head"><h2>Preparar partida</h2><span class="tag">Simulação ao vivo</span></div><label for="match-opponent">Adversário</label><select id="match-opponent">${opponents.map(t=>`<option value="${t.id}">${t.name}</option>`).join("")}</select><button class="primary-btn" onclick="startMatch()">⚽ INICIAR PARTIDA</button><p class="subtle">A simulação usa a força estimada dos elencos cadastrados. Os eventos são gerados pelo jogo, não são resultados oficiais.</p></article>`);
+    return;
+  }
+  setPage("Central de Partidas",`<article class="card live-match"><div class="match-status">${m.finished?"TEMPO INTEGRAL":m.paused?"PARTIDA PAUSADA":"PARTIDA AO VIVO"}</div><div class="scoreboard"><div class="score-team"><strong>${m.homeName}</strong><span>${m.homeScore}</span></div><div class="score-clock">${String(m.minute).padStart(2,"0")}’</div><div class="score-team"><strong>${m.awayName}</strong><span>${m.awayScore}</span></div></div><div class="match-controls"><button class="primary-btn" onclick="pauseMatch()" ${m.finished?"disabled":""}>${m.paused?"▶ Continuar":"Ⅱ Pausar"}</button><button class="speed-btn ${m.speed===1?"selected":""}" onclick="setMatchSpeed(1)">1x</button><button class="speed-btn ${m.speed===2?"selected":""}" onclick="setMatchSpeed(2)">2x</button><button class="speed-btn ${m.speed===4?"selected":""}" onclick="setMatchSpeed(4)">4x</button><button class="speed-btn" onclick="state.match=null;renderMatch()">Nova partida</button></div></article><article class="card events-card"><div class="section-head"><h2>Relato da partida</h2><span class="tag">${m.events.length} eventos</span></div><div class="match-events">${m.events.map(e=>`<div class="match-event"><strong>${String(e.minute).padStart(2,"0")}’</strong><span>${e.text}</span></div>`).join("")}</div></article>`);
+}
+
 // INICIAR JOGO
 
 init();
