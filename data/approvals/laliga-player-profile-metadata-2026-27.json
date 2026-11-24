@@ -197,7 +197,31 @@
       "dateOfBirth": "2001-02-01",
       "nationality": "MAR",
       "sourceUrl": "https://www.laliga.com/jugador/maroan-sannadi"
+    },
+    {
+      "playerId": "athletic-club-202627-25",
+      "name": "Nico Serrano",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2003-03-05",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/nicolas-serrano"
+    },
+    {
+      "playerId": "athletic-club-202627-26",
+      "name": "Robert Navarro",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2002-04-12",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/navarro-2"
+    },
+    {
+      "playerId": "athletic-club-202627-27",
+      "name": "Álvaro Djaló",
+      "teamId": "athletic-club",
+      "dateOfBirth": "1999-08-16",
+      "nationality": "GNB",
+      "sourceUrl": "https://www.laliga.com/jugador/alvaro-djalo"
     }
   ],
-  "approvalRevision": 9
+  "approvalRevision": 10
 }
