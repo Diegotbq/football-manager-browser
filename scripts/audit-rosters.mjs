@@ -3,6 +3,7 @@
  * Audita cobertura, integridade e consistência entre a lista principal
  * de jogadores e os elencos incorporados em cada clube.
  * Uso: node scripts/audit-rosters.mjs [caminho-do-database.json]
+ * O relatório também lista, por jogador, os campos de identidade que ainda precisam de verificação.
  */
 import fs from "node:fs";
 import path from "node:path";
