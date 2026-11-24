@@ -1,7 +1,13 @@
+import importlib.util
 import unittest
 from datetime import date
+from pathlib import Path
 
-from stage_openfootballbase import age_on, clean_qid, usable
+module_path = Path(__file__).with_name("stage-openfootballbase.py")
+spec = importlib.util.spec_from_file_location("stage_openfootballbase", module_path)
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+age_on, clean_qid, usable = module.age_on, module.clean_qid, module.usable
 
 
 class StageOpenFootballBaseTests(unittest.TestCase):
