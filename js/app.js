@@ -32,6 +32,9 @@ async function init() {
 
     state.db = await response.json();
 
+    const seasonLabel = document.querySelector(".club-chip small");
+    if (seasonLabel) seasonLabel.textContent = `Temporada ${state.db.meta?.season || "2026/27"}`;
+
     const seasonStart = state.db.calendar?.seasonStart;
     if (seasonStart) state.day = new Date(`${seasonStart}T12:00:00`);
 
