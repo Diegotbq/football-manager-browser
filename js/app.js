@@ -605,8 +605,12 @@ function teamStrength(teamId) {
 
 function getLineup(teamId) {
   const players=state.db.players.filter(p=>String(p.teamId)===String(teamId)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));
-  const starters=players.slice(0,11).map(p=>p.id);
-  return {starters,bench:players.slice(11,18).map(p=>p.id)};
+  const groups=[["GK",1],["DEF",4],["MID",3],["ATT",3]];
+  const roles={GK:["GK","GOL"],DEF:["CB","LB","RB","FB","WB","LWB","RWB"],MID:["DM","CDM","CM","AM","CAM","LM","RM"],ATT:["ST","CF","LW","RW","SS"]};
+  const starters=[],used=new Set();
+  groups.forEach(([group,count])=>players.filter(p=>roles[group].includes(String(p.position||"").toUpperCase())&&!used.has(p.id)).slice(0,count).forEach(p=>{starters.push(p.id);used.add(p.id);}));
+  players.filter(p=>!used.has(p.id)).slice(0,Math.max(0,11-starters.length)).forEach(p=>{starters.push(p.id);used.add(p.id);});
+  return {starters:starters.slice(0,11),bench:players.filter(p=>!used.has(p.id)).slice(0,7).map(p=>p.id)};
 }
 function startMatch() {
   const opponentId=$("#match-opponent")?.value;
