@@ -32,8 +32,10 @@ jobs:
           import json
           from pathlib import Path
           report = json.loads(Path("/tmp/laliga-profile-metadata-report.json").read_text())
-          if report["matched"] != 3:
-              raise SystemExit("Expected exactly 3 approved player identity matches")
+          approval = json.loads(Path("data/approvals/laliga-player-profile-metadata-2026-27.json").read_text())
+          expected = len(approval["records"])
+          if report["matched"] != expected:
+              raise SystemExit(f"Expected exactly {expected} approved player identity matches")
           print(json.dumps(report, ensure_ascii=False, indent=2))
           PY
       - name: Commit database update
