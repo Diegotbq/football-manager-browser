@@ -1178,7 +1178,8 @@ function teamStrength(teamId) {
   if(!players.length){const team=state.db.teams.find(t=>String(t.id)===String(teamId));return Number(team?.reputation||55);}
   const m=state.match;
   const isManaged=m&&String(teamId)===String(state.db.userClubId||state.selectedClubId);
-  const chosen=isManaged&&Array.isArray(m.lineup)?m.lineup.map(id=>players.find(p=>String(p.id)===String(id))).filter(Boolean):[...players].sort((a,b)=>Number(b.overall||0)-Number(a.overall||0)).slice(0,11);
+  const aiLineup=m&&!isManaged&&Array.isArray(m.aiLineup)?m.aiLineup:null;
+  const chosen=isManaged&&Array.isArray(m.lineup)?m.lineup.map(id=>players.find(p=>String(p.id)===String(id))).filter(Boolean):aiLineup?aiLineup.map(id=>players.find(p=>String(p.id)===String(id))).filter(Boolean):[...players].sort((a,b)=>Number(b.overall||0)-Number(a.overall||0)).slice(0,11);
   if(!chosen.length)return 50;
   const base=chosen.reduce((sum,p)=>sum+Number(p.overall||55),0)/chosen.length;
   const skills=chosen.reduce((sum,p)=>{const a=getPlayerAttributes(p);return sum+(a.passing+a.physical+a.defending+a.shooting+a.pace+a.dribbling)/6;},0)/chosen.length;
@@ -1215,7 +1216,7 @@ function kickoffMatch() {
   if(required===0){alert("Este clube ainda não tem jogadores cadastrados no banco de dados.");return;}
   if(starters.length!==required||new Set(starters).size!==required){alert("Selecione "+required+" titulares diferentes.");return;}
   const bench=[...document.querySelectorAll("[data-sub]")].map(x=>x.value).filter(Boolean).filter(id=>!starters.includes(id));
-  m.lineup=starters;m.bench=[...new Set(bench)].slice(0,7);m.setup=false;m.paused=false;
+  m.lineup=starters;m.bench=[...new Set(bench)].slice(0,7);const opponentId=String(m.homeId)===String(state.db.userClubId||state.selectedClubId)?m.awayId:m.homeId;const opponentPlayers=state.db.players.filter(p=>String(p.teamId)===String(opponentId)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));m.aiLineup=opponentPlayers.slice(0,11).map(p=>p.id);m.aiBench=opponentPlayers.slice(11,18).map(p=>p.id);m.aiSubstitutions=[];m.aiTactics={mentality:"balanced",pressing:"medium",defensiveLine:"standard",tempo:"normal",style:"balanced"};m.aiLastTacticChange=0;m.setup=false;m.paused=false;
   state.savedLineups[String(state.db.userClubId||state.selectedClubId)]={formation:m.formation||"4-3-3",starters:[...m.lineup],bench:[...m.bench],instructions:{...(m.instructions||{})}};saveTransferCareer();
   m.events.unshift({minute:0,text:"Escalação confirmada. Começa a partida!"});runMatchClock();renderMatch();
 }
@@ -1229,6 +1230,27 @@ function makeSubstitution() {
   m.events.unshift({minute:m.minute,text:"🔄 "+fresh.name+" entrou no lugar de "+old.name+"."});renderMatch();
 }
 
+function runOpponentAI() {
+  const m=state.match;if(!m||m.setup||m.finished||!Array.isArray(m.aiLineup))return;
+  const userId=String(state.db.userClubId||state.selectedClubId),opponentId=String(m.homeId)===userId?m.awayId:m.homeId;
+  const aiIsHome=String(m.homeId)===String(opponentId),aiGoals=aiIsHome?m.homeScore:m.awayScore,userGoals=aiIsHome?m.awayScore:m.homeScore;
+  if(m.minute>=55&&m.minute-m.aiLastTacticChange>=12){
+    let next="balanced",message="O adversário mantém o equilíbrio tático.";
+    if(aiGoals<userGoals){next="attacking";message="🧠 O adversário muda para uma postura ofensiva em busca do empate.";}
+    else if(aiGoals>userGoals&&m.minute>=68){next="defensive";message="🧠 O adversário recua as linhas para proteger a vantagem.";}
+    else if(aiGoals===userGoals&&m.minute>=76){next="attacking";message="🧠 O adversário aumenta a pressão para buscar a vitória.";}
+    if(m.aiTactics.mentality!==next){m.aiTactics.mentality=next;m.aiTactics.pressing=next==="attacking"?"high":next==="defensive"?"low":"medium";m.aiLastTacticChange=m.minute;m.events.unshift({minute:m.minute,text:message});}
+  }
+  if(m.minute>=60&&m.minute%10===0&&m.aiSubstitutions.length<5&&m.aiBench.length){
+    const players=state.db.players.filter(p=>String(p.teamId)===opponentId),available=m.aiBench.map(id=>players.find(p=>String(p.id)===String(id))).filter(Boolean);
+    const current=m.aiLineup.map(id=>players.find(p=>String(p.id)===String(id))).filter(Boolean).sort((a,b)=>Number(a.overall||0)-Number(b.overall||0));
+    const weakest=current[0],best=available.sort((a,b)=>Number(b.overall||0)-Number(a.overall||0))[0];
+    if(weakest&&best&&Number(best.overall||0)>=Number(weakest.overall||0)-2){
+      m.aiLineup=m.aiLineup.map(id=>String(id)===String(weakest.id)?best.id:id);m.aiBench=m.aiBench.filter(id=>String(id)!==String(best.id));m.aiBench.push(weakest.id);m.aiSubstitutions.push({minute:m.minute,out:weakest.id,in:best.id});
+      m.events.unshift({minute:m.minute,text:"🔄 "+best.name+" entra no adversário no lugar de "+weakest.name+"."});
+    }
+  }
+}
 function runMatchClock() {
   if(state.matchTimer) clearInterval(state.matchTimer);
   if(!state.match||state.match.paused||state.match.finished)return;
@@ -1237,9 +1259,10 @@ function runMatchClock() {
 function tickMatch() {
   const m=state.match;if(!m||m.paused||m.finished)return;
   m.minute++;
+  runOpponentAI();
   const hs=teamStrength(m.homeId),as=teamStrength(m.awayId),total=Math.max(1,hs+as);
   const managedClub=String(state.db.userClubId||state.selectedClubId),tacticalBias=tacticalModifier(m.instructions);
-  const homeBias=String(m.homeId)===managedClub?tacticalBias:0,awayBias=String(m.awayId)===managedClub?tacticalBias:0;
+  const homeBias=String(m.homeId)===managedClub?tacticalBias:tacticalModifier(m.aiTactics),awayBias=String(m.awayId)===managedClub?tacticalBias:tacticalModifier(m.aiTactics);
   const homeChance=Math.max(0.008,Math.min(0.055,0.018+(hs/total)*0.018+homeBias*0.0015));
   const awayChance=Math.max(0.008,Math.min(0.055,0.018+(as/total)*0.018+awayBias*0.0015));
   if(Math.random()<homeChance){m.homeScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.homeName+"!"});}
