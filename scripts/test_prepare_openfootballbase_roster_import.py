@@ -45,6 +45,23 @@ class RosterImportPreviewTests(unittest.TestCase):
         self.assertEqual(player["positionName"], "Defensor")
         self.assertEqual(player["positionPrecision"], "broad-category")
 
+    def test_goalkeeper_category_is_precise_without_wikidata_lookup(self):
+        db = {"teams": [{"id": "a", "name": "A", "leagueId": "x", "players": []}], "players": []}
+        candidate = {
+            "name": "Goalkeeper One", "sourcePlayerQid": "Q4", "age": 25,
+            "birthDate": "2001-01-01", "nationality": "BRA",
+            "position": "GK", "specificPosition": None,
+            "eligibleForManualReview": True,
+            "clubMapping": {"status": "exact-name-match-review-required", "teamId": "a"}
+        }
+        preview, report = module.prepare_import(db, {"sourceSeason": "2026/27", "candidates": [candidate]})
+        player = preview["players"][0]
+        self.assertEqual(report["specificPositionPlayers"], 1)
+        self.assertEqual(player["position"], "GK")
+        self.assertEqual(player["positionPrecision"], "specific")
+        self.assertEqual(player["identitySource"]["positionProvider"],
+                         "OpenFootballBase goalkeeper category")
+
     def test_team_roster_cap_prevents_overfilling(self):
         existing = [{"id": f"p{i}", "name": f"Existing {i}"} for i in range(30)]
         db = {"teams": [{"id": "a", "name": "A", "leagueId": "x", "players": existing}],
