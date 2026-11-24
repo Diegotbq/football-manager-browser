@@ -94,17 +94,20 @@
           "BEL-PL": "18/18",
           "NLD-ED": "18/18",
           "PRT-PL": "18/18",
-          "TUR-SL": "18/18",
-          "UEFA-CL": "30/30"
+          "TUR-SL": "18/18"
         },
         "partialSquadCoverage": {
           "CHE-L1": "10/12",
-          "SCO-L1": "6/17",
+          "SCO-L1": "4/12",
           "HRV-L1": "3/10",
-          "UEFA-EL": "2/16",
-          "UEFA-ECL": "1/16"
+          "ARG-PD": "30/30",
+          "COL-L1": "4/20",
+          "ECU-L1": "3/16",
+          "CHL-L1": "2/16",
+          "PRY-L1": "2/12",
+          "URY-L1": "2/16"
         },
-        "note": "Valores copiados do relatório PROGRESS.md da release atual; indicam clubes com ao menos um elenco publicado / clubes-semana da competição, não certificam que cada elenco esteja completo nem que corresponda ao estado atual do clube."
+        "note": "Extraído da linha 2026/27 do PROGRESS.md da release data-1.24.6 (gerado em 2026-11-23). A fração representa clubes com pelo menos um elenco publicado / clubes da competição; não certifica elenco integral ou vínculo atual. ARG-PD 30/30 também é cobertura de páginas com elenco, não garantia de roster completo. Códigos de copas UEFA aparecem como '—' nesse quadro de ligas; não interpretar isso como ausência ou cobertura de copa."
       },
       "documentedFields": [
         "season",
@@ -135,7 +138,21 @@
         "Idades só podem ser calculadas quando a data de nascimento tem precisão de dia.",
         "A release exige atribuição CC BY-SA 4.0 para os dados de elenco; o projeto precisa preservar fonte, título, revisão e cumprir share-alike antes de redistribuir dados derivados."
       ],
-      "importPolicy": "Fonte complementar de alto valor para acelerar a cobertura, mas não importar em massa diretamente. Antes da integração, adicionar ao banco rastreabilidade por jogador (player_qid, temporada, source_title, source_revid, source_lang, stint), validar cada elenco contra o clube atual e regras da temporada 2026/27, rejeitar jogadores sem identidade/posição/nacionalidade/idade verificáveis e cumprir CC BY-SA 4.0. Nunca usar a cobertura de 100% como prova automática de elenco completo."
+      "importPolicy": "Fonte complementar de alto valor para acelerar a cobertura, mas não importar em massa diretamente. Antes da integração, adicionar ao banco rastreabilidade por jogador (player_qid, temporada, source_title, source_revid, source_lang, stint), validar cada elenco contra o clube atual e regras da temporada 2026/27, rejeitar jogadores sem identidade/posição/nacionalidade/idade verificáveis e cumprir CC BY-SA 4.0. Nunca usar a cobertura de 100% como prova automática de elenco completo.",
+      "importRoadmap": {
+        "status": "staging-pipeline-committed-not-yet-imported",
+        "pipeline": "scripts/stage-openfootballbase.py",
+        "tests": "scripts/test-stage-openfootballbase.py",
+        "ci": "Python unit tests added to .github/workflows/league-readiness.yml",
+        "nextSteps": [
+          "Baixar e extrair a release oficial data-1.24.6; validar manifest.json e SHA-256.",
+          "Executar o staging para 2026/27 e revisar cobertura por competição.",
+          "Reconciliar sourceClub com os clubes do database.json; nenhum teamId é atribuído automaticamente.",
+          "Conferir manualmente o clube atual e cada jogador, inclusive os estados unknown, arrived_mid e loan_in.",
+          "Importar somente após validar QID, posição, nacionalidade e nascimento com precisão diária, preservando sourceTitle e sourceRevision.",
+          "Executar auditoria e readiness tests antes de considerar qualquer liga completa."
+        ]
+      }
     }
   ],
   "globalImportGate": {
