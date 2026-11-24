@@ -207,6 +207,36 @@
         "Empréstimos e atualizações posteriores precisam de confirmação em registros oficiais mais recentes."
       ],
       "importPolicy": "Usar para confirmar vínculo e inscrição no plantel da Premier League 2026/27; completar idade, nacionalidade e posição por fontes oficiais individuais, sem inferência."
+    },
+    {
+      "id": "laliga-apim-squad-discovery",
+      "name": "LALIGA website squad API (reverse-engineered; experimental)",
+      "url": "https://apim.laliga.com/public-service",
+      "checkedAt": "2026-11-24",
+      "role": "Endpoint técnico identificado por engenharia reversa da aplicação web da LALIGA para localizar fichas de plantel e cruzar jogadores por clube.",
+      "documentedFields": [
+        "nome do atleta",
+        "data de nascimento",
+        "país",
+        "altura",
+        "posição",
+        "número da camisa",
+        "Opta ID",
+        "estado atual/emprestado quando retornado"
+      ],
+      "endpointPatterns": {
+        "squad": "GET /api/v1/teams/{teamSlug}/squad?subscription={seasonSlug}",
+        "seasonPlayerStats": "GET /api/v1/subscriptions/{seasonSlug}/players/stats?limit=100&offset={offset}",
+        "seasonStanding": "GET /api/v1/subscriptions/{seasonSlug}/standing"
+      },
+      "limitations": [
+        "API não é documentada publicamente nem oficialmente oferecida como API para desenvolvedores; os padrões foram identificados em documentação comunitária de engenharia reversa.",
+        "A resposta do endpoint de squad pode representar o plantel atual, e não necessariamente um snapshot histórico da temporada indicada.",
+        "Autenticação/cabeçalho público pode mudar ou deixar de funcionar; não armazenar chaves ou segredos no repositório.",
+        "A disponibilidade do endpoint, os slugs e a cobertura de todos os clubes ainda precisam ser testados diretamente antes de qualquer ingestão.",
+        "Dados derivados de Opta e fornecidos por endpoint técnico não substituem a página oficial vigente do clube como fonte primária."
+      ],
+      "importPolicy": "Usar apenas como fonte auxiliar de descoberta e reconciliação. Antes de importar, testar cobertura de todos os clubes, conferir cada jogador e vínculo na página oficial Plantilla do clube, preservar Opta ID e URL de origem, e não tratar o parâmetro subscription como prova de snapshot histórico. Nunca importar em massa apenas com base neste endpoint."
     }
   ],
   "globalImportGate": {
