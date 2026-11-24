@@ -22978,7 +22978,15 @@
           "overall": 84,
           "marketValue": 127008000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 29,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/unai-simon",
+            "dateOfBirth": "1997-06-11",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-02",
@@ -22987,7 +22995,15 @@
           "overall": 70,
           "marketValue": 88200000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 23,
+          "nationality": "MEX",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/alex-padilla",
+            "dateOfBirth": "2003-09-01",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-03",
@@ -22996,7 +23012,15 @@
           "overall": 82,
           "marketValue": 121032000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 27,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/vivian",
+            "dateOfBirth": "1999-07-05",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-04",
@@ -116170,7 +116194,15 @@
       "overall": 84,
       "marketValue": 127008000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 29,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/unai-simon",
+        "dateOfBirth": "1997-06-11",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-02",
@@ -116179,7 +116211,15 @@
       "overall": 70,
       "marketValue": 88200000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 23,
+      "nationality": "MEX",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/alex-padilla",
+        "dateOfBirth": "2003-09-01",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-03",
@@ -116188,7 +116228,15 @@
       "overall": 82,
       "marketValue": 121032000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 27,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/vivian",
+        "dateOfBirth": "1999-07-05",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-04",
