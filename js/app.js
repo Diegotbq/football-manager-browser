@@ -13,7 +13,8 @@ const state = {
   trainingRecords: {},
   academyProspects: [],
   scoutingReports: [],
-  playerAttributes: {}
+  playerAttributes: {},
+  savedLineups: {}
 };
 
 const $ = selector => document.querySelector(selector);
@@ -712,7 +713,8 @@ function saveTransferCareer() {
       trainingRecords: state.trainingRecords,
       academyProspects: state.academyProspects,
       scoutingReports: state.scoutingReports,
-      playerAttributes: state.playerAttributes
+      playerAttributes: state.playerAttributes,
+      savedLineups: state.savedLineups
     }));
   } catch (_) {
     alert("Não foi possível salvar a transferência neste dispositivo. Verifique o espaço disponível.");
@@ -739,6 +741,7 @@ function loadTransferCareer() {
     state.academyProspects = Array.isArray(saved.academyProspects) ? saved.academyProspects : [];
     state.scoutingReports = Array.isArray(saved.scoutingReports) ? saved.scoutingReports : [];
     state.playerAttributes = saved.playerAttributes && typeof saved.playerAttributes === "object" ? saved.playerAttributes : {};
+    state.savedLineups = saved.savedLineups && typeof saved.savedLineups === "object" ? saved.savedLineups : {};
     state.academyProspects.forEach(p => {
       if (!state.db.players.some(existing => String(existing.id) === String(p.id))) state.db.players.push(p);
       const team = state.db.teams.find(t => String(t.id) === String(p.teamId));
@@ -752,6 +755,7 @@ function loadTransferCareer() {
     state.academyProspects = [];
     state.scoutingReports = [];
     state.playerAttributes = {};
+    state.savedLineups = {};
   }
 }
 
@@ -1063,24 +1067,73 @@ function renderCalendar(competitionFilter) {
 }
 
 // CENTRAL DE PARTIDAS — SIMULAÇÃO MINUTO A MINUTO
-function teamStrength(teamId) {
-  const players = state.db.players.filter(p => String(p.teamId) === String(teamId));
-  if (!players.length) {
-    const team = state.db.teams.find(t => String(t.id) === String(teamId));
-    return Number(team?.reputation || 55);
-  }
-  const top = [...players].sort((a,b) => Number(b.overall||0)-Number(a.overall||0)).slice(0,11);
-  return top.reduce((sum,p)=>sum+Number(p.overall||55),0)/top.length;
-}
-
-function getLineup(teamId) {
+const FORMATIONS = {
+  "4-3-3": [
+    ["Goleiro","GK"],["Lateral esquerdo","LB"],["Zagueiro","CB"],["Zagueiro","CB"],["Lateral direito","RB"],
+    ["Meio-campista","CM"],["Volante","DM"],["Meio-campista","CM"],["Ponta esquerda","LW"],["Centroavante","ST"],["Ponta direita","RW"]
+  ],
+  "4-4-2": [
+    ["Goleiro","GK"],["Lateral esquerdo","LB"],["Zagueiro","CB"],["Zagueiro","CB"],["Lateral direito","RB"],
+    ["Meia esquerdo","LM"],["Volante","DM"],["Meio-campista","CM"],["Meia direito","RM"],["Atacante","ST"],["Atacante","ST"]
+  ],
+  "4-2-3-1": [
+    ["Goleiro","GK"],["Lateral esquerdo","LB"],["Zagueiro","CB"],["Zagueiro","CB"],["Lateral direito","RB"],
+    ["Volante","DM"],["Volante","DM"],["Ponta esquerda","LW"],["Meia ofensivo","AM"],["Ponta direita","RW"],["Centroavante","ST"]
+  ],
+  "3-5-2": [
+    ["Goleiro","GK"],["Zagueiro","CB"],["Zagueiro","CB"],["Zagueiro","CB"],["Ala esquerdo","LB"],
+    ["Volante","DM"],["Meio-campista","CM"],["Meia ofensivo","AM"],["Ala direito","RB"],["Atacante","ST"],["Atacante","ST"]
+  ],
+  "3-4-3": [
+    ["Goleiro","GK"],["Zagueiro","CB"],["Zagueiro","CB"],["Zagueiro","CB"],["Ala esquerdo","LB"],
+    ["Volante","DM"],["Meio-campista","CM"],["Ala direito","RB"],["Ponta esquerda","LW"],["Centroavante","ST"],["Ponta direita","RW"]
+  ]
+};
+const POSITION_ALIASES = {
+  GK:["GK","GOL"],LB:["LB","LWB","WB","FB"],RB:["RB","RWB","WB","FB"],CB:["CB","DEF"],
+  DM:["DM","CDM","VOL"],CM:["CM","MC","LM","RM"],AM:["AM","CAM","SS"],LM:["LM","LW"],RM:["RM","RW"],
+  LW:["LW","LM","WF"],RW:["RW","RM","WF"],ST:["ST","CF","ATA","SS"]
+};
+function getLineupForFormation(teamId, formation) {
   const players=state.db.players.filter(p=>String(p.teamId)===String(teamId)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));
-  const groups=[["GK",1],["DEF",4],["MID",3],["ATT",3]];
-  const roles={GK:["GK","GOL"],DEF:["CB","LB","RB","FB","WB","LWB","RWB"],MID:["DM","CDM","CM","AM","CAM","LM","RM"],ATT:["ST","CF","LW","RW","SS"]};
-  const starters=[],used=new Set();
-  groups.forEach(([group,count])=>players.filter(p=>roles[group].includes(String(p.position||"").toUpperCase())&&!used.has(p.id)).slice(0,count).forEach(p=>{starters.push(p.id);used.add(p.id);}));
-  players.filter(p=>!used.has(p.id)).slice(0,Math.max(0,11-starters.length)).forEach(p=>{starters.push(p.id);used.add(p.id);});
-  return {starters:starters.slice(0,11),bench:players.filter(p=>!used.has(p.id)).slice(0,7).map(p=>p.id)};
+  const slots=FORMATIONS[formation]||FORMATIONS["4-3-3"],used=new Set(),starters=[];
+  slots.forEach(([,role])=>{
+    const aliases=POSITION_ALIASES[role]||[role];
+    const player=players.find(p=>!used.has(String(p.id))&&aliases.includes(String(p.position||"").toUpperCase()));
+    const fallback=player||players.find(p=>!used.has(String(p.id)));
+    if(fallback){starters.push(fallback.id);used.add(String(fallback.id));}
+  });
+  return {starters,bench:players.filter(p=>!used.has(String(p.id))).slice(0,7).map(p=>p.id)};
+}
+function getLineup(teamId) {
+  const saved=state.savedLineups[String(teamId)];
+  const players=state.db.players.filter(p=>String(p.teamId)===String(teamId));
+  if(saved&&Array.isArray(saved.starters)){
+    const valid=saved.starters.filter(id=>players.some(p=>String(p.id)===String(id)));
+    if(valid.length===Math.min(11,players.length)){
+      return {formation:FORMATIONS[saved.formation]?saved.formation:"4-3-3",starters:valid,bench:(saved.bench||[]).filter(id=>players.some(p=>String(p.id)===String(id))&&!valid.some(x=>String(x)===String(id))).slice(0,7)};
+    }
+  }
+  const formation="4-3-3",lineup=getLineupForFormation(teamId,formation);
+  return {formation,...lineup};
+}
+function changeMatchFormation(formation) {
+  const m=state.match;if(!m||!m.setup||!FORMATIONS[formation])return;
+  const lineup=getLineupForFormation(state.db.userClubId||state.selectedClubId,formation);
+  m.formation=formation;m.lineup=lineup.starters;m.bench=lineup.bench;
+  renderMatch();
+}
+function teamStrength(teamId) {
+  const players=state.db.players.filter(p=>String(p.teamId)===String(teamId));
+  if(!players.length){const team=state.db.teams.find(t=>String(t.id)===String(teamId));return Number(team?.reputation||55);}
+  const m=state.match;
+  const isManaged=m&&String(teamId)===String(state.db.userClubId||state.selectedClubId);
+  const chosen=isManaged&&Array.isArray(m.lineup)?m.lineup.map(id=>players.find(p=>String(p.id)===String(id))).filter(Boolean):[...players].sort((a,b)=>Number(b.overall||0)-Number(a.overall||0)).slice(0,11);
+  if(!chosen.length)return 50;
+  const base=chosen.reduce((sum,p)=>sum+Number(p.overall||55),0)/chosen.length;
+  const skills=chosen.reduce((sum,p)=>{const a=getPlayerAttributes(p);return sum+(a.passing+a.physical+a.defending+a.shooting+a.pace+a.dribbling)/6;},0)/chosen.length;
+  const roles=chosen.filter(p=>String(p.position||"").toUpperCase()!=="").length;
+  return base*0.82+skills*0.15+(roles/chosen.length)*3;
 }
 function startMatch() {
   const opponentId=$("#match-opponent")?.value;
@@ -1100,7 +1153,7 @@ function startFixture(fixtureId) {
 function prepareMatch(details) {
   if(state.matchTimer)clearInterval(state.matchTimer);
   const lineup=getLineup(state.db.userClubId||state.selectedClubId);
-  state.match={...details,setup:true,lineup:lineup.starters,bench:lineup.bench,substitutions:[],homeScore:0,awayScore:0,minute:0,speed:1,paused:true,finished:false,saved:false,events:[{minute:0,text:"Escalação pronta. Confira os titulares e reservas."}]};
+  state.match={...details,setup:true,formation:lineup.formation,lineup:lineup.starters,bench:lineup.bench,substitutions:[],homeScore:0,awayScore:0,minute:0,speed:1,paused:true,finished:false,saved:false,events:[{minute:0,text:"Escalação pronta. Confira os titulares e reservas."}]};
   state.view="match";renderMatch();
 }
 function kickoffMatch() {
@@ -1112,6 +1165,7 @@ function kickoffMatch() {
   if(starters.length!==required||new Set(starters).size!==required){alert("Selecione "+required+" titulares diferentes.");return;}
   const bench=[...document.querySelectorAll("[data-sub]")].map(x=>x.value).filter(Boolean).filter(id=>!starters.includes(id));
   m.lineup=starters;m.bench=[...new Set(bench)].slice(0,7);m.setup=false;m.paused=false;
+  state.savedLineups[String(state.db.userClubId||state.selectedClubId)]={formation:m.formation||"4-3-3",starters:[...m.lineup],bench:[...m.bench]};saveTransferCareer();
   m.events.unshift({minute:0,text:"Escalação confirmada. Começa a partida!"});runMatchClock();renderMatch();
 }
 function makeSubstitution() {
@@ -1163,10 +1217,10 @@ function renderMatch() {
   const roster=state.db.players.filter(p=>String(p.teamId)===String(state.db.userClubId||state.selectedClubId)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));
   const byId=id=>state.db.players.find(p=>String(p.id)===String(id));
   if(m.setup){
-    const names=["Goleiro","Defensor 1","Defensor 2","Defensor 3","Defensor 4","Meio 1","Meio 2","Meio 3","Atacante 1","Atacante 2","Atacante 3"].slice(0,Math.min(11,roster.length));
-    const chosen=new Set(m.lineup),reserves=roster.filter(p=>!chosen.has(p.id));
-    const opts=id=>roster.map(p=>`<option value="${p.id}" ${String(id)===String(p.id)?"selected":""}>${p.name} · ${p.position} · ${p.overall}</option>`).join("");
-    setPage("Escalação",`<p class="view-intro">Escolha seus titulares e até 7 reservas antes de iniciar. Elenco cadastrado: ${roster.length} jogadores.</p><article class="card"><div class="section-head"><h2>${m.homeName} × ${m.awayName}</h2><span class="tag">4-3-3</span></div><div class="lineup-grid">${names.map((n,i)=>`<label class="lineup-slot"><span>${i+1}. ${n}</span><select data-xi>${opts(m.lineup[i])}</select></label>`).join("")}</div><div class="section-head"><h2>Banco de reservas</h2><span class="tag">7 vagas</span></div><div class="bench-grid">${Array.from({length:7},(_,i)=>`<label class="lineup-slot"><span>Reserva ${i+1}</span><select data-sub><option value="">— Vazio —</option>${reserves.map(p=>`<option value="${p.id}" ${String(m.bench[i]||"")===String(p.id)?"selected":""}>${p.name} · ${p.position}</option>`).join("")}</select></label>`).join("")}</div><button class="primary-btn" onclick="kickoffMatch()">⚽ CONFIRMAR ESCALAÇÃO E JOGAR</button></article>`);
+    const slots=FORMATIONS[m.formation||"4-3-3"].slice(0,Math.min(11,roster.length));
+    const chosen=new Set(m.lineup.map(String)),reserves=roster.filter(p=>!chosen.has(String(p.id)));
+    const opts=id=>roster.map(p=>`<option value="${p.id}" ${String(id)===String(p.id)?"selected":""}>${p.name} · ${p.position} · OVR ${p.overall}</option>`).join("");
+    setPage("Escalação e tática",`<p class="view-intro">Defina sua formação, escolha os titulares e monte o banco. Sua escalação será salva na carreira e influenciará a força da equipe durante o jogo.</p><article class="card"><div class="section-head"><h2>${m.homeName} × ${m.awayName}</h2><span class="tag">Pré-jogo</span></div><label class="lineup-slot"><span>FORMAÇÃO TÁTICA</span><select id="match-formation" onchange="changeMatchFormation(this.value)">${Object.keys(FORMATIONS).map(f=>`<option value="${f}" ${f===(m.formation||"4-3-3")?"selected":""}>${f}</option>`).join("")}</select></label><h3>Titulares · ${slots.length}/11</h3><div class="lineup-grid">${slots.map(([n],i)=>`<label class="lineup-slot"><span>${i+1}. ${n}</span><select data-xi>${opts(m.lineup[i])}</select></label>`).join("")}</div><div class="section-head"><h2>Banco de reservas</h2><span class="tag">Até 7 vagas</span></div><div class="bench-grid">${Array.from({length:7},(_,i)=>`<label class="lineup-slot"><span>Reserva ${i+1}</span><select data-sub><option value="">— Vazio —</option>${roster.filter(p=>!chosen.has(String(p.id))||String(m.bench[i])===String(p.id)).map(p=>`<option value="${p.id}" ${String(m.bench[i]||"")===String(p.id)?"selected":""}>${p.name} · ${p.position}</option>`).join("")}</select></label>`).join("")}</div><button class="primary-btn" onclick="kickoffMatch()">⚽ CONFIRMAR ESCALAÇÃO E JOGAR</button></article>`);
     return;
   }
   const starters=m.lineup.map(byId).filter(Boolean),bench=m.bench.map(byId).filter(Boolean);
