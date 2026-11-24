@@ -21,6 +21,7 @@ const ids = new Set();
 const duplicateIds = [];
 const invalidTeamLinks = [];
 const playerIdsByTeam = new Map();
+const playerMetadataByTeam = new Map();
 
 for (const player of players) {
   const id = String(player.id || "");
@@ -35,6 +36,14 @@ for (const player of players) {
   counts.set(teamId, (counts.get(teamId) || 0) + 1);
   if (!playerIdsByTeam.has(teamId)) playerIdsByTeam.set(teamId, []);
   playerIdsByTeam.get(teamId).push(id);
+  if (!playerMetadataByTeam.has(teamId)) {
+    playerMetadataByTeam.set(teamId, { name: 0, position: 0, age: 0, nationality: 0 });
+  }
+  const missing = playerMetadataByTeam.get(teamId);
+  if (!String(player.name || "").trim()) missing.name += 1;
+  if (!String(player.position || "").trim()) missing.position += 1;
+  if (!Number.isFinite(Number(player.age)) || Number(player.age) <= 0) missing.age += 1;
+  if (!String(player.nationality || "").trim()) missing.nationality += 1;
 }
 
 const squadReferenceIssues = [];
@@ -74,7 +83,10 @@ for (const team of teams) {
     id: team.id,
     name: team.name,
     players: counts.get(String(team.id)) || 0,
-    squadReferenceIssues: squadReferenceIssues.filter(issue => String(issue.teamId) === String(team.id)).length
+    squadReferenceIssues: squadReferenceIssues.filter(issue => String(issue.teamId) === String(team.id)).length,
+    missingPlayerMetadata: playerMetadataByTeam.get(String(team.id)) || {
+      name: 0, position: 0, age: 0, nationality: 0
+    }
   });
 }
 
@@ -82,16 +94,26 @@ const results = [...leagues.entries()].map(([leagueId, clubs]) => {
   const minimum = Math.max(1, Number(db.meta?.leagueMinimumRosterSizes?.[leagueId] || defaultMinimum));
   const belowMinimum = clubs.filter(club => club.players < minimum);
   const squadIssues = clubs.reduce((sum, club) => sum + club.squadReferenceIssues, 0);
+  const incompleteMetadata = clubs.filter(club =>
+    Object.values(club.missingPlayerMetadata).some(count => count > 0)
+  );
   const complete = belowMinimum.length === 0 && squadIssues === 0 &&
+    incompleteMetadata.length === 0 &&
     duplicateIds.length === 0 && invalidTeamLinks.length === 0;
   return {
     leagueId,
     clubs: clubs.length,
     clubsMeetingMinimum: clubs.length - belowMinimum.length,
     squadReferenceIssues: squadIssues,
+    clubsWithIncompletePlayerMetadata: incompleteMetadata.length,
     minimumPlayersPerClub: minimum,
     complete,
-    clubsBelowMinimum: belowMinimum
+    clubsBelowMinimum: belowMinimum,
+    clubsWithIncompletePlayerMetadata: incompleteMetadata.map(club => ({
+      id: club.id,
+      name: club.name,
+      missing: club.missingPlayerMetadata
+    }))
   };
 }).sort((a, b) => a.leagueId.localeCompare(b.leagueId));
 
