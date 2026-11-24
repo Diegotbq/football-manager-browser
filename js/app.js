@@ -632,7 +632,10 @@ function prepareMatch(details) {
 function kickoffMatch() {
   const m=state.match;if(!m||!m.setup)return;
   const starters=[...document.querySelectorAll("[data-xi]")].map(x=>x.value).filter(Boolean);
-  if(starters.length!==11||new Set(starters).size!==11){alert("Selecione 11 titulares diferentes.");return;}
+  const available=state.db.players.filter(p=>String(p.teamId)===String(state.db.userClubId||state.selectedClubId)).length;
+  const required=Math.min(11,available);
+  if(required===0){alert("Este clube ainda não tem jogadores cadastrados no banco de dados.");return;}
+  if(starters.length!==required||new Set(starters).size!==required){alert("Selecione "+required+" titulares diferentes.");return;}
   const bench=[...document.querySelectorAll("[data-sub]")].map(x=>x.value).filter(Boolean).filter(id=>!starters.includes(id));
   m.lineup=starters;m.bench=[...new Set(bench)].slice(0,7);m.setup=false;m.paused=false;
   m.events.unshift({minute:0,text:"Escalação confirmada. Começa a partida!"});runMatchClock();renderMatch();
@@ -686,10 +689,10 @@ function renderMatch() {
   const roster=state.db.players.filter(p=>String(p.teamId)===String(state.db.userClubId||state.selectedClubId)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));
   const byId=id=>state.db.players.find(p=>String(p.id)===String(id));
   if(m.setup){
-    const names=["Goleiro","Defensor 1","Defensor 2","Defensor 3","Defensor 4","Meio 1","Meio 2","Meio 3","Atacante 1","Atacante 2","Atacante 3"];
+    const names=["Goleiro","Defensor 1","Defensor 2","Defensor 3","Defensor 4","Meio 1","Meio 2","Meio 3","Atacante 1","Atacante 2","Atacante 3"].slice(0,Math.min(11,roster.length));
     const chosen=new Set(m.lineup),reserves=roster.filter(p=>!chosen.has(p.id));
     const opts=id=>roster.map(p=>`<option value="${p.id}" ${String(id)===String(p.id)?"selected":""}>${p.name} · ${p.position} · ${p.overall}</option>`).join("");
-    setPage("Escalação",`<p class="view-intro">Escolha os 11 titulares e até 7 reservas antes de iniciar.</p><article class="card"><div class="section-head"><h2>${m.homeName} × ${m.awayName}</h2><span class="tag">4-3-3</span></div><div class="lineup-grid">${names.map((n,i)=>`<label class="lineup-slot"><span>${i+1}. ${n}</span><select data-xi>${opts(m.lineup[i])}</select></label>`).join("")}</div><div class="section-head"><h2>Banco de reservas</h2><span class="tag">7 vagas</span></div><div class="bench-grid">${Array.from({length:7},(_,i)=>`<label class="lineup-slot"><span>Reserva ${i+1}</span><select data-sub><option value="">— Vazio —</option>${reserves.map(p=>`<option value="${p.id}" ${String(m.bench[i]||"")===String(p.id)?"selected":""}>${p.name} · ${p.position}</option>`).join("")}</select></label>`).join("")}</div><button class="primary-btn" onclick="kickoffMatch()">⚽ CONFIRMAR ESCALAÇÃO E JOGAR</button></article>`);
+    setPage("Escalação",`<p class="view-intro">Escolha seus titulares e até 7 reservas antes de iniciar. Elenco cadastrado: ${roster.length} jogadores.</p><article class="card"><div class="section-head"><h2>${m.homeName} × ${m.awayName}</h2><span class="tag">4-3-3</span></div><div class="lineup-grid">${names.map((n,i)=>`<label class="lineup-slot"><span>${i+1}. ${n}</span><select data-xi>${opts(m.lineup[i])}</select></label>`).join("")}</div><div class="section-head"><h2>Banco de reservas</h2><span class="tag">7 vagas</span></div><div class="bench-grid">${Array.from({length:7},(_,i)=>`<label class="lineup-slot"><span>Reserva ${i+1}</span><select data-sub><option value="">— Vazio —</option>${reserves.map(p=>`<option value="${p.id}" ${String(m.bench[i]||"")===String(p.id)?"selected":""}>${p.name} · ${p.position}</option>`).join("")}</select></label>`).join("")}</div><button class="primary-btn" onclick="kickoffMatch()">⚽ CONFIRMAR ESCALAÇÃO E JOGAR</button></article>`);
     return;
   }
   const starters=m.lineup.map(byId).filter(Boolean),bench=m.bench.map(byId).filter(Boolean);
