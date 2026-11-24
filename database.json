@@ -5,12 +5,13 @@
     "season": "2026/27",
     "currency": "EUR",
     "note": "Nomes e vínculos de elenco baseados em listas oficiais/publicadas para 2026/27. Idades não preenchidas quando não verificadas; overall e valores são estimativas fictícias de jogo.",
-    "dataStatus": "Elencos parciais: jogadores estrangeiros identificados em levantamento jornalístico de 22/09/2026 adicionados aos clubes brasileiros. Não representa elenco completo; conferir transferências posteriores. Overall e valores de mercado são estimativas do jogo. Calendário brasileiro: rodadas finais 36–38 cadastradas; datas/horários não publicados permanecem como janela estimada ou pendente, sem inventar estádio.",
+    "dataStatus": "Calendário das rodadas finais 36–38 do Brasileirão 2026 revisado conforme tabela detalhada oficial da CBF. Partidas jogáveis na carreira quando envolverem o clube escolhido; resultados simulados são fictícios e salvos localmente.",
     "lastDataReview": "2026-11-24",
     "sources": [
       "Folha: levantamento de estrangeiros por clube, publicado em 22/09/2026",
       "CBF: tabela detalhada Série A 2026, atualização de 04/11/2026",
-      "Espaço do Povo: programação da 37ª rodada e jogo adiado, 23/11/2026"
+      "Espaço do Povo: programação da 37ª rodada e jogo adiado, 23/11/2026",
+      "CBF: Tabela Detalhada das rodadas 37 e 38, atualizada em 06/11/2026"
     ]
   },
   "leagues": [
@@ -6673,10 +6674,10 @@
         "round": 37,
         "homeTeamId": "fluminense",
         "awayTeamId": "cruzeiro",
-        "date": null,
-        "time": null,
-        "stadium": null,
-        "dateRange": "2026-11-28/2026-11-29",
+        "date": "2026-11-27",
+        "time": "20:00",
+        "stadium": "Maracanã",
+        "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
       },
@@ -6689,7 +6690,7 @@
         "awayTeamId": "bahia",
         "date": "2026-11-28",
         "time": "21:00",
-        "stadium": null,
+        "stadium": "Estádio Nilton Santos",
         "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
@@ -6701,10 +6702,10 @@
         "round": 37,
         "homeTeamId": "sao-paulo",
         "awayTeamId": "remo",
-        "date": null,
-        "time": null,
-        "stadium": null,
-        "dateRange": "2026-11-28/2026-11-29",
+        "date": "2026-11-26",
+        "time": "20:00",
+        "stadium": "MorumBIS",
+        "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
       },
@@ -6729,10 +6730,10 @@
         "round": 37,
         "homeTeamId": "mirassol",
         "awayTeamId": "athletico-pr",
-        "date": null,
-        "time": null,
-        "stadium": null,
-        "dateRange": "2026-11-28/2026-11-29",
+        "date": "2026-11-29",
+        "time": "18:30",
+        "stadium": "Maião",
+        "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
       },
@@ -6743,10 +6744,10 @@
         "round": 37,
         "homeTeamId": "atletico-mg",
         "awayTeamId": "vasco",
-        "date": null,
-        "time": null,
-        "stadium": null,
-        "dateRange": "2026-11-28/2026-11-29",
+        "date": "2026-11-29",
+        "time": "19:30",
+        "stadium": "Arena MRV",
+        "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
       },
@@ -6787,7 +6788,7 @@
         "awayTeamId": "santos",
         "date": "2026-11-29",
         "time": "16:00",
-        "stadium": null,
+        "stadium": "Barradão",
         "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
@@ -6815,7 +6816,7 @@
         "awayTeamId": "chapecoense",
         "date": "2026-12-02",
         "time": "21:30",
-        "stadium": null,
+        "stadium": "Maracanã",
         "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
@@ -6829,7 +6830,7 @@
         "awayTeamId": "vitoria",
         "date": "2026-12-02",
         "time": "21:30",
-        "stadium": null,
+        "stadium": "São Januário",
         "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
@@ -6843,7 +6844,7 @@
         "awayTeamId": "botafogo",
         "date": "2026-12-02",
         "time": "21:30",
-        "stadium": null,
+        "stadium": "Vila Belmiro",
         "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
@@ -6857,7 +6858,7 @@
         "awayTeamId": "coritiba",
         "date": "2026-12-02",
         "time": "21:30",
-        "stadium": null,
+        "stadium": "Allianz Parque",
         "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
@@ -6871,7 +6872,7 @@
         "awayTeamId": "fluminense",
         "date": "2026-12-02",
         "time": "21:30",
-        "stadium": null,
+        "stadium": "Cícero de Souza Marques",
         "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
@@ -6885,7 +6886,7 @@
         "awayTeamId": "internacional",
         "date": "2026-12-02",
         "time": "21:30",
-        "stadium": null,
+        "stadium": "Mineirão",
         "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
@@ -6899,7 +6900,7 @@
         "awayTeamId": "mirassol",
         "date": "2026-12-02",
         "time": "21:30",
-        "stadium": null,
+        "stadium": "Arena do Grêmio",
         "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
@@ -6913,7 +6914,7 @@
         "awayTeamId": "sao-paulo",
         "date": "2026-12-02",
         "time": "21:30",
-        "stadium": null,
+        "stadium": "Ligga Arena",
         "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
@@ -6927,7 +6928,7 @@
         "awayTeamId": "atletico-mg",
         "date": "2026-12-02",
         "time": "21:30",
-        "stadium": null,
+        "stadium": "Arena Fonte Nova",
         "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
@@ -6941,7 +6942,7 @@
         "awayTeamId": "corinthians",
         "date": "2026-12-02",
         "time": "21:30",
-        "stadium": null,
+        "stadium": "Mangueirão",
         "dateRange": null,
         "status": "scheduled",
         "source": "CBF"
