@@ -15,7 +15,8 @@ const state = {
   scoutingReports: [],
   playerAttributes: {},
   savedLineups: {},
-  playerConditions: {}
+  playerConditions: {},
+  generatedFixtures: []
 };
 
 const $ = selector => document.querySelector(selector);
@@ -44,6 +45,7 @@ async function init() {
 
     state.db = await response.json();
     loadTransferCareer();
+    ensureGeneratedFixtures();
     try { state.matchHistory = JSON.parse(localStorage.getItem("fmb-match-history") || "[]"); } catch (_) { state.matchHistory = []; }
 
     const seasonLabel = document.querySelector(".club-chip small");
@@ -719,7 +721,8 @@ function saveTransferCareer() {
       scoutingReports: state.scoutingReports,
       playerAttributes: state.playerAttributes,
       savedLineups: state.savedLineups,
-      playerConditions: state.playerConditions
+      playerConditions: state.playerConditions,
+      generatedFixtures: state.generatedFixtures
     }));
   } catch (_) {
     alert("Não foi possível salvar a transferência neste dispositivo. Verifique o espaço disponível.");
@@ -748,6 +751,7 @@ function loadTransferCareer() {
     state.playerAttributes = saved.playerAttributes && typeof saved.playerAttributes === "object" ? saved.playerAttributes : {};
     state.savedLineups = saved.savedLineups && typeof saved.savedLineups === "object" ? saved.savedLineups : {};
     state.playerConditions = saved.playerConditions && typeof saved.playerConditions === "object" ? saved.playerConditions : {};
+    state.generatedFixtures = Array.isArray(saved.generatedFixtures) ? saved.generatedFixtures : [];
     state.academyProspects.forEach(p => {
       if (!state.db.players.some(existing => String(existing.id) === String(p.id))) state.db.players.push(p);
       const team = state.db.teams.find(t => String(t.id) === String(p.teamId));
@@ -763,6 +767,7 @@ function loadTransferCareer() {
     state.playerAttributes = {};
     state.savedLineups = {};
     state.playerConditions = {};
+    state.generatedFixtures = [];
   }
 }
 
@@ -1046,11 +1051,50 @@ function renderTable(leagueFilter) {
   `);
 }
 
+// GERAÇÃO DE CALENDÁRIOS DE LIGA (tabela fictícia de carreira, não calendário oficial)
+function ensureGeneratedFixtures() {
+  if (!state.db || state.generatedFixtures.length) return;
+  const seasonStart = state.db.calendar?.seasonStart || "2026-07-01";
+  const baseDate = new Date(seasonStart + "T12:00:00");
+  (state.db.leagues || []).filter(league => league.type === "league" && Array.isArray(league.teams) && league.teams.length >= 2).forEach(league => {
+    const ids = [...league.teams];
+    if (ids.length % 2) ids.push(null);
+    const rounds = ids.length - 1;
+    const half = ids.length / 2;
+    let rotation = [...ids];
+    for (let round = 0; round < rounds * 2; round++) {
+      for (let match = 0; match < half; match++) {
+        const first = rotation[match], second = rotation[ids.length - 1 - match];
+        if (!first || !second) continue;
+        const home = round < rounds ? first : second;
+        const away = round < rounds ? second : first;
+        const date = new Date(baseDate);
+        date.setDate(date.getDate() + round * 7);
+        state.generatedFixtures.push({
+          id: "career-" + league.id + "-" + (round + 1) + "-" + (match + 1),
+          competition: league.name,
+          competitionId: league.id,
+          round: round + 1,
+          date: date.toISOString().slice(0, 10),
+          homeTeamId: home,
+          awayTeamId: away,
+          generated: true
+        });
+      }
+      const fixed = rotation[0];
+      const rest = rotation.slice(1);
+      rest.unshift(rest.pop());
+      rotation = [fixed, ...rest];
+    }
+  });
+  saveTransferCareer();
+}
+
 // CALENDÁRIO
 
 function renderCalendar(competitionFilter) {
   const windows = state.db.calendar?.transferWindows || [];
-  const allFixtures = state.db.calendar?.events || [];
+  const allFixtures = [...(state.db.calendar?.events || []), ...(state.generatedFixtures || [])];
   const competitions = [...new Set(allFixtures.map(e => e.competition).filter(Boolean))].sort();
   const selectedCompetition = competitions.includes(competitionFilter)
     ? competitionFilter
@@ -1232,7 +1276,7 @@ function startMatch() {
   prepareMatch({homeId:home.id,awayId:away.id,homeName:home.name,awayName:away.name});
 }
 function startFixture(fixtureId) {
-  const f=(state.db.calendar?.events||[]).find(x=>x.id===fixtureId);
+  const f=[...(state.db.calendar?.events||[]), ...(state.generatedFixtures||[])].find(x=>x.id===fixtureId);
   if(!f)return;
   const clubId=String(state.db.userClubId||state.selectedClubId||"");
   if(String(f.homeTeamId)!==clubId&&String(f.awayTeamId)!==clubId){alert("Este jogo não envolve seu clube.");return;}
