@@ -109,7 +109,7 @@ const results = [...leagues.entries()].map(([leagueId, clubs]) => {
     minimumPlayersPerClub: minimum,
     complete,
     clubsBelowMinimum: belowMinimum,
-    clubsWithIncompletePlayerMetadata: incompleteMetadata.map(club => ({
+    incompleteMetadataClubs: incompleteMetadata.map(club => ({
       id: club.id,
       name: club.name,
       missing: club.missingPlayerMetadata
