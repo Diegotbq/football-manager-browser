@@ -54,6 +54,10 @@ def reconcile(database: dict, staging: dict) -> dict:
         matched = 0
         unmatched = 0
         ambiguous = 0
+        missing_age = 0
+        missing_nationality = 0
+        age_differences = 0
+        nationality_differences = 0
         seen_existing = set()
         matched_qids = set()
         for candidate in eligible:
@@ -62,6 +66,15 @@ def reconcile(database: dict, staging: dict) -> dict:
             if len(matches) == 1:
                 matched += 1
                 seen_existing.add(str(matches[0].get("id")))
+                existing_player = matches[0]
+                if existing_player.get("age") in (None, "", 0):
+                    missing_age += 1
+                elif candidate.get("age") is not None and existing_player.get("age") != candidate.get("age"):
+                    age_differences += 1
+                if existing_player.get("nationality") in (None, "", "—", "-"):
+                    missing_nationality += 1
+                elif candidate.get("nationality") and existing_player.get("nationality") != candidate.get("nationality"):
+                    nationality_differences += 1
                 if candidate.get("sourcePlayerQid"):
                     matched_qids.add(candidate["sourcePlayerQid"])
             elif len(matches) > 1:
@@ -82,6 +95,10 @@ def reconcile(database: dict, staging: dict) -> dict:
             "exactNameMatches": matched,
             "unmatchedEligibleCandidates": unmatched,
             "ambiguousNameMatches": ambiguous,
+            "matchedPlayersMissingAge": missing_age,
+            "matchedPlayersMissingNationality": missing_nationality,
+            "matchedPlayersWithAgeDifference": age_differences,
+            "matchedPlayersWithNationalityDifference": nationality_differences,
             "existingPlayersWithoutUniqueCandidate": len(missing_existing),
             "duplicateIdentityCandidates": sum(
                 1 for c in eligible if c.get("sourcePlayerQid") in duplicate_qids
@@ -90,6 +107,8 @@ def reconcile(database: dict, staging: dict) -> dict:
         team_reports.append(report)
         for key in ("currentRosterCount", "sourceCandidateCount", "eligibleCandidateCount",
                     "exactNameMatches", "unmatchedEligibleCandidates", "ambiguousNameMatches",
+                    "matchedPlayersMissingAge", "matchedPlayersMissingNationality",
+                    "matchedPlayersWithAgeDifference", "matchedPlayersWithNationalityDifference",
                     "existingPlayersWithoutUniqueCandidate", "duplicateIdentityCandidates"):
             totals[key] += report[key]
 
