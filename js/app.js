@@ -417,7 +417,8 @@ function talkToPlayer(playerId){
   else if(choice==="2"){
     if(pending){alert("Você já tem uma promessa ativa para este jogador.");return;}
     state.playerMorale[player.id]=Math.min(100,morale+10);
-    state.playerPromises.push({playerId:player.id,playerName:player.name,label:"Mais oportunidades como titular",startMatchCount:state.matchHistory.length,targetMatchCount:state.matchHistory.length+3,status:"pending",date:state.day.toISOString().slice(0,10)});
+    const clubMatches=state.matchHistory.filter(m=>String(m.homeId)===String(userClub().id)||String(m.awayId)===String(userClub().id));
+    state.playerPromises.push({playerId:player.id,playerName:player.name,clubId:userClub().id,label:"Mais oportunidades como titular",startMatchCount:clubMatches.length,targetMatchCount:clubMatches.length+3,status:"pending",date:state.day.toISOString().slice(0,10)});
     alert("Promessa registrada! Nas próximas três partidas do clube, tente escalar "+player.name+" em pelo menos duas.");
   }else if(choice==="3"){state.playerMorale[player.id]=Math.min(100,morale+3);alert("Você explicou o planejamento ao jogador. A conversa ajudou a tranquilizá-lo.");}
   else{alert("Escolha uma opção de 1 a 3.");return;}
@@ -436,8 +437,10 @@ function updateSquadMorale(){
     if(contract&&new Date(contract.expiresAt+"T12:00:00")-new Date(today+"T12:00:00")<180*86400000)change-=1;
     state.playerMorale[player.id]=Math.max(0,Math.min(100,morale+change));
   });
-  state.playerPromises.filter(p=>p.status==="pending"&&state.matchHistory.length>=p.targetMatchCount).forEach(p=>{
-    const played=state.matchHistory.slice(p.startMatchCount,p.targetMatchCount).filter(m=>(m.playerIds||[]).some(id=>String(id)===String(p.playerId))).length;
+  state.playerPromises.filter(p=>p.status==="pending").forEach(p=>{
+    const clubMatches=state.matchHistory.filter(m=>String(m.homeId)===String(p.clubId)&&String(m.awayId)!==String(p.clubId)||String(m.awayId)===String(p.clubId)&&String(m.homeId)!==String(p.clubId));
+    if(clubMatches.length<p.targetMatchCount)return;
+    const played=clubMatches.slice(p.startMatchCount,p.targetMatchCount).filter(m=>(m.playerIds||[]).some(id=>String(id)===String(p.playerId))).length;
     p.status=played>=2?"fulfilled":"broken";const current=state.playerMorale[p.playerId]??70;
     state.playerMorale[p.playerId]=Math.max(0,Math.min(100,current+(p.status==="fulfilled"?8:-18)));
     p.resolvedDate=today;p.appearances=played;
