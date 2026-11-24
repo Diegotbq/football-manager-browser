@@ -165,6 +165,45 @@
           "note": "Correspondências são sugestões técnicas de nomes por liga, não confirmação oficial do clube atual nem autorização para importar."
         }
       }
+    },
+    {
+      "id": "laliga-official-clubs-2026-27",
+      "name": "LALIGA EA SPORTS — clubes oficiais 2026/27",
+      "url": "https://www.laliga.com/laliga-easports/clubes",
+      "role": "Fonte primária para validar a composição oficial dos 20 clubes da competição e abrir as fichas oficiais de cada clube.",
+      "season": "2026/27",
+      "checkedAt": "2026-11-24",
+      "documentedFields": [
+        "nome oficial do clube",
+        "ficha oficial do clube"
+      ],
+      "limitations": [
+        "A página de clubes não é, por si só, uma lista completa de jogadores inscritos.",
+        "A ficha do clube deve ser consultada individualmente para confirmar cada atleta e os campos pessoais disponíveis.",
+        "Não inferir elenco completo, idade, nacionalidade ou posição apenas a partir da lista de clubes."
+      ],
+      "importPolicy": "Usar como fonte primária para confirmar identidade e participação do clube na LALIGA EA SPORTS 2026/27; jogador só pode ser validado por ficha oficial individual ou registro oficial de elenco, preservando a URL de origem."
+    },
+    {
+      "id": "premier-league-official-squad-lists-2026-27",
+      "name": "Premier League — listas oficiais de plantéis 2026/27",
+      "url": "https://www.premierleague.com/es/news/4706139/consulta-todos-los-planteles-de-la-premier-league-202627/",
+      "role": "Fonte primária da liga para listas de jogadores de primeiro time e elegíveis sub-21 apresentadas pelos clubes após a janela de verão de 2026.",
+      "season": "2026/27",
+      "checkedAt": "2026-11-24",
+      "documentedFields": [
+        "nome do jogador",
+        "clube",
+        "categoria de inscrição do plantel",
+        "elegibilidade sub-21",
+        "formação no clube quando indicada"
+      ],
+      "limitations": [
+        "A lista representa a inscrição após a janela de verão e pode não refletir alterações posteriores.",
+        "A publicação não garante todos os campos pessoais como data de nascimento, nacionalidade e posição para cada jogador.",
+        "Empréstimos e atualizações posteriores precisam de confirmação em registros oficiais mais recentes."
+      ],
+      "importPolicy": "Usar para confirmar vínculo e inscrição no plantel da Premier League 2026/27; completar idade, nacionalidade e posição por fontes oficiais individuais, sem inferência."
     }
   ],
   "globalImportGate": {
