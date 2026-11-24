@@ -1593,10 +1593,35 @@ function getSouthAmericanCupPools() {
     sudamericana: [...(state.db.leagues.find(l=>l.id==="brasileirao-serie-b")?.teams||[]), ...baseClubs, ...secondary]
   };
 }
+function getEuropeanSecondaryPools() {
+  const europeanLeagueIds=["premier-league","la-liga","ligue-1","eredivisie","primeira-liga","belgian-pro-league","scottish-premiership","swiss-super-league","super-lig","hnl-croatia"];
+  const champions=new Set(state.db.leagues.find(l=>l.id==="champions-league")?.teams||[]);
+  const candidates=europeanLeagueIds.flatMap(id=>state.db.leagues.find(l=>l.id===id)?.teams||[])
+    .filter((id,index,list)=>list.indexOf(id)===index&&!champions.has(id))
+    .map(id=>state.db.teams.find(team=>String(team.id)===String(id)))
+    .filter(Boolean)
+    .sort((a,b)=>Number(b.reputation||0)-Number(a.reputation||0)||String(a.name).localeCompare(String(b.name)));
+  const europa=candidates.slice(0,16).map(team=>team.id);
+  const europaSet=new Set(europa);
+  const conference=candidates.filter(team=>!europaSet.has(team.id)).slice(0,16).map(team=>team.id);
+  return {europa,conference};
+}
 function ensureCupCompetitions() {
   if (state.cupCompetitions.length) {
+    const secondary=getEuropeanSecondaryPools();
+    const missing=[
+      {id:"europa-league",name:"UEFA Europa League",leagueId:"premier-league",teams:secondary.europa},
+      {id:"conference-league",name:"UEFA Conference League",leagueId:"premier-league",teams:secondary.conference}
+    ];
+    missing.forEach(def=>{
+      if(!state.cupCompetitions.some(cup=>cup.id===def.id)&&def.teams.length>=2){
+        state.cupCompetitions.push({id:def.id,name:def.name,leagueId:def.leagueId,participants:[...def.teams],activeTeams:[...def.teams],round:0,finished:false,champion:null,byes:[]});
+      }
+    });
     const pools=[
       {id:"champions-league",teams:state.db.leagues.find(l=>l.id==="champions-league")?.teams||[]},
+      {id:"europa-league",teams:secondary.europa},
+      {id:"conference-league",teams:secondary.conference},
       {id:"libertadores",teams:getSouthAmericanCupPools().libertadores},
       {id:"sudamericana",teams:getSouthAmericanCupPools().sudamericana}
     ];
@@ -1627,7 +1652,9 @@ function ensureCupCompetitions() {
   definitions.push(
     {id:"libertadores",name:"CONMEBOL Libertadores",leagueId:"brasileirao",teamIds:libertadoresPool,qualifiedTeams:qualified.libertadores||[]},
     {id:"sudamericana",name:"CONMEBOL Sudamericana",leagueId:"brasileirao",teamIds:sudamericanaPool,qualifiedTeams:qualified.sudamericana||[]},
-    {id:"champions-league",name:"UEFA Champions League",leagueId:"premier-league",teamIds:europeanPool?.teams||[],qualifiedTeams:qualified.champions||[]}
+    {id:"champions-league",name:"UEFA Champions League",leagueId:"premier-league",teamIds:europeanPool?.teams||[],qualifiedTeams:qualified.champions||[]},
+    {id:"europa-league",name:"UEFA Europa League",leagueId:"premier-league",teamIds:getEuropeanSecondaryPools().europa,qualifiedTeams:qualified.europa||[]},
+    {id:"conference-league",name:"UEFA Conference League",leagueId:"premier-league",teamIds:getEuropeanSecondaryPools().conference,qualifiedTeams:qualified.conference||[]}
   );
   definitions.forEach(def => {
     const league = state.db.leagues.find(l => l.id === def.leagueId);
