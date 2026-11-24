@@ -14,6 +14,7 @@ const state = {
   playerRequests: [],
   playerAgentDemands: [],
   boardCareer: null,
+  managerOffers: [],
   contracts: {},
   loanRecords: [],
   trainingRecords: {},
@@ -143,6 +144,30 @@ async function init() {
 
 // ESCOLHA DO CLUBE
 
+function generateManagerOffers(club){
+  const board=state.boardCareer;if(!club||!board||board.fired||board.confidence<75)return;
+  const existing=state.managerOffers.filter(o=>o.status==="pending");if(existing.length)return;
+  const candidates=state.db.teams.filter(t=>String(t.id)!==String(club.id)&&Number(t.reputation||0)>=Math.max(20,Number(club.reputation||0)-12)&&Number(t.reputation||0)<=Number(club.reputation||0)+22)
+    .sort((a,b)=>Number(b.reputation||0)-Number(a.reputation||0)).slice(0,3);
+  candidates.forEach((team,index)=>state.managerOffers.push({id:"manager-"+team.id+"-"+Date.now()+"-"+index,clubId:team.id,clubName:team.name,reputation:Number(team.reputation||0),status:"pending",date:state.day.toISOString().slice(0,10)}));
+  if(candidates.length)saveTransferCareer();
+}
+function acceptManagerOffer(offerId){
+  const offer=state.managerOffers.find(o=>o.id===offerId&&o.status==="pending");if(!offer)return;
+  const club=state.db.teams.find(t=>String(t.id)===String(offer.clubId));if(!club)return;
+  if(!confirm("Aceitar a proposta do "+club.name+"? Você deixará seu clube atual e assumirá uma nova carreira neste time."))return;
+  offer.status="accepted";state.managerOffers.filter(o=>o.id!==offer.id&&o.status==="pending").forEach(o=>o.status="declined");
+  saveTransferCareer();selectClub(club.id);
+}
+function declineManagerOffer(offerId){
+  const offer=state.managerOffers.find(o=>o.id===offerId&&o.status==="pending");if(!offer)return;
+  offer.status="declined";saveTransferCareer();renderDashboard();
+}
+function renderManagerOffersPanel(){
+  const offers=state.managerOffers.filter(o=>o.status==="pending");if(!offers.length)return "";
+  return '<article class="card span-12"><div class="section-head"><h2>📨 Propostas de outros clubes</h2><span class="tag">'+offers.length+' oferta(s)</span></div><p class="subtle">Seu desempenho chamou a atenção de outras equipes. As propostas são eventos simulados da carreira.</p>'+
+    offers.map(o=>'<div class="fixture"><div><strong>'+o.clubName+'</strong><div class="subtle">Reputação do clube: '+o.reputation+'/100 · Proposta recebida em '+o.date+'</div></div><div><button class="primary-btn" onclick="acceptManagerOffer(&quot;'+o.id+'&quot;)">ACEITAR</button><button class="secondary-btn" onclick="declineManagerOffer(&quot;'+o.id+'&quot;)">RECUSAR</button></div></div>').join("")+'</article>';
+}
 function initializeBoardCareer(club){
   if(!club)return;
   if(state.boardCareer&&String(state.boardCareer.clubId)===String(club.id)&&!state.boardCareer.fired)return;
@@ -691,6 +716,7 @@ function renderDashboard() {
   setPage("Dashboard", `
     <div class="grid">
       ${renderBoardCareerPanel()}
+      ${renderManagerOffersPanel()}
 
       <article class="card span-3">
         <div class="card-label">Orçamento disponível</div>
@@ -1058,6 +1084,7 @@ function saveTransferCareer() {
       playerRequests: state.playerRequests,
       playerAgentDemands: state.playerAgentDemands,
       boardCareer: state.boardCareer,
+      managerOffers: state.managerOffers,
       contracts: state.contracts,
       loanRecords: state.loanRecords,
       trainingRecords: state.trainingRecords,
@@ -1097,6 +1124,7 @@ function loadTransferCareer() {
     state.playerRequests = Array.isArray(saved.playerRequests) ? saved.playerRequests : [];
     state.playerAgentDemands = Array.isArray(saved.playerAgentDemands) ? saved.playerAgentDemands : [];
     state.boardCareer = saved.boardCareer && typeof saved.boardCareer === "object" ? saved.boardCareer : null;
+    state.managerOffers = Array.isArray(saved.managerOffers) ? saved.managerOffers : [];
     state.contracts = saved.contracts && typeof saved.contracts === "object" ? saved.contracts : {};
     state.loanRecords = Array.isArray(saved.loanRecords) ? saved.loanRecords : [];
     state.trainingRecords = saved.trainingRecords && typeof saved.trainingRecords === "object" ? saved.trainingRecords : {};
@@ -1452,7 +1480,8 @@ function finishSeason() {
     if(rank>0){
       if(rank<=board.targetPosition){board.confidence=Math.min(100,board.confidence+18);board.fanSupport=Math.min(100,board.fanSupport+12);board.review="Objetivo cumprido! A diretoria aprovou sua temporada, terminando em "+rank+"º lugar.";} 
       else{board.confidence=Math.max(0,board.confidence-22);board.fanSupport=Math.max(0,board.fanSupport-12);board.review="Objetivo não alcançado: "+rank+"º lugar, com meta de terminar entre os "+board.targetPosition+" primeiros.";} 
-      if(board.confidence===0){board.fired=true;board.review+=" A diretoria decidiu encerrar seu trabalho.";} 
+      if(board.confidence===0){board.fired=true;board.review+=" A diretoria decidiu encerrar seu trabalho.";}
+      if(!board.fired&&rank<=board.targetPosition&&board.confidence>=75)generateManagerOffers(managedClub); 
     }
   }
   const brazilLeague=state.db.leagues.find(l=>l.id==="brasileirao");
