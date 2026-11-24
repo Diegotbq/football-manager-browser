@@ -1,0 +1,52 @@
+name: Apply verified LALIGA player profile metadata
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/approvals/laliga-player-profile-metadata-2026-27.json"
+      - "scripts/apply_laliga_profile_metadata.py"
+      - "scripts/test_apply_laliga_profile_metadata.py"
+
+permissions:
+  contents: write
+
+jobs:
+  apply-verified-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run regression tests
+        run: python -m unittest scripts/test_apply_laliga_profile_metadata.py
+      - name: Apply exact-identity, fill-only profile metadata
+        run: |
+          python scripts/apply_laliga_profile_metadata.py \
+            --database database.json \
+            --approval data/approvals/laliga-player-profile-metadata-2026-27.json \
+            --out /tmp/database-updated.json \
+            --report /tmp/laliga-profile-metadata-report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("/tmp/laliga-profile-metadata-report.json").read_text())
+          if report["matched"] != 3:
+              raise SystemExit("Expected exactly 3 approved player identity matches")
+          print(json.dumps(report, ensure_ascii=False, indent=2))
+          PY
+      - name: Commit database update
+        run: |
+          set -euo pipefail
+          cp /tmp/database-updated.json database.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add database.json
+          if git diff --cached --quiet; then
+            echo "No database changes."
+          else
+            git commit -m "Fill verified LaLiga player profile metadata"
+            git pull --rebase origin main
+            git push
+          fi
