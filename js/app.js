@@ -11,6 +11,7 @@ const state = {
   pendingOffers: [],
   playerMorale: {},
   playerPromises: [],
+  playerRequests: [],
   contracts: {},
   loanRecords: [],
   trainingRecords: {},
@@ -355,7 +356,8 @@ function processAIPlayerOffers() {
   if(!roster.length||!buyers.length)return;
   const available=roster.filter(p=>!state.pendingOffers.some(o=>String(o.playerId)===String(p.id)&&o.status==="pending")&&!state.loanRecords.some(r=>String(r.playerId)===String(p.id)&&!r.returned));
   if(!available.length)return;
-  const targets=available.filter(p=>Number(p.overall||0)>=68||Number(p.age||30)<=22);
+  const listed=available.filter(p=>state.playerRequests.some(r=>String(r.playerId)===String(p.id)&&r.status==="listed"));
+  const targets=listed.length?listed:available.filter(p=>Number(p.overall||0)>=68||Number(p.age||30)<=22);
   const player=(targets.length?targets:available)[Math.floor(Math.random()*(targets.length?targets:available).length)];
   const value=Math.max(100000,Number(player.marketValue)||100000);
   const candidates=buyers.filter(t=>Number(t.reputation||0)>=Math.max(20,Number(club.reputation||0)-22)&&Number(t.budget||0)>=value*.85);
@@ -424,6 +426,13 @@ function talkToPlayer(playerId){
   else{alert("Escolha uma opção de 1 a 3.");return;}
   saveTransferCareer();renderSquad();
 }
+function handlePlayerRequest(playerId,action){
+ const request=state.playerRequests.find(r=>String(r.playerId)===String(playerId)&&r.status==="pending"),player=state.db.players.find(p=>String(p.id)===String(playerId));
+ if(!request||!player||String(player.teamId)!==String(userClub()?.id))return;
+ if(action==="convince"){state.playerMorale[player.id]=Math.min(100,getPlayerMorale(player)+20);request.status="convinced";request.resolvedDate=state.day.toISOString().slice(0,10);alert("Você conversou com "+player.name+" e conseguiu acalmá-lo por enquanto. A moral melhorou.");}
+ else if(action==="list"){request.status="listed";request.resolvedDate=state.day.toISOString().slice(0,10);alert(player.name+" foi colocado na lista de transferências. Clubes interessados poderão apresentar propostas.");}
+ saveTransferCareer();renderSquad();
+}
 function updateSquadMorale(){
   const club=userClub();if(!club)return;
   const today=state.day.toISOString().slice(0,10);
@@ -436,6 +445,8 @@ function updateSquadMorale(){
     const contract=state.contracts[player.id];
     if(contract&&new Date(contract.expiresAt+"T12:00:00")-new Date(today+"T12:00:00")<180*86400000)change-=1;
     state.playerMorale[player.id]=Math.max(0,Math.min(100,morale+change));
+    const pending=state.playerRequests.some(r=>String(r.playerId)===String(player.id)&&r.status==="pending");
+    if(state.playerMorale[player.id]<=28&&unused>=3&&!pending)state.playerRequests.push({playerId:player.id,playerName:player.name,clubId:club.id,status:"pending",reason:"Poucas oportunidades em campo e moral muito baixa",date:today});
   });
   state.playerPromises.filter(p=>p.status==="pending").forEach(p=>{
     const clubMatches=state.matchHistory.filter(m=>String(m.homeId)===String(p.clubId)&&String(m.awayId)!==String(p.clubId)||String(m.awayId)===String(p.clubId)&&String(m.homeId)!==String(p.clubId));
@@ -677,14 +688,23 @@ function renderSquad() {
     </div>` : `
     <div class="card"><div class="section-head"><h2>Elenco em atualização</h2><span class="tag">Dados pendentes</span></div>
     <p class="view-intro">Ainda não cadastramos jogadores confirmados para este clube. Nenhum jogador fictício será apresentado como real.</p></div>`;
+  const promiseUpdates=state.playerPromises.filter(p=>String(p.clubId)===String(userClub().id)).slice(-5).reverse();
   setPage("Elenco / Contratos", `
     <p class="view-intro">Gerencie os jogadores, acompanhe os salários e renove contratos do ${userClub().name}.</p>
-    \${squadContent}
-    <div class="card"><div class="section-head"><h2>🤝 Promessas do treinador</h2><span class="tag">\${promiseUpdates.filter(p=>p.status==="pending").length} ativa(s)</span></div>
-      \${promiseUpdates.length?promiseUpdates.map(p=>\`<div class="fixture"><div><strong>\${p.playerName}</strong><div class="subtle">\${p.label} · \${p.status==="pending"?"Aguardando 3 partidas":p.status==="fulfilled"?"Promessa cumprida":"Promessa não cumprida"}\${p.status!=="pending"?" · "+(p.appearances||0)+" escalação(ões)":""}</div></div><span class="tag">\${p.status==="pending"?"Ativa":p.status==="fulfilled"?"Cumprida":"Quebrada"}</span></div>\`).join(""):'<p class="subtle">Ainda não há promessas registradas.</p>'}
+    ${squadContent}
+    <div class="card"><div class="section-head"><h2>🤝 Promessas do treinador</h2><span class="tag">${promiseUpdates.filter(p=>p.status==="pending").length} ativa(s)</span></div>
+      ${promiseUpdates.length?promiseUpdates.map(p=>`<div class="fixture"><div><strong>${p.playerName}</strong><div class="subtle">${p.label} · ${p.status==="pending"?"Aguardando 3 partidas":p.status==="fulfilled"?"Promessa cumprida":"Promessa não cumprida"}${p.status!=="pending"?" · "+(p.appearances||0)+" escalação(ões)":""}</div></div><span class="tag">${p.status==="pending"?"Ativa":p.status==="fulfilled"?"Cumprida":"Quebrada"}</span></div>`).join(""):'<p class="subtle">Ainda não há promessas registradas.</p>'}
     </div>
-    \${renderYouthAcademy()}
+    ${renderPlayerRequestsPanel()}
+    ${renderYouthAcademy()}
   `);
+}
+
+function renderPlayerRequestsPanel(){
+ const requests=state.playerRequests.filter(r=>String(r.clubId)===String(userClub().id)&&["pending","listed"].includes(r.status)).slice(-8).reverse();
+ return '<div class="card"><div class="section-head"><h2>🚨 Pedidos de transferência</h2><span class="tag">'+requests.filter(r=>r.status==="pending").length+' pendente(s)</span></div>'+
+ '<p class="subtle">Jogadores com moral muito baixa podem pedir para sair. Você pode tentar convencê-los ou aceitar o pedido e colocá-los no mercado.</p>'+
+ (requests.length?requests.map(r=>{const p=state.db.players.find(x=>String(x.id)===String(r.playerId));return '<div class="fixture"><div><strong>'+r.playerName+'</strong><div class="subtle">'+(r.status==="listed"?"Na lista de transferências":r.reason)+' · Moral '+(p?getPlayerMorale(p):"—")+'/100</div></div>'+(r.status==="pending"?'<div><button class="primary-btn" onclick="handlePlayerRequest(&quot;'+r.playerId+'&quot;,&quot;convince&quot;)">TENTAR CONVENCER</button><button class="secondary-btn" onclick="handlePlayerRequest(&quot;'+r.playerId+'&quot;,&quot;list&quot;)">ACEITAR PEDIDO</button></div>':'<span class="tag">No mercado</span>')+'</div>';}).join(""):'<p class="subtle">Nenhum jogador pediu transferência. Mantenha o elenco motivado!</p>')+'</div>';
 }
 
 function renderYouthAcademy() {
@@ -898,6 +918,7 @@ function saveTransferCareer() {
       pendingOffers: state.pendingOffers,
       playerMorale: state.playerMorale,
       playerPromises: state.playerPromises,
+      playerRequests: state.playerRequests,
       contracts: state.contracts,
       loanRecords: state.loanRecords,
       trainingRecords: state.trainingRecords,
@@ -934,6 +955,7 @@ function loadTransferCareer() {
     state.pendingOffers = Array.isArray(saved.pendingOffers) ? saved.pendingOffers : [];
     state.playerMorale = saved.playerMorale && typeof saved.playerMorale === "object" ? saved.playerMorale : {};
     state.playerPromises = Array.isArray(saved.playerPromises) ? saved.playerPromises : [];
+    state.playerRequests = Array.isArray(saved.playerRequests) ? saved.playerRequests : [];
     state.contracts = saved.contracts && typeof saved.contracts === "object" ? saved.contracts : {};
     state.loanRecords = Array.isArray(saved.loanRecords) ? saved.loanRecords : [];
     state.trainingRecords = saved.trainingRecords && typeof saved.trainingRecords === "object" ? saved.trainingRecords : {};
