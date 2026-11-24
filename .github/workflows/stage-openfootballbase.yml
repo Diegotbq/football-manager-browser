@@ -21,7 +21,7 @@ on:
         default: "2026-11-24"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   stage-candidates:
@@ -93,7 +93,70 @@ jobs:
             --out data/staging/database-enriched-preview.json \
             --report data/staging/metadata-enrichment-report.json
 
-      - name: Upload review artifact (does not modify game database)
+      - name: Validate and apply conservative metadata enrichment
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+
+          before = json.loads(Path("database.json").read_text(encoding="utf-8"))
+          after = json.loads(Path("data/staging/database-enriched-preview.json").read_text(encoding="utf-8"))
+          assert len(before["players"]) == len(after["players"]), "player count changed"
+          assert len(before["teams"]) == len(after["teams"]), "team count changed"
+
+          def verify_records(old_rows, new_rows, label):
+              old = {str(row["id"]): row for row in old_rows}
+              new = {str(row["id"]): row for row in new_rows}
+              assert old.keys() == new.keys(), f"{label}: player IDs changed"
+              for player_id, original in old.items():
+                  updated = new[player_id]
+                  for key in set(original) | set(updated):
+                      if original.get(key) == updated.get(key):
+                          continue
+                      assert key in {"age", "nationality", "identitySource"}, f"{label}: unexpected change {key}"
+                      if key == "age":
+                          assert original.get(key) in (None, "", 0), f"{label}: existing age overwritten"
+                          assert isinstance(updated.get(key), int) and 15 <= updated[key] <= 60
+                      elif key == "nationality":
+                          assert original.get(key) in (None, "", "—", "-"), f"{label}: existing nationality overwritten"
+                          assert re.fullmatch(r"[A-Z]{3}", str(updated.get(key) or ""))
+                      elif key == "identitySource":
+                          assert updated[key]["provider"] == "OpenFootballBase"
+                          assert updated[key].get("playerQid")
+          verify_records(before["players"], after["players"], "flat players")
+          old_team_players = [p for t in before["teams"] for p in t.get("players", [])]
+          new_team_players = [p for t in after["teams"] for p in t.get("players", [])]
+          verify_records(old_team_players, new_team_players, "team players")
+
+          flat = {str(p["id"]): p for p in after["players"]}
+          for player in new_team_players:
+              other = flat[str(player["id"])]
+              assert player.get("age") == other.get("age")
+              assert player.get("nationality") == other.get("nationality")
+              assert player.get("identitySource") == other.get("identitySource")
+          print(json.dumps({
+              "playersBefore": len(before["players"]),
+              "playersAfter": len(after["players"]),
+              "verifiedIdentitySources": sum(1 for p in after["players"] if p.get("identitySource", {}).get("provider") == "OpenFootballBase"),
+              "ageValuesFilled": sum(1 for p in after["players"] if p.get("age") is not None) - sum(1 for p in before["players"] if p.get("age") is not None),
+              "nationalitiesFilled": sum(1 for p in after["players"] if p.get("nationality") not in (None, "", "—", "-")) - sum(1 for p in before["players"] if p.get("nationality") not in (None, "", "—", "-"))
+          }, indent=2))
+          PY
+          cp data/staging/database-enriched-preview.json database.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add database.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Enrich verified player metadata from OpenFootballBase"
+            git push
+          else
+            echo "No verified metadata changes to apply."
+          fi
+
+      - name: Upload review artifact
         uses: actions/upload-artifact@v4
         with:
           name: openfootballbase-candidates-${{ inputs.season || '2026-27' }}
