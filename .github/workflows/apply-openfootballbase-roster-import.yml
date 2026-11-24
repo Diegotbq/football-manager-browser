@@ -1,0 +1,199 @@
+name: Apply approved OpenFootballBase roster imports
+
+on:
+  workflow_run:
+    workflows: ["Stage OpenFootballBase candidates"]
+    types: [completed]
+    branches: [main]
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: openfootballbase-roster-import-main
+  cancel-in-progress: false
+
+jobs:
+  apply-approved-roster-import:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Validate explicit roster-import approval
+        id: approval
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("data/approvals/openfootballbase-roster-import-2026-27.json")
+          if not path.exists():
+              print("Roster import is not approved.")
+              Path(__import__("os").environ["GITHUB_OUTPUT"]).write_text("approved=false\n")
+              raise SystemExit(0)
+          approval = json.loads(path.read_text(encoding="utf-8"))
+          required = {
+              "approved": True,
+              "operation": "add-verified-real-players-to-existing-clubs",
+              "source": "OpenFootballBase",
+              "release": "data-1.24.6",
+              "season": "2026/27",
+              "ageCalculatedAsOf": "2026-11-24",
+              "clubMatchPolicy": "exact-normalized-club-name-within-same-league-only",
+              "identityPolicy": "unique-source-QID; exclude repeated identities and ambiguous names",
+              "metadataPolicy": "require-precise-birth-date-age-and-three-letter-ISO-nationality",
+              "positionPolicy": "use-specific-Wikidata-P413-position-when-available; otherwise-preserve-OpenFootballBase-DF-MF-FW-broad-category",
+              "rosterPolicy": "maximum-30-players-per-team-after-import; never-add-to-rosters-already-at-cap",
+              "duplicatePolicy": "do-not-add-any-name-already-present-anywhere-in-database",
+              "noExistingPlayerOverwrites": True,
+              "noExistingPlayerRemovals": True,
+              "noClubAdditions": True,
+              "preserveExistingPositions": True,
+              "preserveExistingOverallAndMarketValue": True,
+              "sourceAttribution": True,
+              "gameplayEstimatePolicy": "new-player-overall-and-market-value-are-explicit-gameplay-estimates"
+          }
+          for key, value in required.items():
+              if approval.get(key) != value:
+                  raise SystemExit(f"Approval scope mismatch: {key}")
+          Path(__import__("os").environ["GITHUB_OUTPUT"]).write_text("approved=true\n")
+          PY
+
+      - name: Download review artifact from successful staging run
+        if: steps.approval.outputs.approved == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: openfootballbase-candidates-2026-27
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: ${{ github.event.workflow_run.id }}
+          path: data/staging
+
+      - name: Validate import preview against current database
+        if: steps.approval.outputs.approved == 'true'
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          import unicodedata
+          from pathlib import Path
+
+          database = json.loads(Path("database.json").read_text(encoding="utf-8"))
+          preview = json.loads(Path("data/staging/database-roster-import-preview.json").read_text(encoding="utf-8"))
+          report = json.loads(Path("data/staging/roster-import-preview-report.json").read_text(encoding="utf-8"))
+
+          if report.get("status") != "preview-only-no-database-changes":
+              raise SystemExit("Unexpected preview status")
+          if report.get("totalPlayersBefore") != len(database["players"]):
+              raise SystemExit("Stale preview: player count differs from current database")
+          if report.get("totalPlayersAfterPreview") != len(preview["players"]):
+              raise SystemExit("Preview player count does not match report")
+          if len(preview["players"]) - len(database["players"]) != report["newPlayersPrepared"]:
+              raise SystemExit("New player count does not match report")
+          if len(preview["teams"]) != len(database["teams"]):
+              raise SystemExit("Team count changed")
+
+          def normalize_name(value):
+              normalized = unicodedata.normalize("NFKD", str(value or ""))
+              ascii_name = "".join(ch for ch in normalized if not unicodedata.combining(ch))
+              return " ".join(re.sub(r"[^a-z0-9]+", " ", ascii_name.casefold()).split())
+
+          old_players = {str(p["id"]): p for p in database["players"]}
+          new_players = {str(p["id"]): p for p in preview["players"]}
+          if len(new_players) != len(preview["players"]):
+              raise SystemExit("Duplicate player IDs in preview")
+          for player_id, old_player in old_players.items():
+              if new_players.get(player_id) != old_player:
+                  raise SystemExit(f"Existing player modified or removed: {player_id}")
+
+          new_rows = [p for pid, p in new_players.items() if pid not in old_players]
+          allowed_positions = {"GK", "CB", "LB", "RB", "DM", "CM", "AM", "LM", "RM", "LW", "RW", "ST", "DF", "MF", "FW"}
+          qids = set()
+          names = {normalize_name(p.get("name")) for p in database["players"]}
+          for player in new_rows:
+              source = player.get("identitySource") or {}
+              if not str(player.get("id", "")).startswith("ofb-202627-"):
+                  raise SystemExit("Unexpected new player ID")
+              if not source.get("playerQid") or source["playerQid"] in qids:
+                  raise SystemExit("Missing or duplicate source QID")
+              qids.add(source["playerQid"])
+              name = normalize_name(player.get("name"))
+              if not name or name in names:
+                  raise SystemExit("Duplicate or empty player name")
+              names.add(name)
+              if not isinstance(player.get("age"), int) or not 15 <= player["age"] <= 60:
+                  raise SystemExit("New player age is not validated")
+              if not re.fullmatch(r"[A-Z]{3}", str(player.get("nationality") or "")):
+                  raise SystemExit("New player nationality is not ISO alpha-3")
+              if player.get("position") not in allowed_positions:
+                  raise SystemExit("Unsupported player position")
+              if player.get("positionPrecision") not in {"specific", "broad-category"}:
+                  raise SystemExit("Missing position precision label")
+              if not player.get("positionName") or not player.get("gameplayEstimate"):
+                  raise SystemExit("Missing display label or gameplay estimate disclosure")
+              if source.get("provider") != "OpenFootballBase" or not source.get("pageRevision"):
+                  raise SystemExit("Missing source attribution")
+              if player.get("teamId") not in {str(t["id"]) for t in database["teams"]}:
+                  raise SystemExit("New player points to unknown team")
+
+          old_teams = {str(t["id"]): t for t in database["teams"]}
+          new_teams = {str(t["id"]): t for t in preview["teams"]}
+          for team_id, old_team in old_teams.items():
+              new_team = new_teams.get(team_id)
+              if new_team is None:
+                  raise SystemExit(f"Team removed: {team_id}")
+              old_metadata = {k: v for k, v in old_team.items() if k != "players"}
+              new_metadata = {k: v for k, v in new_team.items() if k != "players"}
+              if old_metadata != new_metadata:
+                  raise SystemExit(f"Team metadata changed: {team_id}")
+              old_roster = old_team.get("players", [])
+              new_roster = new_team.get("players", [])
+              if new_roster[:len(old_roster)] != old_roster:
+                  raise SystemExit(f"Existing roster changed: {team_id}")
+              if len(new_roster) > len(old_roster) and len(new_roster) > 30:
+                  raise SystemExit(f"Roster cap exceeded: {team_id}")
+
+          flat = {str(p["id"]): p for p in preview["players"]}
+          for team in preview["teams"]:
+              for player in team.get("players", []):
+                  if flat.get(str(player["id"])) != player:
+                      raise SystemExit(f"Team/flat player mismatch: {player['id']}")
+
+          print(json.dumps({
+              "newPlayers": len(new_rows),
+              "specificPositions": sum(p["positionPrecision"] == "specific" for p in new_rows),
+              "broadPositionGroups": sum(p["positionPrecision"] == "broad-category" for p in new_rows),
+              "teamsReceivingPlayers": sum(
+                  len(preview["teams"][i].get("players", [])) > len(database["teams"][i].get("players", []))
+                  for i in range(len(database["teams"]))
+              ),
+              "playersBefore": len(database["players"]),
+              "playersAfter": len(preview["players"]),
+              "maxRosterSize": 30
+          }, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Apply preview and commit database
+        if: steps.approval.outputs.approved == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp data/staging/database-roster-import-preview.json database.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add database.json
+          if git diff --cached --quiet; then
+            echo "No new verified players to import."
+          else
+            git commit -m "Import verified real player rosters for 2026/27"
+            git fetch origin main
+            git pull --rebase origin main
+            git push
+          fi
