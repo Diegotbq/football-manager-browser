@@ -122,6 +122,8 @@ def main() -> int:
         missing = []
         if not qid:
             missing.append("identity")
+        if not usable(item["player"]):
+            missing.append("name")
         if not usable(item["position"]):
             missing.append("position")
         if not usable(item["nationality"]):
