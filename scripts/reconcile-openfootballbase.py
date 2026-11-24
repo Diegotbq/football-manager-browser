@@ -21,6 +21,8 @@ def reconcile(database: dict, staging: dict) -> dict:
     by_team: dict[str, list[dict]] = defaultdict(list)
     qid_rows: dict[str, list[dict]] = defaultdict(list)
     skipped_status = Counter()
+    nationality_pairs = Counter()
+    difference_examples = []
     for candidate in staging.get("candidates", []):
         mapping = candidate.get("clubMapping") or {}
         if mapping.get("status") != "exact-name-match-review-required" or not mapping.get("teamId"):
@@ -75,6 +77,16 @@ def reconcile(database: dict, staging: dict) -> dict:
                     missing_nationality += 1
                 elif candidate.get("nationality") and existing_player.get("nationality") != candidate.get("nationality"):
                     nationality_differences += 1
+                    nationality_pairs[f'{existing_player.get("nationality")} -> {candidate.get("nationality")}'] += 1
+                    if len(difference_examples) < 60:
+                        difference_examples.append({
+                            "teamId": team_id,
+                            "teamName": team.get("name"),
+                            "playerName": candidate.get("name"),
+                            "databaseNationality": existing_player.get("nationality"),
+                            "sourceNationality": candidate.get("nationality"),
+                            "sourcePlayerQid": candidate.get("sourcePlayerQid")
+                        })
                 if candidate.get("sourcePlayerQid"):
                     matched_qids.add(candidate["sourcePlayerQid"])
             elif len(matches) > 1:
@@ -120,6 +132,8 @@ def reconcile(database: dict, staging: dict) -> dict:
         "totals": dict(totals),
         "skippedCandidateStatusCounts": dict(skipped_status),
         "duplicateSourceIdentityCount": len(duplicate_qids),
+        "nationalityDifferencePairs": dict(nationality_pairs.most_common()),
+        "nationalityDifferenceExamples": difference_examples,
         "teams": team_reports,
     }
 
