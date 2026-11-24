@@ -1864,7 +1864,7 @@ function renderCalendar(competitionFilter) {
   const fixtureDate = f => f.date
     ? new Date(`${f.date}T12:00:00`).toLocaleDateString("pt-BR",{day:"2-digit",month:"short",year:"numeric"})
     : "Data a confirmar";
-  const stageLabel = f => f.isCup ? f.round : `${f.round}ª rodada`;
+  const stageLabel = f => f.isCup ? (f.phase==="league" ? `${f.round} · Pote ${f.homePot} × Pote ${f.awayPot}` : f.round) : `${f.round}ª rodada`;
   const cupSummary = (state.cupCompetitions || []).map(cup => {
     const champion = cup.champion ? teamName(cup.champion) : null;
     const stage = cup.finished ? "Campeão definido" : cup.phase==="league" ? "Fase de liga · rodada "+(cup.round+1)+"/8 · 36 clubes · 4 potes" : cup.format==="uefa-league"&&cup.round===8 ? "Playoffs eliminatórios" : cupRoundName(cup.activeTeams.length);
