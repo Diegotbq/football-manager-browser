@@ -123,5 +123,7 @@ jobs:
             echo "Database already contains the approved enrichment; no commit needed."
           else
             git commit -m "Enrich verified missing player metadata for 2026/27"
+            git fetch origin main
+            git pull --rebase origin main
             git push
           fi
