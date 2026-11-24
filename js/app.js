@@ -9,6 +9,8 @@ const state = {
   matchHistory: [],
   transferHistory: [],
   pendingOffers: [],
+  playerMorale: {},
+  playerPromises: [],
   contracts: {},
   loanRecords: [],
   trainingRecords: {},
@@ -395,6 +397,54 @@ function resolveAIPlayerOffer(offerId,action) {
   saveTransferCareer();alert("Venda concluída! "+player.name+" foi transferido para "+buyer.name+".");renderMarket();
 }
 
+function getPlayerMorale(playerOrId){
+  const id=typeof playerOrId==="object"?playerOrId?.id:playerOrId;
+  if(id==null)return 70;
+  if(!Number.isFinite(Number(state.playerMorale[id])))state.playerMorale[id]=70;
+  state.playerMorale[id]=Math.max(0,Math.min(100,Number(state.playerMorale[id])));
+  return state.playerMorale[id];
+}
+function moraleLabel(value){
+  if(value>=85)return "Muito feliz";if(value>=70)return "Feliz";if(value>=50)return "Neutro";if(value>=30)return "Insatisfeito";return "Muito insatisfeito";
+}
+function talkToPlayer(playerId){
+  const player=state.db.players.find(p=>String(p.id)===String(playerId));
+  if(!player||String(player.teamId)!==String(userClub()?.id))return;
+  const morale=getPlayerMorale(player),pending=state.playerPromises.find(p=>String(p.playerId)===String(player.id)&&p.status==="pending");
+  const choice=prompt("CONVERSA COM "+player.name+"\nMoral: "+moraleLabel(morale)+" ("+morale+"/100)"+(pending?"\nPromessa ativa: "+pending.label:"")+"\n\n1 - Conversa motivacional\n2 - Prometer mais oportunidades como titular\n3 - Explicar o planejamento esportivo");
+  if(choice===null)return;
+  if(choice==="1"){state.playerMorale[player.id]=Math.min(100,morale+7);alert(player.name+" agradeceu a conversa. Moral: "+getPlayerMorale(player)+"/100.");}
+  else if(choice==="2"){
+    if(pending){alert("Você já tem uma promessa ativa para este jogador.");return;}
+    state.playerMorale[player.id]=Math.min(100,morale+10);
+    state.playerPromises.push({playerId:player.id,playerName:player.name,label:"Mais oportunidades como titular",startMatchCount:state.matchHistory.length,targetMatchCount:state.matchHistory.length+3,status:"pending",date:state.day.toISOString().slice(0,10)});
+    alert("Promessa registrada! Nas próximas três partidas do clube, tente escalar "+player.name+" em pelo menos duas.");
+  }else if(choice==="3"){state.playerMorale[player.id]=Math.min(100,morale+3);alert("Você explicou o planejamento ao jogador. A conversa ajudou a tranquilizá-lo.");}
+  else{alert("Escolha uma opção de 1 a 3.");return;}
+  saveTransferCareer();renderSquad();
+}
+function updateSquadMorale(){
+  const club=userClub();if(!club)return;
+  const today=state.day.toISOString().slice(0,10);
+  const recent=state.matchHistory.filter(m=>String(m.homeId)===String(club.id)||String(m.awayId)===String(club.id)).slice(-5);
+  state.db.players.filter(p=>String(p.teamId)===String(club.id)).forEach(player=>{
+    const morale=getPlayerMorale(player),appearances=recent.filter(m=>(m.playerIds||[]).some(id=>String(id)===String(player.id))).length;
+    const unused=Math.max(0,recent.length-appearances);let change=appearances?Math.min(5,appearances*2):0;
+    if(unused>=3)change-=Math.min(6,unused*2);
+    if(getPlayerCondition(player).injuryDays>0)change-=1;
+    const contract=state.contracts[player.id];
+    if(contract&&new Date(contract.expiresAt+"T12:00:00")-new Date(today+"T12:00:00")<180*86400000)change-=1;
+    state.playerMorale[player.id]=Math.max(0,Math.min(100,morale+change));
+  });
+  state.playerPromises.filter(p=>p.status==="pending"&&state.matchHistory.length>=p.targetMatchCount).forEach(p=>{
+    const played=state.matchHistory.slice(p.startMatchCount,p.targetMatchCount).filter(m=>(m.playerIds||[]).some(id=>String(id)===String(p.playerId))).length;
+    p.status=played>=2?"fulfilled":"broken";const current=state.playerMorale[p.playerId]??70;
+    state.playerMorale[p.playerId]=Math.max(0,Math.min(100,current+(p.status==="fulfilled"?8:-18)));
+    p.resolvedDate=today;p.appearances=played;
+  });
+  saveTransferCareer();
+}
+
 function advanceDay() {
   state.day.setDate(state.day.getDate() + 1);
   recoverPlayerConditions();
@@ -403,6 +453,7 @@ function advanceDay() {
   if (state.day.getDay() === 1) {
     processAITransfers();
     processAIPlayerOffers();
+    updateSquadMorale();
     const club = userClub();
     if (club) {
       const weeklyPayroll = state.db.players
@@ -609,12 +660,12 @@ function renderSquad() {
               const a=getPlayerAttributes(p);
               const condition=getPlayerCondition(p);
               return `<tr>
-                <td class="club-name">${p.name}</td><td>${p.position||"—"}</td>
+                <td class="club-name">${p.name}<div class="subtle">${moraleLabel(getPlayerMorale(p))} · Moral ${getPlayerMorale(p)}/100</div></td><td>${p.position||"—"}</td>
                 <td>${p.age==null?"—":p.age}</td><td class="positive">${p.overall||"—"}</td><td>${conditionLabel(p)} · ${condition.fitness}%</td><td>${condition.yellowCards}/5</td>
                 <td>${a.pace}</td><td>${a.shooting}</td><td>${a.passing}</td><td>${a.dribbling}</td><td>${a.defending}</td><td>${a.physical}</td>
                 <td>${money(c.weeklyWage)}</td><td>${new Date(c.expiresAt+"T12:00:00").toLocaleDateString("pt-BR")}</td>
                 <td><button class="secondary-btn" onclick="trainPlayer('${p.id}')">TREINAR</button></td>
-                <td><button class="primary-btn" onclick="renewPlayerContract('${p.id}')">RENOVAR</button></td>
+                <td><button class="secondary-btn" onclick="talkToPlayer('${p.id}')">CONVERSAR</button><button class="primary-btn" onclick="renewPlayerContract('${p.id}')">RENOVAR</button></td>
               </tr>`;
             }).join("")}
           </tbody>
@@ -625,8 +676,11 @@ function renderSquad() {
     <p class="view-intro">Ainda não cadastramos jogadores confirmados para este clube. Nenhum jogador fictício será apresentado como real.</p></div>`;
   setPage("Elenco / Contratos", `
     <p class="view-intro">Gerencie os jogadores, acompanhe os salários e renove contratos do ${userClub().name}.</p>
-    ${squadContent}
-    ${renderYouthAcademy()}
+    \${squadContent}
+    <div class="card"><div class="section-head"><h2>🤝 Promessas do treinador</h2><span class="tag">\${promiseUpdates.filter(p=>p.status==="pending").length} ativa(s)</span></div>
+      \${promiseUpdates.length?promiseUpdates.map(p=>\`<div class="fixture"><div><strong>\${p.playerName}</strong><div class="subtle">\${p.label} · \${p.status==="pending"?"Aguardando 3 partidas":p.status==="fulfilled"?"Promessa cumprida":"Promessa não cumprida"}\${p.status!=="pending"?" · "+(p.appearances||0)+" escalação(ões)":""}</div></div><span class="tag">\${p.status==="pending"?"Ativa":p.status==="fulfilled"?"Cumprida":"Quebrada"}</span></div>\`).join(""):'<p class="subtle">Ainda não há promessas registradas.</p>'}
+    </div>
+    \${renderYouthAcademy()}
   `);
 }
 
@@ -752,6 +806,7 @@ function renderMarket(searchTerm) {
     })
     .sort((a, b) => Number(b.overall || 0) - Number(a.overall || 0));
   const incomingOffers=state.pendingOffers.filter(o=>o.status==="pending"&&String(o.toTeamId)===String(club.id)).sort((a,b)=>b.date.localeCompare(a.date));
+  const promiseUpdates=state.playerPromises.filter(p=>String(state.db.players.find(x=>String(x.id)===String(p.playerId))?.teamId)===String(club.id)).slice(-5).reverse();
   const recentTransfers = state.transferHistory.slice(-5).reverse();
 
   setPage("Mercado de Transferências", `
@@ -838,6 +893,8 @@ function saveTransferCareer() {
       budgets: state.db.teams.map(t => [t.id, t.budget]),
       history: state.transferHistory,
       pendingOffers: state.pendingOffers,
+      playerMorale: state.playerMorale,
+      playerPromises: state.playerPromises,
       contracts: state.contracts,
       loanRecords: state.loanRecords,
       trainingRecords: state.trainingRecords,
@@ -872,6 +929,8 @@ function loadTransferCareer() {
     });
     state.transferHistory = Array.isArray(saved.history) ? saved.history : [];
     state.pendingOffers = Array.isArray(saved.pendingOffers) ? saved.pendingOffers : [];
+    state.playerMorale = saved.playerMorale && typeof saved.playerMorale === "object" ? saved.playerMorale : {};
+    state.playerPromises = Array.isArray(saved.playerPromises) ? saved.playerPromises : [];
     state.contracts = saved.contracts && typeof saved.contracts === "object" ? saved.contracts : {};
     state.loanRecords = Array.isArray(saved.loanRecords) ? saved.loanRecords : [];
     state.trainingRecords = saved.trainingRecords && typeof saved.trainingRecords === "object" ? saved.trainingRecords : {};
@@ -1661,7 +1720,7 @@ function tickMatch() {
   else if(Math.random()<awayChance){m.awayScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.awayName+"!"});}
   else if(Math.random()<0.11){const notes=["Boa chegada ao ataque.","Finalização defendida pelo goleiro.","A defesa afasta o perigo.","Bola recuperada no meio-campo.","Cobrança de falta para a área.","A equipe pressiona a saída de bola.","O time troca passes e controla o ritmo.","Contra-ataque em velocidade!"];m.events.unshift({minute:m.minute,text:notes[Math.floor(Math.random()*notes.length)]});}
   if(m.minute===45)m.events.unshift({minute:45,text:"Intervalo! Fim do primeiro tempo."});
-  if(m.minute>=90){m.minute=90;m.finished=true;finishMatchSuspensions(m);saveTransferCareer();m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:m.fixtureDate || dateLabel(state.day),fixtureId:m.fixtureId || null,competition:m.competition || "Amistoso",round:m.round || null});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}if(m.isCup)advanceCupTournaments();}clearInterval(state.matchTimer);state.matchTimer=null;}
+  if(m.minute>=90){m.minute=90;m.finished=true;finishMatchSuspensions(m);saveTransferCareer();m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:m.fixtureDate || dateLabel(state.day),fixtureId:m.fixtureId || null,competition:m.competition || "Amistoso",round:m.round || null,playerIds:[...(m.lineup||[])]});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}if(m.isCup)advanceCupTournaments();}clearInterval(state.matchTimer);state.matchTimer=null;}
   if(state.view === "match") renderMatch();
 }
 function pauseMatch() {
