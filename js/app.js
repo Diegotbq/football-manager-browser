@@ -384,7 +384,7 @@ function resolveAIPlayerOffer(offerId,action) {
   let fee=Number(offer.fee||0);
   if(action==="counter"){
     const raw=prompt("Contraproposta por "+player.name+"\nOferta atual: "+money(fee)+"\nDigite o valor desejado em euros:",String(Math.round(fee*1.2)));
-    if(raw===null)return;fee=Number(String(raw).replace(/[€.\\s]/g,"").replace(/,/g,"."));
+    if(raw===null)return;fee=Number(String(raw).replace(/[€.\s]/g,"").replace(/,/g,"."));
     if(!Number.isFinite(fee)||fee<=0){alert("Digite um valor válido.");return;}
     if(fee>Number(buyer.budget||0)){alert("O clube interessado não tem orçamento suficiente.");return;}
     if(fee>Number(offer.fee)*1.35){alert("O clube recusou a contraproposta.");offer.status="rejected";saveTransferCareer();renderMarket();return;}
