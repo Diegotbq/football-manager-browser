@@ -39,3 +39,20 @@ Referências:
 - [Dicionário de dados](https://github.com/florentfougeres/OpenFootballBase-Data/blob/main/docs/en/data-model.md)
 - [Progresso por temporada e competição](https://github.com/florentfougeres/OpenFootballBase-Data/blob/main/PROGRESS.md)
 - [FAQ e licenças](https://github.com/florentfougeres/OpenFootballBase-Data/blob/main/docs/en/faq.md)
+
+
+## Primeira execução real — 24/11/2026
+
+A release foi baixada e verificada por SHA-256 no GitHub Actions. O pipeline processou a temporada 2026/27 e produziu uma fila de 6.231 registros candidatos em 17 competições, dos quais 5.055 têm os campos básicos necessários para revisão manual.
+
+A reconciliação conservadora com os clubes já cadastrados no jogo encontrou:
+- 156 correspondências de nome normalizado, ainda sujeitas a revisão;
+- 5 sugestões aproximadas, apenas como pistas;
+- 49 clubes sem correspondência;
+- zero atribuições automáticas de `teamId`.
+
+Esses números não representam jogadores aprovados nem elencos completos. Os dados permanecem em um artefato temporário de revisão, sem alteração de `database.json`.
+
+- [Execução de staging](https://github.com/Diegotbq/football-manager-browser/actions/runs/45430410835)
+- [Artefato de candidatos](https://github.com/Diegotbq/football-manager-browser/actions/runs/45430410835/artifacts/14936949473)
+- [Testes de prontidão aprovados](https://github.com/Diegotbq/football-manager-browser/actions/runs/45430559257)
