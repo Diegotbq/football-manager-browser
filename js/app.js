@@ -24,10 +24,10 @@ const dateLabel = d =>
 
 async function init() {
   try {
-    const response = await fetch("data/database.json");
+    const response = await fetch("database.json");
 
     if (!response.ok) {
-      throw new Error("Não foi possível abrir data/database.json");
+      throw new Error("Não foi possível abrir database.json");
     }
 
     state.db = await response.json();
