@@ -1,6 +1,11 @@
 name: Stage OpenFootballBase candidates
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/stage-openfootballbase.yml"
+      - "scripts/stage-openfootballbase.py"
   workflow_dispatch:
     inputs:
       season:
