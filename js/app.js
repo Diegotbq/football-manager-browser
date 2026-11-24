@@ -17,7 +17,9 @@ const state = {
   savedLineups: {},
   playerConditions: {},
   generatedFixtures: [],
-  cupCompetitions: []
+  cupCompetitions: [],
+  continentalQualifiers: {},
+  seasonHistory: []
 };
 
 const $ = selector => document.querySelector(selector);
@@ -727,6 +729,7 @@ function saveTransferCareer() {
       playerConditions: state.playerConditions,
       generatedFixtures: state.generatedFixtures,
       cupCompetitions: state.cupCompetitions,
+      continentalQualifiers: state.continentalQualifiers,
       seasonHistory: state.seasonHistory,
       seasonMeta: {season:state.db.meta?.season,seasonStart:state.db.calendar?.seasonStart,leagueTeams:(state.db.leagues||[]).map(l=>[l.id,[...(l.teams||[])]])}
     }));
@@ -759,6 +762,7 @@ function loadTransferCareer() {
     state.playerConditions = saved.playerConditions && typeof saved.playerConditions === "object" ? saved.playerConditions : {};
     state.generatedFixtures = Array.isArray(saved.generatedFixtures) ? saved.generatedFixtures : [];
     state.cupCompetitions = Array.isArray(saved.cupCompetitions) ? saved.cupCompetitions : [];
+    state.continentalQualifiers = saved.continentalQualifiers && typeof saved.continentalQualifiers === "object" ? saved.continentalQualifiers : {};
     state.seasonHistory = Array.isArray(saved.seasonHistory) ? saved.seasonHistory : [];
     if(saved.seasonMeta){
       if(saved.seasonMeta.season)state.db.meta.season=saved.seasonMeta.season;
@@ -1097,14 +1101,21 @@ function finishSeason() {
     });
   });
   (state.cupCompetitions||[]).forEach(cup=>{if(!cup.champion)return;const club=state.db.teams.find(t=>String(t.id)===String(cup.champion));if(club){club.budget=Number(club.budget||0)+5000000;club.reputation=Math.min(99,Number(club.reputation||50)+2);prizes.push({clubId:club.id,clubName:club.name,competition:cup.name,position:1,award:5000000,trophy:true});}});
-  const top=state.db.leagues.find(l=>l.id==="brasileirao"),second=state.db.leagues.find(l=>l.id==="brasileirao-serie-b");
+  const brazilLeague=state.db.leagues.find(l=>l.id==="brasileirao");
+  const englandLeague=state.db.leagues.find(l=>l.id==="premier-league");
+  const spainLeague=state.db.leagues.find(l=>l.id==="la-liga");
+  const brazilTable=brazilLeague?seasonStandings(brazilLeague):[];
+  const englandTable=englandLeague?seasonStandings(englandLeague):[];
+  const spainTable=spainLeague?seasonStandings(spainLeague):[];
+  state.continentalQualifiers={libertadores:brazilTable.slice(0,8).map(r=>r.id),sudamericana:brazilTable.slice(8,16).map(r=>r.id),champions:[...englandTable.slice(0,4),...spainTable.slice(0,4)].map(r=>r.id)};
   let promoted=[],relegated=[];
+  const top=brazilLeague,second=state.db.leagues.find(l=>l.id==="brasileirao-serie-b");
   if(top&&second){promoted=seasonStandings(second).slice(0,4).map(r=>r.id);relegated=seasonStandings(top).slice(-4).map(r=>r.id);
     top.teams=[...top.teams.filter(id=>!relegated.includes(String(id))),...promoted];
     second.teams=[...second.teams.filter(id=>!promoted.includes(String(id))),...relegated];
     state.db.teams.forEach(t=>{if(top.teams.some(id=>String(id)===String(t.id)))t.leagueId=top.id;else if(second.teams.some(id=>String(id)===String(t.id)))t.leagueId=second.id;});
   }
-  state.seasonHistory.unshift({season,prizes,promoted,relegated});
+  state.seasonHistory.unshift({season,prizes,promoted,relegated,continentalQualifiers:JSON.parse(JSON.stringify(state.continentalQualifiers))});
   const match=String(season).match(/(\d{4})\/(\d{2,4})/),year=match?Number(match[1])+1:state.day.getFullYear()+1;
   const nextSeason=year+"/"+String((year+1)%100).padStart(2,"0");
   state.db.meta.season=nextSeason;state.db.calendar=state.db.calendar||{};state.db.calendar.seasonStart=year+"-07-01";
@@ -1114,6 +1125,16 @@ function finishSeason() {
   alert("Temporada "+season+" encerrada! Premiações, acessos e rebaixamentos aplicados. Começou "+nextSeason+".");
   state.view="dashboard";render();
 }
+function renderContinentalQualificationPanel() {
+  const q=state.continentalQualifiers||{};
+  const label=ids=>(ids||[]).map(id=>state.db.teams.find(t=>String(t.id)===String(id))?.name||id).join(", ");
+  if(!q.libertadores?.length&&!q.sudamericana?.length&&!q.champions?.length)return "";
+  return `<article class="card span-12"><div class="section-head"><h2>🌎 Classificação continental</h2><span class="tag">Vagas conquistadas</span></div><p class="subtle">Vagas internacionais definidas pelo desempenho na temporada anterior. As competições são disputadas nesta época.</p>
+    <div class="fixture"><div><strong>🏆 CONMEBOL Libertadores</strong><div class="subtle">${label(q.libertadores)}</div></div><span class="tag">${q.libertadores?.length||0} vagas</span></div>
+    <div class="fixture"><div><strong>🏆 CONMEBOL Sudamericana</strong><div class="subtle">${label(q.sudamericana)}</div></div><span class="tag">${q.sudamericana?.length||0} vagas</span></div>
+    <div class="fixture"><div><strong>🏆 UEFA Champions League</strong><div class="subtle">${label(q.champions)}</div></div><span class="tag">${q.champions?.length||0} vagas</span></div></article>`;
+}
+
 function renderSeasonPanel() {
   const last=state.seasonHistory[0];
   return `<article class="card span-12"><div class="section-head"><h2>🏆 Encerramento da temporada</h2><span class="tag">${state.db.meta?.season||"Temporada atual"}</span></div><p class="subtle">Simule os jogos restantes, distribua premiações por posição, reconheça campeões de copas e aplique acesso/rebaixamento entre as Séries A e B do Brasil.</p><button class="primary-btn" onclick="finishSeason()">ENCERRAR TEMPORADA E COMEÇAR OUTRA</button>${last?`<p class="subtle">Última temporada: ${last.season} · ${last.prizes.length} premiações · ${last.promoted.length} promovidos · ${last.relegated.length} rebaixados.</p>`:""}</article>`;
@@ -1166,10 +1187,17 @@ function ensureCupCompetitions() {
     {id:"fa-cup",name:"FA Cup",leagueId:"premier-league"},
     {id:"copa-del-rey",name:"Copa del Rey",leagueId:"la-liga"}
   ];
+  const qualified=state.continentalQualifiers||{};
+  definitions.push(
+    {id:"libertadores",name:"CONMEBOL Libertadores",leagueId:"brasileirao",qualifiedTeams:qualified.libertadores||[]},
+    {id:"sudamericana",name:"CONMEBOL Sudamericana",leagueId:"brasileirao",qualifiedTeams:qualified.sudamericana||[]},
+    {id:"champions-league",name:"UEFA Champions League",leagueId:"premier-league",qualifiedTeams:qualified.champions||[]}
+  );
   definitions.forEach(def => {
     const league = state.db.leagues.find(l => l.id === def.leagueId);
     if (!league || !Array.isArray(league.teams) || league.teams.length < 2) return;
-    const participants = [...league.teams];
+    const participants = def.qualifiedTeams?.length ? [...def.qualifiedTeams] : [...league.teams];
+    if(def.qualifiedTeams && def.qualifiedTeams.length<2)return;
     const seed = def.id.split("").reduce((sum,ch)=>sum+ch.charCodeAt(0),0);
     participants.sort((a,b)=>cupSeed(a,seed)-cupSeed(b,seed));
     state.cupCompetitions.push({id:def.id,name:def.name,leagueId:def.leagueId,participants,activeTeams:[...participants],round:0,finished:false,champion:null,byes:[]});
@@ -1279,7 +1307,7 @@ function renderCalendar(competitionFilter) {
         <select id="calendar-competition" onchange="renderCalendar(this.value)">
           ${competitions.map(name => `<option value="${name.replace(/&/g,"&amp;").replace(/"/g,"&quot;")}" ${name === selectedCompetition ? "selected" : ""}>${name}</option>`).join("")}
         </select>
-        ${renderSeasonPanel()}\n        <div class="section-head"><h2>Copas e troféus</h2><span class="tag">${state.cupCompetitions.length} competições</span></div>${cupSummary}<div class="section-head"><h2>Janelas de transferências</h2></div>
+        ${renderContinentalQualificationPanel()}\n        ${renderSeasonPanel()}\n        <div class="section-head"><h2>Copas e troféus</h2><span class="tag">${state.cupCompetitions.length} competições</span></div>${cupSummary}<div class="section-head"><h2>Janelas de transferências</h2></div>
         ${windows.length ? windows.map(w => `
           <div class="fixture"><div><strong>${w.name}</strong><div class="subtle">${w.start} até ${w.end}</div></div><span class="tag">Planejada</span></div>
         `).join("") : `<div class="empty">Nenhuma janela cadastrada.</div>`}
