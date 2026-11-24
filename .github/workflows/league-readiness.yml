@@ -39,6 +39,9 @@ jobs:
           python-version: "3.12"
       - name: Run OpenFootballBase staging unit tests
         run: python scripts/test_stage_openfootballbase.py
+
+      - name: Run roster reconciliation unit tests
+        run: python scripts/test_reconcile_openfootballbase.py
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
