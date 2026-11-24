@@ -149,7 +149,31 @@
       "dateOfBirth": "2005-01-17",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/jugador/peio-canales"
+    },
+    {
+      "playerId": "athletic-club-202627-19",
+      "name": "Selton Sánchez",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2007-02-20",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/selton-sanchez"
+    },
+    {
+      "playerId": "athletic-club-202627-20",
+      "name": "Álex Berenguer",
+      "teamId": "athletic-club",
+      "dateOfBirth": "1995-07-04",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/berenguer"
+    },
+    {
+      "playerId": "athletic-club-202627-21",
+      "name": "Iñaki Williams",
+      "teamId": "athletic-club",
+      "dateOfBirth": "1994-06-15",
+      "nationality": "GHA",
+      "sourceUrl": "https://www.laliga.com/jugador/williams"
     }
   ],
-  "approvalRevision": 7
+  "approvalRevision": 8
 }
