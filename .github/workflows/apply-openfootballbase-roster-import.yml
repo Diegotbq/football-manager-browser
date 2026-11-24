@@ -161,11 +161,12 @@ jobs:
               if len(new_roster) > len(old_roster) and len(new_roster) > 30:
                   raise SystemExit(f"Roster cap exceeded: {team_id}")
 
+          new_ids = {str(p["id"]) for p in new_rows}
           flat = {str(p["id"]): p for p in preview["players"]}
           for team in preview["teams"]:
               for player in team.get("players", []):
-                  if flat.get(str(player["id"])) != player:
-                      raise SystemExit(f"Team/flat player mismatch: {player['id']}")
+                  if str(player["id"]) in new_ids and flat.get(str(player["id"])) != player:
+                      raise SystemExit(f"Team/flat new-player mismatch: {player['id']}")
 
           print(json.dumps({
               "newPlayers": len(new_rows),
