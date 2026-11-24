@@ -45,6 +45,18 @@ class RosterImportPreviewTests(unittest.TestCase):
         self.assertEqual(player["positionName"], "Defensor")
         self.assertEqual(player["positionPrecision"], "broad-category")
 
+    def test_rejects_implausible_age_even_with_a_precise_birth_date(self):
+        db = {"teams": [{"id": "a", "name": "A", "leagueId": "x", "players": []}], "players": []}
+        candidate = {
+            "name": "Ambiguous Luciano", "sourcePlayerQid": "Q5", "age": 61,
+            "birthDate": "1965-10-13", "nationality": "BRA",
+            "position": "FW", "eligibleForManualReview": True,
+            "clubMapping": {"status": "exact-name-match-review-required", "teamId": "a"}
+        }
+        _, report = module.prepare_import(db, {"sourceSeason": "2026/27", "candidates": [candidate]})
+        self.assertEqual(report["newPlayersPrepared"], 0)
+        self.assertEqual(report["skipped"]["invalid_or_missing_precise_age"], 1)
+
     def test_goalkeeper_category_is_precise_without_wikidata_lookup(self):
         db = {"teams": [{"id": "a", "name": "A", "leagueId": "x", "players": []}], "players": []}
         candidate = {
