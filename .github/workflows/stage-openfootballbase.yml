@@ -7,6 +7,7 @@ on:
       - ".github/workflows/stage-openfootballbase.yml"
       - "scripts/stage-openfootballbase.py"
       - "scripts/reconcile-openfootballbase.py"
+      - "scripts/enrich-roster-metadata.py"
   workflow_dispatch:
     inputs:
       season:
@@ -97,6 +98,8 @@ jobs:
           name: openfootballbase-candidates-${{ inputs.season || '2026-27' }}
           path: |
             data/staging/openfootballbase-candidates.json
-            data/staging/openfootballbase-reconciliation.json\n            data/staging/database-enriched-preview.json\n            data/staging/metadata-enrichment-report.json
+            data/staging/openfootballbase-reconciliation.json
+            data/staging/database-enriched-preview.json
+            data/staging/metadata-enrichment-report.json
           if-no-files-found: error
           retention-days: 14
