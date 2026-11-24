@@ -1455,6 +1455,34 @@ function seasonStandings(league) {
   });
   return rows.sort((a,b)=>b.pts-a.pts||(b.gf-b.ga)-(a.gf-a.ga)||b.gf-a.gf);
 }
+function buildEuropeanQualifiers() {
+  const rules=[
+    {id:"premier-league",champions:4,europa:2,conference:1},
+    {id:"la-liga",champions:4,europa:2,conference:1},
+    {id:"ligue-1",champions:3,europa:2,conference:1},
+    {id:"eredivisie",champions:2,europa:1,conference:1},
+    {id:"primeira-liga",champions:2,europa:1,conference:1},
+    {id:"super-lig",champions:2,europa:1,conference:1},
+    {id:"belgian-pro-league",champions:1,europa:1,conference:1},
+    {id:"scottish-premiership",champions:1,europa:1,conference:1},
+    {id:"swiss-super-league",champions:1,europa:1,conference:1},
+    {id:"hnl-croatia",champions:1,europa:1,conference:1}
+  ];
+  const result={champions:[],europa:[],conference:[]};
+  rules.forEach(rule=>{
+    const league=state.db.leagues.find(item=>item.id===rule.id);
+    if(!league)return;
+    const table=seasonStandings(league).map(row=>row.id);
+    result.champions.push(...table.slice(0,rule.champions));
+    result.europa.push(...table.slice(rule.champions,rule.champions+rule.europa));
+    result.conference.push(...table.slice(rule.champions+rule.europa,rule.champions+rule.europa+rule.conference));
+  });
+  const unique=list=>[...new Set(list)].filter(id=>state.db.teams.some(team=>String(team.id)===String(id)));
+  result.champions=unique(result.champions);
+  result.europa=unique(result.europa).filter(id=>!result.champions.includes(id));
+  result.conference=unique(result.conference).filter(id=>!result.champions.includes(id)&&!result.europa.includes(id));
+  return result;
+}
 function finishSeason() {
   if(!confirm("Encerrar a temporada? Os jogos de liga restantes serão simulados, as premiações pagas e uma nova temporada começará."))return;
   state.generatedFixtures.filter(f=>!f.isCup&&f.competitionId).forEach(f=>{
@@ -1490,7 +1518,8 @@ function finishSeason() {
   const brazilTable=brazilLeague?seasonStandings(brazilLeague):[];
   const englandTable=englandLeague?seasonStandings(englandLeague):[];
   const spainTable=spainLeague?seasonStandings(spainLeague):[];
-  state.continentalQualifiers={libertadores:brazilTable.slice(0,8).map(r=>r.id),sudamericana:brazilTable.slice(8,16).map(r=>r.id),champions:[...englandTable.slice(0,4),...spainTable.slice(0,4)].map(r=>r.id)};
+  const european=buildEuropeanQualifiers();
+  state.continentalQualifiers={libertadores:brazilTable.slice(0,8).map(r=>r.id),sudamericana:brazilTable.slice(8,16).map(r=>r.id),...european};
   let promoted=[],relegated=[];
   const top=brazilLeague,second=state.db.leagues.find(l=>l.id==="brasileirao-serie-b");
   if(top&&second){promoted=seasonStandings(second).slice(0,4).map(r=>r.id);relegated=seasonStandings(top).slice(-4).map(r=>r.id);
@@ -1521,13 +1550,10 @@ function finishSeason() {
 function renderContinentalQualificationPanel() {
   const q=state.continentalQualifiers||{};
   const label=ids=>(ids||[]).map(id=>state.db.teams.find(t=>String(t.id)===String(id))?.name||id).join(", ");
-  if(!q.libertadores?.length&&!q.sudamericana?.length&&!q.champions?.length)return "";
-  return `<article class="card span-12"><div class="section-head"><h2>🌎 Classificação continental</h2><span class="tag">Vagas conquistadas</span></div><p class="subtle">Vagas internacionais definidas pelo desempenho na temporada anterior. As competições são disputadas nesta época.</p>
-    <div class="fixture"><div><strong>🏆 CONMEBOL Libertadores</strong><div class="subtle">${label(q.libertadores)}</div></div><span class="tag">${q.libertadores?.length||0} vagas</span></div>
-    <div class="fixture"><div><strong>🏆 CONMEBOL Sudamericana</strong><div class="subtle">${label(q.sudamericana)}</div></div><span class="tag">${q.sudamericana?.length||0} vagas</span></div>
-    <div class="fixture"><div><strong>🏆 UEFA Champions League</strong><div class="subtle">${label(q.champions)}</div></div><span class="tag">${q.champions?.length||0} vagas</span></div></article>`;
+  if(!q.libertadores?.length&&!q.sudamericana?.length&&!q.champions?.length&&!q.europa?.length&&!q.conference?.length)return "";
+  const row=(name,ids)=>`<div class="fixture"><div><strong>${name}</strong><div class="subtle">${label(ids)}</div></div><span class="tag">${ids?.length||0} vagas</span></div>`;
+  return `<article class="card span-12"><div class="section-head"><h2>🌎 Classificação continental</h2><span class="tag">Vagas conquistadas</span></div><p class="subtle">As vagas europeias são distribuídas pelas posições finais das ligas cadastradas. As vagas brasileiras seguem a tabela do Brasileirão.</p>${row("🏆 CONMEBOL Libertadores",q.libertadores)}${row("🏆 CONMEBOL Sudamericana",q.sudamericana)}${row("🏆 UEFA Champions League",q.champions)}${row("🏆 UEFA Europa League",q.europa)}${row("🏆 UEFA Conference League",q.conference)}</article>`;
 }
-
 function renderSeasonPanel() {
   const last=state.seasonHistory[0];
   return `<article class="card span-12"><div class="section-head"><h2>🏆 Encerramento da temporada</h2><span class="tag">${state.db.meta?.season||"Temporada atual"}</span></div><p class="subtle">Simule os jogos restantes, distribua premiações por posição, reconheça campeões de copas e aplique acesso/rebaixamento entre as Séries A e B do Brasil.</p><button class="primary-btn" onclick="finishSeason()">ENCERRAR TEMPORADA E COMEÇAR OUTRA</button>${last?`<p class="subtle">Última temporada: ${last.season} · ${last.prizes.length} premiações · ${last.promoted.length} promovidos · ${last.relegated.length} rebaixados.</p>`:""}</article>`;
