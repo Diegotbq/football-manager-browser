@@ -13,10 +13,18 @@
     "ceara": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20031",
     "crb": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20032",
     "criciuma": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20019",
-    "cuiaba": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20800?tab=atletas"
+    "cuiaba": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20800?tab=atletas",
+    "goias": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20028",
+    "juventude": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20027",
+    "nautico": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20023?tab=atletas",
+    "ponte-preta": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20037?tab=atletas",
+    "operario-pr": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20106",
+    "novorizontino": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/31514?tab=atletas",
+    "sao-bernardo": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/31790",
+    "sport": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20010"
   },
-  "remainingClubs": 12,
-  "status": "8-official-team-pages-verified",
+  "remainingClubs": 4,
+  "status": "16-of-20-official-team-pages-verified",
   "updatedAt": "2026-11-24",
   "validationNote": "URLs foram confirmadas por páginas oficiais da CBF e busca indexada. A listagem de atletas inclui registros históricos; importar apenas quem estiver com Clube Atual igual ao clube. Idades/posições/nacionalidades exigem validação em perfil oficial do atleta antes de cadastrar."
 }
