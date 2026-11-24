@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import unicodedata
 from datetime import date
 from pathlib import Path
 
@@ -57,6 +58,34 @@ def clean_qid(value: object) -> str | None:
     return qid if re.fullmatch(r"Q[1-9][0-9]*", qid) else None
 
 
+def normalize_club_name(value: object) -> str:
+    normalized = unicodedata.normalize("NFKD", str(value or ""))
+    ascii_name = normalized.encode("ascii", "ignore").decode("ascii").casefold()
+    return " ".join(re.sub(r"[^a-z0-9]+", " ", ascii_name).split())
+
+
+def resolve_club_mapping(source_club: str, league_id: str, teams: list[dict]) -> dict:
+    key = normalize_club_name(source_club)
+    matches = [
+        team for team in teams
+        if str(team.get("leagueId") or "") == league_id
+        and normalize_club_name(team.get("name")) == key
+    ]
+    if len(matches) == 1:
+        return {
+            "status": "exact-name-match-review-required",
+            "teamId": matches[0].get("id"),
+            "teamName": matches[0].get("name")
+        }
+    if len(matches) > 1:
+        return {
+            "status": "ambiguous-exact-match",
+            "candidateTeamIds": [team.get("id") for team in matches],
+            "candidateTeamNames": [team.get("name") for team in matches]
+        }
+    return {"status": "unmatched", "candidateTeamIds": []}
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-dir", type=Path, required=True,
@@ -65,6 +94,8 @@ def main() -> int:
     parser.add_argument("--as-of", default=date.today().isoformat(),
                         help="Data para calcular idade (YYYY-MM-DD)")
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--database", type=Path,
+                        help="database.json para sugerir correspondências exatas de clubes; nunca atribui teamId")
     args = parser.parse_args()
 
     try:
@@ -103,11 +134,20 @@ def main() -> int:
 
     candidates = []
     summary = {}
+    database_teams = []
+    if args.database:
+        database = json.loads(args.database.read_text(encoding="utf-8"))
+        database_teams = database.get("teams", [])
+    club_mappings = {}
     seen = set()
     for raw in rows:
         item = dict(zip(columns, raw))
         league_id = COMPETITIONS[item["competition"]]
         club_key = (item["competition"], item["club"])
+        if club_key not in club_mappings:
+            club_mappings[club_key] = resolve_club_mapping(
+                item["club"], league_id, database_teams
+            ) if args.database else {"status": "not-checked"}
         entry = summary.setdefault(item["competition"], {
             "leagueId": league_id, "clubsWithRows": set(), "playerRows": 0,
             "eligibleForReview": 0, "missing": {
@@ -153,6 +193,7 @@ def main() -> int:
             "sourceLanguage": item["source_lang"],
             "sourceTitle": item["source_title"], "sourceRevision": item["source_revid"],
             "missingRequiredFields": missing,
+            "clubMapping": club_mappings[club_key],
             "eligibleForManualReview": not missing and item["confidence"] == "attested"
         }
         if candidate["eligibleForManualReview"]:
@@ -185,6 +226,18 @@ def main() -> int:
                 "clubsWithRows": len(value["clubsWithRows"])
             }
             for code, value in summary.items()
+        },
+        "clubMappings": [
+            {
+                "competition": competition,
+                "sourceClub": club,
+                **mapping
+            }
+            for (competition, club), mapping in sorted(club_mappings.items())
+        ],
+        "clubMappingSummary": {
+            status: sum(1 for mapping in club_mappings.values() if mapping["status"] == status)
+            for status in ("exact-name-match-review-required", "ambiguous-exact-match", "unmatched", "not-checked")
         },
         "candidateCount": len(candidates),
         "manualReviewEligibleCount": sum(1 for c in candidates if c["eligibleForManualReview"]),
