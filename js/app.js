@@ -1575,15 +1575,21 @@ function ensureGeneratedFixtures() {
 // COPAS NACIONAIS — mata-mata com jogos do usuário e simulação dos demais confrontos
 function ensureCupCompetitions() {
   if (state.cupCompetitions.length) {
-    const europeanPool=state.db.leagues.find(l=>l.id==="champions-league");
-    const europeanCup=state.cupCompetitions.find(c=>c.id==="champions-league");
-    const europeanFixtures=state.generatedFixtures.filter(f=>f.cupId==="champions-league");
-    const hasPlayedEuropeanTie=europeanFixtures.some(f=>state.matchHistory.some(m=>m.fixtureId===f.id));
-    if(europeanCup&&europeanPool?.teams?.length&&!hasPlayedEuropeanTie&&Number(europeanCup.round||0)===0){
-      europeanCup.participants=[...europeanPool.teams];
-      europeanCup.activeTeams=[...europeanPool.teams];
-      state.generatedFixtures=state.generatedFixtures.filter(f=>f.cupId!=="champions-league");
-    }
+    const pools=[
+      {id:"champions-league",teams:state.db.leagues.find(l=>l.id==="champions-league")?.teams||[]},
+      {id:"libertadores",teams:[...(state.db.leagues.find(l=>l.id==="brasileirao")?.teams||[]),"boca-juniors","river-plate","penarol","nacional-uru","independiente-del-valle"]},
+      {id:"sudamericana",teams:[...(state.db.leagues.find(l=>l.id==="brasileirao-serie-b")?.teams||[]),"boca-juniors","river-plate","penarol","nacional-uru","independiente-del-valle"]}
+    ];
+    pools.forEach(pool=>{
+      const cup=state.cupCompetitions.find(item=>item.id===pool.id);
+      const fixtures=state.generatedFixtures.filter(item=>item.cupId===pool.id);
+      const hasPlayed=fixtures.some(item=>state.matchHistory.some(match=>match.fixtureId===item.id));
+      const validTeams=pool.teams.filter(id=>state.db.teams.some(team=>String(team.id)===String(id)));
+      if(cup&&validTeams.length>=2&&!hasPlayed&&Number(cup.round||0)===0){
+        cup.participants=[...validTeams];cup.activeTeams=[...validTeams];
+        state.generatedFixtures=state.generatedFixtures.filter(item=>item.cupId!==pool.id);
+      }
+    });
     advanceCupTournaments();
     saveTransferCareer();
     return;
@@ -1595,9 +1601,14 @@ function ensureCupCompetitions() {
   ];
   const qualified=state.continentalQualifiers||{};
   const europeanPool=state.db.leagues.find(l=>l.id==="champions-league");
+  const southAmericanClubs=["boca-juniors","river-plate","penarol","nacional-uru","independiente-del-valle"];
+  const brazilA=state.db.leagues.find(l=>l.id==="brasileirao");
+  const brazilB=state.db.leagues.find(l=>l.id==="brasileirao-serie-b");
+  const libertadoresPool=[...(brazilA?.teams||[]),...southAmericanClubs];
+  const sudamericanaPool=[...(brazilB?.teams||[]),...southAmericanClubs];
   definitions.push(
-    {id:"libertadores",name:"CONMEBOL Libertadores",leagueId:"brasileirao",qualifiedTeams:qualified.libertadores||[]},
-    {id:"sudamericana",name:"CONMEBOL Sudamericana",leagueId:"brasileirao",qualifiedTeams:qualified.sudamericana||[]},
+    {id:"libertadores",name:"CONMEBOL Libertadores",leagueId:"brasileirao",teamIds:libertadoresPool,qualifiedTeams:qualified.libertadores||[]},
+    {id:"sudamericana",name:"CONMEBOL Sudamericana",leagueId:"brasileirao",teamIds:sudamericanaPool,qualifiedTeams:qualified.sudamericana||[]},
     {id:"champions-league",name:"UEFA Champions League",leagueId:"premier-league",teamIds:europeanPool?.teams||[],qualifiedTeams:qualified.champions||[]}
   );
   definitions.forEach(def => {
