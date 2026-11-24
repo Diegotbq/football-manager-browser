@@ -1619,6 +1619,11 @@ function getSouthAmericanCupPools() {
     sudamericana: [...(state.db.leagues.find(l=>l.id==="brasileirao-serie-b")?.teams||[]), ...baseClubs, ...secondary]
   };
 }
+function buildUEFAPots(teamIds) {
+  const ranked=[...teamIds].map(id=>state.db.teams.find(team=>String(team.id)===String(id))).filter(Boolean)
+    .sort((a,b)=>teamCupStrength(b)-teamCupStrength(a)||Number(b.reputation||0)-Number(a.reputation||0)||String(a.name).localeCompare(String(b.name)));
+  return Array.from({length:4},(_,index)=>ranked.slice(index*9,(index+1)*9).map(team=>team.id));
+}
 function getEuropeanChampionsPool() {
   const ids=["premier-league","la-liga","ligue-1","eredivisie","primeira-liga","belgian-pro-league","scottish-premiership","swiss-super-league","super-lig","hnl-croatia"];
   const clubs=ids.flatMap(id=>state.db.leagues.find(league=>league.id===id)?.teams||[])
@@ -1660,7 +1665,7 @@ function ensureCupCompetitions() {
     ];
     missing.forEach(def=>{
       if(!state.cupCompetitions.some(cup=>cup.id===def.id)&&def.teams.length>=2){
-        state.cupCompetitions.push({id:def.id,name:def.name,leagueId:def.leagueId,participants:[...def.teams],activeTeams:[...def.teams],round:0,finished:false,champion:null,byes:[],format:def.format||null,phase:def.format==="uefa-league"?"league":null});
+        state.cupCompetitions.push({id:def.id,name:def.name,leagueId:def.leagueId,participants:[...def.teams],activeTeams:[...def.teams],round:0,finished:false,champion:null,byes:[],format:def.format||null,phase:def.format==="uefa-league"?"league":null,pots:def.format==="uefa-league"?buildUEFAPots(def.teams):null});
       }
     });
     domesticCups.forEach(def=>{
@@ -1669,7 +1674,7 @@ function ensureCupCompetitions() {
       if(!state.cupCompetitions.some(cup=>cup.id===def.id)&&teams.length>=2){
         const seed=def.id.split("").reduce((sum,ch)=>sum+ch.charCodeAt(0),0);
         const participants=[...teams].sort((a,b)=>cupSeed(a,seed)-cupSeed(b,seed));
-        state.cupCompetitions.push({id:def.id,name:def.name,leagueId:def.leagueId,participants,activeTeams:[...participants],round:0,finished:false,champion:null,byes:[],format:def.format||null,phase:def.format==="uefa-league"?"league":null});
+        state.cupCompetitions.push({id:def.id,name:def.name,leagueId:def.leagueId,participants,activeTeams:[...participants],round:0,finished:false,champion:null,byes:[],format:def.format||null,phase:def.format==="uefa-league"?"league":null,pots:def.format==="uefa-league"?buildUEFAPots(participants):null});
       }
     });
     const pools=[
@@ -1685,7 +1690,7 @@ function ensureCupCompetitions() {
       const hasPlayed=fixtures.some(item=>state.matchHistory.some(match=>match.fixtureId===item.id));
       const validTeams=pool.teams.filter(id=>state.db.teams.some(team=>String(team.id)===String(id)));
       if(cup&&validTeams.length>=2&&!hasPlayed&&Number(cup.round||0)===0){
-        cup.participants=[...validTeams];cup.activeTeams=[...validTeams];cup.format=pool.format||null;cup.phase=pool.format==="uefa-league"?"league":null;
+        cup.participants=[...validTeams];cup.activeTeams=[...validTeams];cup.format=pool.format||null;cup.phase=pool.format==="uefa-league"?"league":null;cup.pots=pool.format==="uefa-league"?buildUEFAPots(validTeams):null;
         state.generatedFixtures=state.generatedFixtures.filter(item=>item.cupId!==pool.id);
       }
     });
@@ -1755,11 +1760,20 @@ function advanceCupTournaments() {
           const teams=[...cup.activeTeams];
           if(teams.length!==36){cup.activeTeams=teams.slice(0,36);cup.participants=[...cup.activeTeams];}
           const seed=cup.id.split("").reduce((sum,ch)=>sum+ch.charCodeAt(0),0);
-          const ordered=[...cup.participants].sort((a,b)=>cupSeed(a,seed)-cupSeed(b,seed));
-          for(let turn=0;turn<cup.round;turn++){const fixed=ordered[0],last=ordered.pop();ordered.splice(1,0,last);ordered[0]=fixed;}
+          if(!Array.isArray(cup.pots)||cup.pots.flat().length!==36)cup.pots=buildUEFAPots(cup.participants);
+          const ordered=cup.pots.flat().map((id,index)=>({id,index}));
+          const rotation=ordered.map(item=>item.id).sort((a,b)=>cupSeed(a,seed)-cupSeed(b,seed));
+          for(let turn=0;turn<cup.round;turn++){const fixed=rotation[0],last=rotation.pop();rotation.splice(1,0,last);rotation[0]=fixed;}
+          const previous=state.generatedFixtures.filter(f=>f.cupId===cup.id&&f.phase==="league");
+          const homeCounts=new Map(cup.participants.map(id=>[String(id),0]));
+          previous.forEach(f=>homeCounts.set(String(f.homeTeamId),(homeCounts.get(String(f.homeTeamId))||0)+1));
+          const potOf=new Map(cup.pots.flatMap((pot,index)=>pot.map(id=>[String(id),index+1])));
           for(let i=0;i<18;i++){
-            const home=ordered[i],away=ordered[35-i];
-            state.generatedFixtures.push({id:"cup-"+cup.id+"-league-"+cup.round+"-"+i,cupId:cup.id,cupRound:cup.round,competition:cup.name,round:"Fase de liga · rodada "+(cup.round+1),date:cupDate(cup.round),homeTeamId:home,awayTeamId:away,generated:true,isCup:true,phase:"league"});
+            const first=rotation[i],second=rotation[35-i];
+            const firstHomes=homeCounts.get(String(first))||0,secondHomes=homeCounts.get(String(second))||0;
+            const firstHosts=firstHomes<secondHomes||(firstHomes===secondHomes&&((i+cup.round)%2===0));
+            const home=firstHosts?first:second,away=firstHosts?second:first;
+            state.generatedFixtures.push({id:"cup-"+cup.id+"-league-"+cup.round+"-"+i,cupId:cup.id,cupRound:cup.round,competition:cup.name,round:"Fase de liga · rodada "+(cup.round+1),date:cupDate(cup.round),homeTeamId:home,awayTeamId:away,homePot:potOf.get(String(home)),awayPot:potOf.get(String(away)),generated:true,isCup:true,phase:"league"});
           }
           fixtures=state.generatedFixtures.filter(f=>f.cupId===cup.id&&f.cupRound===cup.round);
         }
@@ -1853,7 +1867,7 @@ function renderCalendar(competitionFilter) {
   const stageLabel = f => f.isCup ? f.round : `${f.round}ª rodada`;
   const cupSummary = (state.cupCompetitions || []).map(cup => {
     const champion = cup.champion ? teamName(cup.champion) : null;
-    const stage = cup.finished ? "Campeão definido" : cup.phase==="league" ? "Fase de liga · rodada "+(cup.round+1)+"/8" : cup.format==="uefa-league"&&cup.round===8 ? "Playoffs eliminatórios" : cupRoundName(cup.activeTeams.length);
+    const stage = cup.finished ? "Campeão definido" : cup.phase==="league" ? "Fase de liga · rodada "+(cup.round+1)+"/8 · 36 clubes · 4 potes" : cup.format==="uefa-league"&&cup.round===8 ? "Playoffs eliminatórios" : cupRoundName(cup.activeTeams.length);
     return `<div class="fixture"><div><strong>🏆 ${cup.name}</strong><div class="subtle">${champion ? "Campeão: " + champion : "Fase atual: " + stage}</div></div><span class="tag">${cup.finished ? "Encerrada" : "Em disputa"}</span></div>`;
   }).join("");
   setPage("Calendário", `
