@@ -10,6 +10,7 @@ on:
       - "scripts/enrich-roster-metadata.py"
       - "scripts/enrich-openfootballbase-positions.py"
       - "scripts/prepare-openfootballbase-roster-import.py"
+      - "data/approvals/openfootballbase-roster-import-2026-27.json"
       - "scripts/test_enrich_roster_metadata.py"
   workflow_dispatch:
     inputs:
@@ -24,6 +25,10 @@ on:
 
 permissions:
   contents: read
+
+concurrency:
+  group: openfootballbase-stage-main
+  cancel-in-progress: false
 
 jobs:
   stage-candidates:
