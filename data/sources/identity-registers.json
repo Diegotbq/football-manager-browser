@@ -168,21 +168,24 @@
     },
     {
       "id": "laliga-official-clubs-2026-27",
-      "name": "LALIGA EA SPORTS — clubes oficiais 2026/27",
+      "name": "LALIGA EA SPORTS — clubes e plantillas oficiales 2026/27",
       "url": "https://www.laliga.com/laliga-easports/clubes",
       "role": "Fonte primária para validar a composição oficial dos 20 clubes da competição e abrir as fichas oficiais de cada clube.",
       "season": "2026/27",
       "checkedAt": "2026-11-24",
       "documentedFields": [
         "nome oficial do clube",
-        "ficha oficial do clube"
+        "ficha oficial do clube",
+        "plantilla oficial por clube em página individual"
       ],
       "limitations": [
         "A página de clubes não é, por si só, uma lista completa de jogadores inscritos.",
         "A ficha do clube deve ser consultada individualmente para confirmar cada atleta e os campos pessoais disponíveis.",
-        "Não inferir elenco completo, idade, nacionalidade ou posição apenas a partir da lista de clubes."
+        "Não inferir elenco completo, idade, nacionalidade ou posição apenas a partir da lista de clubes.",
+        "A página oficial individual de plantilla pode carregar dados dinamicamente; a captura textual consultada confirma o título e a temporada, mas não expõe necessariamente todas as linhas do elenco no HTML estático."
       ],
-      "importPolicy": "Usar como fonte primária para confirmar identidade e participação do clube na LALIGA EA SPORTS 2026/27; jogador só pode ser validado por ficha oficial individual ou registro oficial de elenco, preservando a URL de origem."
+      "importPolicy": "Usar a página oficial de clubes para validar a composição da liga e a página Plantilla oficial de cada clube para validar o elenco publicado. Se os atletas não estiverem acessíveis na captura, não automatizar associação por suposição; recorrer a fichas oficiais individuais ou outra fonte primária verificável.",
+      "exampleOfficialSquadUrl": "https://www.laliga.com/clubes/levante-ud/plantilla"
     },
     {
       "id": "premier-league-official-squad-lists-2026-27",
