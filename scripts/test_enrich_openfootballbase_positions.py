@@ -30,6 +30,21 @@ class PositionMappingTests(unittest.TestCase):
             (None, "ambiguous")
         )
 
+    def test_database_filter_skips_existing_player_names(self):
+        staging = {"season": "2026/27", "candidates": [{
+            "name": "Player", "sourcePlayerQid": "Q1", "eligibleForManualReview": True,
+            "clubMapping": {"status": "exact-name-match-review-required", "teamId": "a"}
+        }]}
+        def unexpected_fetch(params):
+            raise AssertionError("Existing player should not trigger Wikidata lookup")
+        result = module.enrich_positions(
+            staging, fetcher=unexpected_fetch, pause=0,
+            database={"players": [{"id": "p1", "name": "Player"}]}
+        )
+        self.assertEqual(result["lookedUpUniquePlayers"], 0)
+        self.assertEqual(result["candidates"][0]["positionLookup"]["status"],
+                         "not-looked-up-existing-or-duplicate")
+
     def test_enrichment_uses_p413_and_preserves_candidates(self):
         staging = {"season": "2026/27", "candidates": [{
             "name": "Player", "sourcePlayerQid": "Q1", "eligibleForManualReview": True,
