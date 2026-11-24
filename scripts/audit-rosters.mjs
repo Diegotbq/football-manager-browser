@@ -127,11 +127,17 @@ for (const [leagueId, entry] of Object.entries(leagues)) {
       missingFields
     }];
   });
+  const playersWithVerifiedProfileSource = leaguePlayers.filter(player =>
+    player.identitySource?.provider === "LALIGA" &&
+    typeof player.identitySource.sourceUrl === "string" &&
+    player.identitySource.sourceUrl.startsWith("https://www.laliga.com/")
+  ).length;
   entry.metadataCompleteness = {
     playerRecords: leaguePlayers.length,
     missing,
     present: Object.fromEntries(Object.entries(missing).map(([field, count]) =>
       [field, leaguePlayers.length - count])),
+    playersWithVerifiedProfileSource,
     missingMetadataPlayers
   };
 }
