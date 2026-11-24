@@ -53,7 +53,31 @@
       "dateOfBirth": "1999-07-02",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/jugador/areso"
+    },
+    {
+      "playerId": "athletic-club-202627-07",
+      "name": "Aymeric Laporte",
+      "teamId": "athletic-club",
+      "dateOfBirth": "1994-05-27",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/laporte"
+    },
+    {
+      "playerId": "athletic-club-202627-08",
+      "name": "Hugo Rincón",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2003-01-27",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/hugo-rincon"
+    },
+    {
+      "playerId": "athletic-club-202627-09",
+      "name": "Yuri Berchiche",
+      "teamId": "athletic-club",
+      "dateOfBirth": "1990-02-10",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/yuri-b"
     }
   ],
-  "approvalRevision": 3
+  "approvalRevision": 4
 }
