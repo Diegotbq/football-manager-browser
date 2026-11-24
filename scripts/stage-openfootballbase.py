@@ -62,7 +62,41 @@ def clean_qid(value: object) -> str | None:
 def normalize_club_name(value: object) -> str:
     normalized = unicodedata.normalize("NFKD", str(value or ""))
     ascii_name = normalized.encode("ascii", "ignore").decode("ascii").casefold()
-    return " ".join(re.sub(r"[^a-z0-9]+", " ", ascii_name).split())
+    tokens = " ".join(re.sub(r"[^a-z0-9]+", " ", ascii_name).split()).split()
+
+    # Remove apenas designadores institucionais comuns nas extremidades.
+    prefixes = (
+        ("club", "atletico"), ("clube", "atletico"), ("esporte", "clube"),
+        ("associacao",), ("association",), ("club", "de"),
+        ("club",), ("clube",), ("cr",), ("se",), ("sc",), ("ec",),
+        ("fc",), ("cf",), ("kaa",), ("rsc",), ("c", "d"), ("cd",),
+        ("c", "f"), ("cf",), ("c", "s"), ("cs",), ("s", "c"),
+        ("g", "d"), ("gd",), ("s", "l"), ("sl",)
+    )
+    suffixes = (
+        ("a", "f", "c"), ("f", "c"), ("afc",), ("fc",), ("c", "f"),
+        ("cf",), ("s", "c"), ("sc",), ("s", "k"), ("sk",),
+        ("j", "k"), ("jk",), ("f", "k"), ("fk",), ("kv",),
+        ("ksv",), ("osc",), ("ac",), ("fbpa",), ("football",),
+        ("de", "futebol"), ("futebol",), ("foot", "ball", "club"),
+        ("football", "club"), ("paulista",)
+    )
+    changed = True
+    while changed and tokens:
+        changed = False
+        for prefix in prefixes:
+            if tuple(tokens[:len(prefix)]) == prefix:
+                tokens = tokens[len(prefix):]
+                changed = True
+                break
+        if changed:
+            continue
+        for suffix in suffixes:
+            if tuple(tokens[-len(suffix):]) == suffix:
+                tokens = tokens[:-len(suffix)]
+                changed = True
+                break
+    return " ".join(tokens)
 
 
 def resolve_club_mapping(source_club: str, league_id: str, teams: list[dict]) -> dict:
@@ -94,7 +128,7 @@ def resolve_club_mapping(source_club: str, league_id: str, teams: list[dict]) ->
         if not key or not candidate_name:
             continue
         score = SequenceMatcher(None, key, candidate_name).ratio()
-        if score >= 0.62:
+        if score >= 0.82:
             scored.append((score, team))
     scored.sort(key=lambda item: (-item[0], str(item[1].get("name") or "")))
     suggestions = [
