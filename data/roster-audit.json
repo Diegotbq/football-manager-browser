@@ -1,114 +1,672 @@
 {
-  "generatedAt": "2026-11-24",
+  "generatedAt": "2026-11-24T00:00:00.000Z",
   "season": "2026/27",
-  "scope": "Audit of roster coverage using database.players[].teamId; this measures presence, not factual accuracy or squad completeness.",
   "totals": {
     "clubs": 261,
-    "playerRecords": 3118,
-    "clubsWithAtLeastOnePlayer": 118,
-    "clubsWithoutPlayerRecords": 143
+    "playerRecords": 3253,
+    "clubsWithPlayers": 123,
+    "clubsWithoutPlayers": 138
+  },
+  "integrity": {
+    "duplicatePlayerIds": 0,
+    "playersWithoutValidTeam": 0
   },
   "leagues": {
     "brasileirao": {
-      "teams": 20,
-      "teamsWithPlayers": 20,
+      "clubs": 20,
+      "clubsWithPlayers": 20,
       "players": 217
     },
     "premier-league": {
-      "teams": 20,
-      "teamsWithPlayers": 20,
+      "clubs": 20,
+      "clubsWithPlayers": 20,
       "players": 565
     },
     "la-liga": {
-      "teams": 20,
-      "teamsWithPlayers": 15,
-      "players": 474
+      "clubs": 20,
+      "clubsWithPlayers": 20,
+      "players": 609
     },
     "brasileirao-serie-b": {
-      "teams": 20,
-      "teamsWithPlayers": 0,
+      "clubs": 20,
+      "clubsWithPlayers": 0,
       "players": 0
     },
     "ligue-1": {
-      "teams": 18,
-      "teamsWithPlayers": 18,
+      "clubs": 18,
+      "clubsWithPlayers": 18,
       "players": 504
     },
     "champions-league": {
-      "teams": 4,
-      "teamsWithPlayers": 4,
+      "clubs": 4,
+      "clubsWithPlayers": 4,
       "players": 108
     },
     "primeira-liga": {
-      "teams": 18,
-      "teamsWithPlayers": 18,
+      "clubs": 18,
+      "clubsWithPlayers": 18,
       "players": 544
     },
     "libertadores": {
-      "teams": 5,
-      "teamsWithPlayers": 5,
+      "clubs": 5,
+      "clubsWithPlayers": 5,
       "players": 130
     },
     "argentina": {
-      "teams": 8,
-      "teamsWithPlayers": 0,
+      "clubs": 8,
+      "clubsWithPlayers": 0,
       "players": 0
     },
     "uruguay": {
-      "teams": 8,
-      "teamsWithPlayers": 0,
+      "clubs": 8,
+      "clubsWithPlayers": 0,
       "players": 0
     },
     "ecuador": {
-      "teams": 8,
-      "teamsWithPlayers": 0,
+      "clubs": 8,
+      "clubsWithPlayers": 0,
       "players": 0
     },
     "paraguay": {
-      "teams": 8,
-      "teamsWithPlayers": 0,
+      "clubs": 8,
+      "clubsWithPlayers": 0,
       "players": 0
     },
     "chile": {
-      "teams": 8,
-      "teamsWithPlayers": 0,
+      "clubs": 8,
+      "clubsWithPlayers": 0,
       "players": 0
     },
     "colombia": {
-      "teams": 8,
-      "teamsWithPlayers": 0,
+      "clubs": 8,
+      "clubsWithPlayers": 0,
       "players": 0
     },
     "eredivisie": {
-      "teams": 18,
-      "teamsWithPlayers": 18,
+      "clubs": 18,
+      "clubsWithPlayers": 18,
       "players": 576
     },
     "belgian-pro-league": {
-      "teams": 18,
-      "teamsWithPlayers": 0,
+      "clubs": 18,
+      "clubsWithPlayers": 0,
       "players": 0
     },
     "scottish-premiership": {
-      "teams": 12,
-      "teamsWithPlayers": 0,
+      "clubs": 12,
+      "clubsWithPlayers": 0,
       "players": 0
     },
     "swiss-super-league": {
-      "teams": 12,
-      "teamsWithPlayers": 0,
+      "clubs": 12,
+      "clubsWithPlayers": 0,
       "players": 0
     },
     "super-lig": {
-      "teams": 18,
-      "teamsWithPlayers": 0,
+      "clubs": 18,
+      "clubsWithPlayers": 0,
       "players": 0
     },
     "hnl-croatia": {
-      "teams": 10,
-      "teamsWithPlayers": 0,
+      "clubs": 10,
+      "clubsWithPlayers": 0,
       "players": 0
     }
   },
-  "nextStep": "Complete each competition as a whole. Verify every roster against official club/league/UEFA sources; do not mark a league complete based only on player count."
+  "emptyTeams": [
+    {
+      "team": "América Mineiro",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Athletic Club",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Atlético Goianiense",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Avaí",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Botafogo de Ribeirão Preto",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Ceará",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "CRB",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Criciúma",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Cuiabá",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Fortaleza",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Goiás",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Juventude",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Londrina",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Náutico",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Grêmio Novorizontino",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Operário Ferroviário",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Ponte Preta",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "São Bernardo FC",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Sport Recife",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Vila Nova",
+      "leagueId": "brasileirao-serie-b"
+    },
+    {
+      "team": "Independiente",
+      "leagueId": "argentina"
+    },
+    {
+      "team": "Racing Club",
+      "leagueId": "argentina"
+    },
+    {
+      "team": "San Lorenzo",
+      "leagueId": "argentina"
+    },
+    {
+      "team": "Estudiantes de La Plata",
+      "leagueId": "argentina"
+    },
+    {
+      "team": "Rosario Central",
+      "leagueId": "argentina"
+    },
+    {
+      "team": "Newell's Old Boys",
+      "leagueId": "argentina"
+    },
+    {
+      "team": "Vélez Sarsfield",
+      "leagueId": "argentina"
+    },
+    {
+      "team": "Talleres",
+      "leagueId": "argentina"
+    },
+    {
+      "team": "Defensor Sporting",
+      "leagueId": "uruguay"
+    },
+    {
+      "team": "Liverpool FC",
+      "leagueId": "uruguay"
+    },
+    {
+      "team": "Danubio",
+      "leagueId": "uruguay"
+    },
+    {
+      "team": "Cerro Largo",
+      "leagueId": "uruguay"
+    },
+    {
+      "team": "Montevideo Wanderers",
+      "leagueId": "uruguay"
+    },
+    {
+      "team": "Cerro",
+      "leagueId": "uruguay"
+    },
+    {
+      "team": "Racing Club de Montevideo",
+      "leagueId": "uruguay"
+    },
+    {
+      "team": "Plaza Colonia",
+      "leagueId": "uruguay"
+    },
+    {
+      "team": "LDU Quito",
+      "leagueId": "ecuador"
+    },
+    {
+      "team": "Barcelona SC",
+      "leagueId": "ecuador"
+    },
+    {
+      "team": "Emelec",
+      "leagueId": "ecuador"
+    },
+    {
+      "team": "Aucas",
+      "leagueId": "ecuador"
+    },
+    {
+      "team": "El Nacional",
+      "leagueId": "ecuador"
+    },
+    {
+      "team": "Deportivo Cuenca",
+      "leagueId": "ecuador"
+    },
+    {
+      "team": "Universidad Católica",
+      "leagueId": "ecuador"
+    },
+    {
+      "team": "Orense SC",
+      "leagueId": "ecuador"
+    },
+    {
+      "team": "Cerro Porteño",
+      "leagueId": "paraguay"
+    },
+    {
+      "team": "Olimpia",
+      "leagueId": "paraguay"
+    },
+    {
+      "team": "Libertad",
+      "leagueId": "paraguay"
+    },
+    {
+      "team": "Guaraní",
+      "leagueId": "paraguay"
+    },
+    {
+      "team": "Nacional",
+      "leagueId": "paraguay"
+    },
+    {
+      "team": "Sportivo Luqueño",
+      "leagueId": "paraguay"
+    },
+    {
+      "team": "General Caballero JLM",
+      "leagueId": "paraguay"
+    },
+    {
+      "team": "2 de Mayo",
+      "leagueId": "paraguay"
+    },
+    {
+      "team": "Colo-Colo",
+      "leagueId": "chile"
+    },
+    {
+      "team": "Universidad de Chile",
+      "leagueId": "chile"
+    },
+    {
+      "team": "Universidad Católica",
+      "leagueId": "chile"
+    },
+    {
+      "team": "Unión Española",
+      "leagueId": "chile"
+    },
+    {
+      "team": "Audax Italiano",
+      "leagueId": "chile"
+    },
+    {
+      "team": "Everton de Viña del Mar",
+      "leagueId": "chile"
+    },
+    {
+      "team": "Huachipato",
+      "leagueId": "chile"
+    },
+    {
+      "team": "Palestino",
+      "leagueId": "chile"
+    },
+    {
+      "team": "Atlético Nacional",
+      "leagueId": "colombia"
+    },
+    {
+      "team": "Millonarios",
+      "leagueId": "colombia"
+    },
+    {
+      "team": "América de Cali",
+      "leagueId": "colombia"
+    },
+    {
+      "team": "Independiente Medellín",
+      "leagueId": "colombia"
+    },
+    {
+      "team": "Junior de Barranquilla",
+      "leagueId": "colombia"
+    },
+    {
+      "team": "Deportivo Cali",
+      "leagueId": "colombia"
+    },
+    {
+      "team": "Independiente Santa Fe",
+      "leagueId": "colombia"
+    },
+    {
+      "team": "Once Caldas",
+      "leagueId": "colombia"
+    },
+    {
+      "team": "RSC Anderlecht",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "Royal Antwerp FC",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "SK Beveren",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "Cercle Brugge",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "Club Brugge",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "Sporting Charleroi",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "KRC Genk",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "KAA Gent",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "KV Kortrijk",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "RAAL La Louvière",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "KV Mechelen",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "OH Leuven",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "Lommel SK",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "Sint-Truidense VV",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "Standard Liège",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "Union Saint-Gilloise",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "KVC Westerlo",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "SV Zulte Waregem",
+      "leagueId": "belgian-pro-league"
+    },
+    {
+      "team": "Celtic FC",
+      "leagueId": "scottish-premiership"
+    },
+    {
+      "team": "Rangers FC",
+      "leagueId": "scottish-premiership"
+    },
+    {
+      "team": "Falkirk FC",
+      "leagueId": "scottish-premiership"
+    },
+    {
+      "team": "Heart of Midlothian",
+      "leagueId": "scottish-premiership"
+    },
+    {
+      "team": "Dundee United",
+      "leagueId": "scottish-premiership"
+    },
+    {
+      "team": "St Johnstone FC",
+      "leagueId": "scottish-premiership"
+    },
+    {
+      "team": "Dundee FC",
+      "leagueId": "scottish-premiership"
+    },
+    {
+      "team": "Aberdeen FC",
+      "leagueId": "scottish-premiership"
+    },
+    {
+      "team": "St Mirren FC",
+      "leagueId": "scottish-premiership"
+    },
+    {
+      "team": "Motherwell FC",
+      "leagueId": "scottish-premiership"
+    },
+    {
+      "team": "Hibernian FC",
+      "leagueId": "scottish-premiership"
+    },
+    {
+      "team": "Kilmarnock FC",
+      "leagueId": "scottish-premiership"
+    },
+    {
+      "team": "BSC Young Boys",
+      "leagueId": "swiss-super-league"
+    },
+    {
+      "team": "FC Basel 1893",
+      "leagueId": "swiss-super-league"
+    },
+    {
+      "team": "FC St. Gallen 1879",
+      "leagueId": "swiss-super-league"
+    },
+    {
+      "team": "FC Luzern",
+      "leagueId": "swiss-super-league"
+    },
+    {
+      "team": "FC Zürich",
+      "leagueId": "swiss-super-league"
+    },
+    {
+      "team": "Servette FC",
+      "leagueId": "swiss-super-league"
+    },
+    {
+      "team": "FC Sion",
+      "leagueId": "swiss-super-league"
+    },
+    {
+      "team": "FC Lugano",
+      "leagueId": "swiss-super-league"
+    },
+    {
+      "team": "Grasshopper Club Zürich",
+      "leagueId": "swiss-super-league"
+    },
+    {
+      "team": "FC Thun",
+      "leagueId": "swiss-super-league"
+    },
+    {
+      "team": "FC Lausanne-Sport",
+      "leagueId": "swiss-super-league"
+    },
+    {
+      "team": "FC Vaduz",
+      "leagueId": "swiss-super-league"
+    },
+    {
+      "team": "Alanyaspor",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Amed Sportif Faaliyetler",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "İstanbul Başakşehir FK",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Beşiktaş JK",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Çaykur Rizespor",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Erzurumspor FK",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Eyüpspor",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Fenerbahçe SK",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Galatasaray SK",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Gaziantep FK",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Gençlerbirliği",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Göztepe SK",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Kasımpaşa SK",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Kocaelispor",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Konyaspor",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Samsunspor",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Trabzonspor",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "Çorum FK",
+      "leagueId": "super-lig"
+    },
+    {
+      "team": "GNK Dinamo Zagreb",
+      "leagueId": "hnl-croatia"
+    },
+    {
+      "team": "HNK Gorica",
+      "leagueId": "hnl-croatia"
+    },
+    {
+      "team": "HNK Hajduk Split",
+      "leagueId": "hnl-croatia"
+    },
+    {
+      "team": "NK Istra 1961",
+      "leagueId": "hnl-croatia"
+    },
+    {
+      "team": "NK Lokomotiva",
+      "leagueId": "hnl-croatia"
+    },
+    {
+      "team": "NK Osijek",
+      "leagueId": "hnl-croatia"
+    },
+    {
+      "team": "HNK Rijeka",
+      "leagueId": "hnl-croatia"
+    },
+    {
+      "team": "NK Rudeš",
+      "leagueId": "hnl-croatia"
+    },
+    {
+      "team": "NK Slaven Belupo",
+      "leagueId": "hnl-croatia"
+    },
+    {
+      "team": "NK Varaždin",
+      "leagueId": "hnl-croatia"
+    }
+  ],
+  "duplicatePlayerIds": [],
+  "playersWithoutValidTeam": []
 }
