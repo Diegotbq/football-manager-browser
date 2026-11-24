@@ -29,7 +29,31 @@
       "dateOfBirth": "1999-07-05",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/jugador/vivian"
+    },
+    {
+      "playerId": "athletic-club-202627-04",
+      "name": "Aitor Paredes",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2000-04-29",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/paredes-2"
+    },
+    {
+      "playerId": "athletic-club-202627-05",
+      "name": "Yeray Álvarez",
+      "teamId": "athletic-club",
+      "dateOfBirth": "1995-01-24",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/yeray-2"
+    },
+    {
+      "playerId": "athletic-club-202627-06",
+      "name": "Jesús Areso",
+      "teamId": "athletic-club",
+      "dateOfBirth": "1999-07-02",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/areso"
     }
   ],
-  "approvalRevision": 2
+  "approvalRevision": 3
 }
