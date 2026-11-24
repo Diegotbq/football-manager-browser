@@ -37,6 +37,36 @@ class ReconcileOpenFootballBaseTests(unittest.TestCase):
         self.assertEqual(team["existingPlayersWithoutUniqueCandidate"], 1)
         self.assertEqual(report["skippedCandidateStatusCounts"]["suggested-match-review-required"], 1)
 
+    def test_safe_age_update_requires_unique_qid_name_and_verified_birthdate(self):
+        db = {"teams": [{"id": "a", "name": "Club A", "leagueId": "league-a",
+                         "players": [{"id": "p1", "name": "Player One", "age": None}]}]}
+        candidate = {
+            "name": "Player One", "sourcePlayerQid": "Q100", "age": 24,
+            "birthDate": "2002-03-04", "sourceTitle": "Club A",
+            "sourceRevision": 123, "sourceLanguage": "en", "source": "wikipedia_season",
+            "eligibleForManualReview": True,
+            "clubMapping": {"status": "exact-name-match-review-required", "teamId": "a"}
+        }
+        report = reconcile(db, {"season": "2026/27", "candidates": [candidate]})
+        self.assertEqual(report["safeMissingAgeUpdateCount"], 1)
+        update = report["safeMissingAgeUpdates"][0]
+        self.assertEqual(update["playerId"], "p1")
+        self.assertEqual(update["age"], 24)
+        self.assertEqual(update["sourcePlayerQid"], "Q100")
+
+    def test_duplicate_qid_blocks_age_update(self):
+        db = {"teams": [{"id": "a", "name": "Club A", "leagueId": "league-a",
+                         "players": [{"id": "p1", "name": "Player One", "age": None}]}]}
+        candidate = {
+            "name": "Player One", "sourcePlayerQid": "Q100", "age": 24,
+            "birthDate": "2002-03-04", "eligibleForManualReview": True,
+            "clubMapping": {"status": "exact-name-match-review-required", "teamId": "a"}
+        }
+        duplicate = dict(candidate)
+        duplicate["clubMapping"] = {"status": "unmatched"}
+        report = reconcile(db, {"season": "2026/27", "candidates": [candidate, duplicate]})
+        self.assertEqual(report["safeMissingAgeUpdateCount"], 0)
+
     def test_duplicate_qid_across_clubs_is_flagged(self):
         db = {"teams": [
             {"id": "a", "name": "A", "leagueId": "x", "players": []},
