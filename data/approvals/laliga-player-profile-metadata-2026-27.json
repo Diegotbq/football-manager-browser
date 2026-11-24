@@ -101,7 +101,31 @@
       "dateOfBirth": "2001-02-08",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/jugador/benat-prados"
+    },
+    {
+      "playerId": "athletic-club-202627-13",
+      "name": "Oihan Sancet",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2000-04-25",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/o-sancet-1"
+    },
+    {
+      "playerId": "athletic-club-202627-14",
+      "name": "Iñigo Ruiz de Galarreta",
+      "teamId": "athletic-club",
+      "dateOfBirth": "1993-08-06",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/r-de-galarreta"
+    },
+    {
+      "playerId": "athletic-club-202627-15",
+      "name": "Mikel Jauregizar",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2003-11-13",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/mikel-jauregizar"
     }
   ],
-  "approvalRevision": 5
+  "approvalRevision": 6
 }
