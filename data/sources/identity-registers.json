@@ -1,0 +1,93 @@
+{
+  "purpose": "Fontes auxiliares para reconciliar identidade de jogadores e localizar perfis; não são, isoladamente, prova de elenco atual.",
+  "checkedAt": "2026-11-24",
+  "sources": [
+    {
+      "id": "reep-register",
+      "name": "Reep Football Entity Register",
+      "url": "https://reep.football/data/",
+      "release": "2026-11-23.1",
+      "licence": "CC0-1.0",
+      "role": "Crosswalk de identidade e IDs de provedores; não é um cadastro de elencos atuais.",
+      "coverageUrl": "https://reep.football/coverage/",
+      "availableEntityFields": [
+        "canonical_name",
+        "country",
+        "entity_type"
+      ],
+      "availableProviderBridges": [
+        "Opta",
+        "Wyscout",
+        "Transfermarkt",
+        "Sofascore",
+        "API-Football",
+        "UEFA",
+        "FBref",
+        "FotMob"
+      ],
+      "limitations": [
+        "O pacote público atual é um registro de mapeamento: não fornece por si só posição, data de nascimento, nacionalidade detalhada ou clube atual como ficha completa.",
+        "A versão v0 do GitHub está congelada; novas integrações devem usar o snapshot v1.",
+        "A API hospedada requer chave; o pacote offline completo é disponibilizado em DuckDB/Parquet/CSV."
+      ],
+      "importPolicy": "Usar somente para reconciliar IDs e desambiguar nomes. Nunca criar jogador, atribuir clube atual ou preencher metadados apenas com o crosswalk."
+    },
+    {
+      "id": "footystats-player-api",
+      "name": "FootyStats Player Individual API",
+      "url": "https://footystats.org/pt/api/documentations/player-individual",
+      "role": "Possível fonte complementar de atributos de perfil e vínculo por temporada.",
+      "documentedFields": [
+        "full_name",
+        "known_as",
+        "age",
+        "birthday",
+        "nationality",
+        "position",
+        "league",
+        "season",
+        "club_team_id",
+        "club_team_2_id"
+      ],
+      "limitations": [
+        "A documentação não comprova que todos os clubes/competições desejados estejam cobertos.",
+        "Acesso e disponibilidade dependem da API e das credenciais/limites do serviço.",
+        "Idade, nacionalidade, posição e clube devem ser cruzados com fonte primária ou perfil oficial antes da importação."
+      ],
+      "importPolicy": "Candidato para validação cruzada, nunca fonte única de vínculo atual ou de completude de elenco."
+    },
+    {
+      "id": "cbf-bid",
+      "name": "Boletim Informativo Diário da CBF",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/atletas/campeonato-brasileiro/serie-b/2026",
+      "role": "Fonte primária de registros e vínculos formais no futebol brasileiro.",
+      "documentedFields": [
+        "nome",
+        "apelido",
+        "clube atual",
+        "registros de contrato"
+      ],
+      "limitations": [
+        "A listagem pública de atletas não exibe posição, nacionalidade ou data de nascimento na tabela consultada.",
+        "Um registro de competição pode incluir histórico; filtrar clube atual e verificar status do vínculo."
+      ],
+      "importPolicy": "Usar para confirmar identidade e registro/vínculo no Brasil, complementando os campos ausentes em fontes oficiais individuais."
+    }
+  ],
+  "globalImportGate": {
+    "required": [
+      "nome confirmado",
+      "clube atual confirmado",
+      "posição confirmada",
+      "data de nascimento ou idade confirmada",
+      "nacionalidade confirmada"
+    ],
+    "rejectIf": [
+      "identidade ambígua",
+      "clube atual não confirmado",
+      "metadados preenchidos por inferência",
+      "fonte auxiliar usada como única prova"
+    ],
+    "note": "Overall e valor de mercado podem ser estimativas de gameplay; identidade, posição, idade, nacionalidade e vínculo não."
+  }
+}
