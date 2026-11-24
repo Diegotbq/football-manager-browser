@@ -10,7 +10,8 @@
   "integrity": {
     "duplicatePlayerIds": 0,
     "playersWithoutValidTeam": 0,
-    "clubsWithSquadReferenceIssues": 0
+    "clubsWithSquadReferenceIssues": 0,
+    "clubsWithNonObjectSquadEntries": 0
   },
   "leagues": {
     "brasileirao": {
@@ -711,6 +712,7 @@
   "duplicatePlayerIds": [],
   "playersWithoutValidTeam": [],
   "squadReferenceIssues": [],
+  "clubsWithNonObjectSquadEntries": [],
   "minimumRosterSize": 18,
   "clubsBelowMinimum": [
     {
@@ -1495,4 +1497,4 @@
     }
   ],
   "rosterValidationNote": "O mínimo de 18 registros mede cobertura estrutural; não confirma, por si só, a inscrição atual ou a identidade real de cada jogador."
-}\n
+}
