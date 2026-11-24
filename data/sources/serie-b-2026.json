@@ -1,0 +1,24 @@
+{
+  "competition": "Campeonato Brasileiro Série B",
+  "season": "2026",
+  "source": "Confederação Brasileira de Futebol (CBF)",
+  "sourcePolicy": "Use somente atletas cuja coluna Clube Atual corresponda ao clube; a página pode listar atletas históricos inscritos na competição que hoje atuam em outra equipe. Confirmar nome, posição, idade e nacionalidade em fonte oficial adicional antes de inserir no database.json.",
+  "officialCompetitionUrl": "https://www.cbf.com.br/futebol-brasileiro/tabelas/campeonato-brasileiro/serie-b/2026",
+  "rosterMinimum": 25,
+  "clubs": {
+    "america-mg": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/59897",
+    "atletico-go": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/62261",
+    "avai": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20058?tab=atletas",
+    "botafogo-sp": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/56654",
+    "ceara": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20031",
+    "crb": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20032",
+    "cuiaba": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20800?tab=atletas",
+    "fortaleza": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/63238?tab=atletas",
+    "goias": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20028",
+    "nautico": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20023?tab=atletas",
+    "ponte-preta": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20037?tab=atletas"
+  },
+  "remainingClubs": 9,
+  "status": "source-index-in-progress",
+  "updatedAt": "2026-11-24"
+}
