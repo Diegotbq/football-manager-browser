@@ -10,6 +10,8 @@ on:
       - "scripts/stage-openfootballbase.py"
       - "scripts/test-stage-openfootballbase.py"
       - "scripts/test_stage_openfootballbase.py"
+      - "scripts/reconcile-openfootballbase.py"
+      - "scripts/test_reconcile_openfootballbase.py"
       - "data/sources/identity-registers.json"
       - ".github/workflows/league-readiness.yml"
   pull_request:
