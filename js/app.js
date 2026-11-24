@@ -1099,7 +1099,7 @@ function finishSeason() {
       prizes.push({clubId:club.id,clubName:club.name,competition:league.name,position:index+1,award});
     });
   });
-  (state.cupCompetitions||[]).forEach(cup=>{if(!cup.champion)return;const club=state.db.teams.find(t=>String(t.id)===String(cup.champion));if(club){club.budget=Number(club.budget||0)+5000000;club.reputation=Math.min(99,Number(club.reputation||50)+2);prizes.push({clubId:club.id,clubName:club.name,competition:cup.name,position:1,award:5000000,trophy:true});}});
+  (state.cupCompetitions||[]).forEach(cup=>{if(!cup.champion)return;const club=state.db.teams.find(t=>String(t.id)===String(cup.champion));if(club){const award=cup.id==="champions-league"?20000000:cup.id==="libertadores"?12000000:cup.id==="sudamericana"?8000000:5000000;club.budget=Number(club.budget||0)+award;club.reputation=Math.min(99,Number(club.reputation||50)+2);prizes.push({clubId:club.id,clubName:club.name,competition:cup.name,position:1,award,trophy:true});}});
   const brazilLeague=state.db.leagues.find(l=>l.id==="brasileirao");
   const englandLeague=state.db.leagues.find(l=>l.id==="premier-league");
   const spainLeague=state.db.leagues.find(l=>l.id==="la-liga");
