@@ -8,7 +8,8 @@ const state = {
   matchTimer: null,
   matchHistory: [],
   transferHistory: [],
-  contracts: {}
+  contracts: {},
+  loanRecords: []
 };
 
 const $ = selector => document.querySelector(selector);
@@ -273,6 +274,7 @@ function filterClubChoices() {
 
 function advanceDay() {
   state.day.setDate(state.day.getDate() + 1);
+  processLoanReturns();
   if (state.day.getDay() === 1) {
     const club = userClub();
     if (club) {
@@ -579,7 +581,7 @@ function renderMarket(searchTerm) {
                   <td class="club-name">${p.name}</td><td>${team ? team.shortName || team.name : "—"}</td>
                   <td>${p.position || "—"}</td><td class="positive">${p.overall || "—"}</td>
                   <td>${money(p.marketValue)}</td>
-                  <td><button class="primary-btn" onclick="makeTransferOffer('${p.id}')">FAZER PROPOSTA</button></td>
+                  <td><button class="primary-btn" onclick="makeTransferOffer('${p.id}')">COMPRAR</button><button class="secondary-btn" onclick="makeLoanOffer('${p.id}')">EMPRÉSTIMO</button></td>
                 </tr>`;
               }).join("")}
             </tbody>
@@ -609,7 +611,8 @@ function saveTransferCareer() {
       playerTeams: state.db.players.map(p => [p.id, p.teamId]),
       budgets: state.db.teams.map(t => [t.id, t.budget]),
       history: state.transferHistory,
-      contracts: state.contracts
+      contracts: state.contracts,
+      loanRecords: state.loanRecords
     }));
   } catch (_) {
     alert("Não foi possível salvar a transferência neste dispositivo. Verifique o espaço disponível.");
@@ -631,9 +634,11 @@ function loadTransferCareer() {
     });
     state.transferHistory = Array.isArray(saved.history) ? saved.history : [];
     state.contracts = saved.contracts && typeof saved.contracts === "object" ? saved.contracts : {};
+    state.loanRecords = Array.isArray(saved.loanRecords) ? saved.loanRecords : [];
   } catch (_) {
     state.transferHistory = [];
     state.contracts = {};
+    state.loanRecords = [];
   }
 }
 
@@ -691,6 +696,45 @@ function makeTransferOffer(playerId) {
   saveTransferCareer();
   alert("Contratação concluída! " + player.name + " agora faz parte do " + buyer.name + ".");
   renderMarket();
+}
+
+
+function makeLoanOffer(playerId) {
+  const buyer = userClub();
+  const player = state.db.players.find(p => String(p.id) === String(playerId));
+  if (!buyer || !player || String(player.teamId) === String(buyer.id)) { alert('Jogador indisponível para empréstimo.'); return; }
+  if (state.loanRecords.some(r => String(r.playerId) === String(player.id) && !r.returned)) { alert('Este jogador já está emprestado.'); return; }
+  const seller = state.db.teams.find(t => String(t.id) === String(player.teamId));
+  if (!seller) return;
+  const monthsInput = prompt('Duração do empréstimo (1 a 24 meses):', '6');
+  if (monthsInput === null) return;
+  const months = Number(monthsInput);
+  if (!Number.isInteger(months) || months < 1 || months > 24) { alert('Escolha entre 1 e 24 meses.'); return; }
+  const fee = Math.max(0, Math.round((Number(player.marketValue) || 0) * 0.015 * months));
+  if (fee > Number(buyer.budget || 0)) { alert('Orçamento insuficiente para a taxa estimada de ' + money(fee) + '.'); return; }
+  if (!confirm('Solicitar empréstimo de ' + player.name + ' por ' + months + ' meses?\nTaxa estimada: ' + money(fee) + '. O jogador retornará automaticamente ao clube de origem.')) return;
+  const originalTeamId = player.teamId;
+  buyer.budget = Number(buyer.budget || 0) - fee;
+  seller.budget = Number(seller.budget || 0) + fee;
+  player.teamId = buyer.id;
+  state.db.teams.forEach(team => { if (!Array.isArray(team.players)) return; team.players = team.players.filter(p => String(p.id) !== String(player.id)); if (String(team.id) === String(buyer.id)) team.players.push(player); });
+  const end = new Date(state.day); end.setMonth(end.getMonth() + months);
+  state.loanRecords.push({playerId:player.id,playerName:player.name,fromTeamId:originalTeamId,fromName:seller.name,toTeamId:buyer.id,toName:buyer.name,startDate:state.day.toISOString().slice(0,10),endDate:end.toISOString().slice(0,10),fee:fee});
+  saveTransferCareer(); alert('Empréstimo concluído! Retorno previsto para ' + end.toLocaleDateString('pt-BR') + '.'); renderMarket();
+}
+
+function processLoanReturns() {
+  const today = state.day.toISOString().slice(0,10); let changed = false;
+  state.loanRecords.forEach(record => {
+    if (record.returned || record.endDate > today) return;
+    const player = state.db.players.find(p => String(p.id) === String(record.playerId));
+    const original = state.db.teams.find(t => String(t.id) === String(record.fromTeamId));
+    if (!player || !original) return;
+    player.teamId = original.id;
+    state.db.teams.forEach(team => { if (!Array.isArray(team.players)) return; team.players = team.players.filter(p => String(p.id) !== String(player.id)); if (String(team.id) === String(original.id)) team.players.push(player); });
+    record.returned = true; record.returnedDate = today; changed = true;
+  });
+  if (changed) saveTransferCareer();
 }
 
 // CLASSIFICAÇÃO
