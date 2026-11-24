@@ -104,12 +104,10 @@ async function init() {
     const savedClub = savedClubId
       ? state.db.teams.find(t => String(t.id) === String(savedClubId))
       : null;
-    if (savedClub) { state.selectedClubId = savedClub.id; state.db.userClubId = savedClub.id; }
-    ensureCupCompetitions();
-
     if (savedClub) {
       state.selectedClubId = savedClub.id;
       state.db.userClubId = savedClub.id;
+      ensureCupCompetitions();
       const clubName = $("#club-name");
       if (clubName) clubName.textContent = savedClub.name;
       state.view = "dashboard";
@@ -150,6 +148,7 @@ function selectClub(clubId) {
 
   state.selectedClubId = club.id;
   state.db.userClubId = club.id;
+  ensureCupCompetitions();
   try { localStorage.setItem("fmb-selected-club", String(club.id)); } catch (_) {}
   state.view = "dashboard";
 
