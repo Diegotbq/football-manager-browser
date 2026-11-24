@@ -14,13 +14,14 @@ class PositionMappingTests(unittest.TestCase):
             ("Goalkeeper", "GK"), ("Centre-back", "CB"), ("Left-back", "LB"),
             ("Right-back", "RB"), ("Defensive midfielder", "DM"),
             ("Central midfielder", "CM"), ("Attacking midfielder", "AM"),
-            ("Left winger", "LW"), ("Right winger", "RW"), ("Striker", "ST")
+            ("Left winger", "LW"), ("Right winger", "RW"), ("Striker", "ST"), ("Left midfielder", "LM"),
+            ("Right midfielder", "RM"), ("Stopper", "CB"), ("Centerhalf", "CB")
         ]:
             with self.subTest(label=label):
                 self.assertEqual(module.map_position_labels([label]), (expected, "mapped"))
 
     def test_broad_positions_are_not_guessed(self):
-        for label in ("Defender", "Midfielder", "Forward", "Winger"):
+        for label in ("Defender", "Midfielder", "Forward", "Winger", "Attacker", "Full-back", "Playmaker", "Wing half"):
             with self.subTest(label=label):
                 self.assertEqual(module.map_position_labels([label]), (None, "not-specific-enough"))
 
