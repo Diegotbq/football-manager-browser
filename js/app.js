@@ -1721,7 +1721,7 @@ function ensureCupCompetitions() {
   definitions.forEach(def => {
     const league = state.db.leagues.find(l => l.id === def.leagueId);
     if (!league || !Array.isArray(league.teams) || league.teams.length < 2) return;
-    const participants = def.qualifiedTeams?.length ? [...def.qualifiedTeams] : def.teamIds?.length ? [...def.teamIds] : [...league.teams];
+    const participants = def.format==="uefa-league" ? [...new Set([...(def.qualifiedTeams||[]),...(def.teamIds||[])])].slice(0,36) : def.qualifiedTeams?.length ? [...def.qualifiedTeams] : def.teamIds?.length ? [...def.teamIds] : [...league.teams];
     if(Array.isArray(def.qualifiedTeams)&&def.qualifiedTeams.length>0&&def.qualifiedTeams.length<2)return;
     const seed = def.id.split("").reduce((sum,ch)=>sum+ch.charCodeAt(0),0);
     participants.sort((a,b)=>cupSeed(a,seed)-cupSeed(b,seed));
@@ -1754,15 +1754,13 @@ function advanceCupTournaments() {
         if(!fixtures.length){
           const teams=[...cup.activeTeams];
           if(teams.length!==36){cup.activeTeams=teams.slice(0,36);cup.participants=[...cup.activeTeams];}
-          const rotation=cup.activeTeams.map((id,index)=>({id,index}));
           const seed=cup.id.split("").reduce((sum,ch)=>sum+ch.charCodeAt(0),0);
-          const ordered=[...cup.activeTeams].sort((a,b)=>cupSeed(a,seed)-cupSeed(b,seed));
+          const ordered=[...cup.participants].sort((a,b)=>cupSeed(a,seed)-cupSeed(b,seed));
+          for(let turn=0;turn<cup.round;turn++){const fixed=ordered[0],last=ordered.pop();ordered.splice(1,0,last);ordered[0]=fixed;}
           for(let i=0;i<18;i++){
             const home=ordered[i],away=ordered[35-i];
             state.generatedFixtures.push({id:"cup-"+cup.id+"-league-"+cup.round+"-"+i,cupId:cup.id,cupRound:cup.round,competition:cup.name,round:"Fase de liga · rodada "+(cup.round+1),date:cupDate(cup.round),homeTeamId:home,awayTeamId:away,generated:true,isCup:true,phase:"league"});
           }
-          const first=ordered[0];ordered.splice(1,1);ordered.push(first);
-          cup.activeTeams=[...ordered];
           fixtures=state.generatedFixtures.filter(f=>f.cupId===cup.id&&f.cupRound===cup.round);
         }
         const playedIds=new Set(state.matchHistory.map(match=>match.fixtureId));
