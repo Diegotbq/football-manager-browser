@@ -13,5 +13,6 @@
   "preserveExistingPositions": true,
   "preserveExistingOverallAndMarketValue": true,
   "preserveUnmatchedPlayers": true,
-  "sourceAttribution": true
+  "sourceAttribution": true,
+  "approvalRevision": 2
 }
