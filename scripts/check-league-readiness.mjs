@@ -46,6 +46,7 @@ for (const team of teams) {
 }
 
 const results = [...leagues.entries()].map(([leagueId, clubs]) => {
+  const minimum = Math.max(1, Number(db.meta?.leagueMinimumRosterSizes?.[leagueId] || defaultMinimum));
   const belowMinimum = clubs.filter(club => club.players < minimum);
   const complete = belowMinimum.length === 0 &&
     duplicateIds.length === 0 && invalidTeamLinks.length === 0;
