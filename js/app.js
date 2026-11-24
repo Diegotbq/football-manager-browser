@@ -1762,7 +1762,7 @@ function advanceCupTournaments() {
           const seed=cup.id.split("").reduce((sum,ch)=>sum+ch.charCodeAt(0),0);
           if(!Array.isArray(cup.pots)||cup.pots.flat().length!==36)cup.pots=buildUEFAPots(cup.participants);
           const ordered=cup.pots.flat().map((id,index)=>({id,index}));
-          const rotation=ordered.map(item=>item.id).sort((a,b)=>cupSeed(a,seed)-cupSeed(b,seed));
+          const rotation=cup.pots.flatMap((pot,index)=>[...pot].sort((a,b)=>cupSeed(a,seed+index)-cupSeed(b,seed+index)));
           for(let turn=0;turn<cup.round;turn++){const fixed=rotation[0],last=rotation.pop();rotation.splice(1,0,last);rotation[0]=fixed;}
           const previous=state.generatedFixtures.filter(f=>f.cupId===cup.id&&f.phase==="league");
           const homeCounts=new Map(cup.participants.map(id=>[String(id),0]));
