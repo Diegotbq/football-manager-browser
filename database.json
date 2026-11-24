@@ -65,7 +65,8 @@
       "Real Sociedad: plantilla oficial do primeiro time 2026/27; relação de dorsais e lista de competição 2026/27, consultadas em 24/11/2026.",
       "Sevilla FC: plantilla oficial do primeiro time e relação definitiva de dorsais 2026/27, consultadas em 24/11/2026.",
       "Valencia CF: plantilla oficial do primeiro time 2026/27, consultada em 24/11/2026.",
-      "Villarreal CF: fotografia oficial do primeiro time 2026/27 (23/10/2026) e lista oficial UEFA Champions League 2026/27, consultadas em 24/11/2026."
+      "Villarreal CF: fotografia oficial do primeiro time 2026/27 (23/10/2026) e lista oficial UEFA Champions League 2026/27, consultadas em 24/11/2026.",
+      "CBF — lista oficial dos 20 participantes do Campeonato Brasileiro Série A 2026, conferida em 24/11/2026: https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026"
     ],
     "lastRosterUpdate": "2026-11-24",
     "rosterNotes": " AFC Ajax: 41 jogadores incluídos a partir da lista de elenco da UEFA 2026/27; overall e valor de mercado são estimativas de gameplay. Elencos UEFA 2026/27 adicionados para PSV, Feyenoord, RC Lens e LOSC Lille; overall e valores de mercado são estimativas de gameplay. Athletic Club: 30 jogadores adicionados conforme a página oficial do elenco masculino 2026/27; nomes e posições conferidos. Overall e valores de mercado são estimativas de gameplay; idades/nacionalidades não verificadas foram omitidas. Unai Egiluz marcado como lesionado conforme informação oficial do clube. Atlético de Madrid: 24 jogadores do primeiro time cadastrados conforme a lista oficial do clube 2026/27 consultada em 24/11/2026; idades não verificadas omitidas; overall e valores são estimativas de gameplay. Ademola Lookman marcado como lesionado conforme comunicado médico oficial de 17/11/2026. CA Osasuna: 24 jogadores do primeiro time cadastrados conforme a plantilla e os dorsais oficiais 2026/27; idades não verificadas omitidas; overall e valores de mercado são estimativas fictícias de gameplay. RC Celta: 28 jogadores do primeiro time cadastrados conforme lista oficial de dorsais 2026/27 e plantilla LALIGA; idades não verificadas omitidas; overall e valores de mercado são estimativas fictícias de gameplay. Deportivo Alavés: 30 jogadores cadastrados com base no elenco oficial UEFA 2026/27; idades não verificadas omitidas; overall e valores são estimativas fictícias de gameplay. Elche CF: 33 jogadores identificáveis cadastrados a partir do elenco oficial UEFA 2026/27; nomes abreviados ou sem identificação segura foram omitidos; idades não verificadas omitidas; overall e valores são estimativas fictícias de gameplay. Getafe CF: 37 jogadores identificáveis cadastrados a partir das listas oficiais LALIGA e UEFA 2026/27, incluindo jogadores de elenco e lista B; idades não verificadas omitidas; overall e valores são estimativas fictícias de gameplay. Levante UD: 26 jogadores cadastrados a partir da lista oficial de dorsais 2026/27 e da página oficial do primeiro time, com conferência complementar da UEFA; idade e nacionalidade não verificadas foram omitidas; overall e valores são estimativas fictícias de gameplay. Málaga CF: 31 jogadores incluídos com base na plantilla oficial LALIGA 2026/27, conferida com a página do clube; jogadores jovens listados no plantel oficial foram mantidos; idades e nacionalidades não verificadas no cadastro foram omitidas; overall e valores são estimativas fictícias de gameplay. Racing de Santander: 31 jogadores cadastrados a partir da lista de inscritos da Primera División Senior 2026/27, conferida com comunicados oficiais do clube; idades e nacionalidades não confirmadas no cadastro foram omitidas; overall e valores são estimativas fictícias de gameplay. RC Deportivo: 30 jogadores cadastrados a partir da plantilla oficial LALIGA 2026/27, incluindo os jogadores jovens listados pela liga; conferência complementar com a página oficial do clube; nomes mantidos na forma publicada quando abreviados; idades e nacionalidades não confirmadas no cadastro foram omitidas; overall e valores são estimativas fictícias de gameplay. RCD Espanyol: 27 jogadores cadastrados com base na página oficial do primeiro time e conferência com a plantilla LALIGA 2026/27 e atualização do elenco de 24/11/2026; idades e nacionalidades não verificadas no cadastro foram omitidas; overall e valores são estimativas fictícias de gameplay. Real Betis: 51 jogadores cadastrados conforme a lista oficial UEFA Champions League 2026/27, incluindo Listas A e B; nomes e posições transcritos da fonte oficial; idades e nacionalidades não verificadas no cadastro foram omitidas; overall e valores são estimativas fictícias de gameplay."
@@ -917,7 +918,11 @@
           "nationality": "—",
           "injured": false
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "minimum-size-met-review-pending"
     },
     {
       "id": "man-city",
@@ -2264,7 +2269,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "atletico-mg",
@@ -2394,7 +2403,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "bahia",
@@ -2524,7 +2537,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "botafogo",
@@ -2680,7 +2697,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "chapecoense",
@@ -2758,7 +2779,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "corinthians",
@@ -2862,7 +2887,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "coritiba",
@@ -2966,7 +2995,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "cruzeiro",
@@ -3083,7 +3116,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "fluminense",
@@ -3213,7 +3250,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "gremio",
@@ -3356,7 +3397,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "internacional",
@@ -3525,7 +3570,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "mirassol",
@@ -3968,7 +4017,11 @@
           "injured": false
         }
       ],
-      "manager": "Rafael Guanaes"
+      "manager": "Rafael Guanaes",
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "minimum-size-met-review-pending"
     },
     {
       "id": "palmeiras",
@@ -4085,7 +4138,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "rb-bragantino",
@@ -4202,7 +4259,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "remo",
@@ -4293,7 +4354,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "santos",
@@ -4384,7 +4449,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "sao-paulo",
@@ -4488,7 +4557,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "vasco",
@@ -4657,7 +4730,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "vitoria",
@@ -4748,7 +4825,11 @@
           "dataSource": "Folha, levantamento de elencos de 22/09/2026",
           "ratingEstimated": true
         }
-      ]
+      ],
+      "competitionSource": "CBF — Campeonato Brasileiro Série A 2026 (lista oficial de participantes)",
+      "competitionSourceUrl": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-a/2026",
+      "competitionVerifiedAt": "2026-11-24",
+      "rosterCoverageStatus": "incomplete"
     },
     {
       "id": "bournemouth",
