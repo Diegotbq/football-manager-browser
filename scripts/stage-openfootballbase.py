@@ -12,6 +12,7 @@ import argparse
 import json
 import re
 import unicodedata
+from difflib import SequenceMatcher
 from datetime import date
 from pathlib import Path
 
@@ -82,6 +83,32 @@ def resolve_club_mapping(source_club: str, league_id: str, teams: list[dict]) ->
             "status": "ambiguous-exact-match",
             "candidateTeamIds": [team.get("id") for team in matches],
             "candidateTeamNames": [team.get("name") for team in matches]
+        }
+
+    # Similaridade serve apenas para sugerir revisão; nunca atribui teamId.
+    scored = []
+    for team in teams:
+        if str(team.get("leagueId") or "") != league_id:
+            continue
+        candidate_name = normalize_club_name(team.get("name"))
+        if not key or not candidate_name:
+            continue
+        score = SequenceMatcher(None, key, candidate_name).ratio()
+        if score >= 0.62:
+            scored.append((score, team))
+    scored.sort(key=lambda item: (-item[0], str(item[1].get("name") or "")))
+    suggestions = [
+        {
+            "teamId": team.get("id"),
+            "teamName": team.get("name"),
+            "similarity": round(score, 3)
+        }
+        for score, team in scored[:3]
+    ]
+    if suggestions:
+        return {
+            "status": "suggested-match-review-required",
+            "suggestedMatches": suggestions
         }
     return {"status": "unmatched", "candidateTeamIds": []}
 
@@ -237,7 +264,7 @@ def main() -> int:
         ],
         "clubMappingSummary": {
             status: sum(1 for mapping in club_mappings.values() if mapping["status"] == status)
-            for status in ("exact-name-match-review-required", "ambiguous-exact-match", "unmatched", "not-checked")
+            for status in ("exact-name-match-review-required", "ambiguous-exact-match", "suggested-match-review-required", "unmatched", "not-checked")
         },
         "candidateCount": len(candidates),
         "manualReviewEligibleCount": sum(1 for c in candidates if c["eligibleForManualReview"]),
