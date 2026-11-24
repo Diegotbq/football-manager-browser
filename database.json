@@ -2,9 +2,11 @@
   "meta": {
     "gameTitle": "Football Manager Browser",
     "version": "0.1.0",
-    "season": "2025/26",
+    "season": "2026/27",
     "currency": "EUR",
-    "note": "Base demonstrativa. Overalls, valores e alguns vínculos de elenco são parâmetros fictícios de jogo; confira os elencos reais antes de usar como simulação histórica."
+    "note": "Base demonstrativa. Overalls, valores e alguns vínculos de elenco são parâmetros fictícios de jogo; confira os elencos reais antes de usar como simulação histórica.",
+    "dataStatus": "Elencos em atualização; atributos e valores de jogo são estimativas fictícias.",
+    "lastDataReview": "2026-11-23"
   },
   "leagues": [
     {
@@ -1449,18 +1451,18 @@
     }
   ],
   "calendar": {
-    "seasonStart": "2025-07-01",
-    "seasonEnd": "2026-06-30",
+    "seasonStart": "2026-07-01",
+    "seasonEnd": "2027-06-30",
     "transferWindows": [
       {
         "name": "Janela de verão",
-        "start": "2025-07-01",
-        "end": "2025-09-01"
+        "start": "2026-07-01",
+        "end": "2026-09-01"
       },
       {
         "name": "Janela de inverno",
-        "start": "2026-01-01",
-        "end": "2026-02-02"
+        "start": "2027-01-01",
+        "end": "2027-02-02"
       }
     ],
     "events": []
