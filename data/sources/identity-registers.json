@@ -225,18 +225,22 @@
         "estado atual/emprestado quando retornado"
       ],
       "endpointPatterns": {
-        "squad": "GET /api/v1/teams/{teamSlug}/squad?subscription={seasonSlug}",
-        "seasonPlayerStats": "GET /api/v1/subscriptions/{seasonSlug}/players/stats?limit=100&offset={offset}",
-        "seasonStanding": "GET /api/v1/subscriptions/{seasonSlug}/standing"
+        "squad": "GET /api/v1/teams/{teamSlug}/squad?subscription={seasonSlug} — retorna elenco CURRENT (não histórico), apesar do parâmetro subscription.",
+        "seasonPlayerStats": "GET /api/v1/subscriptions/{seasonSlug}/players/stats?limit=100&offset={offset} — jogadores com posição, país, equipe, Opta ID e estatísticas associadas à temporada.",
+        "seasonStanding": "GET /api/v1/subscriptions/{seasonSlug}/standing — classificação e clubes da assinatura/temporada.",
+        "base": "https://apim.laliga.com/public-service"
       },
       "limitations": [
-        "API não é documentada publicamente nem oficialmente oferecida como API para desenvolvedores; os padrões foram identificados em documentação comunitária de engenharia reversa.",
-        "A resposta do endpoint de squad pode representar o plantel atual, e não necessariamente um snapshot histórico da temporada indicada.",
-        "Autenticação/cabeçalho público pode mudar ou deixar de funcionar; não armazenar chaves ou segredos no repositório.",
-        "A disponibilidade do endpoint, os slugs e a cobertura de todos os clubes ainda precisam ser testados diretamente antes de qualquer ingestão.",
+        "API não é documentada publicamente nem oficialmente oferecida para desenvolvedores; padrões identificados por engenharia reversa comunitária da aplicação web.",
+        "O endpoint squad retorna o plantel CURRENT, não um snapshot histórico, mesmo quando recebe subscription; não usar sozinho para reconstruir 2026/27.",
+        "O endpoint seasonPlayerStats é sazonal e inclui jogadores com participação/estatísticas; não garante todos os inscritos nem o elenco completo de cada clube.",
+        "Autenticação/cabeçalho público e disponibilidade podem mudar; não armazenar chaves ou segredos no repositório.",
+        "Slugs e cobertura da temporada 2026/27 precisam ser testados diretamente; exemplos comunitários publicados usam principalmente 2025/26.",
         "Dados derivados de Opta e fornecidos por endpoint técnico não substituem a página oficial vigente do clube como fonte primária."
       ],
-      "importPolicy": "Usar apenas como fonte auxiliar de descoberta e reconciliação. Antes de importar, testar cobertura de todos os clubes, conferir cada jogador e vínculo na página oficial Plantilla do clube, preservar Opta ID e URL de origem, e não tratar o parâmetro subscription como prova de snapshot histórico. Nunca importar em massa apenas com base neste endpoint."
+      "importPolicy": "Usar como fonte auxiliar de descoberta e reconciliação, nunca como prova única de elenco completo. Testar slugs e cobertura 2026/27; usar estatísticas sazonais para confirmar atividade na temporada, cruzar cada vínculo com a página oficial Plantilla vigente e perfis oficiais para metadados. O endpoint squad é atual e não histórico. Preservar Opta ID e URL de origem; não importar em massa apenas com base neste endpoint.",
+      "reference": "https://github.com/football-invincibles/LALIGA_API.md",
+      "referenceNote": "Documentação comunitária de engenharia reversa, consultada em 2026-11-24; não é documentação da LALIGA."
     }
   ],
   "globalImportGate": {
