@@ -1,7 +1,7 @@
 
 const state = {
   db: null,
-  day: new Date("2025-07-01T12:00:00"),
+  day: new Date("2026-07-01T12:00:00"),
   view: "club-selection",
   selectedClubId: null
 };
@@ -31,6 +31,9 @@ async function init() {
     }
 
     state.db = await response.json();
+
+    const seasonStart = state.db.calendar?.seasonStart;
+    if (seasonStart) state.day = new Date(`${seasonStart}T12:00:00`);
 
     if (!Array.isArray(state.db.teams) || !state.db.teams.length) {
       throw new Error("Nenhum clube encontrado no banco de dados.");
@@ -79,7 +82,7 @@ async function init() {
         <div class="notice">
           Erro ao carregar o jogo: ${error.message}
           <br>
-          Confira se o arquivo data/database.json existe.
+          Confira se o arquivo database.json existe.
         </div>
       `;
     }
