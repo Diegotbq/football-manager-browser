@@ -11,6 +11,12 @@ const file = path.resolve(process.argv[2] || "database.json");
 const db = JSON.parse(fs.readFileSync(file, "utf8"));
 const teams = Array.isArray(db.teams) ? db.teams : [];
 const players = Array.isArray(db.players) ? db.players : [];
+
+// Valores sentinela não contam como metadados reais preenchidos.
+const hasUsableValue = value => {
+  const normalized = String(value ?? "").trim().toLowerCase();
+  return normalized.length > 0 && !["—", "-", "n/a", "na", "null", "unknown"].includes(normalized);
+};
 const ids = new Set();
 const duplicatePlayerIds = [];
 const playersWithoutValidTeam = [];
@@ -98,10 +104,10 @@ for (const [leagueId, entry] of Object.entries(leagues)) {
     .map(team => String(team.id)));
   const leaguePlayers = players.filter(player => leagueTeamIds.has(String(player.teamId)));
   const missing = {
-    name: leaguePlayers.filter(player => !String(player.name || "").trim()).length,
-    position: leaguePlayers.filter(player => !String(player.position || "").trim()).length,
+    name: leaguePlayers.filter(player => !hasUsableValue(player.name)).length,
+    position: leaguePlayers.filter(player => !hasUsableValue(player.position)).length,
     age: leaguePlayers.filter(player => !Number.isFinite(Number(player.age)) || Number(player.age) <= 0).length,
-    nationality: leaguePlayers.filter(player => !String(player.nationality || "").trim()).length
+    nationality: leaguePlayers.filter(player => !hasUsableValue(player.nationality)).length
   };
   entry.metadataCompleteness = {
     playerRecords: leaguePlayers.length,
