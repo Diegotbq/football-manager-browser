@@ -1660,7 +1660,7 @@ function ensureCupCompetitions() {
     const league = state.db.leagues.find(l => l.id === def.leagueId);
     if (!league || !Array.isArray(league.teams) || league.teams.length < 2) return;
     const participants = def.qualifiedTeams?.length ? [...def.qualifiedTeams] : def.teamIds?.length ? [...def.teamIds] : [...league.teams];
-    if(def.qualifiedTeams && def.qualifiedTeams.length<2)return;
+    if(Array.isArray(def.qualifiedTeams)&&def.qualifiedTeams.length>0&&def.qualifiedTeams.length<2)return;
     const seed = def.id.split("").reduce((sum,ch)=>sum+ch.charCodeAt(0),0);
     participants.sort((a,b)=>cupSeed(a,seed)-cupSeed(b,seed));
     state.cupCompetitions.push({id:def.id,name:def.name,leagueId:def.leagueId,participants,activeTeams:[...participants],round:0,finished:false,champion:null,byes:[]});
