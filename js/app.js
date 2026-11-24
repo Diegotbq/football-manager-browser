@@ -11,7 +11,8 @@ const state = {
   contracts: {},
   loanRecords: [],
   trainingRecords: {},
-  academyProspects: []
+  academyProspects: [],
+  scoutingReports: []
 };
 
 const $ = selector => document.querySelector(selector);
@@ -277,6 +278,7 @@ function filterClubChoices() {
 function advanceDay() {
   state.day.setDate(state.day.getDate() + 1);
   processLoanReturns();
+  processScouting();
   if (state.day.getDay() === 1) {
     const club = userClub();
     if (club) {
@@ -648,16 +650,29 @@ function renderMarket(searchTerm) {
               ${others.map(p => {
                 const team = state.db.teams.find(t => String(t.id) === String(p.teamId));
                 const searchData = (p.name + " " + (team?.name || "") + " " + (p.position || "")).toLocaleLowerCase("pt-BR").replace(/"/g, "&quot;");
+                const report = state.scoutingReports.find(r => String(r.playerId) === String(p.id));
+                const scoutAction = report
+                  ? (report.completed ? '<span class="tag">OBSERVADO</span>' : '<span class="tag">EM OBSERVAÇÃO</span>')
+                  : `<button class="secondary-btn" onclick="scoutPlayer('${p.id}')">OBSERVAR</button>`;
                 return `<tr data-market-player data-market-search="${searchData}">
                   <td class="club-name">${p.name}</td><td>${team ? team.shortName || team.name : "—"}</td>
                   <td>${p.position || "—"}</td><td class="positive">${p.overall || "—"}</td>
                   <td>${money(p.marketValue)}</td>
-                  <td><button class="primary-btn" onclick="makeTransferOffer('${p.id}')">COMPRAR</button><button class="secondary-btn" onclick="makeLoanOffer('${p.id}')">EMPRÉSTIMO</button></td>
+                  <td>${scoutAction}<button class="primary-btn" onclick="makeTransferOffer('${p.id}')">COMPRAR</button><button class="secondary-btn" onclick="makeLoanOffer('${p.id}')">EMPRÉSTIMO</button></td>
                 </tr>`;
               }).join("")}
             </tbody>
           </table>
         ` : '<p class="subtle">Nenhum jogador encontrado com esse filtro.</p>'}
+      </article>
+      <article class="card span-12">
+        <div class="section-head"><h2>Central de observação</h2><span class="tag">${state.scoutingReports.length} relatório(s)</span></div>
+        <p class="subtle">Envie olheiros para acompanhar um jogador por 7 dias. Cada observação custa ${money(75000)}. O potencial apresentado é uma estimativa de jogo, não um dado oficial.</p>
+        ${state.scoutingReports.length ? state.scoutingReports.slice().reverse().map(r => {
+          const player = state.db.players.find(p => String(p.id) === String(r.playerId));
+          const remaining = Math.max(0, Math.ceil((new Date(r.dueDate + "T12:00:00") - new Date(state.day.toISOString().slice(0,10) + "T12:00:00")) / 86400000));
+          return `<div class="fixture"><div><strong>${r.playerName}</strong><div class="subtle">${r.completed ? "Relatório concluído · " + r.recommendation : "Em observação · conclusão em " + remaining + " dia(s)"}</div>${r.completed ? `<div class="subtle">Overall observado: ${r.overall} · Potencial estimado: ${r.potentialMin}–${r.potentialMax}</div>` : ""}</div><span class="tag">${r.completed ? "Concluído" : "Em andamento"}</span></div>`;
+        }).join("") : '<p class="subtle">Nenhum olheiro enviado. Escolha um jogador na lista e clique em OBSERVAR.</p>'}
       </article>
       <article class="card span-12">
         <div class="section-head"><h2>Últimas movimentações</h2><span class="tag">${recentTransfers.length} recentes</span></div>
@@ -685,7 +700,8 @@ function saveTransferCareer() {
       contracts: state.contracts,
       loanRecords: state.loanRecords,
       trainingRecords: state.trainingRecords,
-      academyProspects: state.academyProspects
+      academyProspects: state.academyProspects,
+      scoutingReports: state.scoutingReports
     }));
   } catch (_) {
     alert("Não foi possível salvar a transferência neste dispositivo. Verifique o espaço disponível.");
@@ -710,6 +726,7 @@ function loadTransferCareer() {
     state.loanRecords = Array.isArray(saved.loanRecords) ? saved.loanRecords : [];
     state.trainingRecords = saved.trainingRecords && typeof saved.trainingRecords === "object" ? saved.trainingRecords : {};
     state.academyProspects = Array.isArray(saved.academyProspects) ? saved.academyProspects : [];
+    state.scoutingReports = Array.isArray(saved.scoutingReports) ? saved.scoutingReports : [];
     state.academyProspects.forEach(p => {
       if (!state.db.players.some(existing => String(existing.id) === String(p.id))) state.db.players.push(p);
       const team = state.db.teams.find(t => String(t.id) === String(p.teamId));
@@ -721,7 +738,71 @@ function loadTransferCareer() {
     state.loanRecords = [];
     state.trainingRecords = {};
     state.academyProspects = [];
+    state.scoutingReports = [];
   }
+}
+
+function scoutPlayer(playerId) {
+  const club = userClub();
+  const player = state.db.players.find(p => String(p.id) === String(playerId));
+  const cost = 75000;
+  if (!club || !player || String(player.teamId) === String(club.id)) {
+    alert("Este jogador não está disponível para observação.");
+    return;
+  }
+  if (state.scoutingReports.some(r => String(r.playerId) === String(player.id))) {
+    alert("Este jogador já possui uma observação iniciada ou concluída.");
+    return;
+  }
+  if (Number(club.budget || 0) < cost) {
+    alert("Orçamento insuficiente para contratar o serviço de observação.");
+    return;
+  }
+  if (!confirm("Enviar um olheiro para observar " + player.name + " por 7 dias?\nCusto: " + money(cost))) return;
+  club.budget = Number(club.budget || 0) - cost;
+  const due = new Date(state.day);
+  due.setDate(due.getDate() + 7);
+  state.scoutingReports.push({
+    playerId: player.id,
+    playerName: player.name,
+    startDate: state.day.toISOString().slice(0,10),
+    dueDate: due.toISOString().slice(0,10),
+    completed: false
+  });
+  saveTransferCareer();
+  alert("Olheiro enviado! O relatório ficará pronto em 7 dias.");
+  renderMarket();
+}
+
+function processScouting() {
+  const today = state.day.toISOString().slice(0,10);
+  let changed = false;
+  state.scoutingReports.forEach(report => {
+    if (report.completed || report.dueDate > today) return;
+    const player = state.db.players.find(p => String(p.id) === String(report.playerId));
+    if (!player) {
+      report.completed = true;
+      report.recommendation = "Jogador não encontrado no banco de dados";
+      changed = true;
+      return;
+    }
+    const overall = Math.max(1, Math.min(99, Number(player.overall) || 50));
+    const age = Number(player.age) || 25;
+    const growth = age <= 20 ? 18 : age <= 23 ? 13 : age <= 27 ? 8 : age <= 30 ? 4 : 1;
+    const potential = Math.min(99, overall + growth + Math.floor(Math.random() * 9));
+    report.completed = true;
+    report.overall = overall;
+    report.potentialMin = Math.max(overall, potential - 4);
+    report.potentialMax = Math.min(99, potential + 4);
+    report.recommendation = report.potentialMax - overall >= 20
+      ? "Grande potencial de evolução"
+      : report.potentialMax - overall >= 10
+        ? "Boa oportunidade de desenvolvimento"
+        : "Contratação para rendimento imediato";
+    report.completedDate = today;
+    changed = true;
+  });
+  if (changed) saveTransferCareer();
 }
 
 function makeTransferOffer(playerId) {
