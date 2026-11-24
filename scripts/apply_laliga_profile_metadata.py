@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Fill only missing age/nationality from explicitly approved official LALIGA profiles."""
+"""Fill only missing age/nationality from explicitly approved official LALIGA profiles.
+Approval batches are revisioned and checked against the complete expected match count."""
 import argparse, json, re
 from datetime import date
 from pathlib import Path
