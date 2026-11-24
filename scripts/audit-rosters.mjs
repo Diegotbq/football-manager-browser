@@ -86,6 +86,20 @@ const report = {
   squadReferenceIssues
 };
 
+
+// Complementa a cobertura binária com um limiar mínimo operacional e
+// sinaliza que contagem não equivale a validação factual de cada atleta.
+for (const [leagueId, entry] of Object.entries(leagues)) {
+  const leagueTeams = teams.filter(team => (team.leagueId || "sem-liga") === leagueId);
+  entry.clubsWithAtLeast18Players = leagueTeams.filter(team => (teamCounts.get(String(team.id)) || 0) >= 18).length;
+  entry.clubsBelow18Players = leagueTeams.filter(team => (teamCounts.get(String(team.id)) || 0) < 18).length;
+}
+report.minimumRosterSize = 18;
+report.clubsBelowMinimum = teams
+  .filter(team => (teamCounts.get(String(team.id)) || 0) < 18)
+  .map(team => ({ team: team.name, leagueId: team.leagueId || null, players: teamCounts.get(String(team.id)) || 0 }));
+report.rosterValidationNote = "O mínimo de 18 registros mede cobertura estrutural; não confirma, por si só, a inscrição atual ou a identidade real de cada jogador.";
+
 const output = JSON.stringify(report, null, 2) + "\n";
 process.stdout.write(output);
 if (process.env.WRITE_ROSTER_AUDIT === "1") {
