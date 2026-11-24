@@ -103,17 +103,35 @@ for (const [leagueId, entry] of Object.entries(leagues)) {
     .filter(team => (team.leagueId || "sem-liga") === leagueId)
     .map(team => String(team.id)));
   const leaguePlayers = players.filter(player => leagueTeamIds.has(String(player.teamId)));
-  const missing = {
-    name: leaguePlayers.filter(player => !hasUsableValue(player.name)).length,
-    position: leaguePlayers.filter(player => !hasUsableValue(player.position)).length,
-    age: leaguePlayers.filter(player => !Number.isFinite(Number(player.age)) || Number(player.age) <= 0).length,
-    nationality: leaguePlayers.filter(player => !hasUsableValue(player.nationality)).length
+  const isMissing = {
+    name: player => !hasUsableValue(player.name),
+    position: player => !hasUsableValue(player.position),
+    age: player => !Number.isFinite(Number(player.age)) || Number(player.age) <= 0,
+    nationality: player => !hasUsableValue(player.nationality)
   };
+  const missing = Object.fromEntries(Object.entries(isMissing).map(([field, predicate]) =>
+    [field, leaguePlayers.filter(predicate).length]));
+  const teamById = new Map(teams.map(team => [String(team.id), team]));
+  const missingMetadataPlayers = leaguePlayers.flatMap(player => {
+    const missingFields = Object.entries(isMissing)
+      .filter(([, predicate]) => predicate(player))
+      .map(([field]) => field);
+    if (!missingFields.length) return [];
+    const team = teamById.get(String(player.teamId));
+    return [{
+      playerId: player.id ?? null,
+      playerName: player.name ?? null,
+      teamId: player.teamId ?? null,
+      teamName: team?.name ?? null,
+      missingFields
+    }];
+  });
   entry.metadataCompleteness = {
     playerRecords: leaguePlayers.length,
     missing,
     present: Object.fromEntries(Object.entries(missing).map(([field, count]) =>
-      [field, leaguePlayers.length - count]))
+      [field, leaguePlayers.length - count])),
+    missingMetadataPlayers
   };
 }
 
