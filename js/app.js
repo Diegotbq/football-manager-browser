@@ -782,8 +782,8 @@ function recoverPlayerConditions() {
 function applyMatchConditionEffects(m) {
   if(m.minute%5===0){
     const managed=String(state.db.userClubId||state.selectedClubId),homeManaged=String(m.homeId)===managed;
-    const ids=[{teamId:m.homeId,lineup:homeManaged?m.lineup:m.aiLineup},{teamId:m.awayId,lineup:homeManaged?m.aiLineup:m.lineup}];
-    ids.forEach(side=>(side.lineup||[]).forEach(id=>{const c=getPlayerCondition(id);c.fitness=Math.max(5,c.fitness-(m.instructions?.tempo==="fast"?3:2)-(m.instructions?.pressing==="high"?1:0));}));
+    const ids=[{teamId:m.homeId,lineup:homeManaged?m.lineup:m.aiLineup,tactics:homeManaged?m.instructions:m.aiTactics},{teamId:m.awayId,lineup:homeManaged?m.aiLineup:m.lineup,tactics:homeManaged?m.aiTactics:m.instructions}];
+    ids.forEach(side=>(side.lineup||[]).forEach(id=>{const c=getPlayerCondition(id),t=side.tactics||{};c.fitness=Math.max(5,c.fitness-(t.tempo==="fast"?3:2)-(t.pressing==="high"?1:0));}));
   }
   const managed=String(state.db.userClubId||state.selectedClubId),sides=[{teamId:m.homeId,ids:String(m.homeId)===managed?m.lineup:m.aiLineup},{teamId:m.awayId,ids:String(m.awayId)===managed?m.lineup:m.aiLineup}];
   sides.forEach(side=>{const ids=side.ids||[];if(!ids.length)return;
