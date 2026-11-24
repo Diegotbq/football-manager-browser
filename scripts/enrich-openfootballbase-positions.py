@@ -6,13 +6,14 @@ import argparse
 import json
 import re
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from collections import Counter
 from pathlib import Path
 
 API = "https://www.wikidata.org/w/api.php"
-USER_AGENT = "FootballManagerBrowserRosterResearch/1.0 (GitHub Actions)"
+USER_AGENT = "FootballManagerBrowserRosterResearch/1.1 (https://github.com/Diegotbq/football-manager-browser)"
 BATCH_SIZE = 50
 
 ALIASES = {
@@ -49,14 +50,25 @@ def map_position_labels(labels: list[str]) -> tuple[str | None, str]:
 def api_get(params: dict) -> dict:
     url = API + "?" + urllib.parse.urlencode(params)
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    for attempt in range(5):
+    for attempt in range(8):
         try:
-            with urllib.request.urlopen(request, timeout=40) as response:
+            with urllib.request.urlopen(request, timeout=60) as response:
                 return json.loads(response.read().decode("utf-8"))
-        except Exception:
-            if attempt == 4:
+        except urllib.error.HTTPError as error:
+            if error.code not in (429, 500, 502, 503, 504) or attempt == 7:
                 raise
-            time.sleep(2 ** attempt)
+            retry_after = error.headers.get("Retry-After")
+            try:
+                wait_seconds = float(retry_after) if retry_after else 0
+            except ValueError:
+                wait_seconds = 0
+            # Wikidata aplica limites por IP; respeitar Retry-After e recuar
+            # progressivamente para evitar repetir rajadas que causam novos 429.
+            time.sleep(max(wait_seconds, min(90, 5 * (2 ** attempt))))
+        except (TimeoutError, urllib.error.URLError):
+            if attempt == 7:
+                raise
+            time.sleep(min(60, 3 * (2 ** attempt)))
     raise RuntimeError("Wikidata request failed")
 
 
@@ -65,7 +77,7 @@ def batches(items: list[str], size: int = BATCH_SIZE):
         yield items[start:start + size]
 
 
-def enrich_positions(staging: dict, fetcher=api_get, pause: float = 0.15) -> dict:
+def enrich_positions(staging: dict, fetcher=api_get, pause: float = 1.5) -> dict:
     candidates = staging.get("candidates", [])
     qids = sorted({
         str(c.get("sourcePlayerQid"))
