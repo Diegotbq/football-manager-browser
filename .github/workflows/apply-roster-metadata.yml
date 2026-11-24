@@ -1,0 +1,126 @@
+name: Apply conservative roster metadata enrichment
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/approvals/openfootballbase-enrichment-2026-27.json"
+
+permissions:
+  contents: write
+
+jobs:
+  apply-reviewed-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate approval scope
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          approval = json.loads(Path("data/approvals/openfootballbase-enrichment-2026-27.json").read_text())
+          required = {
+              "approved": True,
+              "operation": "fill-missing-player-age-and-nationality-only",
+              "source": "OpenFootballBase",
+              "release": "data-1.24.6",
+              "season": "2026/27",
+              "ageCalculatedAsOf": "2026-11-24",
+              "noPlayerAdditions": True,
+              "preserveExistingPositions": True,
+              "preserveExistingOverallAndMarketValue": True,
+              "preserveUnmatchedPlayers": True,
+              "sourceAttribution": True
+          }
+          for key, value in required.items():
+              if approval.get(key) != value:
+                  raise SystemExit(f"Approval scope mismatch: {key}")
+          PY
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run regression tests
+        run: |
+          python scripts/test_stage_openfootballbase.py
+          python scripts/test_reconcile_openfootballbase.py
+          python scripts/test_enrich_roster_metadata.py
+
+      - name: Download and verify pinned OpenFootballBase release
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 \
+            "https://github.com/florentfougeres/OpenFootballBase-Data/releases/download/data-1.24.6/openfootballbase-data.tar.gz" \
+            --output /tmp/openfootballbase-data.tar.gz
+          echo "16539db3ce2b28ef3c0e4500ac31c24d90995a02eafab57daf4cef8b6b8680f9  /tmp/openfootballbase-data.tar.gz" | sha256sum --check
+          mkdir -p /tmp/openfootballbase
+          tar -xzf /tmp/openfootballbase-data.tar.gz -C /tmp/openfootballbase
+          python -m pip install duckdb
+
+      - name: Build staging, reconcile and prepare preview
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/stage-openfootballbase.py \
+            --data-dir /tmp/openfootballbase \
+            --season 2026/27 \
+            --as-of 2026-11-24 \
+            --database database.json \
+            --out /tmp/openfootballbase-candidates.json
+          python scripts/reconcile-openfootballbase.py \
+            --database database.json \
+            --staging /tmp/openfootballbase-candidates.json \
+            --out /tmp/openfootballbase-reconciliation.json
+          python scripts/enrich-roster-metadata.py \
+            --database database.json \
+            --staging /tmp/openfootballbase-candidates.json \
+            --out /tmp/database-enriched-preview.json \
+            --report /tmp/metadata-enrichment-report.json
+
+      - name: Enforce no-addition and no-overwrite safeguards
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("/tmp/metadata-enrichment-report.json").read_text())
+          reconciliation = json.loads(Path("/tmp/openfootballbase-reconciliation.json").read_text())
+          if report["totalPlayersBefore"] != report["totalPlayersAfter"]:
+              raise SystemExit("Player count changed; refusing database update")
+          if report["ambiguousPlayerMatches"] != 0:
+              raise SystemExit("Ambiguous player match found; refusing database update")
+          if report["agesFilled"] <= 0:
+              raise SystemExit("No verified age fields to fill")
+          if report["duplicateSourceIdentitiesExcluded"] <= 0:
+              raise SystemExit("Expected duplicate-identity safety check did not run")
+          if reconciliation["totals"]["ambiguousNameMatches"] != 0:
+              raise SystemExit("Ambiguous roster name match found")
+          print(json.dumps({
+              "players": report["totalPlayersAfter"],
+              "matchedPlayers": report["matchedPlayers"],
+              "agesFilled": report["agesFilled"],
+              "nationalitiesFilled": report["nationalitiesFilled"],
+              "existingValuesPreserved": report["existingValuesPreserved"],
+              "duplicateSourceIdentitiesExcluded": report["duplicateSourceIdentitiesExcluded"]
+          }, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Apply preview and commit database
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp /tmp/database-enriched-preview.json database.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add database.json
+          if git diff --cached --quiet; then
+            echo "Database already contains the approved enrichment; no commit needed."
+          else
+            git commit -m "Enrich verified missing player metadata for 2026/27"
+            git push
+          fi
