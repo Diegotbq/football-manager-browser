@@ -1117,6 +1117,34 @@ function getLineup(teamId) {
   const formation="4-3-3",lineup=getLineupForFormation(teamId,formation);
   return {formation,...lineup};
 }
+let tacticalSelectedSlot = null;
+const FORMATION_COORDS = {
+  "4-3-3":[[50,91],[17,73],[39,77],[61,77],[83,73],[30,51],[50,56],[70,51],[20,25],[50,19],[80,25]],
+  "4-4-2":[[50,91],[17,73],[39,77],[61,77],[83,73],[17,49],[39,55],[61,55],[83,49],[37,23],[63,23]],
+  "4-2-3-1":[[50,91],[17,73],[39,77],[61,77],[83,73],[39,59],[61,59],[20,34],[50,39],[80,34],[50,18]],
+  "3-5-2":[[50,91],[28,77],[50,79],[72,77],[12,49],[37,57],[50,62],[63,57],[88,49],[38,23],[62,23]],
+  "3-4-3":[[50,91],[28,77],[50,79],[72,77],[15,52],[39,59],[61,59],[85,52],[20,25],[50,19],[80,25]]
+};
+function swapLineupSlots(first,second) {
+  const m=state.match;if(!m||!m.setup||first===second)return;
+  const a=m.lineup[first],b=m.lineup[second];
+  if(a==null||b==null)return;
+  m.lineup[first]=b;m.lineup[second]=a;tacticalSelectedSlot=null;renderMatch();
+}
+function selectLineupSlot(index) {
+  if(tacticalSelectedSlot===null){tacticalSelectedSlot=index;renderMatch();return;}
+  if(tacticalSelectedSlot===index){tacticalSelectedSlot=null;renderMatch();return;}
+  swapLineupSlots(tacticalSelectedSlot,index);
+}
+function dragLineupSlot(event,index) {
+  tacticalSelectedSlot=index;
+  if(event.dataTransfer){event.dataTransfer.effectAllowed="move";event.dataTransfer.setData("text/plain",String(index));}
+}
+function dropLineupSlot(event,index) {
+  event.preventDefault();
+  const from=event.dataTransfer?Number(event.dataTransfer.getData("text/plain")):tacticalSelectedSlot;
+  if(Number.isInteger(from)&&from>=0&&from<state.match.lineup.length)swapLineupSlots(from,index);
+}
 function changeMatchFormation(formation) {
   const m=state.match;if(!m||!m.setup||!FORMATIONS[formation])return;
   const lineup=getLineupForFormation(state.db.userClubId||state.selectedClubId,formation);
@@ -1220,7 +1248,9 @@ function renderMatch() {
     const slots=FORMATIONS[m.formation||"4-3-3"].slice(0,Math.min(11,roster.length));
     const chosen=new Set(m.lineup.map(String)),reserves=roster.filter(p=>!chosen.has(String(p.id)));
     const opts=id=>roster.map(p=>`<option value="${p.id}" ${String(id)===String(p.id)?"selected":""}>${p.name} · ${p.position} · OVR ${p.overall}</option>`).join("");
-    setPage("Escalação e tática",`<p class="view-intro">Defina sua formação, escolha os titulares e monte o banco. Sua escalação será salva na carreira e influenciará a força da equipe durante o jogo.</p><article class="card"><div class="section-head"><h2>${m.homeName} × ${m.awayName}</h2><span class="tag">Pré-jogo</span></div><label class="lineup-slot"><span>FORMAÇÃO TÁTICA</span><select id="match-formation" onchange="changeMatchFormation(this.value)">${Object.keys(FORMATIONS).map(f=>`<option value="${f}" ${f===(m.formation||"4-3-3")?"selected":""}>${f}</option>`).join("")}</select></label><h3>Titulares · ${slots.length}/11</h3><div class="lineup-grid">${slots.map(([n],i)=>`<label class="lineup-slot"><span>${i+1}. ${n}</span><select data-xi>${opts(m.lineup[i])}</select></label>`).join("")}</div><div class="section-head"><h2>Banco de reservas</h2><span class="tag">Até 7 vagas</span></div><div class="bench-grid">${Array.from({length:7},(_,i)=>`<label class="lineup-slot"><span>Reserva ${i+1}</span><select data-sub><option value="">— Vazio —</option>${roster.filter(p=>!chosen.has(String(p.id))||String(m.bench[i])===String(p.id)).map(p=>`<option value="${p.id}" ${String(m.bench[i]||"")===String(p.id)?"selected":""}>${p.name} · ${p.position}</option>`).join("")}</select></label>`).join("")}</div><button class="primary-btn" onclick="kickoffMatch()">⚽ CONFIRMAR ESCALAÇÃO E JOGAR</button></article>`);
+    const coords=FORMATION_COORDS[m.formation||"4-3-3"];
+    const pitch=slots.map(([role],i)=>{const p=roster.find(x=>String(x.id)===String(m.lineup[i]));if(!p)return "";const [x,y]=coords[i];return `<button type="button" class="pitch-player ${tacticalSelectedSlot===i?"is-selected":""}" style="left:${x}%;top:${y}%" draggable="true" ondragstart="dragLineupSlot(event,${i})" ondragover="event.preventDefault()" ondrop="dropLineupSlot(event,${i})" onclick="selectLineupSlot(${i})" title="Toque em outro jogador para trocar de posição"><span class="pitch-number">${i+1}</span><strong>${p.name.split(" ")[0]}</strong><small>${role}</small></button>`;}).join("");
+    setPage("Escalação e tática",`<p class="view-intro">Organize seu time no campo: arraste um jogador para a posição de outro ou toque em dois jogadores para trocar. A escalação será salva na carreira.</p><article class="card"><div class="section-head"><h2>${m.homeName} × ${m.awayName}</h2><span class="tag">Pré-jogo</span></div><label class="lineup-slot"><span>FORMAÇÃO TÁTICA</span><select id="match-formation" onchange="changeMatchFormation(this.value)">${Object.keys(FORMATIONS).map(f=>`<option value="${f}" ${f===(m.formation||"4-3-3")?"selected":""}>${f}</option>`).join("")}</select></label><div class="tactical-pitch" aria-label="Campo tático"><div class="pitch-half"></div><div class="pitch-circle"></div><div class="pitch-box pitch-box-top"></div><div class="pitch-box pitch-box-bottom"></div>${pitch}</div><p class="subtle tactical-hint">${tacticalSelectedSlot===null?"Arraste os jogadores ou toque em dois para trocar as posições.":"Agora escolha outro jogador para concluir a troca."}</p><h3>Escalação titular · ${slots.length}/11</h3><div class="lineup-grid">${slots.map(([n],i)=>`<label class="lineup-slot"><span>${i+1}. ${n}</span><select data-xi>${opts(m.lineup[i])}</select></label>`).join("")}</div><div class="section-head"><h2>Banco de reservas</h2><span class="tag">Até 7 vagas</span></div><div class="bench-grid">${Array.from({length:7},(_,i)=>`<label class="lineup-slot"><span>Reserva ${i+1}</span><select data-sub><option value="">— Vazio —</option>${roster.filter(p=>!chosen.has(String(p.id))||String(m.bench[i])===String(p.id)).map(p=>`<option value="${p.id}" ${String(m.bench[i]||"")===String(p.id)?"selected":""}>${p.name} · ${p.position}</option>`).join("")}</select></label>`).join("")}</div><button class="primary-btn" onclick="kickoffMatch()">⚽ CONFIRMAR ESCALAÇÃO E JOGAR</button></article>`);
     return;
   }
   const starters=m.lineup.map(byId).filter(Boolean),bench=m.bench.map(byId).filter(Boolean);
