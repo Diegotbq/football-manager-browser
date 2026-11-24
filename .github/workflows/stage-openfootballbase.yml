@@ -8,6 +8,7 @@ on:
       - "scripts/stage-openfootballbase.py"
       - "scripts/reconcile-openfootballbase.py"
       - "scripts/enrich-roster-metadata.py"
+      - "scripts/test_enrich_roster_metadata.py"
   workflow_dispatch:
     inputs:
       season:
