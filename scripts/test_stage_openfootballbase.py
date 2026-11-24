@@ -33,6 +33,16 @@ class StageOpenFootballBaseTests(unittest.TestCase):
     def test_club_name_normalization_removes_accents_and_punctuation(self):
         self.assertEqual(normalize_club_name("Atlético-MG"), "atletico mg")
 
+    def test_club_mapping_strips_generic_official_prefix(self):
+        teams = [
+            {"id": "ind", "leagueId": "argentina", "name": "Independiente"}
+        ]
+        result = resolve_club_mapping(
+            "Club Atlético Independiente", "argentina", teams
+        )
+        self.assertEqual(result["status"], "exact-name-match-review-required")
+        self.assertEqual(result["teamId"], "ind")
+
     def test_club_mapping_requires_exact_league_scoped_match(self):
         teams = [
             {"id": "1", "leagueId": "brasileirao", "name": "Atletico MG"},
