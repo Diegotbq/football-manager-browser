@@ -49,12 +49,15 @@ jobs:
 
       - name: Generate review-only candidate staging
         shell: bash
+        env:
+          STAGING_SEASON: ${{ inputs.season || '2026/27' }}
+          STAGING_AS_OF: ${{ inputs.as_of || '2026-11-24' }}
         run: |
           set -euo pipefail
           python scripts/stage-openfootballbase.py \
             --data-dir /tmp/openfootballbase \
-            --season "${{ inputs.season }}" \
-            --as-of "${{ inputs.as_of }}" \
+            --season "$STAGING_SEASON" \
+            --as-of "$STAGING_AS_OF" \
             --out data/staging/openfootballbase-candidates.json
           python - <<'PY'
           import json
