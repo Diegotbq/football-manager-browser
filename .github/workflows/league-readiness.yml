@@ -7,6 +7,9 @@ on:
       - "database.json"
       - "scripts/check-league-readiness.mjs"
       - "scripts/test-league-readiness.mjs"
+      - "scripts/stage-openfootballbase.py"
+      - "scripts/test-stage-openfootballbase.py"
+      - "data/sources/identity-registers.json"
       - ".github/workflows/league-readiness.yml"
   pull_request:
     paths:
@@ -25,6 +28,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run OpenFootballBase staging unit tests
+        run: python -m unittest discover -s scripts -p "test-stage-openfootballbase.py" -v
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
