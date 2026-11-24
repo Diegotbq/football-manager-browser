@@ -193,18 +193,18 @@
           "verifiedAt": "2026-11-24"
         },
         {
+          "club": "Atlético de Madrid",
+          "url": "https://www.laliga.com/clubes/atletico-de-madrid/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
           "club": "CA Osasuna",
           "url": "https://www.laliga.com/clubes/c-a-osasuna/plantilla",
           "verifiedAt": "2026-11-24"
         },
         {
-          "club": "Valencia CF",
-          "url": "https://www.laliga.com/clubes/valencia-cf/plantilla",
-          "verifiedAt": "2026-11-24"
-        },
-        {
-          "club": "FC Barcelona",
-          "url": "https://www.laliga.com/clubes/fc-barcelona/plantilla",
+          "club": "Deportivo Alavés",
+          "url": "https://www.laliga.com/clubes/d-alaves/plantilla",
           "verifiedAt": "2026-11-24"
         },
         {
@@ -213,18 +213,8 @@
           "verifiedAt": "2026-11-24"
         },
         {
-          "club": "Rayo Vallecano",
-          "url": "https://www.laliga.com/clubes/rayo-vallecano/plantilla",
-          "verifiedAt": "2026-11-24"
-        },
-        {
-          "club": "RCD Espanyol",
-          "url": "https://www.laliga.com/clubes/rcd-espanyol/plantilla",
-          "verifiedAt": "2026-11-24"
-        },
-        {
-          "club": "Sevilla FC",
-          "url": "https://www.laliga.com/clubes/sevilla-fc/plantilla",
+          "club": "FC Barcelona",
+          "url": "https://www.laliga.com/clubes/fc-barcelona/plantilla",
           "verifiedAt": "2026-11-24"
         },
         {
@@ -233,13 +223,43 @@
           "verifiedAt": "2026-11-24"
         },
         {
-          "club": "Real Betis",
-          "url": "https://www.laliga.com/clubes/real-betis/plantilla",
+          "club": "Levante UD",
+          "url": "https://www.laliga.com/clubes/levante-ud/plantilla",
           "verifiedAt": "2026-11-24"
         },
         {
-          "club": "Atlético de Madrid",
-          "url": "https://www.laliga.com/clubes/atletico-de-madrid/plantilla",
+          "club": "Málaga CF",
+          "url": "https://www.laliga.com/clubes/malaga-cf/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "R. Racing Club",
+          "url": "https://www.laliga.com/clubes/r-racing-club/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "Rayo Vallecano",
+          "url": "https://www.laliga.com/clubes/rayo-vallecano/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "RC Celta",
+          "url": "https://www.laliga.com/clubes/rc-celta/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "RC Deportivo",
+          "url": "https://www.laliga.com/clubes/rc-deportivo/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "RCD Espanyol",
+          "url": "https://www.laliga.com/clubes/rcd-espanyol/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "Real Betis",
+          "url": "https://www.laliga.com/clubes/real-betis/plantilla",
           "verifiedAt": "2026-11-24"
         },
         {
@@ -253,37 +273,24 @@
           "verifiedAt": "2026-11-24"
         },
         {
+          "club": "Sevilla FC",
+          "url": "https://www.laliga.com/clubes/sevilla-fc/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "Valencia CF",
+          "url": "https://www.laliga.com/clubes/valencia-cf/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
           "club": "Villarreal CF",
           "url": "https://www.laliga.com/clubes/villarreal-cf/plantilla",
           "verifiedAt": "2026-11-24"
-        },
-        {
-          "club": "Deportivo Alavés",
-          "url": "https://www.laliga.com/clubes/d-alaves/plantilla",
-          "verifiedAt": "2026-11-24"
-        },
-        {
-          "club": "RC Celta",
-          "url": "https://www.laliga.com/clubes/rc-celta/plantilla",
-          "verifiedAt": "2026-11-24"
-        },
-        {
-          "club": "R. Racing Club",
-          "url": "https://www.laliga.com/clubes/r-racing-club/plantilla",
-          "verifiedAt": "2026-11-24"
-        },
-        {
-          "club": "RC Deportivo",
-          "url": "https://www.laliga.com/clubes/rc-deportivo/plantilla",
-          "verifiedAt": "2026-11-24"
-        },
-        {
-          "club": "Málaga CF",
-          "url": "https://www.laliga.com/clubes/malaga-cf/plantilla",
-          "verifiedAt": "2026-11-24"
         }
       ],
-      "verifiedSquadPageExamplesNote": "Exemplos de páginas oficiais de plantilla localizadas e confirmadas no índice público em 2026-11-24. A lista é parcial e não representa auditoria dos 20 clubes nem prova de completude; validar a página vigente de cada clube antes de importar."
+      "verifiedSquadPageExamplesNote": "Exemplos de páginas oficiais de plantilla localizadas e confirmadas no índice público em 2026-11-24. A lista é parcial e não representa auditoria dos 20 clubes nem prova de completude; validar a página vigente de cada clube antes de importar.",
+      "verifiedOfficialSquadPagesCount": 20,
+      "coverageNote": "Índice de páginas oficiais de plantilla verificadas: uma página por cada um dos 20 clubes da competição. O índice comprova a localização das páginas-fonte, não a conferência integral de todos os atletas nem a completude dos dados no jogo."
     },
     {
       "id": "premier-league-official-squad-lists-2026-27",
