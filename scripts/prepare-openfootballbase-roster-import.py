@@ -91,8 +91,8 @@ def prepare_import(database: dict, enriched: dict) -> tuple[dict, dict]:
         else:
             skipped["no_supported_position_category"] += 1
             continue
-        if not isinstance(candidate.get("age"), int) or not candidate.get("birthDate"):
-            skipped["missing_precise_age"] += 1
+        if not isinstance(candidate.get("age"), int) or not 15 <= candidate["age"] <= 45 or not candidate.get("birthDate"):
+            skipped["invalid_or_missing_precise_age"] += 1
             continue
         nationality = str(candidate.get("nationality") or "")
         if not re.fullmatch(r"[A-Z]{3}", nationality):
