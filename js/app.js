@@ -158,6 +158,7 @@ function randomClub() {
 
 function renderClubSelection() {
   const teams = state.db.teams;
+  const countries = [...new Set(teams.map(t => t.country).filter(Boolean))].sort();
 
   setPage(
     "Escolha seu clube",
@@ -170,8 +171,7 @@ function renderClubSelection() {
         </div>
 
         <p class="view-intro">
-          Escolha qualquer clube do banco de dados
-          ou deixe o destino decidir seu próximo desafio.
+          Escolha um clube disponível no banco de dados ou deixe o destino decidir seu próximo desafio.
         </p>
 
         <button
@@ -184,15 +184,36 @@ function renderClubSelection() {
 
         <div class="section-head">
           <h2>Escolha seu time</h2>
+          <span class="tag">${teams.length} clubes</span>
         </div>
+
+        <label for="club-country" class="subtle">País</label>
+        <select
+          id="club-country"
+          onchange="filterClubChoices()"
+          style="width:100%;padding:14px;margin:8px 0 14px"
+        >
+          <option value="">Todos os países</option>
+          ${countries.map(country => `<option value="${country}">${country}</option>`).join("")}
+        </select>
+
+        <label for="club-search" class="subtle">Buscar clube</label>
+        <input
+          id="club-search"
+          type="search"
+          placeholder="Digite o nome do clube..."
+          oninput="filterClubChoices()"
+          style="width:100%;padding:14px;margin:8px 0 14px"
+        >
 
         <select
           id="club-choice"
-          style="width:100%;padding:14px;margin-bottom:16px"
+          size="7"
+          style="width:100%;padding:10px;margin-bottom:16px"
         >
           ${teams.map(t => `
-            <option value="${t.id}">
-              ${t.name}
+            <option value="${t.id}" data-country="${t.country || ""}">
+              ${t.name} · ${t.country || "País não informado"} · ${t.stadium || "Estádio não informado"}
             </option>
           `).join("")}
         </select>
@@ -209,13 +230,34 @@ function renderClubSelection() {
       <article class="card span-12">
         <h2>Seu desafio começa agora!</h2>
         <p class="subtle">
-          Construa seu elenco, contrate jogadores,
-          dispute campeonatos e leve seu clube ao topo.
+          Construa seu elenco, contrate jogadores, dispute campeonatos e leve seu clube ao topo.
         </p>
       </article>
     </div>
     `
   );
+}
+
+function filterClubChoices() {
+  const countrySelect = $("#club-country");
+  const searchInput = $("#club-search");
+  const clubSelect = $("#club-choice");
+  if (!countrySelect || !searchInput || !clubSelect) return;
+
+  const country = countrySelect.value;
+  const term = searchInput.value.trim().toLocaleLowerCase("pt-BR");
+  let firstVisible = null;
+
+  [...clubSelect.options].forEach(option => {
+    const club = state.db.teams.find(t => String(t.id) === String(option.value));
+    const matchesCountry = !country || option.dataset.country === country;
+    const matchesName = !term || club?.name?.toLocaleLowerCase("pt-BR").includes(term);
+    option.hidden = !(matchesCountry && matchesName);
+    if (!option.hidden && firstVisible === null) firstVisible = option;
+  });
+
+  const selectedVisible = clubSelect.selectedOptions[0] && !clubSelect.selectedOptions[0].hidden;
+  if (!selectedVisible && firstVisible) firstVisible.selected = true;
 }
 
 // FUNÇÕES PRINCIPAIS
