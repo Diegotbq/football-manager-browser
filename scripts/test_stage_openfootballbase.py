@@ -58,14 +58,23 @@ class StageOpenFootballBaseTests(unittest.TestCase):
 
     def test_fuzzy_club_match_is_suggestion_only(self):
         teams = [
-            {"id": "mci", "leagueId": "premier-league", "name": "Manchester City"}
+            {"id": "bha", "leagueId": "premier-league", "name": "Brighton Hove Albion"}
         ]
         result = resolve_club_mapping(
-            "Manchester City F.C.", "premier-league", teams
+            "Brighton and Hove Albion", "premier-league", teams
         )
         self.assertEqual(result["status"], "suggested-match-review-required")
-        self.assertEqual(result["suggestedMatches"][0]["teamId"], "mci")
+        self.assertEqual(result["suggestedMatches"][0]["teamId"], "bha")
         self.assertNotIn("teamId", result)
+
+    def test_weak_similarity_is_not_suggested(self):
+        teams = [
+            {"id": "rosario", "leagueId": "argentina", "name": "Rosario Central"}
+        ]
+        self.assertEqual(
+            resolve_club_mapping("Barracas Central", "argentina", teams)["status"],
+            "unmatched"
+        )
 
     def test_duplicate_club_match_is_ambiguous(self):
         teams = [
