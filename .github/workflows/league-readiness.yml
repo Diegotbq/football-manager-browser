@@ -7,6 +7,7 @@ on:
       - "database.json"
       - "docs/openfootballbase-roster-import.md"
       - "scripts/check-league-readiness.mjs"
+      - "scripts/audit-rosters.mjs"
       - "scripts/test-league-readiness.mjs"
       - "scripts/stage-openfootballbase.py"
       - "scripts/test-stage-openfootballbase.py"
@@ -70,3 +71,12 @@ jobs:
         run: node scripts/test-league-readiness.mjs
       - name: Validate current database readiness report
         run: node scripts/check-league-readiness.mjs
+      - name: Generate detailed roster audit
+        run: node scripts/audit-rosters.mjs > roster-audit.json
+      - name: Upload detailed roster audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: roster-audit-${{ github.sha }}
+          path: roster-audit.json
+          if-no-files-found: error
+          retention-days: 14
