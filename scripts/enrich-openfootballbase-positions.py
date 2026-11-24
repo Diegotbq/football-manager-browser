@@ -9,6 +9,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from urllib.error import HTTPError
 from collections import Counter
 from pathlib import Path
 
