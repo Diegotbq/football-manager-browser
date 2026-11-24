@@ -476,7 +476,7 @@ function renderSquad() {
       <p class="subtle">Folha salarial estimada: ${money(totalWage)} por semana. Os salários são valores de simulação do jogo.</p>
       <div style="overflow-x:auto">
         <table class="table">
-          <thead><tr><th>JOGADOR</th><th>POS</th><th>IDADE</th><th>OVR</th><th>SALÁRIO/SEM.</th><th>CONTRATO ATÉ</th><th>AÇÃO</th></tr></thead>
+          <thead><tr><th>JOGADOR</th><th>POS</th><th>IDADE</th><th>OVR</th><th>SALÁRIO/SEM.</th><th>CONTRATO ATÉ</th><th>TREINO</th><th>AÇÃO</th></tr></thead>
           <tbody>
             ${roster.map(p=>{
               const c=getPlayerContract(p);
