@@ -8,6 +8,7 @@ const state = {
   matchTimer: null,
   matchHistory: [],
   transferHistory: [],
+  pendingOffers: [],
   contracts: {},
   loanRecords: [],
   trainingRecords: {},
@@ -339,6 +340,61 @@ function processAITransfers() {
   saveTransferCareer();
 }
 
+// PROPOSTAS DA IA PELOS JOGADORES DO CLUBE DO TREINADOR
+function processAIPlayerOffers() {
+  const club=userClub();if(!club)return;
+  const today=state.day.toISOString().slice(0,10);
+  const windows=state.db.calendar?.transferWindows||[];
+  if(!windows.some(w=>today>=w.start&&today<=w.end))return;
+  state.pendingOffers=state.pendingOffers.filter(o=>o.status==="pending"&&o.expires>=today);
+  if(Math.random()>0.48)return;
+  const roster=state.db.players.filter(p=>String(p.teamId)===String(club.id));
+  const buyers=state.db.teams.filter(t=>String(t.id)!==String(club.id)&&Number(t.budget||0)>750000);
+  if(!roster.length||!buyers.length)return;
+  const available=roster.filter(p=>!state.pendingOffers.some(o=>String(o.playerId)===String(p.id)&&o.status==="pending")&&!state.loanRecords.some(r=>String(r.playerId)===String(p.id)&&!r.returned));
+  if(!available.length)return;
+  const targets=available.filter(p=>Number(p.overall||0)>=68||Number(p.age||30)<=22);
+  const player=(targets.length?targets:available)[Math.floor(Math.random()*(targets.length?targets:available).length)];
+  const value=Math.max(100000,Number(player.marketValue)||100000);
+  const candidates=buyers.filter(t=>Number(t.reputation||0)>=Math.max(20,Number(club.reputation||0)-22)&&Number(t.budget||0)>=value*.85);
+  if(!candidates.length)return;
+  candidates.sort((a,b)=>Number(b.reputation||0)-Number(a.reputation||0));
+  const interested=candidates.slice(0,Math.min(3,candidates.length)).sort(()=>Math.random()-.5);
+  interested.slice(0,Math.random()<.3?Math.min(2,interested.length):1).forEach(buyer=>{
+    const fee=Math.round(value*(.92+Math.random()*.28));if(fee>Number(buyer.budget||0))return;
+    const expires=new Date(state.day);expires.setDate(expires.getDate()+10);
+    state.pendingOffers.push({id:"offer-"+String(player.id)+"-"+String(buyer.id)+"-"+Date.now()+"-"+Math.floor(Math.random()*10000),playerId:player.id,playerName:player.name,fromTeamId:buyer.id,fromName:buyer.name,toTeamId:club.id,toName:club.name,fee,date:today,expires:expires.toISOString().slice(0,10),status:"pending",aiOffer:true});
+  });
+  if(state.pendingOffers.length>100)state.pendingOffers=state.pendingOffers.slice(-100);
+  saveTransferCareer();
+}
+
+function resolveAIPlayerOffer(offerId,action) {
+  const offer=state.pendingOffers.find(o=>o.id===offerId&&o.status==="pending");if(!offer)return;
+  const today=state.day.toISOString().slice(0,10);
+  if(offer.expires<today){offer.status="expired";saveTransferCareer();renderMarket();return;}
+  const player=state.db.players.find(p=>String(p.id)===String(offer.playerId)),seller=userClub(),buyer=state.db.teams.find(t=>String(t.id)===String(offer.fromTeamId));
+  if(!player||!seller||!buyer||String(player.teamId)!==String(seller.id)){offer.status="withdrawn";saveTransferCareer();renderMarket();return;}
+  if(action==="reject"){offer.status="rejected";saveTransferCareer();renderMarket();return;}
+  let fee=Number(offer.fee||0);
+  if(action==="counter"){
+    const raw=prompt("Contraproposta por "+player.name+"\nOferta atual: "+money(fee)+"\nDigite o valor desejado em euros:",String(Math.round(fee*1.2)));
+    if(raw===null)return;fee=Number(String(raw).replace(/[€.\\s]/g,"").replace(/,/g,"."));
+    if(!Number.isFinite(fee)||fee<=0){alert("Digite um valor válido.");return;}
+    if(fee>Number(buyer.budget||0)){alert("O clube interessado não tem orçamento suficiente.");return;}
+    if(fee>Number(offer.fee)*1.35){alert("O clube recusou a contraproposta.");offer.status="rejected";saveTransferCareer();renderMarket();return;}
+  }
+  if(fee>Number(buyer.budget||0)){alert("O clube não tem orçamento suficiente.");return;}
+  if(!confirm("Aceitar a proposta de "+buyer.name+" por "+player.name+" no valor de "+money(fee)+"? O jogador deixará seu elenco."))return;
+  buyer.budget=Number(buyer.budget||0)-fee;seller.budget=Number(seller.budget||0)+fee;
+  const fromId=player.teamId;player.teamId=buyer.id;
+  state.db.teams.forEach(team=>{if(!Array.isArray(team.players))return;team.players=team.players.filter(p=>String(p.id)!==String(player.id));if(String(team.id)===String(buyer.id))team.players.push(player);});
+  offer.status="accepted";offer.agreedFee=fee;
+  state.pendingOffers.filter(o=>String(o.playerId)===String(player.id)&&o.status==="pending").forEach(o=>o.status="withdrawn");
+  state.transferHistory.push({playerId:player.id,playerName:player.name,fromTeamId:fromId,fromName:seller.name,toTeamId:buyer.id,toName:buyer.name,fee,date:today,userSale:true});
+  saveTransferCareer();alert("Venda concluída! "+player.name+" foi transferido para "+buyer.name+".");renderMarket();
+}
+
 function advanceDay() {
   state.day.setDate(state.day.getDate() + 1);
   recoverPlayerConditions();
@@ -346,6 +402,7 @@ function advanceDay() {
   processScouting();
   if (state.day.getDay() === 1) {
     processAITransfers();
+    processAIPlayerOffers();
     const club = userClub();
     if (club) {
       const weeklyPayroll = state.db.players
@@ -694,6 +751,7 @@ function renderMarket(searchTerm) {
         p.position?.toLocaleLowerCase("pt-BR").includes(term);
     })
     .sort((a, b) => Number(b.overall || 0) - Number(a.overall || 0));
+  const incomingOffers=state.pendingOffers.filter(o=>o.status==="pending"&&String(o.toTeamId)===String(club.id)).sort((a,b)=>b.date.localeCompare(a.date));
   const recentTransfers = state.transferHistory.slice(-5).reverse();
 
   setPage("Mercado de Transferências", `
@@ -713,6 +771,11 @@ function renderMarket(searchTerm) {
         <div class="card-label">Contratações realizadas</div>
         <div class="metric">${state.transferHistory.filter(t => String(t.toTeamId) === String(club.id)).length}</div>
         <div class="metric-note">Nesta carreira neste dispositivo</div>
+      </article>
+      <article class="card span-12">
+        <div class="section-head"><h2>📩 Propostas recebidas</h2><span class="tag">${incomingOffers.length} pendente(s)</span></div>
+        <p class="subtle">Clubes controlados pela IA podem apresentar ofertas pelos seus jogadores durante as janelas de transferências. Você decide se aceita, recusa ou apresenta uma contraproposta.</p>
+        ${incomingOffers.length ? incomingOffers.map(o=>`<div class="fixture"><div><strong>${o.playerName}</strong><div class="subtle">${o.fromName} oferece ${money(o.fee)} · expira em ${new Date(o.expires+"T12:00:00").toLocaleDateString("pt-BR")}</div></div><div><button class="primary-btn" onclick="resolveAIPlayerOffer('${o.id}','accept')">ACEITAR</button><button class="secondary-btn" onclick="resolveAIPlayerOffer('${o.id}','counter')">CONTRAOFERTA</button><button class="secondary-btn" onclick="resolveAIPlayerOffer('${o.id}','reject')">RECUSAR</button></div></div>`).join("") : '<p class="subtle">Nenhuma proposta recebida no momento. Avance os dias durante uma janela de transferências para receber ofertas.</p>'}
       </article>
       <article class="card span-12">
         <div class="section-head">
@@ -774,6 +837,7 @@ function saveTransferCareer() {
       playerTeams: state.db.players.map(p => [p.id, p.teamId]),
       budgets: state.db.teams.map(t => [t.id, t.budget]),
       history: state.transferHistory,
+      pendingOffers: state.pendingOffers,
       contracts: state.contracts,
       loanRecords: state.loanRecords,
       trainingRecords: state.trainingRecords,
@@ -807,6 +871,7 @@ function loadTransferCareer() {
       if (team && Number.isFinite(Number(budget))) team.budget = Number(budget);
     });
     state.transferHistory = Array.isArray(saved.history) ? saved.history : [];
+    state.pendingOffers = Array.isArray(saved.pendingOffers) ? saved.pendingOffers : [];
     state.contracts = saved.contracts && typeof saved.contracts === "object" ? saved.contracts : {};
     state.loanRecords = Array.isArray(saved.loanRecords) ? saved.loanRecords : [];
     state.trainingRecords = saved.trainingRecords && typeof saved.trainingRecords === "object" ? saved.trainingRecords : {};
