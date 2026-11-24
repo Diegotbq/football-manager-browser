@@ -568,16 +568,23 @@ function renderMarket() {
 
 // CLASSIFICAÇÃO
 
-function renderTable() {
+function renderTable(leagueFilter) {
+  const leagues = state.db.leagues || [];
   const currentClub = userClub();
-  const currentLeagueId = currentClub?.leagueId;
-  const leagueTeams = currentLeagueId
-    ? state.db.teams.filter(t => t.leagueId === currentLeagueId)
+  const defaultLeague = currentClub?.leagueId || leagues[0]?.id || "";
+  const selectedLeagueId = leagues.some(l => l.id === leagueFilter)
+    ? leagueFilter
+    : defaultLeague;
+  const selectedLeague = leagues.find(l => l.id === selectedLeagueId);
+  const leagueTeams = selectedLeague
+    ? state.db.teams.filter(t => t.leagueId === selectedLeagueId)
     : state.db.teams;
   const leagueTeamIds = new Set(leagueTeams.map(t => String(t.id)));
   const rows = leagueTeams.map(t => ({t,pts:0,j:0,v:0,e:0,d:0,gp:0,gc:0}));
-  state.matchHistory.forEach(m => {
-    if (!leagueTeamIds.has(String(m.homeId)) || !leagueTeamIds.has(String(m.awayId))) return;
+  const relevantMatches = state.matchHistory.filter(m =>
+    leagueTeamIds.has(String(m.homeId)) && leagueTeamIds.has(String(m.awayId))
+  );
+  relevantMatches.forEach(m => {
     const home=rows.find(r=>String(r.t.id)===String(m.homeId));
     const away=rows.find(r=>String(r.t.id)===String(m.awayId));
     if(!home||!away)return;
@@ -590,46 +597,39 @@ function renderTable() {
 
   setPage("Tabela", `
     <p class="view-intro">
-      Classificação atualizada com os resultados das partidas disputadas nesta carreira.
+      Classificação calculada a partir dos resultados disputados nesta carreira. Cada competição possui sua própria tabela.
     </p>
-
     <div class="card">
       <div class="section-head">
-        <h2>Classificação da carreira</h2>
-        <span class="tag">${state.matchHistory.length} partidas registradas</span>
+        <h2>Competição</h2>
+        <span class="tag">${leagues.length} cadastradas</span>
       </div>
-
+      <label for="table-league">Escolha o campeonato</label>
+      <select id="table-league" onchange="renderTable(this.value)">
+        ${leagues.map(l => `<option value="${l.id}" ${l.id === selectedLeagueId ? "selected" : ""}>${l.name}</option>`).join("")}
+      </select>
+      <div class="section-head">
+        <h2>${selectedLeague?.name || "Classificação"}</h2>
+        <span class="tag">${relevantMatches.length} partidas computadas</span>
+      </div>
       <table class="table">
         <thead>
           <tr>
-            <th>#</th>
-            <th>CLUBE</th>
-            <th>J</th>
-            <th>V</th>
-            <th>E</th>
-            <th>D</th>
-            <th>SG</th>
-            <th>PTS</th>
+            <th>#</th><th>CLUBE</th><th>J</th><th>V</th><th>E</th><th>D</th><th>SG</th><th>PTS</th>
           </tr>
         </thead>
-
         <tbody>
-          ${
-            rows.map((r, i) => `
-              <tr>
-                <td>${i + 1}</td>
-                <td class="club-name">${r.t.name}</td>
-                <td>${r.j}</td>
-                <td>${r.v}</td>
-                <td>${r.e}</td>
-                <td>${r.d}</td>
-                <td>${r.gp-r.gc}</td>
-                <td class="positive">${r.pts}</td>
-              </tr>
-            `).join("")
-          }
+          ${rows.map((r, i) => `
+            <tr>
+              <td>${i + 1}</td>
+              <td class="club-name">${r.t.name}</td>
+              <td>${r.j}</td><td>${r.v}</td><td>${r.e}</td><td>${r.d}</td>
+              <td>${r.gp-r.gc}</td><td class="positive">${r.pts}</td>
+            </tr>
+          `).join("")}
         </tbody>
       </table>
+      <p class="subtle">Clubes sem partidas disputadas começam com zero pontos. Os resultados simulados atualizam esta tabela automaticamente.</p>
     </div>
   `);
 }
