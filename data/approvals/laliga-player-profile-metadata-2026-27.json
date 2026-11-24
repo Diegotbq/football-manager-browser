@@ -173,7 +173,31 @@
       "dateOfBirth": "1994-06-15",
       "nationality": "GHA",
       "sourceUrl": "https://www.laliga.com/jugador/williams"
+    },
+    {
+      "playerId": "athletic-club-202627-22",
+      "name": "Nico Williams",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2002-07-12",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/williams-jr"
+    },
+    {
+      "playerId": "athletic-club-202627-23",
+      "name": "Gorka Guruzeta",
+      "teamId": "athletic-club",
+      "dateOfBirth": "1996-09-12",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/guruzeta"
+    },
+    {
+      "playerId": "athletic-club-202627-24",
+      "name": "Maroan Sannadi",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2001-02-01",
+      "nationality": "MAR",
+      "sourceUrl": "https://www.laliga.com/jugador/maroan-sannadi"
     }
   ],
-  "approvalRevision": 8
+  "approvalRevision": 9
 }
