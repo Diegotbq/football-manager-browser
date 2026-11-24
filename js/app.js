@@ -548,56 +548,46 @@ function renderTable() {
 // CALENDÁRIO
 
 function renderCalendar() {
-  const windows =
-    state.db.calendar?.transferWindows || [];
-
+  const windows = state.db.calendar?.transferWindows || [];
+  const fixtures = (state.db.calendar?.events || [])
+    .filter(e => e.competition === "Campeonato Brasileiro Série A")
+    .sort((a,b) => (a.date || "9999-12-31").localeCompare(b.date || "9999-12-31"));
+  const teamName = id => state.db.teams.find(t => String(t.id) === String(id))?.name || "Clube";
+  const fixtureDate = f => f.date
+    ? new Date(`${f.date}T12:00:00`).toLocaleDateString("pt-BR",{day:"2-digit",month:"short"})
+    : (f.dateRange ? "Data a confirmar (28–29 nov.)" : "Data a confirmar");
   setPage("Calendário", `
     <p class="view-intro">
       Temporada ${state.db.meta.season}
-      · Avance o dia pelo botão no topo.
+      · Calendário brasileiro separado do calendário europeu.
     </p>
-
     <div class="grid">
-
       <article class="card span-5">
-        <div class="section-head">
-          <h2>Janelas de transferências</h2>
-        </div>
-
+        <div class="section-head"><h2>Janelas de transferências</h2></div>
         ${
-          windows.length
-            ? windows.map(w => `
-                <div class="fixture">
-                  <div>
-                    <strong>${w.name}</strong>
-                    <div class="subtle">
-                      ${w.start} até ${w.end}
-                    </div>
-                  </div>
-                  <span class="tag">Planejada</span>
-                </div>
-              `).join("")
-            : `<div class="empty">Nenhuma janela cadastrada.</div>`
+          windows.length ? windows.map(w => `
+            <div class="fixture"><div><strong>${w.name}</strong><div class="subtle">${w.start} até ${w.end}</div></div><span class="tag">Planejada</span></div>
+          `).join("") : `<div class="empty">Nenhuma janela cadastrada.</div>`
         }
       </article>
-
       <article class="card span-7">
-        <div class="section-head">
-          <h2>Agenda</h2>
-          <span class="tag">${dateLabel(state.day)}</span>
-        </div>
-
-        <div class="empty">
-          Nenhum evento cadastrado para esta data.
-          As rodadas, convocações e lesões serão
-          integradas ao calendário.
-        </div>
+        <div class="section-head"><h2>Próximos jogos oficiais</h2><span class="tag">Brasileirão 2026</span></div>
+        <p class="subtle">Rodadas finais conforme tabela da CBF. Campos sem confirmação oficial ficam como “a confirmar”.</p>
+        ${
+          fixtures.length ? fixtures.map(f => `
+            <div class="fixture">
+              <div>
+                <strong>${teamName(f.homeTeamId)} × ${teamName(f.awayTeamId)}</strong>
+                <div class="subtle">${f.round}ª rodada · ${fixtureDate(f)}${f.time ? " · " + f.time : ""}${f.stadium ? " · " + f.stadium : ""}</div>
+              </div>
+              <span class="tag">${f.status === "scheduled" ? "Agendado" : "A confirmar"}</span>
+            </div>
+          `).join("") : `<div class="empty">Nenhum jogo cadastrado.</div>`
+        }
       </article>
-
     </div>
   `);
 }
-
 
 // CENTRAL DE PARTIDAS — SIMULAÇÃO MINUTO A MINUTO
 function teamStrength(teamId) {
