@@ -25,7 +25,7 @@ O script consulta os Parquet de elencos e nascimentos, calcula idade apenas quan
 
 ## Regra de segurança
 
-O resultado é uma fila de candidatos, não uma importação. O script não altera `database.json`, não associa automaticamente clubes a `teamId` e não declara ligas completas. Cada candidato precisa de revisão do clube atual e de seus dados antes de ser importado. Registros sem QID, posição, nacionalidade ou data de nascimento precisa ficam inelegíveis para revisão como cadastro completo. Passagens marcadas `left_mid` são excluídas.
+O resultado é uma fila de candidatos, não uma importação. O script não altera `database.json`, não associa automaticamente clubes a `teamId` e não declara ligas completas. Com `--database`, ele gera correspondências exatas por liga e sugestões aproximadas apenas para revisão; nenhuma sugestão recebe vínculo automático. Cada candidato precisa de revisão do clube atual e de seus dados antes de ser importado. Registros sem QID, posição, nacionalidade ou data de nascimento precisa ficam inelegíveis para revisão como cadastro completo. Passagens marcadas `left_mid` são excluídas.
 
 Não deduplicar jogadores somente pelo nome. Preservar `sourceTitle` e `sourceRevision` para atribuição. Dados derivados de Wikipedia devem respeitar CC BY-SA 4.0, incluindo compartilhamento sob a mesma licença quando aplicável.
 
