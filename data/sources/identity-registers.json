@@ -72,6 +72,70 @@
         "Um registro de competição pode incluir histórico; filtrar clube atual e verificar status do vínculo."
       ],
       "importPolicy": "Usar para confirmar identidade e registro/vínculo no Brasil, complementando os campos ausentes em fontes oficiais individuais."
+    },
+    {
+      "id": "openfootballbase-data",
+      "name": "OpenFootballBase-Data",
+      "url": "https://github.com/florentfougeres/OpenFootballBase-Data",
+      "website": "https://florentfougeres.github.io/OpenFootballBase/",
+      "release": "data-1.24.6",
+      "releaseDate": "2026-11-23",
+      "licence": "CC-BY-SA-4.0 (Wikipedia-derived squad data); Wikidata-derived fields CC0",
+      "role": "Base aberta de elencos por clube e temporada, com posição, nacionalidade, camisa, estado de passagem e referências exatas das páginas/revisões de origem.",
+      "coverageUrl": "https://github.com/florentfougeres/OpenFootballBase-Data/blob/main/PROGRESS.md",
+      "dataDictionaryUrl": "https://github.com/florentfougeres/OpenFootballBase-Data/blob/main/docs/en/data-model.md",
+      "releaseUrl": "https://github.com/florentfougeres/OpenFootballBase-Data/releases/tag/data-1.24.6",
+      "coverage2026_27": {
+        "completeSquadCoverage": {
+          "ENG-PL": "20/20",
+          "ESP-LL": "20/20",
+          "BRA-SA": "20/20",
+          "FRA-L1": "18/18",
+          "BEL-PL": "18/18",
+          "NLD-ED": "18/18",
+          "PRT-PL": "18/18",
+          "TUR-SL": "18/18",
+          "UEFA-CL": "30/30"
+        },
+        "partialSquadCoverage": {
+          "CHE-L1": "10/12",
+          "SCO-L1": "6/17",
+          "HRV-L1": "3/10",
+          "UEFA-EL": "2/16",
+          "UEFA-ECL": "1/16"
+        },
+        "note": "Valores copiados do relatório PROGRESS.md da release atual; indicam clubes com ao menos um elenco publicado / clubes-semana da competição, não certificam que cada elenco esteja completo nem que corresponda ao estado atual do clube."
+      },
+      "documentedFields": [
+        "season",
+        "competition",
+        "club",
+        "player",
+        "player_qid",
+        "shirt_number",
+        "position",
+        "nationality",
+        "stint",
+        "stint_date",
+        "stint_other_club",
+        "confidence",
+        "source",
+        "source_section",
+        "listed_in",
+        "source_lang",
+        "source_title",
+        "source_revid"
+      ],
+      "identityAndAge": "player_qid é o identificador Wikidata quando resolvido; quando ausente, a chave de fallback é somente o nome. Idade deve ser calculada da tabela birth apenas quando precision=11.",
+      "limitations": [
+        "Dados de elenco derivados exclusivamente de páginas de temporada da Wikipedia; cada linha aponta para a página e revisão de origem.",
+        "Cobertura é desigual e a temporada aberta 2026/27 muda a cada release.",
+        "O elenco é a união de snapshots publicados nas páginas de temporada, não uma fotografia oficial em tempo real; jogadores transferidos no meio da temporada podem aparecer em mais de um clube com stint indicando a passagem.",
+        "Posição e nacionalidade podem estar vazias; nomes sem player_qid podem ser ambíguos.",
+        "Idades só podem ser calculadas quando a data de nascimento tem precisão de dia.",
+        "A release exige atribuição CC BY-SA 4.0 para os dados de elenco; o projeto precisa preservar fonte, título, revisão e cumprir share-alike antes de redistribuir dados derivados."
+      ],
+      "importPolicy": "Fonte complementar de alto valor para acelerar a cobertura, mas não importar em massa diretamente. Antes da integração, adicionar ao banco rastreabilidade por jogador (player_qid, temporada, source_title, source_revid, source_lang, stint), validar cada elenco contra o clube atual e regras da temporada 2026/27, rejeitar jogadores sem identidade/posição/nacionalidade/idade verificáveis e cumprir CC BY-SA 4.0. Nunca usar a cobertura de 100% como prova automática de elenco completo."
     }
   ],
   "globalImportGate": {
@@ -89,5 +153,16 @@
       "fonte auxiliar usada como única prova"
     ],
     "note": "Overall e valor de mercado podem ser estimativas de gameplay; identidade, posição, idade, nacionalidade e vínculo não."
+  },
+  "importRoadmap": {
+    "status": "candidate-identified-not-yet-imported",
+    "nextSteps": [
+      "Baixar a release Parquet e validar manifest.json e SHA-256 dos arquivos.",
+      "Auditar cobertura exata de 2026/27 para cada liga já cadastrada no jogo.",
+      "Criar camada de proveniência para preservar Wikidata QID e referências Wikipedia (source_title/source_revid).",
+      "Reconciliar clubes e jogadores com IDs do banco sem deduplicar por nome isoladamente.",
+      "Validar idade apenas com nascimento de precisão diária, além de posição, nacionalidade, clube e stint.",
+      "Executar auditoria e testes de prontidão antes de atualizar qualquer elenco no database.json."
+    ]
   }
 }
