@@ -7,6 +7,8 @@ from pathlib import Path
 def age_on(dob: str, as_of: str) -> int:
     birth = date.fromisoformat(dob)
     today = date.fromisoformat(as_of)
+    if birth > today:
+        raise ValueError(f"Date of birth is after verification date: {dob}")
     return today.year - birth.year - ((today.month, today.day) < (birth.month, birth.day))
 
 def missing(v):
