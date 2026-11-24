@@ -28,7 +28,38 @@ class RosterImportPreviewTests(unittest.TestCase):
         self.assertEqual(preview["players"][0]["identitySource"]["playerQid"], "Q100")
         self.assertEqual(report["totalPlayersBefore"], 0)
 
-    def test_never_imports_duplicate_qid_or_broad_position(self):
+    def test_imports_source_broad_position_without_claiming_exact_role(self):
+        db = {"teams": [{"id": "a", "name": "A", "leagueId": "x", "players": []}], "players": []}
+        candidate = {
+            "name": "Defender One", "sourcePlayerQid": "Q2", "age": 25,
+            "birthDate": "2001-01-01", "nationality": "BRA",
+            "position": "DF", "specificPosition": None,
+            "eligibleForManualReview": True,
+            "clubMapping": {"status": "exact-name-match-review-required", "teamId": "a"}
+        }
+        preview, report = module.prepare_import(db, {"sourceSeason": "2026/27", "candidates": [candidate]})
+        player = preview["players"][0]
+        self.assertEqual(report["newPlayersPrepared"], 1)
+        self.assertEqual(report["broadCategoryPlayers"], 1)
+        self.assertEqual(player["position"], "DF")
+        self.assertEqual(player["positionName"], "Defensor")
+        self.assertEqual(player["positionPrecision"], "broad-category")
+
+    def test_team_roster_cap_prevents_overfilling(self):
+        existing = [{"id": f"p{i}", "name": f"Existing {i}"} for i in range(30)]
+        db = {"teams": [{"id": "a", "name": "A", "leagueId": "x", "players": existing}],
+              "players": list(existing)}
+        candidate = {
+            "name": "New Player", "sourcePlayerQid": "Q3", "age": 25,
+            "birthDate": "2001-01-01", "nationality": "BRA",
+            "position": "FW", "eligibleForManualReview": True,
+            "clubMapping": {"status": "exact-name-match-review-required", "teamId": "a"}
+        }
+        _, report = module.prepare_import(db, {"sourceSeason": "2026/27", "candidates": [candidate]})
+        self.assertEqual(report["newPlayersPrepared"], 0)
+        self.assertEqual(report["skipped"]["team_roster_cap_reached"], 1)
+
+    def test_never_imports_duplicate_qid_or_unsupported_position(self):
         db = {"teams": [{"id": "a", "name": "A", "leagueId": "x", "players": []}], "players": []}
         base = {
             "name": "Player", "sourcePlayerQid": "Q1", "age": 25,
@@ -36,8 +67,8 @@ class RosterImportPreviewTests(unittest.TestCase):
             "eligibleForManualReview": True,
             "clubMapping": {"status": "exact-name-match-review-required", "teamId": "a"}
         }
-        one = dict(base, specificPosition="DF")
-        two = dict(base, specificPosition="CB")
+        one = dict(base, position="UNKNOWN", specificPosition=None)
+        two = dict(base, position="UNKNOWN", specificPosition=None)
         preview, report = module.prepare_import(db, {"sourceSeason": "2026/27", "candidates": [one, two]})
         self.assertEqual(report["newPlayersPrepared"], 0)
         self.assertEqual(report["skipped"]["missing_or_duplicate_qid"], 2)
