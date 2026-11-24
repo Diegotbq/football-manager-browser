@@ -48,7 +48,6 @@ async function init() {
     loadTransferCareer();
     ensureGeneratedFixtures();
     try { state.matchHistory = JSON.parse(localStorage.getItem("fmb-match-history") || "[]"); } catch (_) { state.matchHistory = []; }
-    ensureCupCompetitions();
 
     const seasonLabel = document.querySelector(".club-chip small");
     if (seasonLabel) seasonLabel.textContent = `Temporada ${state.db.meta?.season || "2026/27"}`;
@@ -103,6 +102,8 @@ async function init() {
     const savedClub = savedClubId
       ? state.db.teams.find(t => String(t.id) === String(savedClubId))
       : null;
+    if (savedClub) { state.selectedClubId = savedClub.id; state.db.userClubId = savedClub.id; }
+    ensureCupCompetitions();
 
     if (savedClub) {
       state.selectedClubId = savedClub.id;
