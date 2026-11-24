@@ -1111,11 +1111,11 @@ function getLineup(teamId) {
   if(saved&&Array.isArray(saved.starters)){
     const valid=saved.starters.filter(id=>players.some(p=>String(p.id)===String(id)));
     if(valid.length===Math.min(11,players.length)){
-      return {formation:FORMATIONS[saved.formation]?saved.formation:"4-3-3",starters:valid,bench:(saved.bench||[]).filter(id=>players.some(p=>String(p.id)===String(id))&&!valid.some(x=>String(x)===String(id))).slice(0,7)};
+      return {formation:FORMATIONS[saved.formation]?saved.formation:"4-3-3",instructions:{mentality:"balanced",pressing:"medium",defensiveLine:"standard",tempo:"normal",style:"balanced",...(saved.instructions||{})},starters:valid,bench:(saved.bench||[]).filter(id=>players.some(p=>String(p.id)===String(id))&&!valid.some(x=>String(x)===String(id))).slice(0,7)};
     }
   }
   const formation="4-3-3",lineup=getLineupForFormation(teamId,formation);
-  return {formation,...lineup};
+  return {formation,instructions:{mentality:"balanced",pressing:"medium",defensiveLine:"standard",tempo:"normal",style:"balanced"},...lineup};
 }
 let tacticalSelectedSlot = null;
 const FORMATION_COORDS = {
@@ -1145,6 +1145,28 @@ function dropLineupSlot(event,index) {
   const from=event.dataTransfer?Number(event.dataTransfer.getData("text/plain")):tacticalSelectedSlot;
   if(Number.isInteger(from)&&from>=0&&from<state.match.lineup.length)swapLineupSlots(from,index);
 }
+const TACTIC_OPTIONS = {
+  mentality:{balanced:"Equilibrada",attacking:"Ofensiva",defensive:"Defensiva"},
+  pressing:{low:"Baixa",medium:"Média",high:"Alta"},
+  defensiveLine:{low:"Recuada",standard:"Normal",high:"Adiantada"},
+  tempo:{slow:"Lento",normal:"Normal",fast:"Rápido"},
+  style:{balanced:"Equilibrado",possession:"Posse de bola",direct:"Jogo direto",counter:"Contra-ataque"}
+};
+function renderTacticalInstructions(m) {
+  const t=m.instructions||{};
+  return '<section class="tactical-instructions"><div class="section-head"><h2>Instruções da equipe</h2><span class="tag">Plano de jogo</span></div><div class="instruction-grid">' + Object.entries({mentality:"Mentalidade",pressing:"Pressão",defensiveLine:"Linha defensiva",tempo:"Ritmo",style:"Estilo de jogo"}).map(([key,label])=>'<label class="lineup-slot"><span>'+label+'</span><select onchange="changeTacticalInstruction(\''+key+'\',this.value)">'+Object.entries(TACTIC_OPTIONS[key]).map(([value,name])=>'<option value="'+value+'" '+(t[key]===value?"selected":"")+'>'+name+'</option>').join("")+'</select></label>').join("") + '</div><p class="subtle">As escolhas alteram a força calculada e o comportamento da simulação. Pressão e linha altas podem trazer riscos defensivos.</p></section>';
+};
+function changeTacticalInstruction(key,value) {
+  const m=state.match;if(!m||!m.setup||!TACTIC_OPTIONS[key]||!Object.prototype.hasOwnProperty.call(TACTIC_OPTIONS[key],value))return;
+  if(!m.instructions)m.instructions={mentality:"balanced",pressing:"medium",defensiveLine:"standard",tempo:"normal",style:"balanced"};
+  m.instructions[key]=value;
+  state.savedLineups[String(state.db.userClubId||state.selectedClubId)]={formation:m.formation||"4-3-3",starters:[...m.lineup],bench:[...m.bench],instructions:{...m.instructions}};
+  saveTransferCareer();
+};
+function tacticalModifier(t) {
+  t=t||{};
+  return ({balanced:0,attacking:2.2,defensive:-1.2}[t.mentality]||0)+({low:-0.8,medium:0,high:1.2}[t.pressing]||0)+({low:-0.6,standard:0,high:0.7}[t.defensiveLine]||0)+({slow:-0.3,normal:0,fast:0.7}[t.tempo]||0)+({balanced:0,possession:0.8,direct:0.5,counter:0.7}[t.style]||0);
+};
 function changeMatchFormation(formation) {
   const m=state.match;if(!m||!m.setup||!FORMATIONS[formation])return;
   const lineup=getLineupForFormation(state.db.userClubId||state.selectedClubId,formation);
@@ -1161,7 +1183,8 @@ function teamStrength(teamId) {
   const base=chosen.reduce((sum,p)=>sum+Number(p.overall||55),0)/chosen.length;
   const skills=chosen.reduce((sum,p)=>{const a=getPlayerAttributes(p);return sum+(a.passing+a.physical+a.defending+a.shooting+a.pace+a.dribbling)/6;},0)/chosen.length;
   const roles=chosen.filter(p=>String(p.position||"").toUpperCase()!=="").length;
-  return base*0.82+skills*0.15+(roles/chosen.length)*3;
+  const tactical=isManaged?tacticalModifier(m.instructions):0;
+  return base*0.82+skills*0.15+(roles/chosen.length)*3+tactical;
 }
 function startMatch() {
   const opponentId=$("#match-opponent")?.value;
@@ -1181,7 +1204,7 @@ function startFixture(fixtureId) {
 function prepareMatch(details) {
   if(state.matchTimer)clearInterval(state.matchTimer);
   const lineup=getLineup(state.db.userClubId||state.selectedClubId);
-  state.match={...details,setup:true,formation:lineup.formation,lineup:lineup.starters,bench:lineup.bench,substitutions:[],homeScore:0,awayScore:0,minute:0,speed:1,paused:true,finished:false,saved:false,events:[{minute:0,text:"Escalação pronta. Confira os titulares e reservas."}]};
+  state.match={...details,setup:true,formation:lineup.formation,instructions:{...(lineup.instructions||{})},lineup:lineup.starters,bench:lineup.bench,substitutions:[],homeScore:0,awayScore:0,minute:0,speed:1,paused:true,finished:false,saved:false,events:[{minute:0,text:"Escalação pronta. Confira os titulares e reservas."}]};
   state.view="match";renderMatch();
 }
 function kickoffMatch() {
@@ -1193,7 +1216,7 @@ function kickoffMatch() {
   if(starters.length!==required||new Set(starters).size!==required){alert("Selecione "+required+" titulares diferentes.");return;}
   const bench=[...document.querySelectorAll("[data-sub]")].map(x=>x.value).filter(Boolean).filter(id=>!starters.includes(id));
   m.lineup=starters;m.bench=[...new Set(bench)].slice(0,7);m.setup=false;m.paused=false;
-  state.savedLineups[String(state.db.userClubId||state.selectedClubId)]={formation:m.formation||"4-3-3",starters:[...m.lineup],bench:[...m.bench]};saveTransferCareer();
+  state.savedLineups[String(state.db.userClubId||state.selectedClubId)]={formation:m.formation||"4-3-3",starters:[...m.lineup],bench:[...m.bench],instructions:{...(m.instructions||{})}};saveTransferCareer();
   m.events.unshift({minute:0,text:"Escalação confirmada. Começa a partida!"});runMatchClock();renderMatch();
 }
 function makeSubstitution() {
@@ -1215,9 +1238,12 @@ function tickMatch() {
   const m=state.match;if(!m||m.paused||m.finished)return;
   m.minute++;
   const hs=teamStrength(m.homeId),as=teamStrength(m.awayId),total=Math.max(1,hs+as);
-  if(Math.random()<0.018+(hs/total)*0.018){m.homeScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.homeName+"!"});}
-  else if(Math.random()<0.018+(as/total)*0.018){m.awayScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.awayName+"!"});}
-  else if(Math.random()<0.11){const notes=["Boa chegada ao ataque.","Finalização defendida pelo goleiro.","A defesa afasta o perigo.","Bola recuperada no meio-campo.","Cobrança de falta para a área."];m.events.unshift({minute:m.minute,text:notes[Math.floor(Math.random()*notes.length)]});}
+  const managedHome=String(m.homeId)===String(state.db.userClubId||state.selectedClubId),bias=managedHome?tacticalModifier(m.instructions):0;
+  const homeChance=Math.max(0.008,Math.min(0.055,0.018+(hs/total)*0.018+bias*0.0015));
+  const awayChance=Math.max(0.008,Math.min(0.055,0.018+(as/total)*0.018-(managedHome?bias*0.001:0)));
+  if(Math.random()<homeChance){m.homeScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.homeName+"!"});}
+  else if(Math.random()<awayChance){m.awayScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.awayName+"!"});}
+  else if(Math.random()<0.11){const notes=["Boa chegada ao ataque.","Finalização defendida pelo goleiro.","A defesa afasta o perigo.","Bola recuperada no meio-campo.","Cobrança de falta para a área.","A equipe pressiona a saída de bola.","O time troca passes e controla o ritmo.","Contra-ataque em velocidade!"];m.events.unshift({minute:m.minute,text:notes[Math.floor(Math.random()*notes.length)]});}
   if(m.minute===45)m.events.unshift({minute:45,text:"Intervalo! Fim do primeiro tempo."});
   if(m.minute>=90){m.minute=90;m.finished=true;m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:m.fixtureDate || dateLabel(state.day),fixtureId:m.fixtureId || null,competition:m.competition || "Amistoso",round:m.round || null});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}}clearInterval(state.matchTimer);state.matchTimer=null;}
   if(state.view === "match") renderMatch();
@@ -1250,7 +1276,7 @@ function renderMatch() {
     const opts=id=>roster.map(p=>`<option value="${p.id}" ${String(id)===String(p.id)?"selected":""}>${p.name} · ${p.position} · OVR ${p.overall}</option>`).join("");
     const coords=FORMATION_COORDS[m.formation||"4-3-3"];
     const pitch=slots.map(([role],i)=>{const p=roster.find(x=>String(x.id)===String(m.lineup[i]));if(!p)return "";const [x,y]=coords[i];return `<button type="button" class="pitch-player ${tacticalSelectedSlot===i?"is-selected":""}" style="left:${x}%;top:${y}%" draggable="true" ondragstart="dragLineupSlot(event,${i})" ondragover="event.preventDefault()" ondrop="dropLineupSlot(event,${i})" onclick="selectLineupSlot(${i})" title="Toque em outro jogador para trocar de posição"><span class="pitch-number">${i+1}</span><strong>${p.name.split(" ")[0]}</strong><small>${role}</small></button>`;}).join("");
-    setPage("Escalação e tática",`<p class="view-intro">Organize seu time no campo: arraste um jogador para a posição de outro ou toque em dois jogadores para trocar. A escalação será salva na carreira.</p><article class="card"><div class="section-head"><h2>${m.homeName} × ${m.awayName}</h2><span class="tag">Pré-jogo</span></div><label class="lineup-slot"><span>FORMAÇÃO TÁTICA</span><select id="match-formation" onchange="changeMatchFormation(this.value)">${Object.keys(FORMATIONS).map(f=>`<option value="${f}" ${f===(m.formation||"4-3-3")?"selected":""}>${f}</option>`).join("")}</select></label><div class="tactical-pitch" aria-label="Campo tático"><div class="pitch-half"></div><div class="pitch-circle"></div><div class="pitch-box pitch-box-top"></div><div class="pitch-box pitch-box-bottom"></div>${pitch}</div><p class="subtle tactical-hint">${tacticalSelectedSlot===null?"Arraste os jogadores ou toque em dois para trocar as posições.":"Agora escolha outro jogador para concluir a troca."}</p><h3>Escalação titular · ${slots.length}/11</h3><div class="lineup-grid">${slots.map(([n],i)=>`<label class="lineup-slot"><span>${i+1}. ${n}</span><select data-xi>${opts(m.lineup[i])}</select></label>`).join("")}</div><div class="section-head"><h2>Banco de reservas</h2><span class="tag">Até 7 vagas</span></div><div class="bench-grid">${Array.from({length:7},(_,i)=>`<label class="lineup-slot"><span>Reserva ${i+1}</span><select data-sub><option value="">— Vazio —</option>${roster.filter(p=>!chosen.has(String(p.id))||String(m.bench[i])===String(p.id)).map(p=>`<option value="${p.id}" ${String(m.bench[i]||"")===String(p.id)?"selected":""}>${p.name} · ${p.position}</option>`).join("")}</select></label>`).join("")}</div><button class="primary-btn" onclick="kickoffMatch()">⚽ CONFIRMAR ESCALAÇÃO E JOGAR</button></article>`);
+    setPage("Escalação e tática",`<p class="view-intro">Organize seu time no campo: arraste um jogador para a posição de outro ou toque em dois jogadores para trocar. A escalação será salva na carreira.</p><article class="card"><div class="section-head"><h2>${m.homeName} × ${m.awayName}</h2><span class="tag">Pré-jogo</span></div><label class="lineup-slot"><span>FORMAÇÃO TÁTICA</span><select id="match-formation" onchange="changeMatchFormation(this.value)">${Object.keys(FORMATIONS).map(f=>`<option value="${f}" ${f===(m.formation||"4-3-3")?"selected":""}>${f}</option>`).join("")}</select></label><div class="tactical-pitch" aria-label="Campo tático"><div class="pitch-half"></div><div class="pitch-circle"></div><div class="pitch-box pitch-box-top"></div><div class="pitch-box pitch-box-bottom"></div>${pitch}</div>${renderTacticalInstructions(m)}<p class="subtle tactical-hint">${tacticalSelectedSlot===null?"Arraste os jogadores ou toque em dois para trocar as posições.":"Agora escolha outro jogador para concluir a troca."}</p><h3>Escalação titular · ${slots.length}/11</h3><div class="lineup-grid">${slots.map(([n],i)=>`<label class="lineup-slot"><span>${i+1}. ${n}</span><select data-xi>${opts(m.lineup[i])}</select></label>`).join("")}</div><div class="section-head"><h2>Banco de reservas</h2><span class="tag">Até 7 vagas</span></div><div class="bench-grid">${Array.from({length:7},(_,i)=>`<label class="lineup-slot"><span>Reserva ${i+1}</span><select data-sub><option value="">— Vazio —</option>${roster.filter(p=>!chosen.has(String(p.id))||String(m.bench[i])===String(p.id)).map(p=>`<option value="${p.id}" ${String(m.bench[i]||"")===String(p.id)?"selected":""}>${p.name} · ${p.position}</option>`).join("")}</select></label>`).join("")}</div><button class="primary-btn" onclick="kickoffMatch()">⚽ CONFIRMAR ESCALAÇÃO E JOGAR</button></article>`);
     return;
   }
   const starters=m.lineup.map(byId).filter(Boolean),bench=m.bench.map(byId).filter(Boolean);
