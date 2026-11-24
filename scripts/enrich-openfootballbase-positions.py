@@ -30,7 +30,8 @@ ALIASES = {
     "right winger": "RW", "right wing": "RW",
     "striker": "ST", "centre forward": "ST", "center forward": "ST",
     "centre forward striker": "ST", "forward striker": "ST",
-    "second striker": "ST", "attacker": "ST",
+    "second striker": "ST", "stopper": "CB", "centerhalf": "CB",
+    "left midfielder": "LM", "right midfielder": "RM",
 }
 
 
@@ -179,7 +180,7 @@ def enrich_positions(staging: dict, fetcher=api_get, pause: float = 1.5, databas
         "candidateCount": len(output_candidates),
         "lookedUpUniquePlayers": len(qids),
         "positionLabelsFound": len(position_labels),
-        "specificPositionCount": sum(counts[p] for p in ("GK", "CB", "LB", "RB", "DM", "CM", "AM", "LW", "RW", "ST")),
+        "specificPositionCount": sum(counts[p] for p in ("GK", "CB", "LB", "RB", "DM", "CM", "AM", "LM", "RM", "LW", "RW", "ST")),
         "positionStatusCounts": dict(counts),
         "candidates": output_candidates,
     }
