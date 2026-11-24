@@ -1535,10 +1535,13 @@ function renderSeasonPanel() {
 
 // GERAÇÃO DE CALENDÁRIOS DE LIGA (tabela fictícia de carreira, não calendário oficial)
 function ensureGeneratedFixtures() {
-  if (!state.db || state.generatedFixtures.length) return;
+  if (!state.db) return;
+  const existingCompetitions = new Set((state.generatedFixtures || []).map(f => f.competitionId).filter(Boolean));
   const seasonStart = state.db.calendar?.seasonStart || "2026-07-01";
   const baseDate = new Date(seasonStart + "T12:00:00");
+  let added = false;
   (state.db.leagues || []).filter(league => league.type === "league" && Array.isArray(league.teams) && league.teams.length >= 2).forEach(league => {
+    if (existingCompetitions.has(league.id)) return;
     const ids = [...league.teams];
     if (ids.length % 2) ids.push(null);
     const rounds = ids.length - 1;
@@ -1562,6 +1565,7 @@ function ensureGeneratedFixtures() {
           awayTeamId: away,
           generated: true
         });
+        added = true;
       }
       const fixed = rotation[0];
       const rest = rotation.slice(1);
@@ -1569,16 +1573,32 @@ function ensureGeneratedFixtures() {
       rotation = [fixed, ...rest];
     }
   });
-  saveTransferCareer();
+  if (added) saveTransferCareer();
 }
 
 // COPAS NACIONAIS — mata-mata com jogos do usuário e simulação dos demais confrontos
+function getSouthAmericanCupPools() {
+  const baseClubs = ["boca-juniors","river-plate","penarol","nacional-uru","independiente-del-valle"];
+  const domesticIds = ["argentina","uruguay","ecuador","paraguay","chile","colombia"];
+  const champions = [], secondary = [];
+  domesticIds.forEach(id => {
+    const league = state.db.leagues.find(item => item.id === id);
+    if (!league) return;
+    const ranked = (league.teams || []).map(teamId => state.db.teams.find(team => String(team.id) === String(teamId))).filter(Boolean).sort((a,b) => Number(b.reputation||0)-Number(a.reputation||0));
+    champions.push(...ranked.slice(0,2).map(team => team.id));
+    secondary.push(...ranked.slice(2,4).map(team => team.id));
+  });
+  return {
+    libertadores: [...(state.db.leagues.find(l=>l.id==="brasileirao")?.teams||[]), ...baseClubs, ...champions],
+    sudamericana: [...(state.db.leagues.find(l=>l.id==="brasileirao-serie-b")?.teams||[]), ...baseClubs, ...secondary]
+  };
+}
 function ensureCupCompetitions() {
   if (state.cupCompetitions.length) {
     const pools=[
       {id:"champions-league",teams:state.db.leagues.find(l=>l.id==="champions-league")?.teams||[]},
-      {id:"libertadores",teams:[...(state.db.leagues.find(l=>l.id==="brasileirao")?.teams||[]),"boca-juniors","river-plate","penarol","nacional-uru","independiente-del-valle"]},
-      {id:"sudamericana",teams:[...(state.db.leagues.find(l=>l.id==="brasileirao-serie-b")?.teams||[]),"boca-juniors","river-plate","penarol","nacional-uru","independiente-del-valle"]}
+      {id:"libertadores",teams:getSouthAmericanCupPools().libertadores},
+      {id:"sudamericana",teams:getSouthAmericanCupPools().sudamericana}
     ];
     pools.forEach(pool=>{
       const cup=state.cupCompetitions.find(item=>item.id===pool.id);
@@ -1601,11 +1621,9 @@ function ensureCupCompetitions() {
   ];
   const qualified=state.continentalQualifiers||{};
   const europeanPool=state.db.leagues.find(l=>l.id==="champions-league");
-  const southAmericanClubs=["boca-juniors","river-plate","penarol","nacional-uru","independiente-del-valle"];
-  const brazilA=state.db.leagues.find(l=>l.id==="brasileirao");
-  const brazilB=state.db.leagues.find(l=>l.id==="brasileirao-serie-b");
-  const libertadoresPool=[...(brazilA?.teams||[]),...southAmericanClubs];
-  const sudamericanaPool=[...(brazilB?.teams||[]),...southAmericanClubs];
+  const regionalPools=getSouthAmericanCupPools();
+  const libertadoresPool=regionalPools.libertadores;
+  const sudamericanaPool=regionalPools.sudamericana;
   definitions.push(
     {id:"libertadores",name:"CONMEBOL Libertadores",leagueId:"brasileirao",teamIds:libertadoresPool,qualifiedTeams:qualified.libertadores||[]},
     {id:"sudamericana",name:"CONMEBOL Sudamericana",leagueId:"brasileirao",teamIds:sudamericanaPool,qualifiedTeams:qualified.sudamericana||[]},
