@@ -553,14 +553,15 @@ function renderMarket(searchTerm) {
           <h2>Buscar jogadores</h2>
           <span class="tag">${others.length} disponíveis</span>
         </div>
-        <input id="market-search" type="search" value="${String(searchTerm || "").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}" placeholder="Nome, clube ou posição..." oninput="renderMarket(this.value)" style="width:100%;padding:14px;margin:8px 0 14px">
+        <input id="market-search" type="search" value="${String(searchTerm || "").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}" placeholder="Nome, clube ou posição..." oninput="filterMarketPlayers(this.value)" style="width:100%;padding:14px;margin:8px 0 14px">
         ${others.length ? `
           <table class="table">
             <thead><tr><th>JOGADOR</th><th>CLUBE</th><th>POS</th><th>OVR</th><th>VALOR ESTIMADO</th><th>PROPOSTA</th></tr></thead>
             <tbody>
               ${others.map(p => {
                 const team = state.db.teams.find(t => String(t.id) === String(p.teamId));
-                return `<tr>
+                const searchData = (p.name + " " + (team?.name || "") + " " + (p.position || "")).toLocaleLowerCase("pt-BR").replace(/"/g, "&quot;");
+                return `<tr data-market-player data-market-search="${searchData}">
                   <td class="club-name">${p.name}</td><td>${team ? team.shortName || team.name : "—"}</td>
                   <td>${p.position || "—"}</td><td class="positive">${p.overall || "—"}</td>
                   <td>${money(p.marketValue)}</td>
@@ -579,6 +580,13 @@ function renderMarket(searchTerm) {
       </article>
     </div>
   `);
+}
+
+function filterMarketPlayers(value) {
+  const term = String(value || "").trim().toLocaleLowerCase("pt-BR");
+  document.querySelectorAll("[data-market-player]").forEach(row => {
+    row.hidden = !String(row.dataset.marketSearch || "").includes(term);
+  });
 }
 
 function saveTransferCareer() {
@@ -632,7 +640,7 @@ function makeTransferOffer(playerId) {
     "\n\nDigite o valor da proposta em euros:"
   );
   if (rawOffer === null) return;
-  const offer = Number(rawOffer.replace(/[€.\\s]/g, "").replace(/,/g, "."));
+  const offer = Number(rawOffer.replace(/[€.\s]/g, "").replace(/,/g, "."));
   if (!Number.isFinite(offer) || offer <= 0) {
     alert("Digite um valor válido.");
     return;
