@@ -9,7 +9,7 @@ import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
 
-SUPPORTED = {"GK", "CB", "LB", "RB", "DM", "CM", "AM", "LW", "RW", "ST"}
+SUPPORTED = {"GK", "CB", "LB", "RB", "DM", "CM", "AM", "LM", "RM", "LW", "RW", "ST"}
 
 
 def normalize_name(value: object) -> str:
