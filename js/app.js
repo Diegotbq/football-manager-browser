@@ -602,36 +602,51 @@ function teamStrength(teamId) {
   const top = [...players].sort((a,b) => Number(b.overall||0)-Number(a.overall||0)).slice(0,11);
   return top.reduce((sum,p)=>sum+Number(p.overall||55),0)/top.length;
 }
+
+function getLineup(teamId) {
+  const players=state.db.players.filter(p=>String(p.teamId)===String(teamId)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));
+  const starters=players.slice(0,11).map(p=>p.id);
+  return {starters,bench:players.slice(11,18).map(p=>p.id)};
+}
 function startMatch() {
-  const opponentId = $("#match-opponent")?.value;
-  if (!opponentId || String(opponentId) === String(state.db.userClubId)) return;
-  const home = userClub();
-  const away = state.db.teams.find(t=>String(t.id)===String(opponentId));
-  launchMatch({homeId:home.id,awayId:away.id,homeName:home.name,awayName:away.name});
+  const opponentId=$("#match-opponent")?.value;
+  if(!opponentId||String(opponentId)===String(state.db.userClubId))return;
+  const home=userClub(),away=state.db.teams.find(t=>String(t.id)===String(opponentId));
+  prepareMatch({homeId:home.id,awayId:away.id,homeName:home.name,awayName:away.name});
 }
 function startFixture(fixtureId) {
-  const fixture = (state.db.calendar?.events || []).find(f => f.id === fixtureId);
-  if (!fixture) return;
-  const clubId = String(state.db.userClubId || state.selectedClubId || "");
-  if (String(fixture.homeTeamId) !== clubId && String(fixture.awayTeamId) !== clubId) {
-    alert("Este confronto não envolve o clube da sua carreira.");
-    return;
-  }
-  if (state.matchHistory.some(m => m.fixtureId === fixtureId)) {
-    alert("Esta partida já foi disputada nesta carreira.");
-    return;
-  }
-  const home = state.db.teams.find(t => String(t.id) === String(fixture.homeTeamId));
-  const away = state.db.teams.find(t => String(t.id) === String(fixture.awayTeamId));
-  launchMatch({homeId:home.id,awayId:away.id,homeName:home.name,awayName:away.name,fixtureId:fixture.id,competition:fixture.competition,round:fixture.round,fixtureDate:fixture.date});
+  const f=(state.db.calendar?.events||[]).find(x=>x.id===fixtureId);
+  if(!f)return;
+  const clubId=String(state.db.userClubId||state.selectedClubId||"");
+  if(String(f.homeTeamId)!==clubId&&String(f.awayTeamId)!==clubId){alert("Este jogo não envolve seu clube.");return;}
+  if(state.matchHistory.some(x=>x.fixtureId===fixtureId)){alert("Esta partida já foi disputada.");return;}
+  const home=state.db.teams.find(t=>String(t.id)===String(f.homeTeamId)),away=state.db.teams.find(t=>String(t.id)===String(f.awayTeamId));
+  prepareMatch({homeId:home.id,awayId:away.id,homeName:home.name,awayName:away.name,fixtureId:f.id,competition:f.competition,round:f.round,fixtureDate:f.date});
 }
-function launchMatch(details) {
-  if(state.matchTimer) clearInterval(state.matchTimer);
-  state.match = {...details,homeScore:0,awayScore:0,minute:0,speed:1,paused:false,finished:false,saved:false,events:[{minute:0,text:"O árbitro autoriza o início da partida!"}]};
-  state.view = "match";
-  runMatchClock();
-  renderMatch();
+function prepareMatch(details) {
+  if(state.matchTimer)clearInterval(state.matchTimer);
+  const lineup=getLineup(state.db.userClubId||state.selectedClubId);
+  state.match={...details,setup:true,lineup:lineup.starters,bench:lineup.bench,substitutions:[],homeScore:0,awayScore:0,minute:0,speed:1,paused:true,finished:false,saved:false,events:[{minute:0,text:"Escalação pronta. Confira os titulares e reservas."}]};
+  state.view="match";renderMatch();
 }
+function kickoffMatch() {
+  const m=state.match;if(!m||!m.setup)return;
+  const starters=[...document.querySelectorAll("[data-xi]")].map(x=>x.value).filter(Boolean);
+  if(starters.length!==11||new Set(starters).size!==11){alert("Selecione 11 titulares diferentes.");return;}
+  const bench=[...document.querySelectorAll("[data-sub]")].map(x=>x.value).filter(Boolean).filter(id=>!starters.includes(id));
+  m.lineup=starters;m.bench=[...new Set(bench)].slice(0,7);m.setup=false;m.paused=false;
+  m.events.unshift({minute:0,text:"Escalação confirmada. Começa a partida!"});runMatchClock();renderMatch();
+}
+function makeSubstitution() {
+  const m=state.match;if(!m||m.setup||m.finished||m.substitutions.length>=5)return;
+  const out=$("#sub-out")?.value,inside=$("#sub-in")?.value;
+  if(!out||!inside||!m.lineup.includes(out)||!m.bench.includes(inside))return;
+  const old=state.db.players.find(p=>String(p.id)===String(out)),fresh=state.db.players.find(p=>String(p.id)===String(inside));
+  m.lineup=m.lineup.map(id=>id===out?inside:id);m.bench=m.bench.map(id=>id===inside?out:id);
+  m.substitutions.push({minute:m.minute,out,in:inside});
+  m.events.unshift({minute:m.minute,text:"🔄 "+fresh.name+" entrou no lugar de "+old.name+"."});renderMatch();
+}
+
 function runMatchClock() {
   if(state.matchTimer) clearInterval(state.matchTimer);
   if(!state.match||state.match.paused||state.match.finished)return;
@@ -660,15 +675,28 @@ function setMatchSpeed(speed) {
 }
 function newMatch() { if(state.matchTimer) clearInterval(state.matchTimer); state.matchTimer=null; state.match=null; renderMatch(); }
 
+
 function renderMatch() {
   const m=state.match;
   if(!m){
     const opponents=state.db.teams.filter(t=>String(t.id)!==String(state.db.userClubId));
-    setPage("Central de Partidas",`<p class="view-intro">Escolha um adversário e acompanhe a partida minuto a minuto.</p><article class="card match-setup"><div class="section-head"><h2>Preparar partida</h2><span class="tag">Simulação ao vivo</span></div><label for="match-opponent">Adversário</label><select id="match-opponent">${opponents.map(t=>`<option value="${t.id}">${t.name}</option>`).join("")}</select><button class="primary-btn" onclick="startMatch()">⚽ INICIAR PARTIDA</button><p class="subtle">A simulação usa a força estimada dos elencos cadastrados. Os eventos são gerados pelo jogo, não são resultados oficiais.</p></article>`);
+    setPage("Central de Partidas",`<p class="view-intro">Escolha um adversário e prepare sua equipe.</p><article class="card match-setup"><div class="section-head"><h2>Preparar partida</h2><span class="tag">Simulação</span></div><label for="match-opponent">Adversário</label><select id="match-opponent">${opponents.map(t=>`<option value="${t.id}">${t.name}</option>`).join("")}</select><button class="primary-btn" onclick="startMatch()">PREPARAR PARTIDA</button></article>`);
     return;
   }
-  setPage("Central de Partidas",`<article class="card live-match"><div class="match-status">${m.finished?"TEMPO INTEGRAL":m.paused?"PARTIDA PAUSADA":"PARTIDA AO VIVO"}</div><div class="scoreboard"><div class="score-team"><strong>${m.homeName}</strong><span>${m.homeScore}</span></div><div class="score-clock">${String(m.minute).padStart(2,"0")}’</div><div class="score-team"><strong>${m.awayName}</strong><span>${m.awayScore}</span></div></div><div class="match-controls"><button class="primary-btn" onclick="pauseMatch()" ${m.finished?"disabled":""}>${m.paused?"▶ Continuar":"Ⅱ Pausar"}</button><button class="speed-btn ${m.speed===1?"selected":""}" onclick="setMatchSpeed(1)">1x</button><button class="speed-btn ${m.speed===2?"selected":""}" onclick="setMatchSpeed(2)">2x</button><button class="speed-btn ${m.speed===4?"selected":""}" onclick="setMatchSpeed(4)">4x</button><button class="speed-btn" onclick="newMatch()">Nova partida</button></div></article><article class="card events-card"><div class="section-head"><h2>Relato da partida</h2><span class="tag">${m.events.length} eventos</span></div><div class="match-events">${m.events.map(e=>`<div class="match-event"><strong>${String(e.minute).padStart(2,"0")}’</strong><span>${e.text}</span></div>`).join("")}</div></article>`);
+  const roster=state.db.players.filter(p=>String(p.teamId)===String(state.db.userClubId||state.selectedClubId)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));
+  const byId=id=>state.db.players.find(p=>String(p.id)===String(id));
+  if(m.setup){
+    const names=["Goleiro","Defensor 1","Defensor 2","Defensor 3","Defensor 4","Meio 1","Meio 2","Meio 3","Atacante 1","Atacante 2","Atacante 3"];
+    const chosen=new Set(m.lineup),reserves=roster.filter(p=>!chosen.has(p.id));
+    const opts=id=>roster.map(p=>`<option value="${p.id}" ${String(id)===String(p.id)?"selected":""}>${p.name} · ${p.position} · ${p.overall}</option>`).join("");
+    setPage("Escalação",`<p class="view-intro">Escolha os 11 titulares e até 7 reservas antes de iniciar.</p><article class="card"><div class="section-head"><h2>${m.homeName} × ${m.awayName}</h2><span class="tag">4-3-3</span></div><div class="lineup-grid">${names.map((n,i)=>`<label class="lineup-slot"><span>${i+1}. ${n}</span><select data-xi>${opts(m.lineup[i])}</select></label>`).join("")}</div><div class="section-head"><h2>Banco de reservas</h2><span class="tag">7 vagas</span></div><div class="bench-grid">${Array.from({length:7},(_,i)=>`<label class="lineup-slot"><span>Reserva ${i+1}</span><select data-sub><option value="">— Vazio —</option>${reserves.map(p=>`<option value="${p.id}" ${String(m.bench[i]||"")===String(p.id)?"selected":""}>${p.name} · ${p.position}</option>`).join("")}</select></label>`).join("")}</div><button class="primary-btn" onclick="kickoffMatch()">⚽ CONFIRMAR ESCALAÇÃO E JOGAR</button></article>`);
+    return;
+  }
+  const starters=m.lineup.map(byId).filter(Boolean),bench=m.bench.map(byId).filter(Boolean);
+  const sub=!m.finished&&m.substitutions.length<5&&bench.length?`<article class="card substitution-card"><div class="section-head"><h2>Substituições</h2><span class="tag">${m.substitutions.length}/5</span></div><div class="substitution-controls"><label>Sai<select id="sub-out">${starters.map(p=>`<option value="${p.id}">${p.name}</option>`).join("")}</select></label><label>Entra<select id="sub-in">${bench.map(p=>`<option value="${p.id}">${p.name}</option>`).join("")}</select></label><button class="primary-btn" onclick="makeSubstitution()">CONFIRMAR</button></div></article>`:"";
+  setPage("Central de Partidas",`<article class="card live-match"><div class="match-status">${m.finished?"TEMPO INTEGRAL":m.paused?"PARTIDA PAUSADA":"PARTIDA AO VIVO"}</div><div class="scoreboard"><div class="score-team"><strong>${m.homeName}</strong><span>${m.homeScore}</span></div><div class="score-clock">${String(m.minute).padStart(2,"0")}’</div><div class="score-team"><strong>${m.awayName}</strong><span>${m.awayScore}</span></div></div><div class="match-controls"><button class="primary-btn" onclick="pauseMatch()" ${m.finished?"disabled":""}>${m.paused?"▶ Continuar":"Ⅱ Pausar"}</button><button class="speed-btn" onclick="setMatchSpeed(1)">1x</button><button class="speed-btn" onclick="setMatchSpeed(2)">2x</button><button class="speed-btn" onclick="setMatchSpeed(4)">4x</button><button class="speed-btn" onclick="newMatch()">Nova partida</button></div></article><div class="grid match-squads"><article class="card span-6"><h2>Titulares · ${starters.length}/11</h2>${starters.map(p=>`<div class="player-row"><div><strong>${p.name}</strong><small>${p.position}</small></div><span class="rating">${p.overall}</span></div>`).join("")}</article><article class="card span-6"><h2>Reservas · ${bench.length}/7</h2>${bench.map(p=>`<div class="player-row"><div><strong>${p.name}</strong><small>${p.position}</small></div><span class="rating">${p.overall}</span></div>`).join("")}</article></div>${sub}<article class="card events-card"><div class="section-head"><h2>Relato da partida</h2><span class="tag">${m.events.length} eventos</span></div><div class="match-events">${m.events.map(e=>`<div class="match-event"><strong>${String(e.minute).padStart(2,"0")}’</strong><span>${e.text}</span></div>`).join("")}</div></article>`);
 }
+
 
 // INICIAR JOGO
 
