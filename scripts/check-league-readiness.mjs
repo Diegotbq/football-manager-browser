@@ -10,7 +10,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const file = path.resolve(process.argv[2] || "database.json");
-const minimum = Math.max(1, Number(process.env.MIN_PLAYERS_PER_TEAM || 18));
+const defaultMinimum = Math.max(1, Number(process.env.MIN_PLAYERS_PER_TEAM || 18));
 const db = JSON.parse(fs.readFileSync(file, "utf8"));
 const teams = Array.isArray(db.teams) ? db.teams : [];
 const players = Array.isArray(db.players) ? db.players : [];
@@ -62,7 +62,7 @@ const results = [...leagues.entries()].map(([leagueId, clubs]) => {
 const report = {
   season: db.meta?.season || null,
   generatedAt: new Date().toISOString(),
-  rule: `Todos os clubes com pelo menos ${minimum} jogadores; IDs únicos; vínculos válidos.`,
+  rule: `Mínimo padrão de ${defaultMinimum} jogadores, com exceções por liga em meta.leagueMinimumRosterSizes; IDs únicos; vínculos válidos.`,
   integrity: {
     duplicatePlayerIds: duplicateIds.length,
     invalidTeamLinks: invalidTeamLinks.length
