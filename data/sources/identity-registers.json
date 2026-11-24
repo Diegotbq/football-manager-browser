@@ -185,7 +185,50 @@
         "Não inferir elenco completo, idade, nacionalidade ou posição apenas a partir da lista de clubes ou de resultados parciais."
       ],
       "importPolicy": "Usar a página oficial de clubes para validar a composição da liga e as páginas Plantilla oficial individuais como fonte primária para conferir cada atleta e os campos efetivamente publicados. Resultados indexados podem ajudar a localizar e ler registros, mas devem ser reconciliados com a página oficial vigente; não tratar a cobertura parcial do buscador como elenco completo. Se um atleta ou campo não estiver acessível, não preencher por suposição; recorrer a perfil oficial individual ou outra fonte primária verificável.",
-      "exampleOfficialSquadUrl": "https://www.laliga.com/clubes/levante-ud/plantilla"
+      "exampleOfficialSquadUrl": "https://www.laliga.com/clubes/levante-ud/plantilla",
+      "verifiedSquadPageExamples": [
+        {
+          "club": "Athletic Club",
+          "url": "https://www.laliga.com/clubes/athletic-club/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "CA Osasuna",
+          "url": "https://www.laliga.com/clubes/c-a-osasuna/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "Valencia CF",
+          "url": "https://www.laliga.com/clubes/valencia-cf/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "FC Barcelona",
+          "url": "https://www.laliga.com/clubes/fc-barcelona/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "Elche CF",
+          "url": "https://www.laliga.com/clubes/elche-c-f/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "Rayo Vallecano",
+          "url": "https://www.laliga.com/clubes/rayo-vallecano/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "RCD Espanyol",
+          "url": "https://www.laliga.com/clubes/rcd-espanyol/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "Sevilla FC",
+          "url": "https://www.laliga.com/clubes/sevilla-fc/plantilla",
+          "verifiedAt": "2026-11-24"
+        }
+      ],
+      "verifiedSquadPageExamplesNote": "Exemplos de páginas oficiais de plantilla localizadas e confirmadas no índice público em 2026-11-24. A lista é parcial e não representa auditoria dos 20 clubes nem prova de completude; validar a página vigente de cada clube antes de importar."
     },
     {
       "id": "premier-league-official-squad-lists-2026-27",
