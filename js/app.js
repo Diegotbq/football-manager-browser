@@ -697,7 +697,7 @@ function renderMarket(searchTerm) {
   const recentTransfers = state.transferHistory.slice(-5).reverse();
 
   setPage("Mercado de Transferências", `
-    <p class="view-intro">Observe jogadores, faça propostas e monte seu elenco. Valores são estimativas internas do jogo.</p>
+    <p class="view-intro">Mercado mundial ativo: os clubes controlados pela IA negociam entre si durante as janelas de transferências. Faça suas propostas, observe talentos e acompanhe as movimentações. Valores são estimativas internas do jogo.</p>
     <div class="grid">
       <article class="card span-4">
         <div class="card-label">Orçamento disponível</div>
@@ -754,7 +754,7 @@ function renderMarket(searchTerm) {
       <article class="card span-12">
         <div class="section-head"><h2>Últimas movimentações</h2><span class="tag">${recentTransfers.length} recentes</span></div>
         ${recentTransfers.length ? recentTransfers.map(t => `
-          <div class="fixture"><div><strong>${t.playerName}</strong><div class="subtle">${t.fromName} → ${t.toName}</div></div><span class="fixture-time">${money(t.fee)}</span></div>
+          <div class="fixture"><div><strong>${t.playerName} ${t.aiTransfer ? '<span class="tag">IA</span>' : ""}</strong><div class="subtle">${t.fromName} → ${t.toName}${t.aiTransfer ? " · Negociação entre clubes" : ""}</div></div><span class="fixture-time">${money(t.fee)}</span></div>
         `).join("") : '<p class="subtle">Suas contratações aparecerão aqui.</p>'}
       </article>
     </div>
