@@ -6,7 +6,8 @@ const state = {
   selectedClubId: null,
   match: null,
   matchTimer: null,
-  matchHistory: []
+  matchHistory: [],
+  transferHistory: []
 };
 
 const $ = selector => document.querySelector(selector);
@@ -34,6 +35,7 @@ async function init() {
     }
 
     state.db = await response.json();
+    loadTransferCareer();
     try { state.matchHistory = JSON.parse(localStorage.getItem("fmb-match-history") || "[]"); } catch (_) { state.matchHistory = []; }
 
     const seasonLabel = document.querySelector(".club-chip small");
@@ -513,57 +515,157 @@ function renderSquad() {
 
 // MERCADO DE TRANSFERÊNCIAS
 
-function renderMarket() {
+function renderMarket(searchTerm) {
+  const club = userClub();
+  if (!club) return renderClubSelection();
+  const term = String(searchTerm || "").trim().toLocaleLowerCase("pt-BR");
   const others = state.db.players
-    .filter(p => String(p.teamId) !== String(state.db.userClubId))
-    .sort((a, b) => b.overall - a.overall)
-    .slice(0, 12);
+    .filter(p => String(p.teamId) !== String(club.id))
+    .filter(p => {
+      const team = state.db.teams.find(t => String(t.id) === String(p.teamId));
+      return !term || p.name.toLocaleLowerCase("pt-BR").includes(term) ||
+        team?.name?.toLocaleLowerCase("pt-BR").includes(term) ||
+        p.position?.toLocaleLowerCase("pt-BR").includes(term);
+    })
+    .sort((a, b) => Number(b.overall || 0) - Number(a.overall || 0));
+  const recentTransfers = state.transferHistory.slice(-5).reverse();
 
   setPage("Mercado de Transferências", `
-    <p class="view-intro">
-      Jogadores de outros clubes disponíveis
-      para observação.
-    </p>
-
-    <div class="card">
-      <div class="section-head">
-        <h2>Jogadores observados</h2>
-        <span class="tag">Demonstração</span>
-      </div>
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Jogador</th>
-            <th>CLUBE</th>
-            <th>POS</th>
-            <th>OVR</th>
-            <th>VALOR ESTIMADO</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          ${
-            others.map(p => {
-              const team = state.db.teams.find(
-                t => String(t.id) === String(p.teamId)
-              );
-
-              return `
-                <tr>
-                  <td class="club-name">${p.name}</td>
-                  <td>${team ? team.shortName : "—"}</td>
-                  <td>${p.position}</td>
-                  <td class="positive">${p.overall}</td>
+    <p class="view-intro">Observe jogadores, faça propostas e monte seu elenco. Valores são estimativas internas do jogo.</p>
+    <div class="grid">
+      <article class="card span-4">
+        <div class="card-label">Orçamento disponível</div>
+        <div class="metric">${money(club.budget)}</div>
+        <div class="metric-note">Seu clube: ${club.name}</div>
+      </article>
+      <article class="card span-4">
+        <div class="card-label">Jogadores no mercado</div>
+        <div class="metric">${others.length}</div>
+        <div class="metric-note">Atletas de outros clubes cadastrados</div>
+      </article>
+      <article class="card span-4">
+        <div class="card-label">Contratações realizadas</div>
+        <div class="metric">${state.transferHistory.filter(t => String(t.toTeamId) === String(club.id)).length}</div>
+        <div class="metric-note">Nesta carreira neste dispositivo</div>
+      </article>
+      <article class="card span-12">
+        <div class="section-head">
+          <h2>Buscar jogadores</h2>
+          <span class="tag">${others.length} disponíveis</span>
+        </div>
+        <input id="market-search" type="search" value="${String(searchTerm || "").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}" placeholder="Nome, clube ou posição..." oninput="renderMarket(this.value)" style="width:100%;padding:14px;margin:8px 0 14px">
+        ${others.length ? `
+          <table class="table">
+            <thead><tr><th>JOGADOR</th><th>CLUBE</th><th>POS</th><th>OVR</th><th>VALOR ESTIMADO</th><th>PROPOSTA</th></tr></thead>
+            <tbody>
+              ${others.map(p => {
+                const team = state.db.teams.find(t => String(t.id) === String(p.teamId));
+                return `<tr>
+                  <td class="club-name">${p.name}</td><td>${team ? team.shortName || team.name : "—"}</td>
+                  <td>${p.position || "—"}</td><td class="positive">${p.overall || "—"}</td>
                   <td>${money(p.marketValue)}</td>
-                </tr>
-              `;
-            }).join("")
-          }
-        </tbody>
-      </table>
+                  <td><button class="primary-btn" onclick="makeTransferOffer('${p.id}')">FAZER PROPOSTA</button></td>
+                </tr>`;
+              }).join("")}
+            </tbody>
+          </table>
+        ` : '<p class="subtle">Nenhum jogador encontrado com esse filtro.</p>'}
+      </article>
+      <article class="card span-12">
+        <div class="section-head"><h2>Últimas movimentações</h2><span class="tag">${recentTransfers.length} recentes</span></div>
+        ${recentTransfers.length ? recentTransfers.map(t => `
+          <div class="fixture"><div><strong>${t.playerName}</strong><div class="subtle">${t.fromName} → ${t.toName}</div></div><span class="fixture-time">${money(t.fee)}</span></div>
+        `).join("") : '<p class="subtle">Suas contratações aparecerão aqui.</p>'}
+      </article>
     </div>
   `);
+}
+
+function saveTransferCareer() {
+  try {
+    localStorage.setItem("fmb-transfer-save", JSON.stringify({
+      playerTeams: state.db.players.map(p => [p.id, p.teamId]),
+      budgets: state.db.teams.map(t => [t.id, t.budget]),
+      history: state.transferHistory
+    }));
+  } catch (_) {
+    alert("Não foi possível salvar a transferência neste dispositivo. Verifique o espaço disponível.");
+  }
+}
+
+function loadTransferCareer() {
+  try {
+    const saved = JSON.parse(localStorage.getItem("fmb-transfer-save") || "null");
+    if (!saved) return;
+    const teamById = new Map(state.db.teams.map(t => [String(t.id), t]));
+    (saved.playerTeams || []).forEach(([playerId, teamId]) => {
+      const player = state.db.players.find(p => String(p.id) === String(playerId));
+      if (player && teamById.has(String(teamId))) player.teamId = teamId;
+    });
+    (saved.budgets || []).forEach(([teamId, budget]) => {
+      const team = teamById.get(String(teamId));
+      if (team && Number.isFinite(Number(budget))) team.budget = Number(budget);
+    });
+    state.transferHistory = Array.isArray(saved.history) ? saved.history : [];
+  } catch (_) {
+    state.transferHistory = [];
+  }
+}
+
+function makeTransferOffer(playerId) {
+  const buyer = userClub();
+  const player = state.db.players.find(p => String(p.id) === String(playerId));
+  if (!buyer || !player || String(player.teamId) === String(buyer.id)) {
+    alert("Este jogador não está disponível para negociação.");
+    return;
+  }
+  const seller = state.db.teams.find(t => String(t.id) === String(player.teamId));
+  if (!seller) {
+    alert("Não foi possível identificar o clube atual do jogador.");
+    return;
+  }
+  const askingPrice = Math.max(1, Number(player.marketValue) || 100000);
+  const rawOffer = prompt(
+    "Proposta por " + player.name + "\nClube: " + seller.name +
+    "\nValor estimado: " + money(askingPrice) +
+    "\nSeu orçamento: " + money(buyer.budget) +
+    "\n\nDigite o valor da proposta em euros:"
+  );
+  if (rawOffer === null) return;
+  const offer = Number(rawOffer.replace(/[€.\\s]/g, "").replace(/,/g, "."));
+  if (!Number.isFinite(offer) || offer <= 0) {
+    alert("Digite um valor válido.");
+    return;
+  }
+  if (offer > Number(buyer.budget || 0)) {
+    alert("Proposta cancelada: seu orçamento é insuficiente.");
+    return;
+  }
+  if (offer < askingPrice * 0.95) {
+    alert("Proposta recusada! " + seller.name + " exige pelo menos " + money(Math.ceil(askingPrice * 0.95)) + " neste momento.");
+    return;
+  }
+  if (!confirm(seller.name + " aceitou a proposta de " + money(offer) +
+    " por " + player.name + ".\n\nConfirmar contratação?")) return;
+
+  buyer.budget = Number(buyer.budget || 0) - offer;
+  seller.budget = Number(seller.budget || 0) + offer;
+  const previousTeamId = player.teamId;
+  player.teamId = buyer.id;
+  state.db.teams.forEach(team => {
+    if (!Array.isArray(team.players)) return;
+    team.players = team.players.filter(p => String(p.id) !== String(player.id));
+    if (String(team.id) === String(buyer.id)) team.players.push(player);
+  });
+  state.transferHistory.push({
+    playerId: player.id, playerName: player.name,
+    fromTeamId: previousTeamId, fromName: seller.name,
+    toTeamId: buyer.id, toName: buyer.name,
+    fee: offer, date: state.day.toISOString().slice(0, 10)
+  });
+  saveTransferCareer();
+  alert("Contratação concluída! " + player.name + " agora faz parte do " + buyer.name + ".");
+  renderMarket();
 }
 
 // CLASSIFICAÇÃO
