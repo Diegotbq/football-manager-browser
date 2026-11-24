@@ -226,6 +226,26 @@
           "club": "Sevilla FC",
           "url": "https://www.laliga.com/clubes/sevilla-fc/plantilla",
           "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "Getafe CF",
+          "url": "https://www.laliga.com/clubes/getafe-cf/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "Real Betis",
+          "url": "https://www.laliga.com/clubes/real-betis/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "Atlético de Madrid",
+          "url": "https://www.laliga.com/clubes/atletico-de-madrid/plantilla",
+          "verifiedAt": "2026-11-24"
+        },
+        {
+          "club": "Real Madrid",
+          "url": "https://www.laliga.com/clubes/real-madrid/plantilla",
+          "verifiedAt": "2026-11-24"
         }
       ],
       "verifiedSquadPageExamplesNote": "Exemplos de páginas oficiais de plantilla localizadas e confirmadas no índice público em 2026-11-24. A lista é parcial e não representa auditoria dos 20 clubes nem prova de completude; validar a página vigente de cada clube antes de importar."
