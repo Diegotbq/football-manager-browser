@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "database.json"
+      - "docs/openfootballbase-roster-import.md"
       - "scripts/check-league-readiness.mjs"
       - "scripts/test-league-readiness.mjs"
       - "scripts/stage-openfootballbase.py"
