@@ -20,6 +20,12 @@ def reconcile(database: dict, staging: dict) -> dict:
     teams = {str(team.get("id")): team for team in database.get("teams", [])}
     by_team: dict[str, list[dict]] = defaultdict(list)
     qid_rows: dict[str, list[dict]] = defaultdict(list)
+    all_qid_counts = Counter(
+        str(candidate.get("sourcePlayerQid"))
+        for candidate in staging.get("candidates", [])
+        if candidate.get("sourcePlayerQid")
+    )
+    age_update_plan = []
     skipped_status = Counter()
     nationality_pairs = Counter()
     missing_nationality_source_values = Counter()
@@ -54,6 +60,7 @@ def reconcile(database: dict, staging: dict) -> dict:
                 existing_by_name[key].append(player)
 
         eligible = [c for c in candidates if c.get("eligibleForManualReview")]
+        eligible_name_counts = Counter(normalize_player_name(c.get("name")) for c in eligible)
         matched = 0
         unmatched = 0
         ambiguous = 0
@@ -70,6 +77,28 @@ def reconcile(database: dict, staging: dict) -> dict:
                 matched += 1
                 seen_existing.add(str(matches[0].get("id")))
                 existing_player = matches[0]
+                qid = str(candidate.get("sourcePlayerQid") or "")
+                if (
+                    existing_player.get("age") in (None, "", 0)
+                    and isinstance(candidate.get("age"), int)
+                    and candidate.get("birthDate")
+                    and qid
+                    and all_qid_counts[qid] == 1
+                    and eligible_name_counts[key] == 1
+                ):
+                    age_update_plan.append({
+                        "teamId": team_id,
+                        "teamName": team.get("name"),
+                        "playerId": existing_player.get("id"),
+                        "playerName": existing_player.get("name"),
+                        "age": candidate["age"],
+                        "birthDate": candidate["birthDate"],
+                        "sourcePlayerQid": qid,
+                        "sourceTitle": candidate.get("sourceTitle"),
+                        "sourceRevision": candidate.get("sourceRevision"),
+                        "sourceLanguage": candidate.get("sourceLanguage"),
+                        "source": candidate.get("source"),
+                    })
                 if existing_player.get("age") in (None, "", 0):
                     missing_age += 1
                 elif candidate.get("age") is not None and existing_player.get("age") != candidate.get("age"):
@@ -134,6 +163,8 @@ def reconcile(database: dict, staging: dict) -> dict:
         "totals": dict(totals),
         "skippedCandidateStatusCounts": dict(skipped_status),
         "duplicateSourceIdentityCount": len(duplicate_qids),
+        "safeMissingAgeUpdateCount": len(age_update_plan),
+        "safeMissingAgeUpdates": age_update_plan,
         "nationalityDifferencePairs": dict(nationality_pairs.most_common()),
         "missingNationalitySourceValues": dict(missing_nationality_source_values.most_common()),
         "nationalityDifferenceExamples": difference_examples,
@@ -154,6 +185,7 @@ def main() -> int:
     args.out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"teamsCompared": report["teamsCompared"], "totals": report["totals"],
                       "duplicateSourceIdentityCount": report["duplicateSourceIdentityCount"],
+                      "safeMissingAgeUpdateCount": report["safeMissingAgeUpdateCount"],
                       "skippedCandidateStatusCounts": report["skippedCandidateStatusCounts"]},
                      ensure_ascii=False, indent=2))
     return 0
