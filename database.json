@@ -5,8 +5,8 @@
     "season": "2026/27",
     "currency": "EUR",
     "note": "Nomes e vínculos de elenco baseados em listas oficiais/publicadas para 2026/27. Idades não preenchidas quando não verificadas; overall e valores são estimativas fictícias de jogo.",
-    "dataStatus": "Elencos iniciais 2026/27 importados; conferir atualizações de mercado e registros durante a temporada.",
-    "lastDataReview": "2026-11-23"
+    "dataStatus": "20 clubes reais da Série A 2026 cadastrados; elencos dos 19 clubes adicionados ainda pendentes de validação individual. Overall, reputação e orçamentos são estimativas de jogo.",
+    "lastDataReview": "2026-11-24"
   },
   "leagues": [
     {
@@ -16,7 +16,26 @@
       "type": "league",
       "format": "round_robin",
       "teams": [
-        "flamengo"
+        "flamengo",
+        "athletico-pr",
+        "atletico-mg",
+        "bahia",
+        "botafogo",
+        "chapecoense",
+        "corinthians",
+        "coritiba",
+        "cruzeiro",
+        "fluminense",
+        "gremio",
+        "internacional",
+        "mirassol",
+        "palmeiras",
+        "rb-bragantino",
+        "remo",
+        "santos",
+        "sao-paulo",
+        "vasco",
+        "vitoria"
       ],
       "points": {
         "win": 3,
@@ -1281,6 +1300,234 @@
           "injured": false
         }
       ]
+    },
+    {
+      "id": "athletico-pr",
+      "name": "Athletico Paranaense",
+      "shortName": "CAP",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Arena da Baixada",
+      "budget": 62000000,
+      "reputation": 78,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "atletico-mg",
+      "name": "Atlético Mineiro",
+      "shortName": "CAM",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Arena MRV",
+      "budget": 78000000,
+      "reputation": 82,
+      "color": "#222222",
+      "players": []
+    },
+    {
+      "id": "bahia",
+      "name": "Bahia",
+      "shortName": "BAH",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Arena Fonte Nova",
+      "budget": 68000000,
+      "reputation": 77,
+      "color": "#174a8b",
+      "players": []
+    },
+    {
+      "id": "botafogo",
+      "name": "Botafogo",
+      "shortName": "BOT",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Estádio Nilton Santos",
+      "budget": 74000000,
+      "reputation": 80,
+      "color": "#111111",
+      "players": []
+    },
+    {
+      "id": "chapecoense",
+      "name": "Chapecoense",
+      "shortName": "CHA",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Arena Condá",
+      "budget": 52000000,
+      "reputation": 68,
+      "color": "#168447",
+      "players": []
+    },
+    {
+      "id": "corinthians",
+      "name": "Corinthians",
+      "shortName": "COR",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Neo Química Arena",
+      "budget": 76000000,
+      "reputation": 81,
+      "color": "#eeeeee",
+      "players": []
+    },
+    {
+      "id": "coritiba",
+      "name": "Coritiba",
+      "shortName": "CFC",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Estádio Couto Pereira",
+      "budget": 55000000,
+      "reputation": 70,
+      "color": "#168447",
+      "players": []
+    },
+    {
+      "id": "cruzeiro",
+      "name": "Cruzeiro",
+      "shortName": "CRU",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Mineirão",
+      "budget": 76000000,
+      "reputation": 81,
+      "color": "#1766b1",
+      "players": []
+    },
+    {
+      "id": "fluminense",
+      "name": "Fluminense",
+      "shortName": "FLU",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Maracanã",
+      "budget": 75000000,
+      "reputation": 80,
+      "color": "#7b1832",
+      "players": []
+    },
+    {
+      "id": "gremio",
+      "name": "Grêmio",
+      "shortName": "GRE",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Arena do Grêmio",
+      "budget": 72000000,
+      "reputation": 78,
+      "color": "#4b9acb",
+      "players": []
+    },
+    {
+      "id": "internacional",
+      "name": "Internacional",
+      "shortName": "INT",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Beira-Rio",
+      "budget": 72000000,
+      "reputation": 78,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "mirassol",
+      "name": "Mirassol",
+      "shortName": "MIR",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Estádio José Maria de Campos Maia",
+      "budget": 58000000,
+      "reputation": 70,
+      "color": "#d6b52b",
+      "players": []
+    },
+    {
+      "id": "palmeiras",
+      "name": "Palmeiras",
+      "shortName": "PAL",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Allianz Parque",
+      "budget": 86000000,
+      "reputation": 87,
+      "color": "#176b45",
+      "players": []
+    },
+    {
+      "id": "rb-bragantino",
+      "name": "Red Bull Bragantino",
+      "shortName": "RBB",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Estádio Cícero de Souza Marques",
+      "budget": 68000000,
+      "reputation": 76,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "remo",
+      "name": "Remo",
+      "shortName": "REM",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Estádio Mangueirão",
+      "budget": 54000000,
+      "reputation": 68,
+      "color": "#174a8b",
+      "players": []
+    },
+    {
+      "id": "santos",
+      "name": "Santos",
+      "shortName": "SAN",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Vila Belmiro",
+      "budget": 72000000,
+      "reputation": 78,
+      "color": "#eeeeee",
+      "players": []
+    },
+    {
+      "id": "sao-paulo",
+      "name": "São Paulo",
+      "shortName": "SAO",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "MorumBIS",
+      "budget": 80000000,
+      "reputation": 82,
+      "color": "#d71920",
+      "players": []
+    },
+    {
+      "id": "vasco",
+      "name": "Vasco da Gama",
+      "shortName": "VAS",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "São Januário",
+      "budget": 70000000,
+      "reputation": 77,
+      "color": "#111111",
+      "players": []
+    },
+    {
+      "id": "vitoria",
+      "name": "Vitória",
+      "shortName": "VIT",
+      "country": "Brasil",
+      "leagueId": "brasileirao",
+      "stadium": "Barradão",
+      "budget": 60000000,
+      "reputation": 72,
+      "color": "#d71920",
+      "players": []
     }
   ],
   "players": [
