@@ -1574,7 +1574,20 @@ function ensureGeneratedFixtures() {
 
 // COPAS NACIONAIS — mata-mata com jogos do usuário e simulação dos demais confrontos
 function ensureCupCompetitions() {
-  if (state.cupCompetitions.length) { advanceCupTournaments(); return; }
+  if (state.cupCompetitions.length) {
+    const europeanPool=state.db.leagues.find(l=>l.id==="champions-league");
+    const europeanCup=state.cupCompetitions.find(c=>c.id==="champions-league");
+    const europeanFixtures=state.generatedFixtures.filter(f=>f.cupId==="champions-league");
+    const hasPlayedEuropeanTie=europeanFixtures.some(f=>state.matchHistory.some(m=>m.fixtureId===f.id));
+    if(europeanCup&&europeanPool?.teams?.length&&!hasPlayedEuropeanTie&&Number(europeanCup.round||0)===0){
+      europeanCup.participants=[...europeanPool.teams];
+      europeanCup.activeTeams=[...europeanPool.teams];
+      state.generatedFixtures=state.generatedFixtures.filter(f=>f.cupId!=="champions-league");
+    }
+    advanceCupTournaments();
+    saveTransferCareer();
+    return;
+  }
   const definitions = [
     {id:"copa-do-brasil",name:"Copa do Brasil",leagueId:"brasileirao"},
     {id:"fa-cup",name:"FA Cup",leagueId:"premier-league"},
