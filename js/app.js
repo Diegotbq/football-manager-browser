@@ -1802,7 +1802,7 @@ function advanceCupTournaments() {
         if(teams.length===1){cup.champion=teams[0];cup.finished=true;break;}
         const pairs=[];
         if(teams.length>16){cup.byes=teams.slice(8);for(let i=0;i<8;i+=2)pairs.push([teams[i],teams[i+1]]);}
-        else{cup.byes=[];for(let i=0;i<teams.length;i+=2)pairs.push([teams[i],teams[i+1]]);}
+        else{if(!Array.isArray(cup.byes)||!cup.byes.length)cup.byes=[];for(let i=0;i<teams.length;i+=2)pairs.push([teams[i],teams[i+1]]);}
         pairs.forEach((pair,index)=>state.generatedFixtures.push({id:"cup-"+cup.id+"-"+cup.round+"-"+index,cupId:cup.id,cupRound:cup.round,competition:cup.name,round:cupRoundName(teams.length),date:cupDate(cup.round),homeTeamId:pair[0],awayTeamId:pair[1],generated:true,isCup:true}));
         fixtures=state.generatedFixtures.filter(f=>f.cupId===cup.id&&f.cupRound===cup.round);
       }
