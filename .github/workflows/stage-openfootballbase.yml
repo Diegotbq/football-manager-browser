@@ -87,6 +87,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: openfootballbase-candidates-${{ inputs.season || '2026-27' }}
-          path: |\n            data/staging/openfootballbase-candidates.json\n            data/staging/openfootballbase-reconciliation.json
+          path: |
+            data/staging/openfootballbase-candidates.json
+            data/staging/openfootballbase-reconciliation.json
           if-no-files-found: error
           retention-days: 14
