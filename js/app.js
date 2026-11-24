@@ -12,7 +12,8 @@ const state = {
   loanRecords: [],
   trainingRecords: {},
   academyProspects: [],
-  scoutingReports: []
+  scoutingReports: [],
+  playerAttributes: {}
 };
 
 const $ = selector => document.querySelector(selector);
@@ -476,16 +477,18 @@ function renderSquad() {
   const squadContent = roster.length ? `
     <div class="card">
       <div class="section-head"><h2>Elenco principal</h2><span class="tag">${roster.length} jogadores</span></div>
-      <p class="subtle">Folha salarial estimada: ${money(totalWage)} por semana. Os salários são valores de simulação do jogo.</p>
+      <p class="subtle">Folha salarial estimada: ${money(totalWage)} por semana. Os seis atributos são estimativas de jogo, distribuídas conforme a posição — não são estatísticas oficiais. Treinos podem melhorá-los.</p>
       <div style="overflow-x:auto">
         <table class="table">
-          <thead><tr><th>JOGADOR</th><th>POS</th><th>IDADE</th><th>OVR</th><th>SALÁRIO/SEM.</th><th>CONTRATO ATÉ</th><th>TREINO</th><th>AÇÃO</th></tr></thead>
+          <thead><tr><th>JOGADOR</th><th>POS</th><th>IDADE</th><th>OVR</th><th>VELOC.</th><th>FINAL.</th><th>PASSE</th><th>DRIBLE</th><th>DEFESA</th><th>FÍSICO</th><th>SALÁRIO/SEM.</th><th>CONTRATO ATÉ</th><th>TREINO</th><th>AÇÃO</th></tr></thead>
           <tbody>
             ${roster.map(p=>{
               const c=getPlayerContract(p);
+              const a=getPlayerAttributes(p);
               return `<tr>
                 <td class="club-name">${p.name}</td><td>${p.position||"—"}</td>
                 <td>${p.age==null?"—":p.age}</td><td class="positive">${p.overall||"—"}</td>
+                <td>${a.pace}</td><td>${a.shooting}</td><td>${a.passing}</td><td>${a.dribbling}</td><td>${a.defending}</td><td>${a.physical}</td>
                 <td>${money(c.weeklyWage)}</td><td>${new Date(c.expiresAt+"T12:00:00").toLocaleDateString("pt-BR")}</td>
                 <td><button class="secondary-btn" onclick="trainPlayer('${p.id}')">TREINAR</button></td>
                 <td><button class="primary-btn" onclick="renewPlayerContract('${p.id}')">RENOVAR</button></td>
@@ -567,18 +570,25 @@ function trainPlayer(playerId) {
     const elapsed = Math.floor((new Date(today + "T12:00:00") - new Date(previous.date + "T12:00:00")) / 86400000);
     if (elapsed < 7) { alert("Este jogador já treinou recentemente. Próximo treino em " + (7 - elapsed) + " dia(s)."); return; }
   }
-  const choices = ["Finalização", "Passe", "Defesa", "Físico", "Controle de bola"];
-  const choice = prompt("Escolha o foco: 1 Finalização, 2 Passe, 3 Defesa, 4 Físico, 5 Controle de bola", "1");
+  const choices = ["Finalização", "Passe", "Defesa", "Físico", "Controle de bola", "Velocidade"];
+  const choice = prompt("Escolha o foco: 1 Finalização, 2 Passe, 3 Defesa, 4 Físico, 5 Controle de bola, 6 Velocidade", "1");
   if (choice === null) return;
   const index = Number(choice) - 1;
   if (!Number.isInteger(index) || index < 0 || index >= choices.length) { alert("Escolha uma opção de 1 a 5."); return; }
   const age = Number(player.age) || 25, rating = Number(player.overall) || 50;
   const chance = Math.max(0.12, Math.min(0.72, 0.68 - Math.max(0, age - 21) * 0.025 - Math.max(0, rating - 75) * 0.012));
-  const improved = Math.random() < chance && rating < 99;
-  if (improved) { player.overall = Math.min(99, rating + 1); player.marketValue = Math.round((Number(player.marketValue) || 50000) * 1.08); }
-  state.trainingRecords[player.id] = { date: today, focus: choices[index], improved };
+  const improved = Math.random() < chance;
+  const attributeKey = ["shooting","passing","defending","physical","dribbling","pace"][index];
+  const attributes = getPlayerAttributes(player);
+  const attributeImproved = improved && attributes[attributeKey] < 99;
+  if (attributeImproved) {
+    attributes[attributeKey] = Math.min(99, attributes[attributeKey] + 2);
+    if (rating < 99) player.overall = Math.min(99, rating + 1);
+    player.marketValue = Math.round((Number(player.marketValue) || 50000) * 1.08);
+  }
+  state.trainingRecords[player.id] = { date: today, focus: choices[index], improved: attributeImproved };
   saveTransferCareer();
-  alert(improved ? player.name + " evoluiu para overall " + player.overall + "!" : "Treino concluído! O jogador trabalhou " + choices[index] + ", mas não ganhou overall desta vez.");
+  alert(attributeImproved ? player.name + " melhorou " + choices[index] + "! Novo atributo: " + attributes[attributeKey] + "/100" + (player.overall > rating ? " · Overall " + player.overall : "") : "Treino concluído! " + player.name + " trabalhou " + choices[index] + ", mas não evoluiu desta vez.");
   renderSquad();
 }
 
@@ -701,7 +711,8 @@ function saveTransferCareer() {
       loanRecords: state.loanRecords,
       trainingRecords: state.trainingRecords,
       academyProspects: state.academyProspects,
-      scoutingReports: state.scoutingReports
+      scoutingReports: state.scoutingReports,
+      playerAttributes: state.playerAttributes
     }));
   } catch (_) {
     alert("Não foi possível salvar a transferência neste dispositivo. Verifique o espaço disponível.");
@@ -727,6 +738,7 @@ function loadTransferCareer() {
     state.trainingRecords = saved.trainingRecords && typeof saved.trainingRecords === "object" ? saved.trainingRecords : {};
     state.academyProspects = Array.isArray(saved.academyProspects) ? saved.academyProspects : [];
     state.scoutingReports = Array.isArray(saved.scoutingReports) ? saved.scoutingReports : [];
+    state.playerAttributes = saved.playerAttributes && typeof saved.playerAttributes === "object" ? saved.playerAttributes : {};
     state.academyProspects.forEach(p => {
       if (!state.db.players.some(existing => String(existing.id) === String(p.id))) state.db.players.push(p);
       const team = state.db.teams.find(t => String(t.id) === String(p.teamId));
@@ -739,7 +751,32 @@ function loadTransferCareer() {
     state.trainingRecords = {};
     state.academyProspects = [];
     state.scoutingReports = [];
+    state.playerAttributes = {};
   }
+}
+
+function getPlayerAttributes(player) {
+  if (!player) return {pace:50,shooting:50,passing:50,dribbling:50,defending:50,physical:50};
+  if (state.playerAttributes[player.id]) return state.playerAttributes[player.id];
+  const overall = Math.max(25, Math.min(90, Number(player.overall) || 50));
+  const position = String(player.position || "").toUpperCase();
+  const boosts = {
+    pace: ["LW","RW","LB","RB"].includes(position) ? 13 : ["CB","DM"].includes(position) ? -3 : 3,
+    shooting: ["ST","CF","LW","RW","AM"].includes(position) ? 13 : ["GK","CB","LB","RB"].includes(position) ? -10 : 0,
+    passing: ["CM","AM","DM"].includes(position) ? 11 : position === "GK" ? -8 : 0,
+    dribbling: ["LW","RW","AM"].includes(position) ? 12 : ["CB","GK"].includes(position) ? -8 : 0,
+    defending: ["CB","LB","RB","DM"].includes(position) ? 14 : ["ST","LW","RW"].includes(position) ? -12 : 0,
+    physical: ["CB","ST","DM"].includes(position) ? 9 : 2
+  };
+  const seed = String(player.id).split("").reduce((sum,ch)=>sum+ch.charCodeAt(0),0);
+  const keys = ["pace","shooting","passing","dribbling","defending","physical"];
+  const attrs = {};
+  keys.forEach((key,index) => {
+    const variation = ((seed + index * 7) % 13) - 6;
+    attrs[key] = Math.max(25, Math.min(99, Math.round(overall + boosts[key] + variation)));
+  });
+  state.playerAttributes[player.id] = attrs;
+  return attrs;
 }
 
 function scoutPlayer(playerId) {
