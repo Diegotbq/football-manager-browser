@@ -23131,7 +23131,15 @@
           "overall": 66,
           "marketValue": 78408000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 22,
+          "nationality": "FRA",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/johaneko-louis-jean",
+            "dateOfBirth": "2004-06-28",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-11",
@@ -23140,7 +23148,15 @@
           "overall": 68,
           "marketValue": 83232000,
           "teamId": "athletic-club",
-          "injured": true
+          "injured": true,
+          "age": 24,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/unai-egiluz",
+            "dateOfBirth": "2002-03-19",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-12",
@@ -23149,7 +23165,15 @@
           "overall": 77,
           "marketValue": 106722000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 25,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/benat-prados",
+            "dateOfBirth": "2001-02-08",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-13",
@@ -116395,7 +116419,15 @@
       "overall": 66,
       "marketValue": 78408000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 22,
+      "nationality": "FRA",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/johaneko-louis-jean",
+        "dateOfBirth": "2004-06-28",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-11",
@@ -116404,7 +116436,15 @@
       "overall": 68,
       "marketValue": 83232000,
       "teamId": "athletic-club",
-      "injured": true
+      "injured": true,
+      "age": 24,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/unai-egiluz",
+        "dateOfBirth": "2002-03-19",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-12",
@@ -116413,7 +116453,15 @@
       "overall": 77,
       "marketValue": 106722000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 25,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/benat-prados",
+        "dateOfBirth": "2001-02-08",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-13",
