@@ -15,6 +15,12 @@ const db = JSON.parse(fs.readFileSync(file, "utf8"));
 const teams = Array.isArray(db.teams) ? db.teams : [];
 const players = Array.isArray(db.players) ? db.players : [];
 
+// Valores sentinela não contam como metadados reais preenchidos.
+const hasUsableValue = value => {
+  const normalized = String(value ?? "").trim().toLowerCase();
+  return normalized.length > 0 && !["—", "-", "n/a", "na", "null", "unknown"].includes(normalized);
+};
+
 const teamIds = new Set(teams.map(team => String(team.id)));
 const counts = new Map();
 const ids = new Set();
@@ -40,10 +46,10 @@ for (const player of players) {
     playerMetadataByTeam.set(teamId, { name: 0, position: 0, age: 0, nationality: 0 });
   }
   const missing = playerMetadataByTeam.get(teamId);
-  if (!String(player.name || "").trim()) missing.name += 1;
-  if (!String(player.position || "").trim()) missing.position += 1;
+  if (!hasUsableValue(player.name)) missing.name += 1;
+  if (!hasUsableValue(player.position)) missing.position += 1;
   if (!Number.isFinite(Number(player.age)) || Number(player.age) <= 0) missing.age += 1;
-  if (!String(player.nationality || "").trim()) missing.nationality += 1;
+  if (!hasUsableValue(player.nationality)) missing.nationality += 1;
 }
 
 const squadReferenceIssues = [];
