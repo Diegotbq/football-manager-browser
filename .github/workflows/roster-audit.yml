@@ -1,0 +1,49 @@
+name: Roster data audit
+
+on:
+  push:
+    paths:
+      - "database.json"
+      - "scripts/audit-rosters.mjs"
+      - "scripts/check-league-readiness.mjs"
+      - ".github/workflows/roster-audit.yml"
+  pull_request:
+    paths:
+      - "database.json"
+      - "scripts/audit-rosters.mjs"
+      - "scripts/check-league-readiness.mjs"
+      - ".github/workflows/roster-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Audit squads and league coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generate roster audit
+        run: |
+          mkdir -p data
+          WRITE_ROSTER_AUDIT=1 node scripts/audit-rosters.mjs database.json
+
+      - name: Check league readiness
+        run: node scripts/check-league-readiness.mjs database.json
+
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: roster-audit
+          path: data/roster-audit.json
+          if-no-files-found: warn
+          retention-days: 30
