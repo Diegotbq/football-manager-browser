@@ -42,6 +42,9 @@ for (const team of teams) {
   const teamId = String(team.id);
   const expected = playerIdsByTeam.get(teamId) || [];
   const actualPlayers = Array.isArray(team.players) ? team.players : [];
+  const nonObjectEntries = actualPlayers.filter(player => !player || typeof player !== "object").length;
+  const wrongTeamObjects = actualPlayers.filter(player => player && typeof player === "object" &&
+    String(player.teamId || "") !== teamId).length;
   const actual = actualPlayers.map(player => String(
     player && typeof player === "object" ? player.id || "" : player || ""
   ));
@@ -50,13 +53,15 @@ for (const team of teams) {
   const missing = expected.filter(id => !actualSet.has(id));
   const unexpected = actual.filter(id => !expectedSet.has(id));
   const duplicateSquadIds = actual.filter((id, index) => id && actual.indexOf(id) !== index);
-  if (missing.length || unexpected.length || duplicateSquadIds.length) {
+  if (missing.length || unexpected.length || duplicateSquadIds.length || nonObjectEntries || wrongTeamObjects) {
     squadReferenceIssues.push({
       teamId: team.id,
       team: team.name,
       missingFromSquad: missing.length,
       unexpectedInSquad: unexpected.length,
-      duplicateInSquad: duplicateSquadIds.length
+      duplicateInSquad: duplicateSquadIds.length,
+      nonObjectEntries,
+      wrongTeamObjects
     });
   }
 }
