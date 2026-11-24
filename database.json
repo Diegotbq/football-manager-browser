@@ -23182,7 +23182,15 @@
           "overall": 82,
           "marketValue": 121032000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 26,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/o-sancet-1",
+            "dateOfBirth": "2000-04-25",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-14",
@@ -23191,7 +23199,15 @@
           "overall": 78,
           "marketValue": 109512000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 33,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/r-de-galarreta",
+            "dateOfBirth": "1993-08-06",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-15",
@@ -23200,7 +23216,15 @@
           "overall": 76,
           "marketValue": 103968000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 23,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/mikel-jauregizar",
+            "dateOfBirth": "2003-11-13",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-16",
@@ -116470,7 +116494,15 @@
       "overall": 82,
       "marketValue": 121032000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 26,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/o-sancet-1",
+        "dateOfBirth": "2000-04-25",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-14",
@@ -116479,7 +116511,15 @@
       "overall": 78,
       "marketValue": 109512000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 33,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/r-de-galarreta",
+        "dateOfBirth": "1993-08-06",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-15",
@@ -116488,7 +116528,15 @@
       "overall": 76,
       "marketValue": 103968000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 23,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/mikel-jauregizar",
+        "dateOfBirth": "2003-11-13",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-16",
