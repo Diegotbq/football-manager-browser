@@ -590,6 +590,7 @@ function trainPlayer(playerId) {
     if (rating < 99) player.overall = Math.min(99, rating + 1);
     player.marketValue = Math.round((Number(player.marketValue) || 50000) * 1.08);
   }
+  condition.fitness=Math.max(0,condition.fitness-8);
   state.trainingRecords[player.id] = { date: today, focus: choices[index], improved: attributeImproved };
   saveTransferCareer();
   alert(attributeImproved ? player.name + " melhorou " + choices[index] + "! Novo atributo: " + attributes[attributeKey] + "/100" + (player.overall > rating ? " · Overall " + player.overall : "") : "Treino concluído! " + player.name + " trabalhou " + choices[index] + ", mas não evoluiu desta vez.");
@@ -786,14 +787,14 @@ function applyMatchConditionEffects(m) {
   }
   const managed=String(state.db.userClubId||state.selectedClubId),sides=[{teamId:m.homeId,ids:String(m.homeId)===managed?m.lineup:m.aiLineup},{teamId:m.awayId,ids:String(m.awayId)===managed?m.lineup:m.aiLineup}];
   sides.forEach(side=>{const ids=side.ids||[];if(!ids.length)return;
-    if(Math.random()<0.00045){const id=ids[Math.floor(Math.random()*ids.length)],p=state.db.players.find(x=>String(x.id)===String(id));if(p){const days=3+Math.floor(Math.random()*19);getPlayerCondition(p).injuryDays=days;m.events.unshift({minute:m.minute,text:"🚑 "+p.name+" sente uma lesão e ficará fora por "+days+" dias."});}}
+    if(Math.random()<0.00045){const id=ids[Math.floor(Math.random()*ids.length)],p=state.db.players.find(x=>String(x.id)===String(id));if(p){const days=3+Math.floor(Math.random()*19);getPlayerCondition(p).injuryDays=days;const isHome=String(side.teamId)===String(m.homeId),lineup=isHome?m.lineup:m.aiLineup;if(Array.isArray(lineup)){const index=lineup.findIndex(x=>String(x)===String(p.id));if(index>=0)lineup.splice(index,1);}m.events.unshift({minute:m.minute,text:"🚑 "+p.name+" sente uma lesão e ficará fora por "+days+" dias. Precisa ser substituído!"});}}
     if(Math.random()<0.008){const id=ids[Math.floor(Math.random()*ids.length)],p=state.db.players.find(x=>String(x.id)===String(id));if(p){const condition=getPlayerCondition(p);condition.yellowCards++;m.events.unshift({minute:m.minute,text:"🟨 Cartão amarelo para "+p.name+"."});if(condition.yellowCards>=5){condition.yellowCards=0;condition.suspendedMatches=Math.max(condition.suspendedMatches,1);m.events.unshift({minute:m.minute,text:"⛔ "+p.name+" atingiu cinco amarelos e está suspenso por uma partida."});}}}
-    if(Math.random()<0.00025){const id=ids[Math.floor(Math.random()*ids.length)],p=state.db.players.find(x=>String(x.id)===String(id));if(p){getPlayerCondition(p).suspendedMatches=Math.max(getPlayerCondition(p).suspendedMatches,2);m.sentOffIds=m.sentOffIds||[];m.sentOffIds.push(String(p.id));m.events.unshift({minute:m.minute,text:"🟥 Cartão vermelho! "+p.name+" expulso e suspenso por dois jogos."});}}
+    if(Math.random()<0.00025){const id=ids[Math.floor(Math.random()*ids.length)],p=state.db.players.find(x=>String(x.id)===String(id));if(p){getPlayerCondition(p).suspendedMatches=Math.max(getPlayerCondition(p).suspendedMatches,2);m.sentOffIds=m.sentOffIds||[];m.sentOffIds.push(String(p.id));const isHome=String(side.teamId)===String(m.homeId),lineup=isHome?m.lineup:m.aiLineup;if(Array.isArray(lineup)){const index=lineup.findIndex(x=>String(x)===String(p.id));if(index>=0)lineup.splice(index,1);}m.events.unshift({minute:m.minute,text:"🟥 Cartão vermelho! "+p.name+" expulso e suspenso por dois jogos."});}}
   });
 }
 function finishMatchSuspensions(m) {
   const teams=[m.homeId,m.awayId];
-  teams.forEach(teamId=>state.db.players.filter(p=>String(p.teamId)===String(teamId)).forEach(p=>{const c=getPlayerCondition(p);if(c.suspendedMatches>0&&!m.sentOffIds?.includes(String(p.id)))c.suspendedMatches=Math.max(0,c.suspendedMatches-1);}));
+  teams.forEach(teamId=>state.db.players.filter(p=>String(p.teamId)===String(teamId)).forEach(p=>{const c=getPlayerCondition(p);if(c.suspendedMatches>0&&m.suspensionsAtKickoff?.includes(String(p.id)))c.suspendedMatches=Math.max(0,c.suspendedMatches-1);}));
 }
 function getPlayerAttributes(player) {
   if (!player) return {pace:50,shooting:50,passing:50,dribbling:50,defending:50,physical:50};
@@ -1253,7 +1254,7 @@ function kickoffMatch() {
   if(required===0){alert("Este clube ainda não tem jogadores cadastrados no banco de dados.");return;}
   if(starters.length!==required||new Set(starters).size!==required){alert("Selecione "+required+" titulares diferentes.");return;}
   const bench=[...document.querySelectorAll("[data-sub]")].map(x=>x.value).filter(Boolean).filter(id=>!starters.includes(id)&&!playerUnavailable(state.db.players.find(p=>String(p.id)===String(id))));
-  m.lineup=starters;m.bench=[...new Set(bench)].slice(0,7);const opponentId=String(m.homeId)===String(state.db.userClubId||state.selectedClubId)?m.awayId:m.homeId;const opponentPlayers=state.db.players.filter(p=>String(p.teamId)===String(opponentId)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));const eligibleOpponent=opponentPlayers.filter(p=>!playerUnavailable(p));m.aiLineup=eligibleOpponent.slice(0,11).map(p=>p.id);m.aiBench=eligibleOpponent.slice(11,18).map(p=>p.id);m.aiSubstitutions=[];m.aiTactics={mentality:"balanced",pressing:"medium",defensiveLine:"standard",tempo:"normal",style:"balanced"};m.aiLastTacticChange=0;m.sentOffIds=[];m.setup=false;m.paused=false;
+  m.lineup=starters;m.bench=[...new Set(bench)].slice(0,7);const opponentId=String(m.homeId)===String(state.db.userClubId||state.selectedClubId)?m.awayId:m.homeId;const opponentPlayers=state.db.players.filter(p=>String(p.teamId)===String(opponentId)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));const eligibleOpponent=opponentPlayers.filter(p=>!playerUnavailable(p));m.aiLineup=eligibleOpponent.slice(0,11).map(p=>p.id);m.aiBench=eligibleOpponent.slice(11,18).map(p=>p.id);m.aiSubstitutions=[];m.aiTactics={mentality:"balanced",pressing:"medium",defensiveLine:"standard",tempo:"normal",style:"balanced"};m.aiLastTacticChange=0;m.sentOffIds=[];m.suspensionsAtKickoff=state.db.players.filter(p=>[String(m.homeId),String(m.awayId)].includes(String(p.teamId))&&getPlayerCondition(p).suspendedMatches>0).map(p=>String(p.id));m.setup=false;m.paused=false;
   state.savedLineups[String(state.db.userClubId||state.selectedClubId)]={formation:m.formation||"4-3-3",starters:[...m.lineup],bench:[...m.bench],instructions:{...(m.instructions||{})}};saveTransferCareer();
   m.events.unshift({minute:0,text:"Escalação confirmada. Começa a partida!"});runMatchClock();renderMatch();
 }
