@@ -10,7 +10,8 @@ const state = {
   transferHistory: [],
   contracts: {},
   loanRecords: [],
-  trainingRecords: {}
+  trainingRecords: {},
+  academyProspects: []
 };
 
 const $ = selector => document.querySelector(selector);
@@ -497,7 +498,51 @@ function renderSquad() {
   setPage("Elenco / Contratos", `
     <p class="view-intro">Gerencie os jogadores, acompanhe os salários e renove contratos do ${userClub().name}.</p>
     ${squadContent}
+    ${renderYouthAcademy()}
   `);
+}
+
+function renderYouthAcademy() {
+  const prospects = state.academyProspects.filter(p => String(p.teamId) === String(userClub().id));
+  return `
+    <div class="card">
+      <div class="section-head"><h2>Academia de jovens</h2><span class="tag">${prospects.length} promessa(s)</span></div>
+      <p class="subtle">Gere jovens fictícios para desenvolver no seu clube. Nomes, atributos e potencial são criados pelo jogo e não representam atletas reais.</p>
+      <button class="primary-btn" onclick="generateAcademyProspects()">OBSERVAR NOVA GERAÇÃO · ${money(250000)}</button>
+      ${prospects.length ? prospects.map(p=>`
+        <div class="fixture">
+          <div><strong>${p.name}</strong><div class="subtle">${p.position} · ${p.age} anos · Potencial ${p.potential}/100</div></div>
+          <span class="rating">${p.overall}</span>
+        </div>`).join("") : '<p class="subtle">Ainda não há jovens gerados nesta carreira.</p>'}
+    </div>`;
+}
+
+function generateAcademyProspects() {
+  const club=userClub();
+  const cost=250000;
+  if(!club)return;
+  if(Number(club.budget||0)<cost){alert("Orçamento insuficiente para observar a nova geração.");return;}
+  if(!confirm("Investir "+money(cost)+" na observação de três jovens? Os atletas gerados serão fictícios."))return;
+  const first=["Lucas","Gabriel","Matheus","João","Pedro","Rafael","Enzo","Caio","Miguel","Davi","Arthur","Bruno"];
+  const last=["Silva","Santos","Oliveira","Costa","Pereira","Almeida","Ferreira","Souza","Ribeiro","Carvalho"];
+  const positions=["GK","CB","LB","RB","DM","CM","AM","LW","RW","ST"];
+  const positionNames={GK:"Goleiro",CB:"Zagueiro",LB:"Lateral-esquerdo",RB:"Lateral-direito",DM:"Volante",CM:"Meio-campista",AM:"Meia-atacante",LW:"Ponta-esquerda",RW:"Ponta-direita",ST:"Atacante"};
+  const generated=[];
+  for(let i=0;i<3;i++){
+    const position=positions[Math.floor(Math.random()*positions.length)];
+    const age=16+Math.floor(Math.random()*3);
+    const overall=46+Math.floor(Math.random()*15)+Math.round((Number(club.reputation||50)-50)*0.08);
+    const player={id:"academy-"+club.id+"-"+Date.now()+"-"+i,name:first[Math.floor(Math.random()*first.length)]+" "+last[Math.floor(Math.random()*last.length)],position,positionName:positionNames[position],age,overall:Math.max(42,Math.min(65,overall)),potential:Math.min(92,Math.max(58,overall+12+Math.floor(Math.random()*19))),marketValue:100000+Math.floor(Math.random()*250000),teamId:club.id,nationality:"Brasil",injured:false,isAcademyGenerated:true};
+    generated.push(player);
+  }
+  club.budget=Number(club.budget||0)-cost;
+  state.academyProspects.push(...generated);
+  state.db.players.push(...generated);
+  if(!Array.isArray(club.players))club.players=[];
+  club.players.push(...generated);
+  saveTransferCareer();
+  alert("Três jovens chegaram à academia! Confira o elenco para começar a treiná-los.");
+  renderSquad();
 }
 
 function getPlayerContract(player) {
@@ -639,7 +684,8 @@ function saveTransferCareer() {
       history: state.transferHistory,
       contracts: state.contracts,
       loanRecords: state.loanRecords,
-      trainingRecords: state.trainingRecords
+      trainingRecords: state.trainingRecords,
+      academyProspects: state.academyProspects
     }));
   } catch (_) {
     alert("Não foi possível salvar a transferência neste dispositivo. Verifique o espaço disponível.");
@@ -663,11 +709,18 @@ function loadTransferCareer() {
     state.contracts = saved.contracts && typeof saved.contracts === "object" ? saved.contracts : {};
     state.loanRecords = Array.isArray(saved.loanRecords) ? saved.loanRecords : [];
     state.trainingRecords = saved.trainingRecords && typeof saved.trainingRecords === "object" ? saved.trainingRecords : {};
+    state.academyProspects = Array.isArray(saved.academyProspects) ? saved.academyProspects : [];
+    state.academyProspects.forEach(p => {
+      if (!state.db.players.some(existing => String(existing.id) === String(p.id))) state.db.players.push(p);
+      const team = state.db.teams.find(t => String(t.id) === String(p.teamId));
+      if (team && Array.isArray(team.players) && !team.players.some(existing => String(existing.id) === String(p.id))) team.players.push(p);
+    });
   } catch (_) {
     state.transferHistory = [];
     state.contracts = {};
     state.loanRecords = [];
     state.trainingRecords = {};
+    state.academyProspects = [];
   }
 }
 
