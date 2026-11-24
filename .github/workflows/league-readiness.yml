@@ -16,6 +16,9 @@ on:
       - "database.json"
       - "scripts/check-league-readiness.mjs"
       - "scripts/test-league-readiness.mjs"
+      - "scripts/stage-openfootballbase.py"
+      - "scripts/test-stage-openfootballbase.py"
+      - "data/sources/identity-registers.json"
       - ".github/workflows/league-readiness.yml"
   workflow_dispatch:
 
