@@ -1,0 +1,34 @@
+{
+  "approved": true,
+  "operation": "fill-missing-player-age-and-nationality-only",
+  "source": "LALIGA official player profiles",
+  "season": "2026/27",
+  "asOf": "2026-11-24",
+  "policy": "exact-player-id-name-and-team; calculate age from official date of birth; ISO alpha-3 nationality; fill missing fields only; never overwrite existing values",
+  "records": [
+    {
+      "playerId": "athletic-club-202627-01",
+      "name": "Unai Simón",
+      "teamId": "athletic-club",
+      "dateOfBirth": "1997-06-11",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/unai-simon"
+    },
+    {
+      "playerId": "athletic-club-202627-02",
+      "name": "Álex Padilla",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2003-09-01",
+      "nationality": "MEX",
+      "sourceUrl": "https://www.laliga.com/jugador/alex-padilla"
+    },
+    {
+      "playerId": "athletic-club-202627-03",
+      "name": "Dani Vivian",
+      "teamId": "athletic-club",
+      "dateOfBirth": "1999-07-05",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/vivian"
+    }
+  ]
+}
