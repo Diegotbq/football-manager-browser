@@ -1446,6 +1446,15 @@ function finishSeason() {
     });
   });
   (state.cupCompetitions||[]).forEach(cup=>{if(!cup.champion)return;const club=state.db.teams.find(t=>String(t.id)===String(cup.champion));if(club){const award=cup.id==="champions-league"?20000000:cup.id==="libertadores"?12000000:cup.id==="sudamericana"?8000000:5000000;club.budget=Number(club.budget||0)+award;club.reputation=Math.min(99,Number(club.reputation||50)+2);prizes.push({clubId:club.id,clubName:club.name,competition:cup.name,position:1,award,trophy:true});}});
+  const board=state.boardCareer,managedClub=userClub();
+  if(board&&managedClub&&String(board.clubId)===String(managedClub.id)&&!board.fired){
+    const league=(state.db.leagues||[]).find(l=>l.id===board.leagueId),table=league?seasonStandings(league):[],rank=table.findIndex(r=>String(r.id)===String(managedClub.id))+1;
+    if(rank>0){
+      if(rank<=board.targetPosition){board.confidence=Math.min(100,board.confidence+18);board.fanSupport=Math.min(100,board.fanSupport+12);board.review="Objetivo cumprido! A diretoria aprovou sua temporada, terminando em "+rank+"º lugar.";} 
+      else{board.confidence=Math.max(0,board.confidence-22);board.fanSupport=Math.max(0,board.fanSupport-12);board.review="Objetivo não alcançado: "+rank+"º lugar, com meta de terminar entre os "+board.targetPosition+" primeiros.";} 
+      if(board.confidence===0){board.fired=true;board.review+=" A diretoria decidiu encerrar seu trabalho.";} 
+    }
+  }
   const brazilLeague=state.db.leagues.find(l=>l.id==="brasileirao");
   const englandLeague=state.db.leagues.find(l=>l.id==="premier-league");
   const spainLeague=state.db.leagues.find(l=>l.id==="la-liga");
@@ -1459,6 +1468,16 @@ function finishSeason() {
     top.teams=[...top.teams.filter(id=>!relegated.includes(String(id))),...promoted];
     second.teams=[...second.teams.filter(id=>!promoted.includes(String(id))),...relegated];
     state.db.teams.forEach(t=>{if(top.teams.some(id=>String(id)===String(t.id)))t.leagueId=top.id;else if(second.teams.some(id=>String(id)===String(t.id)))t.leagueId=second.id;});
+  }
+  if(board&&managedClub&&!board.fired){
+    const nextLeague=(state.db.leagues||[]).find(l=>l.id===managedClub.leagueId&&l.type==="league");
+    if(nextLeague){
+      board.leagueId=nextLeague.id;board.leagueName=nextLeague.name;
+      const teams=(nextLeague.teams||[]).map(id=>state.db.teams.find(t=>String(t.id)===String(id))).filter(Boolean);
+      const ranked=[...teams].sort((a,b)=>Number(b.reputation||0)-Number(a.reputation||0));
+      const rank=Math.max(1,ranked.findIndex(t=>String(t.id)===String(managedClub.id))+1),count=Math.max(1,teams.length);
+      board.targetPosition=rank<=2?Math.min(3,count):rank<=Math.ceil(count*.35)?Math.max(3,Math.ceil(count*.3)):Math.max(1,Math.ceil(count*.65));
+    }
   }
   state.seasonHistory.unshift({season,prizes,promoted,relegated,continentalQualifiers:JSON.parse(JSON.stringify(state.continentalQualifiers))});
   const match=String(season).match(/(\d{4})\/(\d{2,4})/),year=match?Number(match[1])+1:state.day.getFullYear()+1;
