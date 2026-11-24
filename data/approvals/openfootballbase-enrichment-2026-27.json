@@ -1,0 +1,17 @@
+{
+  "approved": true,
+  "operation": "fill-missing-player-age-and-nationality-only",
+  "source": "OpenFootballBase",
+  "release": "data-1.24.6",
+  "season": "2026/27",
+  "ageCalculatedAsOf": "2026-11-24",
+  "matchPolicy": "exact-normalized-player-name-and-exact-club-name-within-same-league",
+  "identityPolicy": "require-unique-source-QID-and-exclude-repeated-identities",
+  "updatePolicy": "fill-only-missing-age-and-nationality; never-overwrite-nonempty-values",
+  "nationalityPolicy": "accept-uppercase-three-letter-codes-only",
+  "noPlayerAdditions": true,
+  "preserveExistingPositions": true,
+  "preserveExistingOverallAndMarketValue": true,
+  "preserveUnmatchedPlayers": true,
+  "sourceAttribution": true
+}
