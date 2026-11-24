@@ -77,7 +77,31 @@
       "dateOfBirth": "1990-02-10",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/jugador/yuri-b"
+    },
+    {
+      "playerId": "athletic-club-202627-10",
+      "name": "Johaneko Louis-Jean",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2004-06-28",
+      "nationality": "FRA",
+      "sourceUrl": "https://www.laliga.com/jugador/johaneko-louis-jean"
+    },
+    {
+      "playerId": "athletic-club-202627-11",
+      "name": "Unai Egiluz",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2002-03-19",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/unai-egiluz"
+    },
+    {
+      "playerId": "athletic-club-202627-12",
+      "name": "Beñat Prados",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2001-02-08",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/benat-prados"
     }
   ],
-  "approvalRevision": 4
+  "approvalRevision": 5
 }
