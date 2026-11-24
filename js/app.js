@@ -1639,9 +1639,28 @@ function ensureCupCompetitions() {
       {id:"europa-league",name:"UEFA Europa League",leagueId:"premier-league",teams:secondary.europa},
       {id:"conference-league",name:"UEFA Conference League",leagueId:"premier-league",teams:secondary.conference}
     ];
+    const domesticCups=[
+      {id:"coupe-de-france",name:"Coupe de France",leagueId:"ligue-1"},
+      {id:"knvb-beker",name:"KNVB Beker",leagueId:"eredivisie"},
+      {id:"taca-de-portugal",name:"Taça de Portugal",leagueId:"primeira-liga"},
+      {id:"belgian-cup",name:"Belgian Cup",leagueId:"belgian-pro-league"},
+      {id:"scottish-cup",name:"Scottish Cup",leagueId:"scottish-premiership"},
+      {id:"swiss-cup",name:"Swiss Cup",leagueId:"swiss-super-league"},
+      {id:"turkish-cup",name:"Turkish Cup",leagueId:"super-lig"},
+      {id:"croatian-cup",name:"Croatian Cup",leagueId:"hnl-croatia"}
+    ];
     missing.forEach(def=>{
       if(!state.cupCompetitions.some(cup=>cup.id===def.id)&&def.teams.length>=2){
         state.cupCompetitions.push({id:def.id,name:def.name,leagueId:def.leagueId,participants:[...def.teams],activeTeams:[...def.teams],round:0,finished:false,champion:null,byes:[]});
+      }
+    });
+    domesticCups.forEach(def=>{
+      const league=state.db.leagues.find(item=>item.id===def.leagueId);
+      const teams=(league?.teams||[]).filter(id=>state.db.teams.some(team=>String(team.id)===String(id)));
+      if(!state.cupCompetitions.some(cup=>cup.id===def.id)&&teams.length>=2){
+        const seed=def.id.split("").reduce((sum,ch)=>sum+ch.charCodeAt(0),0);
+        const participants=[...teams].sort((a,b)=>cupSeed(a,seed)-cupSeed(b,seed));
+        state.cupCompetitions.push({id:def.id,name:def.name,leagueId:def.leagueId,participants,activeTeams:[...participants],round:0,finished:false,champion:null,byes:[]});
       }
     });
     const pools=[
@@ -1668,7 +1687,15 @@ function ensureCupCompetitions() {
   const definitions = [
     {id:"copa-do-brasil",name:"Copa do Brasil",leagueId:"brasileirao"},
     {id:"fa-cup",name:"FA Cup",leagueId:"premier-league"},
-    {id:"copa-del-rey",name:"Copa del Rey",leagueId:"la-liga"}
+    {id:"copa-del-rey",name:"Copa del Rey",leagueId:"la-liga"},
+    {id:"coupe-de-france",name:"Coupe de France",leagueId:"ligue-1"},
+    {id:"knvb-beker",name:"KNVB Beker",leagueId:"eredivisie"},
+    {id:"taca-de-portugal",name:"Taça de Portugal",leagueId:"primeira-liga"},
+    {id:"belgian-cup",name:"Belgian Cup",leagueId:"belgian-pro-league"},
+    {id:"scottish-cup",name:"Scottish Cup",leagueId:"scottish-premiership"},
+    {id:"swiss-cup",name:"Swiss Cup",leagueId:"swiss-super-league"},
+    {id:"turkish-cup",name:"Turkish Cup",leagueId:"super-lig"},
+    {id:"croatian-cup",name:"Croatian Cup",leagueId:"hnl-croatia"}
   ];
   const qualified=state.continentalQualifiers||{};
   const europeanPool=state.db.leagues.find(l=>l.id==="champions-league");
