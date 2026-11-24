@@ -10,6 +10,8 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 SUPPORTED = {"GK", "CB", "LB", "RB", "DM", "CM", "AM", "LM", "RM", "LW", "RW", "ST"}
+BROAD_POSITIONS = {"DF": "Defensor", "MF": "Meio-campista", "FW": "Atacante", "GK": "Goleiro"}
+MAX_ROSTER_SIZE = 30
 
 
 def normalize_name(value: object) -> str:
@@ -64,9 +66,23 @@ def prepare_import(database: dict, enriched: dict) -> tuple[dict, dict]:
         if not qid or all_qids[qid] != 1:
             skipped["missing_or_duplicate_qid"] += 1
             continue
-        position = candidate.get("specificPosition")
-        if position not in SUPPORTED:
-            skipped["no_specific_supported_position"] += 1
+        specific_position = candidate.get("specificPosition")
+        source_position = str(candidate.get("position") or "").upper()
+        if specific_position in SUPPORTED:
+            position = specific_position
+            position_precision = "specific"
+            position_name = {
+                "GK": "Goleiro", "CB": "Zagueiro", "LB": "Lateral-esquerdo",
+                "RB": "Lateral-direito", "DM": "Volante", "CM": "Meio-campista",
+                "AM": "Meia-atacante", "LM": "Meia-esquerdo", "RM": "Meia-direito",
+                "LW": "Ponta-esquerda", "RW": "Ponta-direita", "ST": "Atacante"
+            }[position]
+        elif source_position in BROAD_POSITIONS:
+            position = source_position
+            position_precision = "broad-category"
+            position_name = BROAD_POSITIONS[position]
+        else:
+            skipped["no_supported_position_category"] += 1
             continue
         if not isinstance(candidate.get("age"), int) or not candidate.get("birthDate"):
             skipped["missing_precise_age"] += 1
@@ -88,6 +104,10 @@ def prepare_import(database: dict, enriched: dict) -> tuple[dict, dict]:
             skipped["player_id_already_exists"] += 1
             continue
 
+        if len(team.get("players") or []) + additions_by_team[team_id] >= MAX_ROSTER_SIZE:
+            skipped["team_roster_cap_reached"] += 1
+            continue
+
         age = candidate["age"]
         overall = max(56, min(67, round(66 - max(0, abs(age - 26) - 4) * 0.45)))
         market_value = int(max(150_000, round(350_000 * (overall / 60) ** 2)))
@@ -95,6 +115,8 @@ def prepare_import(database: dict, enriched: dict) -> tuple[dict, dict]:
             "id": player_id,
             "name": name,
             "position": position,
+            "positionName": position_name,
+            "positionPrecision": position_precision,
             "age": age,
             "overall": overall,
             "marketValue": market_value,
@@ -110,12 +132,14 @@ def prepare_import(database: dict, enriched: dict) -> tuple[dict, dict]:
                 "language": candidate.get("sourceLanguage"),
                 "section": candidate.get("sourceSection"),
                 "license": "Squad data derived from Wikipedia (CC BY-SA 4.0); Wikidata fields CC0",
-                "positionProvider": "Wikidata P413",
+                "positionProvider": "Wikidata P413" if position_precision == "specific" else "OpenFootballBase squad category",
+                "positionPrecision": position_precision,
                 "positionQids": candidate.get("positionLookup", {}).get("positionQids", []),
             },
             "gameplayEstimate": {
                 "overall": "estimated; source does not provide player rating",
                 "marketValue": "estimated; source does not provide market value",
+                "position": "specific" if position_precision == "specific" else "broad category; no exact role asserted",
             },
         }
         additions.append((team_id, player))
@@ -127,6 +151,9 @@ def prepare_import(database: dict, enriched: dict) -> tuple[dict, dict]:
         preview.setdefault("players", []).append(dict(player))
 
     report["newPlayersPrepared"] = len(additions)
+    report["specificPositionPlayers"] = sum(1 for _, p in additions if p["positionPrecision"] == "specific")
+    report["broadCategoryPlayers"] = sum(1 for _, p in additions if p["positionPrecision"] == "broad-category")
+    report["maxRosterSize"] = MAX_ROSTER_SIZE
     report["totalPlayersAfterPreview"] = len(preview.get("players", []))
     report["skipped"] = dict(skipped)
     report["teams"] = [
@@ -153,7 +180,7 @@ def main() -> int:
     args.out.write_text(json.dumps(preview, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({key: report[key] for key in (
-        "newPlayersPrepared", "totalPlayersBefore", "totalPlayersAfterPreview", "skipped"
+        "newPlayersPrepared", "specificPositionPlayers", "broadCategoryPlayers", "maxRosterSize", "totalPlayersBefore", "totalPlayersAfterPreview", "skipped"
     )}, ensure_ascii=False, indent=2))
     return 0
 
