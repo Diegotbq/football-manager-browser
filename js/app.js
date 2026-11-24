@@ -1202,6 +1202,12 @@ function renderCalendar(competitionFilter) {
   const fixtureDate = f => f.date
     ? new Date(`${f.date}T12:00:00`).toLocaleDateString("pt-BR",{day:"2-digit",month:"short",year:"numeric"})
     : "Data a confirmar";
+  const stageLabel = f => f.isCup ? f.round : `${f.round}ª rodada`;
+  const cupSummary = (state.cupCompetitions || []).map(cup => {
+    const champion = cup.champion ? teamName(cup.champion) : null;
+    const stage = cup.finished ? "Campeão definido" : cupRoundName(cup.activeTeams.length);
+    return `<div class="fixture"><div><strong>🏆 ${cup.name}</strong><div class="subtle">${champion ? "Campeão: " + champion : "Fase atual: " + stage}</div></div><span class="tag">${cup.finished ? "Encerrada" : "Em disputa"}</span></div>`;
+  }).join("");
   setPage("Calendário", `
     <p class="view-intro">Calendário da carreira · escolha uma competição para consultar os confrontos cadastrados e disputar os jogos do seu clube.</p>
     <div class="grid">
@@ -1211,14 +1217,14 @@ function renderCalendar(competitionFilter) {
         <select id="calendar-competition" onchange="renderCalendar(this.value)">
           ${competitions.map(name => `<option value="${name.replace(/&/g,"&amp;").replace(/"/g,"&quot;")}" ${name === selectedCompetition ? "selected" : ""}>${name}</option>`).join("")}
         </select>
-        <div class="section-head"><h2>Janelas de transferências</h2></div>
+        <div class="section-head"><h2>Copas e troféus</h2><span class="tag">${state.cupCompetitions.length} competições</span></div>${cupSummary}<div class="section-head"><h2>Janelas de transferências</h2></div>
         ${windows.length ? windows.map(w => `
           <div class="fixture"><div><strong>${w.name}</strong><div class="subtle">${w.start} até ${w.end}</div></div><span class="tag">Planejada</span></div>
         `).join("") : `<div class="empty">Nenhuma janela cadastrada.</div>`}
         <div class="section-head"><h2>Jogos do seu clube</h2><span class="tag">${teamFixtures.length} partidas</span></div>
         ${teamFixtures.length ? teamFixtures.map(f => {
           const result = played(f.id);
-          return `<div class="fixture"><div><strong>${teamName(f.homeTeamId)} × ${teamName(f.awayTeamId)}</strong><div class="subtle">${f.round}ª rodada · ${fixtureDate(f)}</div></div><span class="tag">${result ? result.homeScore + " × " + result.awayScore : "Pendente"}</span></div>`;
+          return `<div class="fixture"><div><strong>${teamName(f.homeTeamId)} × ${teamName(f.awayTeamId)}</strong><div class="subtle">${stageLabel(f)} · ${fixtureDate(f)}</div></div><span class="tag">${result ? result.homeScore + " × " + result.awayScore : "Pendente"}</span></div>`;
         }).join("") : `<p class="subtle">Não há partidas cadastradas desta competição para o clube escolhido.</p>`}
       </article>
       <article class="card span-7">
@@ -1229,7 +1235,7 @@ function renderCalendar(competitionFilter) {
           const mine = String(f.homeTeamId) === teamId || String(f.awayTeamId) === teamId;
           return `<div class="fixture">
             <div><strong>${teamName(f.homeTeamId)} × ${teamName(f.awayTeamId)}</strong>
-              <div class="subtle">${f.round}ª rodada · ${fixtureDate(f)} · ${f.generated ? "Calendário de carreira" : (f.time || "horário a confirmar") + " · " + (f.stadium || "estádio a confirmar")}</div>
+              <div class="subtle">${stageLabel(f)} · ${fixtureDate(f)} · ${f.generated ? (f.isCup ? "Mata-mata de carreira" : "Calendário de carreira") : (f.time || "horário a confirmar") + " · " + (f.stadium || "estádio a confirmar")}</div>
               ${result ? `<div class="positive">Resultado da sua carreira: ${result.homeScore} × ${result.awayScore}</div>` : ""}
             </div>
             ${result ? `<span class="tag">Concluído</span>` : mine ? `<button class="primary-btn" onclick="startFixture('${f.id}')">JOGAR</button>` : `<span class="tag">Programado</span>`}
