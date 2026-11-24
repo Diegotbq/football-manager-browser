@@ -1,5 +1,12 @@
+import importlib.util
 import unittest
-from reconcile_openfootballbase import normalize_player_name, reconcile
+from pathlib import Path
+
+module_path = Path(__file__).with_name("reconcile-openfootballbase.py")
+spec = importlib.util.spec_from_file_location("reconcile_openfootballbase", module_path)
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+normalize_player_name, reconcile = module.normalize_player_name, module.reconcile
 
 
 class ReconcileOpenFootballBaseTests(unittest.TestCase):
