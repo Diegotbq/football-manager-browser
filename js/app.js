@@ -630,7 +630,7 @@ function tickMatch() {
   else if(Math.random()<0.11){const notes=["Boa chegada ao ataque.","Finalização defendida pelo goleiro.","A defesa afasta o perigo.","Bola recuperada no meio-campo.","Cobrança de falta para a área."];m.events.unshift({minute:m.minute,text:notes[Math.floor(Math.random()*notes.length)]});}
   if(m.minute===45)m.events.unshift({minute:45,text:"Intervalo! Fim do primeiro tempo."});
   if(m.minute>=90){m.minute=90;m.finished=true;m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});clearInterval(state.matchTimer);state.matchTimer=null;}
-  renderMatch();
+  if(state.view === "match") renderMatch();
 }
 function pauseMatch() {
   if(!state.match||state.match.finished)return;
@@ -642,7 +642,7 @@ function setMatchSpeed(speed) {
   if(!state.match||state.match.finished)return;
   state.match.speed=Number(speed);if(!state.match.paused)runMatchClock();renderMatch();
 }
-function newMatch() { state.match = null; renderMatch(); }\n\nfunction renderMatch() {
+function newMatch() { if(state.matchTimer) clearInterval(state.matchTimer); state.matchTimer=null; state.match=null; renderMatch(); }\n\nfunction renderMatch() {
   const m=state.match;
   if(!m){
     const opponents=state.db.teams.filter(t=>String(t.id)!==String(state.db.userClubId));
