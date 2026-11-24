@@ -23284,7 +23284,15 @@
           "overall": 65,
           "marketValue": 76050000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 19,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/selton-sanchez",
+            "dateOfBirth": "2007-02-20",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-20",
@@ -23293,7 +23301,15 @@
           "overall": 80,
           "marketValue": 115200000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 31,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/berenguer",
+            "dateOfBirth": "1995-07-04",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-21",
@@ -23302,7 +23318,15 @@
           "overall": 83,
           "marketValue": 124002000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 32,
+          "nationality": "GHA",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/williams",
+            "dateOfBirth": "1994-06-15",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-22",
@@ -116620,7 +116644,15 @@
       "overall": 65,
       "marketValue": 76050000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 19,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/selton-sanchez",
+        "dateOfBirth": "2007-02-20",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-20",
@@ -116629,7 +116661,15 @@
       "overall": 80,
       "marketValue": 115200000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 31,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/berenguer",
+        "dateOfBirth": "1995-07-04",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-21",
@@ -116638,7 +116678,15 @@
       "overall": 83,
       "marketValue": 124002000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 32,
+      "nationality": "GHA",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/williams",
+        "dateOfBirth": "1994-06-15",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-22",
