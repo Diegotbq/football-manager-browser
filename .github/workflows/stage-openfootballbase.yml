@@ -52,6 +52,7 @@ jobs:
         env:
           STAGING_SEASON: ${{ inputs.season || '2026/27' }}
           STAGING_AS_OF: ${{ inputs.as_of || '2026-11-24' }}
+          STAGING_SEASON_LABEL: ${{ inputs.season || '2026-27' }}
         run: |
           set -euo pipefail
           python scripts/stage-openfootballbase.py \
@@ -75,7 +76,7 @@ jobs:
       - name: Upload review artifact (does not modify game database)
         uses: actions/upload-artifact@v4
         with:
-          name: openfootballbase-candidates-${{ inputs.season }}
+          name: openfootballbase-candidates-${{ inputs.season || '2026-27' }}
           path: data/staging/openfootballbase-candidates.json
           if-no-files-found: error
           retention-days: 14
