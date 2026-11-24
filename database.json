@@ -23029,7 +23029,15 @@
           "overall": 77,
           "marketValue": 106722000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 26,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/paredes-2",
+            "dateOfBirth": "2000-04-29",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-05",
@@ -23038,7 +23046,15 @@
           "overall": 76,
           "marketValue": 103968000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 31,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/yeray-2",
+            "dateOfBirth": "1995-01-24",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-06",
@@ -23047,7 +23063,15 @@
           "overall": 77,
           "marketValue": 106722000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 27,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/areso",
+            "dateOfBirth": "1999-07-02",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-07",
@@ -116245,7 +116269,15 @@
       "overall": 77,
       "marketValue": 106722000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 26,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/paredes-2",
+        "dateOfBirth": "2000-04-29",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-05",
@@ -116254,7 +116286,15 @@
       "overall": 76,
       "marketValue": 103968000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 31,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/yeray-2",
+        "dateOfBirth": "1995-01-24",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-06",
@@ -116263,7 +116303,15 @@
       "overall": 77,
       "marketValue": 106722000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 27,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/areso",
+        "dateOfBirth": "1999-07-02",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-07",
