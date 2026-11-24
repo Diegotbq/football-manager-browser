@@ -473,7 +473,7 @@ function resolvePlayerAgentDemand(playerId,action){
   }else if(action==="counter"){
     const raw=prompt("Contraproposta salarial para "+player.name+".\nPedido: "+money(demand.demandedWage)+" por semana.\nSalário atual: "+money(current.weeklyWage)+".\nDigite sua oferta semanal:",String(Math.round((current.weeklyWage+demand.demandedWage)/2)));
     if(raw===null)return;
-    const offer=Number(String(raw).replace(/[€.\\s]/g,"").replace(/,/g,"."));
+    const offer=Number(String(raw).replace(/[€.\x20]/g,"").replace(/,/g,"."));
     if(!Number.isFinite(offer)||offer<=0){alert("Digite um salário válido.");return;}
     if(offer>=demand.demandedWage*0.94){
       const years=new Date(state.day);years.setFullYear(years.getFullYear()+demand.years);
