@@ -69,6 +69,7 @@ jobs:
               "season": report["season"],
               "candidateCount": report["candidateCount"],
               "manualReviewEligibleCount": report["manualReviewEligibleCount"],
+              "clubMappingSummary": report["clubMappingSummary"],
               "competitions": report["coverage"]
           }, ensure_ascii=False, indent=2))
           PY
