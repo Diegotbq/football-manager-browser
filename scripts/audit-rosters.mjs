@@ -172,3 +172,4 @@ if (process.env.WRITE_ROSTER_AUDIT === "1") {
   fs.writeFileSync(path.resolve("data/roster-audit.json"), output);
 }
 // Re-run audit after the latest approved LaLiga profile metadata batch.
+// Re-audit after approved LaLiga profile metadata revision 5.
