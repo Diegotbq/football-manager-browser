@@ -23233,7 +23233,15 @@
           "overall": 68,
           "marketValue": 83232000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 23,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/alejandro-rego",
+            "dateOfBirth": "2003-06-11",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-17",
@@ -23242,7 +23250,15 @@
           "overall": 67,
           "marketValue": 80802000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 23,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/benat-gerenabarrena",
+            "dateOfBirth": "2003-03-29",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-18",
@@ -23251,7 +23267,15 @@
           "overall": 68,
           "marketValue": 83232000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 21,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/peio-canales",
+            "dateOfBirth": "2005-01-17",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-19",
@@ -116545,7 +116569,15 @@
       "overall": 68,
       "marketValue": 83232000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 23,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/alejandro-rego",
+        "dateOfBirth": "2003-06-11",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-17",
@@ -116554,7 +116586,15 @@
       "overall": 67,
       "marketValue": 80802000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 23,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/benat-gerenabarrena",
+        "dateOfBirth": "2003-03-29",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-18",
@@ -116563,7 +116603,15 @@
       "overall": 68,
       "marketValue": 83232000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 21,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/peio-canales",
+        "dateOfBirth": "2005-01-17",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-19",
