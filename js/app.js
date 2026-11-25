@@ -26,7 +26,8 @@ const state = {
   generatedFixtures: [],
   cupCompetitions: [],
   continentalQualifiers: {},
-  seasonHistory: []
+  seasonHistory: [],
+  selectedPlayerId: null
 };
 
 const $ = selector => document.querySelector(selector);
@@ -689,7 +690,8 @@ function render() {
     market: renderMarket,
     table: renderTable,
     calendar: renderCalendar,
-    match: renderMatch
+    match: renderMatch,
+    "player-profile": renderPlayerProfile
   };
 
   const page = pages[state.view] || renderDashboard;
@@ -803,6 +805,32 @@ function renderDashboard() {
   `);
 }
 
+
+function openPlayerProfile(id) {
+  state.selectedPlayerId = id;
+  state.view = "player-profile";
+  render();
+}
+function renderPlayerProfile() {
+  const p = state.db.players.find(x => String(x.id) === String(state.selectedPlayerId));
+  if (!p) { state.view = "squad"; renderSquad(); return; }
+  const team = state.db.teams.find(x => String(x.id) === String(p.teamId));
+  const games = state.matchHistory.filter(m => (m.appearances || m.playerIds || []).some(id => String(id) === String(p.id)));
+  let goals = 0, assists = 0;
+  games.forEach(m => (m.scorers || []).forEach(g => { if (String(g.playerId) === String(p.id)) goals++; if (String(g.assistPlayerId) === String(p.id)) assists++; }));
+  const attrs = getPlayerAttributes(p);
+  const recent = games.slice(-8).reverse().map(m => {
+    const home = state.db.teams.find(t => String(t.id) === String(m.homeId));
+    const away = state.db.teams.find(t => String(t.id) === String(m.awayId));
+    const isHome = String(m.homeId) === String(p.teamId);
+    return "<tr><td>" + (m.date || "—") + "</td><td>" + (m.competition || "Partida") + "</td><td>" + ((isHome ? away : home)?.name || "Adversário") + "</td><td>" + (isHome ? m.homeScore + "–" + m.awayScore : m.awayScore + "–" + m.homeScore) + "</td></tr>";
+  }).join("") || '<tr><td colspan="4">Nenhuma partida registrada para este jogador.</td></tr>';
+  setPage("Perfil do jogador", '<div class="card"><h2>' + p.name + '</h2><p class="subtle">' + (team?.name || "Sem clube") + ' · ' + (p.positionName || p.position || "—") + ' · ' + (p.age ?? "—") + ' anos · ' + (p.nationality || "—") + '</p><div class="grid"><article class="card span-3"><div class="card-label">Jogos</div><div class="metric">' + games.length + '</div></article><article class="card span-3"><div class="card-label">Gols</div><div class="metric">' + goals + '</div></article><article class="card span-3"><div class="card-label">Assistências</div><div class="metric">' + assists + '</div></article><article class="card span-3"><div class="card-label">Overall</div><div class="metric">' + p.overall + '</div></article></div></div>' +
+  '<div class="card"><h2>Atributos</h2><p>' + Object.entries(attrs).map(([k,v]) => k + ': ' + v).join(' · ') + '</p></div>' +
+  '<div class="card"><h2>Últimas partidas</h2><table class="table"><thead><tr><th>DATA</th><th>COMPETIÇÃO</th><th>ADVERSÁRIO</th><th>PLACAR</th></tr></thead><tbody>' + recent + '</tbody></table></div>' +
+  '<button class="secondary-btn" onclick="state.view=\'squad\';render()">VOLTAR AO ELENCO</button>');
+}
+
 // LINHA DE JOGADOR
 
 function playerRow(p) {
@@ -841,7 +869,7 @@ function renderSquad() {
                 <td>${a.pace}</td><td>${a.shooting}</td><td>${a.passing}</td><td>${a.dribbling}</td><td>${a.defending}</td><td>${a.physical}</td>
                 <td>${money(c.weeklyWage)}</td><td>${new Date(c.expiresAt+"T12:00:00").toLocaleDateString("pt-BR")}</td>
                 <td><button class="secondary-btn" onclick="trainPlayer('${p.id}')">TREINAR</button></td>
-                <td><button class="secondary-btn" onclick="talkToPlayer('${p.id}')">CONVERSAR</button><button class="primary-btn" onclick="renewPlayerContract('${p.id}')">RENOVAR</button></td>
+                <td><button class="secondary-btn" onclick="openPlayerProfile('${p.id}')">PERFIL</button><button class="secondary-btn" onclick="talkToPlayer('${p.id}')">CONVERSAR</button><button class="primary-btn" onclick="renewPlayerContract('${p.id}')">RENOVAR</button></td>
               </tr>`;
             }).join("")}
           </tbody>
