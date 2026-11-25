@@ -1412,8 +1412,32 @@
       "sourceProvider": "ATHLETIC_CLUB",
       "sourceUrl": "https://www.athletic-club.eus/jugadores/aritz-conde-albiol/",
       "nationalitySourceUrl": "https://www.transfermarkt.es/aritz-conde/profil/spieler/1222475"
+    },
+    {
+      "playerId": "getafe-202627-11",
+      "name": "Juan Berrocal",
+      "teamId": "getafe",
+      "dateOfBirth": "1999-02-05",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/es-GB/jugador/j-berrocal"
+    },
+    {
+      "playerId": "elche-202627-11",
+      "name": "David Affengruber",
+      "teamId": "elche",
+      "dateOfBirth": "2001-03-19",
+      "nationality": "AUT",
+      "sourceUrl": "https://www.laliga.com/jugador/david-affengruber"
+    },
+    {
+      "playerId": "sevilla-202627-09",
+      "name": "Adrià Pedrosa",
+      "teamId": "sevilla",
+      "dateOfBirth": "1998-05-13",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/pedrosa-1"
     }
   ],
-  "approvalRevision": 27,
-  "reviewNote": "Includes official LALIGA, Real Betis and Athletic Club profile sources; nationality cross-source recorded where needed."
+  "approvalRevision": 28,
+  "reviewNote": "Includes verified LALIGA and official club profiles plus metadata for players moved to their current clubs by the roster-correction approval."
 }
