@@ -2048,7 +2048,7 @@ function startFixture(fixtureId) {
 function prepareMatch(details) {
   if(state.matchTimer)clearInterval(state.matchTimer);
   const lineup=getLineup(state.db.userClubId||state.selectedClubId);
-  state.match={...details,setup:true,formation:lineup.formation,instructions:{...(lineup.instructions||{})},lineup:lineup.starters,bench:lineup.bench,substitutions:[],homeScore:0,awayScore:0,minute:0,speed:1,paused:true,finished:false,saved:false,events:[{minute:0,text:"Escalação pronta. Confira os titulares e reservas."}]};
+  state.match={...details,setup:true,formation:lineup.formation,instructions:{...(lineup.instructions||{})},lineup:lineup.starters,bench:lineup.bench,substitutions:[],homeScore:0,awayScore:0,minute:0,speed:1,paused:true,finished:false,saved:false,stats:{home:{shots:0,onTarget:0,saves:0},away:{shots:0,onTarget:0,saves:0}},events:[{minute:0,text:"Escalação pronta. Confira os titulares e reservas."}]};
   state.view="match";renderMatch();
 }
 function kickoffMatch() {
@@ -2099,6 +2099,29 @@ function runMatchClock() {
   if(!state.match||state.match.paused||state.match.finished)return;
   state.matchTimer=setInterval(tickMatch,Math.max(120,1000/state.match.speed));
 }
+function simulateMatchAttack(m,isHome,strength,bias) {
+  if(!m.stats)m.stats={home:{shots:0,onTarget:0,saves:0},away:{shots:0,onTarget:0,saves:0}};
+  const side=isHome?m.stats.home:m.stats.away;
+  const opponent=isHome?m.stats.away:m.stats.home;
+  const teamName=isHome?m.homeName:m.awayName;
+  const shotChance=Math.max(0.055,Math.min(0.15,0.105+(strength-60)*0.001+(bias||0)*0.002));
+  if(Math.random()>=shotChance)return;
+  side.shots++;
+  const accuracy=Math.max(0.22,Math.min(0.46,0.34+(strength-60)*0.003));
+  if(Math.random()>=accuracy){
+    m.events.unshift({minute:m.minute,text:"🎯 "+teamName+" arrisca de fora, mas a bola vai para fora."});
+    return;
+  }
+  side.onTarget++;
+  const goalChance=Math.max(0.12,Math.min(0.34,0.23+(strength-60)*0.0025+(bias||0)*0.004));
+  if(Math.random()<goalChance){
+    if(isHome)m.homeScore++;else m.awayScore++;
+    m.events.unshift({minute:m.minute,text:"⚽ GOL do "+teamName+"! Finalização certeira!"});
+  }else{
+    opponent.saves++;
+    m.events.unshift({minute:m.minute,text:"🧤 Defesa do goleiro! Boa finalização do "+teamName+"."});
+  }
+}
 function tickMatch() {
   const m=state.match;if(!m||m.paused||m.finished)return;
   m.minute++;
@@ -2107,13 +2130,11 @@ function tickMatch() {
   const hs=teamStrength(m.homeId),as=teamStrength(m.awayId),total=Math.max(1,hs+as);
   const managedClub=String(state.db.userClubId||state.selectedClubId),tacticalBias=tacticalModifier(m.instructions);
   const homeBias=String(m.homeId)===managedClub?tacticalBias:tacticalModifier(m.aiTactics),awayBias=String(m.awayId)===managedClub?tacticalBias:tacticalModifier(m.aiTactics);
-  const homeChance=Math.max(0.008,Math.min(0.055,0.018+(hs/total)*0.018+homeBias*0.0015));
-  const awayChance=Math.max(0.008,Math.min(0.055,0.018+(as/total)*0.018+awayBias*0.0015));
-  if(Math.random()<homeChance){m.homeScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.homeName+"!"});}
-  else if(Math.random()<awayChance){m.awayScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+m.awayName+"!"});}
-  else if(Math.random()<0.11){const notes=["Boa chegada ao ataque.","Finalização defendida pelo goleiro.","A defesa afasta o perigo.","Bola recuperada no meio-campo.","Cobrança de falta para a área.","A equipe pressiona a saída de bola.","O time troca passes e controla o ritmo.","Contra-ataque em velocidade!"];m.events.unshift({minute:m.minute,text:notes[Math.floor(Math.random()*notes.length)]});}
+  simulateMatchAttack(m,true,hs,homeBias);
+  simulateMatchAttack(m,false,as,awayBias);
+  if(Math.random()<0.055){const notes=["A defesa afasta o perigo.","Bola recuperada no meio-campo.","Cobrança de falta para a área.","A equipe pressiona a saída de bola.","O time troca passes e controla o ritmo.","Contra-ataque em velocidade!"];m.events.unshift({minute:m.minute,text:notes[Math.floor(Math.random()*notes.length)]});}
   if(m.minute===45)m.events.unshift({minute:45,text:"Intervalo! Fim do primeiro tempo."});
-  if(m.minute>=90){m.minute=90;m.finished=true;finishMatchSuspensions(m);saveTransferCareer();m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:m.fixtureDate || dateLabel(state.day),fixtureId:m.fixtureId || null,competition:m.competition || "Amistoso",round:m.round || null,playerIds:[...(m.lineup||[])]});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}applyBoardMatchReview(state.matchHistory[state.matchHistory.length-1]);if(m.isCup)advanceCupTournaments();}clearInterval(state.matchTimer);state.matchTimer=null;}
+  if(m.minute>=90){m.minute=90;m.finished=true;finishMatchSuspensions(m);saveTransferCareer();m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:m.fixtureDate || dateLabel(state.day),fixtureId:m.fixtureId || null,competition:m.competition || "Amistoso",round:m.round || null,playerIds:[...(m.lineup||[])],stats:JSON.parse(JSON.stringify(m.stats||{home:{shots:0,onTarget:0,saves:0},away:{shots:0,onTarget:0,saves:0}}))});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}applyBoardMatchReview(state.matchHistory[state.matchHistory.length-1]);if(m.isCup)advanceCupTournaments();}clearInterval(state.matchTimer);state.matchTimer=null;}
   if(state.view === "match") renderMatch();
 }
 function pauseMatch() {
@@ -2149,7 +2170,7 @@ function renderMatch() {
   }
   const starters=m.lineup.map(byId).filter(Boolean),bench=m.bench.map(byId).filter(Boolean);
   const sub=!m.finished&&m.substitutions.length<5&&bench.length?`<article class="card substitution-card"><div class="section-head"><h2>Substituições</h2><span class="tag">${m.substitutions.length}/5</span></div><div class="substitution-controls"><label>Sai<select id="sub-out">${starters.map(p=>`<option value="${p.id}">${p.name}</option>`).join("")}</select></label><label>Entra<select id="sub-in">${bench.map(p=>`<option value="${p.id}">${p.name}</option>`).join("")}</select></label><button class="primary-btn" onclick="makeSubstitution()">CONFIRMAR</button></div></article>`:"";
-  setPage("Central de Partidas",`<article class="card live-match"><div class="match-status">${m.finished?"TEMPO INTEGRAL":m.paused?"PARTIDA PAUSADA":"PARTIDA AO VIVO"}</div><div class="scoreboard"><div class="score-team"><strong>${m.homeName}</strong><span>${m.homeScore}</span></div><div class="score-clock">${String(m.minute).padStart(2,"0")}’</div><div class="score-team"><strong>${m.awayName}</strong><span>${m.awayScore}</span></div></div><div class="match-controls"><button class="primary-btn" onclick="pauseMatch()" ${m.finished?"disabled":""}>${m.paused?"▶ Continuar":"Ⅱ Pausar"}</button><button class="speed-btn" onclick="setMatchSpeed(1)">1x</button><button class="speed-btn" onclick="setMatchSpeed(2)">2x</button><button class="speed-btn" onclick="setMatchSpeed(4)">4x</button><button class="speed-btn" onclick="newMatch()">Nova partida</button></div></article><div class="grid match-squads"><article class="card span-6"><h2>Titulares · ${starters.length}/11</h2>${starters.map(p=>`<div class="player-row"><div><strong>${p.name}</strong><small>${p.positionName||p.position}</small></div><span class="rating">${p.overall}</span></div>`).join("")}</article><article class="card span-6"><h2>Reservas · ${bench.length}/7</h2>${bench.map(p=>`<div class="player-row"><div><strong>${p.name}</strong><small>${p.positionName||p.position}</small></div><span class="rating">${p.overall}</span></div>`).join("")}</article></div>${sub}<article class="card events-card"><div class="section-head"><h2>Relato da partida</h2><span class="tag">${m.events.length} eventos</span></div><div class="match-events">${m.events.map(e=>`<div class="match-event"><strong>${String(e.minute).padStart(2,"0")}’</strong><span>${e.text}</span></div>`).join("")}</div></article>`);
+  setPage("Central de Partidas",`<article class="card live-match"><div class="match-status">${m.finished?"TEMPO INTEGRAL":m.paused?"PARTIDA PAUSADA":"PARTIDA AO VIVO"}</div><div class="scoreboard"><div class="score-team"><strong>${m.homeName}</strong><span>${m.homeScore}</span></div><div class="score-clock">${String(m.minute).padStart(2,"0")}’</div><div class="score-team"><strong>${m.awayName}</strong><span>${m.awayScore}</span></div></div><div class="match-stats" aria-label="Estatísticas da partida"><div><strong>${m.stats?.home?.shots||0}</strong><span>Finalizações</span><strong>${m.stats?.home?.onTarget||0}</strong><span>No alvo</span></div><div class="stats-label">ESTATÍSTICAS</div><div><strong>${m.stats?.away?.shots||0}</strong><span>Finalizações</span><strong>${m.stats?.away?.onTarget||0}</strong><span>No alvo</span></div></div><div class="match-controls"><button class="primary-btn" onclick="pauseMatch()" ${m.finished?"disabled":""}>${m.paused?"▶ Continuar":"Ⅱ Pausar"}</button><button class="speed-btn" onclick="setMatchSpeed(1)">1x</button><button class="speed-btn" onclick="setMatchSpeed(2)">2x</button><button class="speed-btn" onclick="setMatchSpeed(4)">4x</button><button class="speed-btn" onclick="newMatch()">Nova partida</button></div></article><div class="grid match-squads"><article class="card span-6"><h2>Titulares · ${starters.length}/11</h2>${starters.map(p=>`<div class="player-row"><div><strong>${p.name}</strong><small>${p.positionName||p.position}</small></div><span class="rating">${p.overall}</span></div>`).join("")}</article><article class="card span-6"><h2>Reservas · ${bench.length}/7</h2>${bench.map(p=>`<div class="player-row"><div><strong>${p.name}</strong><small>${p.positionName||p.position}</small></div><span class="rating">${p.overall}</span></div>`).join("")}</article></div>${sub}<article class="card events-card"><div class="section-head"><h2>Relato da partida</h2><span class="tag">${m.events.length} eventos</span></div><div class="match-events">${m.events.map(e=>`<div class="match-event"><strong>${String(e.minute).padStart(2,"0")}’</strong><span>${e.text}</span></div>`).join("")}</div></article>`);
 }
 
 
