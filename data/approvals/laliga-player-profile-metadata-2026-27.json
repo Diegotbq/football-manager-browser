@@ -1101,8 +1101,48 @@
       "dateOfBirth": "1994-10-17",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/clubes/rayo-vallecano/plantilla"
+    },
+    {
+      "playerId": "celta-vigo-202627-12",
+      "name": "Andrei Radu",
+      "teamId": "celta-vigo",
+      "dateOfBirth": "1997-05-28",
+      "nationality": "ROU",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-celta/plantilla"
+    },
+    {
+      "playerId": "celta-vigo-202627-23",
+      "name": "Couhaib Driouech",
+      "teamId": "celta-vigo",
+      "dateOfBirth": "2002-04-17",
+      "nationality": "MAR",
+      "sourceUrl": "https://www.laliga.com/jugador/couhaib-driouech"
+    },
+    {
+      "playerId": "celta-vigo-202627-25",
+      "name": "Andrés Antañón",
+      "teamId": "celta-vigo",
+      "dateOfBirth": "2007-01-22",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/andres-antanon-1"
+    },
+    {
+      "playerId": "celta-vigo-202627-26",
+      "name": "Stefan Bajčetić",
+      "teamId": "celta-vigo",
+      "dateOfBirth": "2004-10-22",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/stefan-bajcetic"
+    },
+    {
+      "playerId": "celta-vigo-202627-27",
+      "name": "Hugo Burcio",
+      "teamId": "celta-vigo",
+      "dateOfBirth": "2006-10-31",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/es-EG/jugador/hugo-burcio-1"
     }
   ],
-  "approvalRevision": 20,
-  "reviewNote": "Includes verified official LALIGA profiles for Athletic Club, RC Deportivo, Levante, Racing, Málaga, Betis Deportivo, Espanyol, Getafe, Alavés and Rayo Vallecano."
+  "approvalRevision": 21,
+  "reviewNote": "Includes official LALIGA profile/squad sources for Athletic Club, RC Deportivo, Levante, Racing, Málaga, Betis Deportivo, Espanyol, Getafe, Alavés, Rayo Vallecano and Celta."
 }
