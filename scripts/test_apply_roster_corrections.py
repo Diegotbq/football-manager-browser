@@ -26,6 +26,16 @@ class RosterCorrectionTests(unittest.TestCase):
         self.assertEqual(updated["teams"][0]["players"],[])
         self.assertEqual(report["removed"],1)
 
+    def test_move_is_idempotent(self):
+        db={"players":[{"id":"p1","name":"Player","teamId":"t2"}],
+            "teams":[{"id":"t1","players":[]},{"id":"t2","players":[{"id":"p1","name":"Player"}]}]}
+        approval={"approved":True,"season":"2026/27","operations":[
+            {"action":"move","playerId":"p1","name":"Player","fromTeamId":"t1","toTeamId":"t2",
+             "sourceUrl":"https://www.laliga.com/jugador/player","reason":"official profile"}]}
+        updated,report=apply(db,approval)
+        self.assertEqual(report["alreadyApplied"],1)
+        self.assertEqual(len(updated["teams"][1]["players"]),1)
+
     def test_reject_wrong_team(self):
         db={"players":[{"id":"p1","name":"Player","teamId":"t2"}],
             "teams":[{"id":"t1","players":[{"id":"p1","name":"Player"}]},{"id":"t2","players":[]}]}
