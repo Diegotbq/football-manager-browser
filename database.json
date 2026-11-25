@@ -26622,13 +26622,19 @@
           "id": "getafe-202627-04",
           "name": "Dakonam Djené",
           "position": "CB",
-          "age": null,
+          "age": 34,
           "overall": 77,
           "marketValue": 1800000,
           "teamId": "getafe",
           "nationality": "TGO",
           "injured": false,
-          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/djene",
+            "dateOfBirth": "1991-12-31",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "getafe-202627-05",
@@ -26878,13 +26884,19 @@
           "id": "getafe-202627-17",
           "name": "Mohamed Hamdoune",
           "position": "LW",
-          "age": null,
+          "age": 22,
           "overall": 68,
           "marketValue": 700000,
           "teamId": "getafe",
           "nationality": "MAR",
           "injured": false,
-          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/mohamed-hamdoune",
+            "dateOfBirth": "2004-05-24",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "getafe-202627-18",
@@ -27022,37 +27034,55 @@
           "id": "getafe-202627-24",
           "name": "Alberto Risco",
           "position": "AM",
-          "age": null,
+          "age": 21,
           "overall": 70,
           "marketValue": 1000000,
           "teamId": "getafe",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-AR/jugador/alberto-risco",
+            "dateOfBirth": "2005-08-30",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "getafe-202627-25",
           "name": "Óscar López",
           "position": "CM",
-          "age": null,
+          "age": 20,
           "overall": 68,
           "marketValue": 700000,
           "teamId": "getafe",
           "nationality": "BOL",
           "injured": false,
-          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/oscar-lopez-2",
+            "dateOfBirth": "2006-08-13",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "getafe-202627-26",
           "name": "Jesús Martínez",
           "position": "CM",
-          "age": null,
+          "age": 22,
           "overall": 68,
           "marketValue": 700000,
           "teamId": "getafe",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/jesus-martinez",
+            "dateOfBirth": "2004-02-08",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "getafe-202627-27",
@@ -27180,49 +27210,73 @@
           "id": "getafe-202627-33",
           "name": "Ebrahima Drammeh",
           "position": "RW",
-          "age": null,
+          "age": 19,
           "overall": 68,
           "marketValue": 800000,
           "teamId": "getafe",
           "nationality": "GAM",
           "injured": false,
-          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/ebrahima-drammeh",
+            "dateOfBirth": "2007-01-06",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "getafe-202627-34",
           "name": "Joselu Pérez",
           "position": "ST",
-          "age": null,
+          "age": 22,
           "overall": 68,
           "marketValue": 700000,
           "teamId": "getafe",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/joselu-7",
+            "dateOfBirth": "2004-03-12",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "getafe-202627-35",
           "name": "Moha Achraf",
           "position": "LW",
-          "age": null,
+          "age": 20,
           "overall": 67,
           "marketValue": 600000,
           "teamId": "getafe",
           "nationality": "MAR",
           "injured": false,
-          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-GB/jugador/moha-achraf",
+            "dateOfBirth": "2006-07-28",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "getafe-202627-36",
           "name": "Ibrahima Danfakha",
           "position": "ST",
-          "age": null,
+          "age": 17,
           "overall": 65,
           "marketValue": 400000,
           "teamId": "getafe",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/ibrahima-danfakha",
+            "dateOfBirth": "2008-12-11",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "getafe-202627-37",
@@ -148337,13 +148391,19 @@
       "id": "getafe-202627-04",
       "name": "Dakonam Djené",
       "position": "CB",
-      "age": null,
+      "age": 34,
       "overall": 77,
       "marketValue": 1800000,
       "teamId": "getafe",
       "nationality": "TGO",
       "injured": false,
-      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/djene",
+        "dateOfBirth": "1991-12-31",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "getafe-202627-05",
@@ -148593,13 +148653,19 @@
       "id": "getafe-202627-17",
       "name": "Mohamed Hamdoune",
       "position": "LW",
-      "age": null,
+      "age": 22,
       "overall": 68,
       "marketValue": 700000,
       "teamId": "getafe",
       "nationality": "MAR",
       "injured": false,
-      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/mohamed-hamdoune",
+        "dateOfBirth": "2004-05-24",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "getafe-202627-18",
@@ -148737,37 +148803,55 @@
       "id": "getafe-202627-24",
       "name": "Alberto Risco",
       "position": "AM",
-      "age": null,
+      "age": 21,
       "overall": 70,
       "marketValue": 1000000,
       "teamId": "getafe",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-AR/jugador/alberto-risco",
+        "dateOfBirth": "2005-08-30",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "getafe-202627-25",
       "name": "Óscar López",
       "position": "CM",
-      "age": null,
+      "age": 20,
       "overall": 68,
       "marketValue": 700000,
       "teamId": "getafe",
       "nationality": "BOL",
       "injured": false,
-      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/oscar-lopez-2",
+        "dateOfBirth": "2006-08-13",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "getafe-202627-26",
       "name": "Jesús Martínez",
       "position": "CM",
-      "age": null,
+      "age": 22,
       "overall": 68,
       "marketValue": 700000,
       "teamId": "getafe",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/jesus-martinez",
+        "dateOfBirth": "2004-02-08",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "getafe-202627-27",
@@ -148895,49 +148979,73 @@
       "id": "getafe-202627-33",
       "name": "Ebrahima Drammeh",
       "position": "RW",
-      "age": null,
+      "age": 19,
       "overall": 68,
       "marketValue": 800000,
       "teamId": "getafe",
       "nationality": "GAM",
       "injured": false,
-      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/ebrahima-drammeh",
+        "dateOfBirth": "2007-01-06",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "getafe-202627-34",
       "name": "Joselu Pérez",
       "position": "ST",
-      "age": null,
+      "age": 22,
       "overall": 68,
       "marketValue": 700000,
       "teamId": "getafe",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/joselu-7",
+        "dateOfBirth": "2004-03-12",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "getafe-202627-35",
       "name": "Moha Achraf",
       "position": "LW",
-      "age": null,
+      "age": 20,
       "overall": 67,
       "marketValue": 600000,
       "teamId": "getafe",
       "nationality": "MAR",
       "injured": false,
-      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-GB/jugador/moha-achraf",
+        "dateOfBirth": "2006-07-28",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "getafe-202627-36",
       "name": "Ibrahima Danfakha",
       "position": "ST",
-      "age": null,
+      "age": 17,
       "overall": 65,
       "marketValue": 400000,
       "teamId": "getafe",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/ibrahima-danfakha",
+        "dateOfBirth": "2008-12-11",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "getafe-202627-37",
