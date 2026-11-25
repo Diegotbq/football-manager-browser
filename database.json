@@ -23569,13 +23569,19 @@
           "id": "atletico-madrid-202627-03",
           "name": "Salvador Esquivel",
           "position": "GK",
-          "age": null,
+          "age": 21,
           "overall": 66,
           "marketValue": 500000,
           "teamId": "atletico-madrid",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-GB/jugador/salvi-esquivel",
+            "dateOfBirth": "2005-09-30",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "atletico-madrid-202627-04",
@@ -23711,13 +23717,19 @@
           "id": "atletico-madrid-202627-09",
           "name": "Daniel Martínez",
           "position": "CB",
-          "age": null,
+          "age": 22,
           "overall": 68,
           "marketValue": 1500000,
           "teamId": "atletico-madrid",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/daniel-martinez-2",
+            "dateOfBirth": "2004-05-05",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "atletico-madrid-202627-10",
@@ -142443,13 +142455,19 @@
       "id": "atletico-madrid-202627-03",
       "name": "Salvador Esquivel",
       "position": "GK",
-      "age": null,
+      "age": 21,
       "overall": 66,
       "marketValue": 500000,
       "teamId": "atletico-madrid",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-GB/jugador/salvi-esquivel",
+        "dateOfBirth": "2005-09-30",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "atletico-madrid-202627-04",
@@ -142585,13 +142603,19 @@
       "id": "atletico-madrid-202627-09",
       "name": "Daniel Martínez",
       "position": "CB",
-      "age": null,
+      "age": 22,
       "overall": 68,
       "marketValue": 1500000,
       "teamId": "atletico-madrid",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/daniel-martinez-2",
+        "dateOfBirth": "2004-05-05",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "atletico-madrid-202627-10",
