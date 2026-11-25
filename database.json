@@ -30909,15 +30909,21 @@
           "id": "real-betis-202627-03",
           "name": "Manu González",
           "position": "GK",
-          "age": null,
+          "age": 19,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 31,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/manu-gonzalez",
+            "dateOfBirth": "2007-04-18",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-04",
@@ -31129,15 +31135,21 @@
           "id": "real-betis-202627-13",
           "name": "Carlos De Roa",
           "position": "CB",
-          "age": null,
+          "age": 19,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 32,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/carlos-de-roa",
+            "dateOfBirth": "2007-07-10",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-14",
@@ -31523,15 +31535,21 @@
           "id": "real-betis-202627-34",
           "name": "Iván Corralejo",
           "position": "CM",
-          "age": null,
+          "age": 19,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 50,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/ivan-corralejo",
+            "dateOfBirth": "2007-05-01",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-35",
@@ -31727,29 +31745,41 @@
           "id": "real-betis-202627-45",
           "name": "José Antonio Morante",
           "position": "ST",
-          "age": null,
+          "age": 19,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 27,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/jose-morante",
+            "dateOfBirth": "2007-06-28",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-46",
           "name": "Rodrigo Marina",
           "position": "ST",
-          "age": null,
+          "age": 20,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 29,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/rodrigo-marina-1",
+            "dateOfBirth": "2006-07-28",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-47",
@@ -151769,15 +151799,21 @@
       "id": "real-betis-202627-03",
       "name": "Manu González",
       "position": "GK",
-      "age": null,
+      "age": 19,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 31,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/manu-gonzalez",
+        "dateOfBirth": "2007-04-18",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-04",
@@ -151989,15 +152025,21 @@
       "id": "real-betis-202627-13",
       "name": "Carlos De Roa",
       "position": "CB",
-      "age": null,
+      "age": 19,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 32,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/carlos-de-roa",
+        "dateOfBirth": "2007-07-10",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-14",
@@ -152383,15 +152425,21 @@
       "id": "real-betis-202627-34",
       "name": "Iván Corralejo",
       "position": "CM",
-      "age": null,
+      "age": 19,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 50,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/ivan-corralejo",
+        "dateOfBirth": "2007-05-01",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-35",
@@ -152587,29 +152635,41 @@
       "id": "real-betis-202627-45",
       "name": "José Antonio Morante",
       "position": "ST",
-      "age": null,
+      "age": 19,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 27,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/jose-morante",
+        "dateOfBirth": "2007-06-28",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-46",
       "name": "Rodrigo Marina",
       "position": "ST",
-      "age": null,
+      "age": 20,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 29,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/rodrigo-marina-1",
+        "dateOfBirth": "2006-07-28",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-47",
