@@ -477,8 +477,168 @@
       "dateOfBirth": "2005-02-20",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "levante-202627-04",
+      "name": "Ihor Galdin",
+      "teamId": "levante",
+      "dateOfBirth": "2010-06-14",
+      "nationality": "UKR",
+      "sourceUrl": "https://www.laliga.com/en-NG/player/ihor-galdin"
+    },
+    {
+      "playerId": "levante-202627-05",
+      "name": "Aïssa Mandi",
+      "teamId": "levante",
+      "dateOfBirth": "1991-10-22",
+      "nationality": "ALG",
+      "sourceUrl": "https://www.laliga.com/jugador/mandi-1"
+    },
+    {
+      "playerId": "levante-202627-09",
+      "name": "Víctor García",
+      "teamId": "levante",
+      "dateOfBirth": "1997-09-16",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/victor-g-1"
+    },
+    {
+      "playerId": "levante-202627-10",
+      "name": "Jeremy Toljan",
+      "teamId": "levante",
+      "dateOfBirth": "1994-08-08",
+      "nationality": "GER",
+      "sourceUrl": "https://www.laliga.com/jugador/jeremy-toljan"
+    },
+    {
+      "playerId": "levante-202627-11",
+      "name": "Manu Sánchez",
+      "teamId": "levante",
+      "dateOfBirth": "2000-08-24",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/m-sanchez"
+    },
+    {
+      "playerId": "levante-202627-12",
+      "name": "Nacho Pérez",
+      "teamId": "levante",
+      "dateOfBirth": "2008-08-29",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/nacho-perez-1"
+    },
+    {
+      "playerId": "levante-202627-13",
+      "name": "Marc Santos",
+      "teamId": "levante",
+      "dateOfBirth": "2010-11-09",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/en-ES/player/marc-santos"
+    },
+    {
+      "playerId": "levante-202627-14",
+      "name": "Hugo Sotelo",
+      "teamId": "levante",
+      "dateOfBirth": "2003-12-19",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/hugo-sotelo"
+    },
+    {
+      "playerId": "levante-202627-15",
+      "name": "Dani Requena",
+      "teamId": "levante",
+      "dateOfBirth": "2004-02-12",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/daniel-requena"
+    },
+    {
+      "playerId": "levante-202627-16",
+      "name": "Jon Ander Olasagasti",
+      "teamId": "levante",
+      "dateOfBirth": "2000-08-16",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/jon-ander-olasagasti"
+    },
+    {
+      "playerId": "levante-202627-17",
+      "name": "Axel Tape",
+      "teamId": "levante",
+      "dateOfBirth": "2007-08-10",
+      "nationality": "FRA",
+      "sourceUrl": "https://www.laliga.com/jugador/axel-tape"
+    },
+    {
+      "playerId": "levante-202627-18",
+      "name": "Enzo Bardeli",
+      "teamId": "levante",
+      "dateOfBirth": "2001-04-11",
+      "nationality": "FRA",
+      "sourceUrl": "https://www.laliga.com/jugador/enzo-bardeli"
+    },
+    {
+      "playerId": "levante-202627-19",
+      "name": "Oriol Rey",
+      "teamId": "levante",
+      "dateOfBirth": "1998-02-25",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/en-GB/player/o-rey"
+    },
+    {
+      "playerId": "levante-202627-20",
+      "name": "Thiago Fernández",
+      "teamId": "levante",
+      "dateOfBirth": "2004-04-03",
+      "nationality": "ARG",
+      "sourceUrl": "https://www.laliga.com/jugador/thiago-fernandez"
+    },
+    {
+      "playerId": "levante-202627-21",
+      "name": "Paco Cortés",
+      "teamId": "levante",
+      "dateOfBirth": "2007-08-11",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/paco-cortes"
+    },
+    {
+      "playerId": "levante-202627-22",
+      "name": "Roger Brugué",
+      "teamId": "levante",
+      "dateOfBirth": "1996-11-04",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/r-brugue"
+    },
+    {
+      "playerId": "levante-202627-23",
+      "name": "Iván Romero",
+      "teamId": "levante",
+      "dateOfBirth": "2001-04-10",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/ivan-2"
+    },
+    {
+      "playerId": "levante-202627-24",
+      "name": "Petar Ratkov",
+      "teamId": "levante",
+      "dateOfBirth": "2003-08-18",
+      "nationality": "SRB",
+      "sourceUrl": "https://www.laliga.com/es-GB/jugador/petar-ratkov"
+    },
+    {
+      "playerId": "levante-202627-25",
+      "name": "Yanis Musuayi",
+      "teamId": "levante",
+      "dateOfBirth": "2007-06-26",
+      "nationality": "BEL",
+      "sourceUrl": "https://www.laliga.com/jugador/yanis-musuayi"
+    },
+    {
+      "playerId": "levante-202627-26",
+      "name": "Karl Etta Eyong",
+      "teamId": "levante",
+      "dateOfBirth": "2003-10-14",
+      "nationality": "CMR",
+      "sourceUrl": "https://www.laliga.com/es-AR/jugador/etta-eyong"
     }
   ],
-  "approvalRevision": 12,
-  "reviewNote": "Added 30 RC Deportivo players from the official LALIGA 2026/27 squad page; cross-checked current squad against the club's official 2026/27 shirt-number announcement."
+  "approvalRevision": 13,
+  "reviewNote": "Includes official LALIGA player profiles for Athletic Club, RC Deportivo and Levante UD; exact identity/team matching and fill-only updates."
 }
