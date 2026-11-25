@@ -2091,11 +2091,18 @@ function runOpponentAI() {
   }
   if(m.minute>=60&&m.minute%10===0&&m.aiSubstitutions.length<5&&m.aiBench.length){
     const players=state.db.players.filter(p=>String(p.teamId)===opponentId),available=m.aiBench.map(id=>players.find(p=>String(p.id)===String(id))).filter(Boolean);
-    const current=m.aiLineup.map(id=>players.find(p=>String(p.id)===String(id))).filter(Boolean).sort((a,b)=>Number(a.overall||0)-Number(b.overall||0));
-    const weakest=current[0],best=available.sort((a,b)=>Number(b.overall||0)-Number(a.overall||0))[0];
-    if(weakest&&best&&Number(best.overall||0)>=Number(weakest.overall||0)-2){
+    const role=p=>String(p.position||"").toUpperCase();
+    const performance=p=>Number(p.overall||50)+(getPlayerCondition(p).fitness-70)*0.12;
+    const current=m.aiLineup.map(id=>players.find(p=>String(p.id)===String(id))).filter(Boolean)
+      .filter(p=>role(p)!=="GK"||available.some(x=>role(x)==="GK"))
+      .sort((a,b)=>performance(a)-performance(b));
+    const weakest=current[0];
+    const compatible=weakest?available.filter(p=>role(p)===role(weakest)):[];
+    const pool=compatible.length?compatible:available.filter(p=>role(p)!=="GK"&&role(weakest||{})!=="GK");
+    const best=pool.sort((a,b)=>performance(b)-performance(a))[0];
+    if(weakest&&best&&performance(best)>=performance(weakest)-1){
       m.aiLineup=m.aiLineup.map(id=>String(id)===String(weakest.id)?best.id:id);m.aiBench=m.aiBench.filter(id=>String(id)!==String(best.id));m.aiBench.push(weakest.id);m.aiSubstitutions.push({minute:m.minute,out:weakest.id,in:best.id});
-      m.events.unshift({minute:m.minute,text:"🔄 "+best.name+" entra no adversário no lugar de "+weakest.name+"."});
+      m.events.unshift({minute:m.minute,text:"🔄 "+best.name+" entra no adversário no lugar de "+weakest.name+" (ajuste por posição e condição física)."});
     }
   }
 }
