@@ -10,6 +10,9 @@ on:
       - "data/approvals/openfootballbase-atletico-metadata-2026-27.json"
       - "scripts/apply_openfootballbase_verified_metadata.py"
       - "scripts/test_apply_openfootballbase_verified_metadata.py"
+      - "data/approvals/roster-corrections-laliga-2026-27.json"
+      - "scripts/apply_roster_corrections.py"
+      - "scripts/test_apply_roster_corrections.py"
       - ".github/workflows/apply-laliga-profile-metadata.yml"
 
 permissions:
@@ -24,7 +27,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Run regression tests
-        run: python -m unittest scripts/test_apply_laliga_profile_metadata.py scripts/test_apply_openfootballbase_verified_metadata.py
+        run: python -m unittest scripts/test_apply_laliga_profile_metadata.py scripts/test_apply_openfootballbase_verified_metadata.py scripts/test_apply_roster_corrections.py
       - name: Apply exact-identity, fill-only profile metadata
         run: |
           python scripts/apply_laliga_profile_metadata.py \
@@ -43,7 +46,19 @@ jobs:
           print(json.dumps(report, ensure_ascii=False, indent=2))
           PY
       - name: Apply manually reviewed OpenFootballBase metadata
-        run: python scripts/apply_openfootballbase_verified_metadata.py --database /tmp/database-updated.json --approval data/approvals/openfootballbase-atletico-metadata-2026-27.json --out /tmp/database-final.json --report /tmp/openfootballbase-metadata-report.json
+        run: python scripts/apply_openfootballbase_verified_metadata.py --database /tmp/database-updated.json --approval data/approvals/openfootballbase-atletico-metadata-2026-27.json --out /tmp/database-after-ofb.json --report /tmp/openfootballbase-metadata-report.json
+      - name: Correct verified current-club assignments
+        run: |
+          python scripts/apply_roster_corrections.py --database /tmp/database-after-ofb.json --approval data/approvals/roster-corrections-laliga-2026-27.json --out /tmp/database-final.json --report /tmp/roster-corrections-report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("/tmp/roster-corrections-report.json").read_text())
+          approval = json.loads(Path("data/approvals/roster-corrections-laliga-2026-27.json").read_text())
+          if len(report["operations"]) != len(approval["operations"]):
+              raise SystemExit("Not all approved club corrections were applied")
+          print(json.dumps(report, ensure_ascii=False, indent=2))
+          PY
       - name: Commit database update
         run: |
           set -euo pipefail
