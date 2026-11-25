@@ -8,7 +8,7 @@ def apply(db, approval):
         raise ValueError("Roster correction approval is invalid")
     teams={str(t.get("id")):t for t in db.get("teams",[])}
     players={str(p.get("id")):p for p in db.get("players",[])}
-    report={"moved":0,"removed":0,"operations":[]}
+    report={"moved":0,"removed":0,"alreadyApplied":0,"operations":[]}
     seen=set()
     for op in approval.get("operations",[]):
         pid=str(op.get("playerId",""))
@@ -16,31 +16,40 @@ def apply(db, approval):
         seen.add(pid)
         if not str(op.get("sourceUrl","")).startswith("https://www.laliga.com/"):
             raise ValueError(f"Non-official source URL: {pid}")
+        kind=op.get("action")
         player=players.get(pid)
         source=teams.get(str(op.get("fromTeamId")))
-        if player is None or source is None: raise ValueError(f"Missing player/source team: {pid}")
-        if player.get("name")!=op.get("name") or str(player.get("teamId"))!=str(op.get("fromTeamId")):
-            raise ValueError(f"Player identity/source team mismatch: {pid}")
+        if source is None: raise ValueError(f"Missing source team: {pid}")
         source_rows=[p for p in (source.get("players") or []) if str(p.get("id"))==pid]
-        if len(source_rows)!=1 or source_rows[0].get("name")!=op.get("name"):
-            raise ValueError(f"Source roster identity mismatch: {pid}")
-        kind=op.get("action")
         if kind=="move":
             target=teams.get(str(op.get("toTeamId")))
             if target is None: raise ValueError(f"Missing target team: {pid}")
-            if any(str(p.get("id"))==pid for p in (target.get("players") or [])):
-                raise ValueError(f"Player already exists in target roster: {pid}")
-            roster_entry=source_rows[0]
-            source["players"].remove(roster_entry)
-            target.setdefault("players",[]).append(roster_entry)
-            player["teamId"]=str(op["toTeamId"])
-            if "teamId" in roster_entry: roster_entry["teamId"]=str(op["toTeamId"])
-            report["moved"]+=1
+            target_rows=[p for p in (target.get("players") or []) if str(p.get("id"))==pid]
+            if player is not None and player.get("name")==op.get("name") and str(player.get("teamId"))==str(op.get("toTeamId")) and len(target_rows)==1 and target_rows[0].get("name")==op.get("name") and not source_rows:
+                report["alreadyApplied"]+=1
+            else:
+                if player is None or player.get("name")!=op.get("name") or str(player.get("teamId"))!=str(op.get("fromTeamId")):
+                    raise ValueError(f"Player identity/source team mismatch: {pid}")
+                if len(source_rows)!=1 or source_rows[0].get("name")!=op.get("name") or target_rows:
+                    raise ValueError(f"Source/target roster identity mismatch: {pid}")
+                roster_entry=source_rows[0]
+                source["players"].remove(roster_entry)
+                target.setdefault("players",[]).append(roster_entry)
+                player["teamId"]=str(op["toTeamId"])
+                if "teamId" in roster_entry: roster_entry["teamId"]=str(op["toTeamId"])
+                report["moved"]+=1
         elif kind=="remove":
-            source["players"].remove(source_rows[0])
-            db["players"]=[p for p in db.get("players",[]) if str(p.get("id"))!=pid]
-            del players[pid]
-            report["removed"]+=1
+            if player is None and not source_rows and not any(str(p.get("id"))==pid for t in teams.values() for p in (t.get("players") or [])):
+                report["alreadyApplied"]+=1
+            else:
+                if player is None or player.get("name")!=op.get("name") or str(player.get("teamId"))!=str(op.get("fromTeamId")):
+                    raise ValueError(f"Player identity/source team mismatch: {pid}")
+                if len(source_rows)!=1 or source_rows[0].get("name")!=op.get("name"):
+                    raise ValueError(f"Source roster identity mismatch: {pid}")
+                source["players"].remove(source_rows[0])
+                db["players"]=[p for p in db.get("players",[]) if str(p.get("id"))!=pid]
+                del players[pid]
+                report["removed"]+=1
         else:
             raise ValueError(f"Unsupported roster action for {pid}: {kind}")
         report["operations"].append({"action":kind,"playerId":pid,"name":op["name"],
