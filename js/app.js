@@ -1408,6 +1408,20 @@ function renderTable(leagueFilter) {
     else {home.e++;away.e++;home.pts++;away.pts++;}
   });
   rows.sort((a,b)=>b.pts-a.pts||(b.gp-b.gc)-(a.gp-a.gc)||b.gp-a.gp||a.t.name.localeCompare(b.t.name,"pt-BR"));
+  const playerStats=new Map();
+  relevantMatches.forEach(match=>{
+    (match.appearances||match.playerIds||[]).forEach(id=>{
+      const player=state.db.players.find(p=>String(p.id)===String(id));if(!player)return;
+      const stat=playerStats.get(String(id))||{player,appearances:0,goals:0,assists:0};stat.appearances++;playerStats.set(String(id),stat);
+    });
+    (match.scorers||[]).forEach(goal=>{
+      if(!goal.playerId)return;const player=state.db.players.find(p=>String(p.id)===String(goal.playerId));if(!player)return;
+      const stat=playerStats.get(String(goal.playerId))||{player,appearances:0,goals:0,assists:0};stat.goals++;playerStats.set(String(goal.playerId),stat);
+      if(goal.assistPlayerId){const assister=state.db.players.find(p=>String(p.id)===String(goal.assistPlayerId));if(assister){const assistStat=playerStats.get(String(assister.id))||{player:assister,appearances:0,goals:0,assists:0};assistStat.assists++;playerStats.set(String(assister.id),assistStat);}}
+    });
+  });
+  const leaders=[...playerStats.values()].sort((a,b)=>b.goals-a.goals||b.assists-a.assists||b.appearances-a.appearances||a.player.name.localeCompare(b.player.name,"pt-BR")).slice(0,10);
+  const assistLeaders=[...playerStats.values()].filter(x=>x.assists>0).sort((a,b)=>b.assists-a.assists||b.goals-a.goals).slice(0,5);
 
   setPage("Tabela", `
     <p class="view-intro">
@@ -1445,7 +1459,17 @@ function renderTable(leagueFilter) {
       </table>
       <p class="subtle">Clubes sem partidas disputadas começam com zero pontos. Os resultados simulados atualizam esta tabela automaticamente.</p>
     </div>
-  `);
+    <div class="grid">
+      <article class="card span-6">
+        <div class="section-head"><h2>⚽ Artilharia</h2><span class="tag">Top 10 · \${selectedLeague?.name||"Liga"}</span></div>
+        \${leaders.length?leaders.map((s,i)=>'<div class="player-row"><div><strong>'+(i+1)+'. '+s.player.name+'</strong><small>'+((state.db.teams.find(t=>String(t.id)===String(s.player.teamId))||{}).name||"Clube")+' · '+s.appearances+' jogos</small></div><span class="rating">'+s.goals+' gols</span></div>').join(""):'<p class="subtle">A artilharia será preenchida conforme as partidas forem disputadas com escalações registradas.</p>'}
+      </article>
+      <article class="card span-6">
+        <div class="section-head"><h2>🎯 Assistências</h2><span class="tag">Top 5</span></div>
+        \${assistLeaders.length?assistLeaders.map((s,i)=>'<div class="player-row"><div><strong>'+(i+1)+'. '+s.player.name+'</strong><small>'+((state.db.teams.find(t=>String(t.id)===String(s.player.teamId))||{}).name||"Clube")+'</small></div><span class="rating">'+s.assists+' assist.</span></div>').join(""):'<p class="subtle">As assistências aparecerão quando houver gols com passe decisivo identificado.</p>'}
+      </article>
+    </div>
+  \`);
 }
 
 
@@ -2064,7 +2088,7 @@ function kickoffMatch() {
   if(required===0){alert("Este clube ainda não tem jogadores cadastrados no banco de dados.");return;}
   if(starters.length!==required||new Set(starters).size!==required){alert("Selecione "+required+" titulares diferentes.");return;}
   const bench=[...document.querySelectorAll("[data-sub]")].map(x=>x.value).filter(Boolean).filter(id=>!starters.includes(id)&&!playerUnavailable(state.db.players.find(p=>String(p.id)===String(id))));
-  m.lineup=starters;m.bench=[...new Set(bench)].slice(0,7);const opponentId=String(m.homeId)===String(state.db.userClubId||state.selectedClubId)?m.awayId:m.homeId;const opponentPlayers=state.db.players.filter(p=>String(p.teamId)===String(opponentId)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));const eligibleOpponent=opponentPlayers.filter(p=>!playerUnavailable(p));m.aiLineup=eligibleOpponent.slice(0,11).map(p=>p.id);m.aiBench=eligibleOpponent.slice(11,18).map(p=>p.id);m.aiSubstitutions=[];m.aiTactics={mentality:"balanced",pressing:"medium",defensiveLine:"standard",tempo:"normal",style:"balanced"};m.aiLastTacticChange=0;m.sentOffIds=[];m.suspensionsAtKickoff=state.db.players.filter(p=>[String(m.homeId),String(m.awayId)].includes(String(p.teamId))&&getPlayerCondition(p).suspendedMatches>0).map(p=>String(p.id));m.setup=false;m.paused=false;
+  m.lineup=starters;m.bench=[...new Set(bench)].slice(0,7);const opponentId=String(m.homeId)===String(state.db.userClubId||state.selectedClubId)?m.awayId:m.homeId;const opponentPlayers=state.db.players.filter(p=>String(p.teamId)===String(opponentId)).sort((a,b)=>Number(b.overall||0)-Number(a.overall||0));const eligibleOpponent=opponentPlayers.filter(p=>!playerUnavailable(p));m.aiLineup=eligibleOpponent.slice(0,11).map(p=>p.id);m.aiBench=eligibleOpponent.slice(11,18).map(p=>p.id);m.appearances=[...m.lineup,...m.aiLineup];m.scorers=[];m.aiSubstitutions=[];m.aiTactics={mentality:"balanced",pressing:"medium",defensiveLine:"standard",tempo:"normal",style:"balanced"};m.aiLastTacticChange=0;m.sentOffIds=[];m.suspensionsAtKickoff=state.db.players.filter(p=>[String(m.homeId),String(m.awayId)].includes(String(p.teamId))&&getPlayerCondition(p).suspendedMatches>0).map(p=>String(p.id));m.setup=false;m.paused=false;
   state.savedLineups[String(state.db.userClubId||state.selectedClubId)]={formation:m.formation||"4-3-3",starters:[...m.lineup],bench:[...m.bench],instructions:{...(m.instructions||{})}};saveTransferCareer();
   m.events.unshift({minute:0,text:"Escalação confirmada. Começa a partida!"});runMatchClock();renderMatch();
 }
@@ -2074,7 +2098,7 @@ function makeSubstitution() {
   if(!out||!inside||!m.lineup.includes(out)||!m.bench.includes(inside))return;
   const old=state.db.players.find(p=>String(p.id)===String(out)),fresh=state.db.players.find(p=>String(p.id)===String(inside));
   m.lineup=m.lineup.map(id=>id===out?inside:id);m.bench=m.bench.map(id=>id===inside?out:id);
-  m.substitutions.push({minute:m.minute,out,in:inside});
+  m.substitutions.push({minute:m.minute,out,in:inside});if(!Array.isArray(m.appearances))m.appearances=[...(m.lineup||[]),...(m.aiLineup||[])];if(!m.appearances.includes(inside))m.appearances.push(inside);
   m.events.unshift({minute:m.minute,text:"🔄 "+fresh.name+" entrou no lugar de "+old.name+"."});renderMatch();
 }
 
@@ -2152,7 +2176,7 @@ function simulateMatchAttack(m,isHome,strength,bias) {
   if(Math.random()>=accuracy){m.events.unshift({minute:m.minute,text:"🎯 "+shooterName+" finaliza"+setup+", mas a bola vai para fora."});return;}
   side.onTarget++;
   const goalChance=Math.max(0.075,Math.min(0.4,0.22+(shooterSkill-60)*0.003-(keeperSkill-60)*0.003-(defensiveSkill-50)*0.0007+(bias||0)*0.003));
-  if(Math.random()<goalChance){if(isHome)m.homeScore++;else m.awayScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+teamName+"! "+shooterName+" marca"+setup+"!"});}
+  if(Math.random()<goalChance){if(isHome)m.homeScore++;else m.awayScore++;if(!Array.isArray(m.scorers))m.scorers=[];m.scorers.push({playerId:shooter?.id||null,teamId,minute:m.minute,assistPlayerId:creator&&creator.id!==shooter?.id?creator.id:null});m.events.unshift({minute:m.minute,text:"⚽ GOL do "+teamName+"! "+shooterName+" marca"+setup+"!"});}
   else{opponent.saves++;m.events.unshift({minute:m.minute,text:"🧤 "+(keeper?.name||"O goleiro")+" defende! Finalização de "+shooterName+"."});}
 }
 function tickMatch() {
@@ -2167,7 +2191,7 @@ function tickMatch() {
   simulateMatchAttack(m,false,as,awayBias);
   if(Math.random()<0.055){const notes=["A defesa afasta o perigo.","Bola recuperada no meio-campo.","Cobrança de falta para a área.","A equipe pressiona a saída de bola.","O time troca passes e controla o ritmo.","Contra-ataque em velocidade!"];m.events.unshift({minute:m.minute,text:notes[Math.floor(Math.random()*notes.length)]});}
   if(m.minute===45)m.events.unshift({minute:45,text:"Intervalo! Fim do primeiro tempo."});
-  if(m.minute>=90){m.minute=90;m.finished=true;finishMatchSuspensions(m);saveTransferCareer();m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:m.fixtureDate || dateLabel(state.day),fixtureId:m.fixtureId || null,competition:m.competition || "Amistoso",round:m.round || null,playerIds:[...(m.lineup||[])],stats:JSON.parse(JSON.stringify(m.stats||{home:{shots:0,onTarget:0,saves:0},away:{shots:0,onTarget:0,saves:0}}))});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}applyBoardMatchReview(state.matchHistory[state.matchHistory.length-1]);if(m.isCup)advanceCupTournaments();}clearInterval(state.matchTimer);state.matchTimer=null;}
+  if(m.minute>=90){m.minute=90;m.finished=true;finishMatchSuspensions(m);saveTransferCareer();m.events.unshift({minute:90,text:"Fim de jogo! Partida encerrada."});if(!m.saved){state.matchHistory.push({homeId:m.homeId,awayId:m.awayId,homeScore:m.homeScore,awayScore:m.awayScore,date:m.fixtureDate || dateLabel(state.day),fixtureId:m.fixtureId || null,competition:m.competition || "Amistoso",round:m.round || null,playerIds:[...(m.lineup||[])],appearances:[...(m.appearances||m.lineup||[])],scorers:[...(m.scorers||[])],stats:JSON.parse(JSON.stringify(m.stats||{home:{shots:0,onTarget:0,saves:0},away:{shots:0,onTarget:0,saves:0}}))});m.saved=true;try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}applyBoardMatchReview(state.matchHistory[state.matchHistory.length-1]);if(m.isCup)advanceCupTournaments();}clearInterval(state.matchTimer);state.matchTimer=null;}
   if(state.view === "match") renderMatch();
 }
 function pauseMatch() {
