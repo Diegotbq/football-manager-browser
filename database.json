@@ -24924,13 +24924,19 @@
           "id": "celta-vigo-202627-12",
           "name": "Andrei Radu",
           "position": "GK",
-          "age": null,
+          "age": 29,
           "overall": 76,
           "marketValue": 2500000,
           "teamId": "celta-vigo",
           "nationality": "ROU",
           "injured": false,
-          "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/clubes/rc-celta/plantilla",
+            "dateOfBirth": "1997-05-28",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "celta-vigo-202627-13",
@@ -25156,13 +25162,19 @@
           "id": "celta-vigo-202627-23",
           "name": "Couhaib Driouech",
           "position": "LW",
-          "age": null,
+          "age": 24,
           "overall": 75,
           "marketValue": 4500000,
           "teamId": "celta-vigo",
           "nationality": "MAR",
           "injured": false,
-          "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/couhaib-driouech",
+            "dateOfBirth": "2002-04-17",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "celta-vigo-202627-24",
@@ -25190,37 +25202,55 @@
           "id": "celta-vigo-202627-25",
           "name": "Andrés Antañón",
           "position": "CM",
-          "age": null,
+          "age": 19,
           "overall": 66,
           "marketValue": 500000,
           "teamId": "celta-vigo",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/andres-antanon-1",
+            "dateOfBirth": "2007-01-22",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "celta-vigo-202627-26",
           "name": "Stefan Bajčetić",
           "position": "DM",
-          "age": null,
+          "age": 22,
           "overall": 76,
           "marketValue": 7000000,
           "teamId": "celta-vigo",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/stefan-bajcetic",
+            "dateOfBirth": "2004-10-22",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "celta-vigo-202627-27",
           "name": "Hugo Burcio",
           "position": "CB",
-          "age": null,
+          "age": 20,
           "overall": 65,
           "marketValue": 400000,
           "teamId": "celta-vigo",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-EG/jugador/hugo-burcio-1",
+            "dateOfBirth": "2006-10-31",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "celta-vigo-202627-28",
@@ -146855,13 +146885,19 @@
       "id": "celta-vigo-202627-12",
       "name": "Andrei Radu",
       "position": "GK",
-      "age": null,
+      "age": 29,
       "overall": 76,
       "marketValue": 2500000,
       "teamId": "celta-vigo",
       "nationality": "ROU",
       "injured": false,
-      "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/clubes/rc-celta/plantilla",
+        "dateOfBirth": "1997-05-28",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "celta-vigo-202627-13",
@@ -147087,13 +147123,19 @@
       "id": "celta-vigo-202627-23",
       "name": "Couhaib Driouech",
       "position": "LW",
-      "age": null,
+      "age": 24,
       "overall": 75,
       "marketValue": 4500000,
       "teamId": "celta-vigo",
       "nationality": "MAR",
       "injured": false,
-      "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/couhaib-driouech",
+        "dateOfBirth": "2002-04-17",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "celta-vigo-202627-24",
@@ -147121,37 +147163,55 @@
       "id": "celta-vigo-202627-25",
       "name": "Andrés Antañón",
       "position": "CM",
-      "age": null,
+      "age": 19,
       "overall": 66,
       "marketValue": 500000,
       "teamId": "celta-vigo",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/andres-antanon-1",
+        "dateOfBirth": "2007-01-22",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "celta-vigo-202627-26",
       "name": "Stefan Bajčetić",
       "position": "DM",
-      "age": null,
+      "age": 22,
       "overall": 76,
       "marketValue": 7000000,
       "teamId": "celta-vigo",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/stefan-bajcetic",
+        "dateOfBirth": "2004-10-22",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "celta-vigo-202627-27",
       "name": "Hugo Burcio",
       "position": "CB",
-      "age": null,
+      "age": 20,
       "overall": 65,
       "marketValue": 400000,
       "teamId": "celta-vigo",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "RC Celta: lista oficial de dorsais do primeiro time 2026/27 e plantilla oficial LALIGA; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-EG/jugador/hugo-burcio-1",
+        "dateOfBirth": "2006-10-31",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "celta-vigo-202627-28",
