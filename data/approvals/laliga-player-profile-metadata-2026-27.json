@@ -781,8 +781,64 @@
       "dateOfBirth": "2006-04-24",
       "nationality": "SWE",
       "sourceUrl": "https://www.laliga.com/jugador/simon-eriksson"
+    },
+    {
+      "playerId": "malaga-202627-02",
+      "name": "Carlos López",
+      "teamId": "malaga",
+      "dateOfBirth": "2004-11-13",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/carlos-lopez-2"
+    },
+    {
+      "playerId": "malaga-202627-15",
+      "name": "Ramón Enríquez",
+      "teamId": "malaga",
+      "dateOfBirth": "2001-04-19",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/ramon-2"
+    },
+    {
+      "playerId": "malaga-202627-18",
+      "name": "Rafa Rodríguez",
+      "teamId": "malaga",
+      "dateOfBirth": "2003-07-10",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/rafa-rodriguez"
+    },
+    {
+      "playerId": "malaga-202627-22",
+      "name": "Otu Jr",
+      "teamId": "malaga",
+      "dateOfBirth": "2005-06-27",
+      "nationality": "NGA",
+      "sourceUrl": "https://www.laliga.com/jugador/joseph-otunenche"
+    },
+    {
+      "playerId": "malaga-202627-24",
+      "name": "Haitam Abaida",
+      "teamId": "malaga",
+      "dateOfBirth": "2002-06-01",
+      "nationality": "MAR",
+      "sourceUrl": "https://www.laliga.com/jugador/haitam"
+    },
+    {
+      "playerId": "malaga-202627-25",
+      "name": "Chupe",
+      "teamId": "malaga",
+      "dateOfBirth": "2004-08-24",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/chupete"
+    },
+    {
+      "playerId": "malaga-202627-31",
+      "name": "Juani",
+      "teamId": "malaga",
+      "dateOfBirth": "2007-01-17",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/es-GB/jugador/juan-fernandez-2"
     }
   ],
-  "approvalRevision": 14,
-  "reviewNote": "Includes official LALIGA profiles for Athletic Club, RC Deportivo, Levante UD and reviewed Racing de Santander players; exact database IDs/names/team IDs, fill-only."
+  "approvalRevision": 15,
+  "reviewNote": "Includes official LALIGA player profiles for Athletic Club, RC Deportivo, Levante UD, Racing de Santander and Málaga CF; fill-only and exact ID/name/team matching."
 }
