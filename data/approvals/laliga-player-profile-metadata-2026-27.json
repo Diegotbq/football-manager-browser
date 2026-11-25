@@ -221,7 +221,23 @@
       "dateOfBirth": "1999-08-16",
       "nationality": "GNB",
       "sourceUrl": "https://www.laliga.com/jugador/alvaro-djalo"
+    },
+    {
+      "playerId": "athletic-club-202627-28",
+      "name": "Christian Imga",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2009-02-17",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/christian-imga"
+    },
+    {
+      "playerId": "athletic-club-202627-29",
+      "name": "Jesús Vizcay",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2005-08-05",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/txus-vizcay"
     }
   ],
-  "approvalRevision": 10
+  "approvalRevision": 11
 }
