@@ -2125,7 +2125,7 @@ function runOpponentAI() {
     const pool=compatible.length?compatible:available.filter(p=>role(p)!=="GK"&&role(weakest||{})!=="GK");
     const best=pool.sort((a,b)=>performance(b)-performance(a))[0];
     if(weakest&&best&&performance(best)>=performance(weakest)-1){
-      m.aiLineup=m.aiLineup.map(id=>String(id)===String(weakest.id)?best.id:id);m.aiBench=m.aiBench.filter(id=>String(id)!==String(best.id));m.aiBench.push(weakest.id);m.aiSubstitutions.push({minute:m.minute,out:weakest.id,in:best.id});
+      m.aiLineup=m.aiLineup.map(id=>String(id)===String(weakest.id)?best.id:id);m.aiBench=m.aiBench.filter(id=>String(id)!==String(best.id));m.aiBench.push(weakest.id);m.aiSubstitutions.push({minute:m.minute,out:weakest.id,in:best.id});if(!Array.isArray(m.appearances))m.appearances=[...(m.lineup||[])];if(!m.appearances.includes(best.id))m.appearances.push(best.id);
       m.events.unshift({minute:m.minute,text:"🔄 "+best.name+" entra no adversário no lugar de "+weakest.name+" (ajuste por posição e condição física)."});
     }
   }
