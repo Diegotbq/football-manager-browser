@@ -23437,7 +23437,15 @@
           "overall": 63,
           "marketValue": 71442000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 17,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/christian-imga",
+            "dateOfBirth": "2009-02-17",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-29",
@@ -23446,7 +23454,15 @@
           "overall": 64,
           "marketValue": 73728000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 21,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/txus-vizcay",
+            "dateOfBirth": "2005-08-05",
+            "verifiedAt": "2026-11-24"
+          }
         },
         {
           "id": "athletic-club-202627-30",
@@ -116845,7 +116861,15 @@
       "overall": 63,
       "marketValue": 71442000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 17,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/christian-imga",
+        "dateOfBirth": "2009-02-17",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-29",
@@ -116854,7 +116878,15 @@
       "overall": 64,
       "marketValue": 73728000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 21,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/txus-vizcay",
+        "dateOfBirth": "2005-08-05",
+        "verifiedAt": "2026-11-24"
+      }
     },
     {
       "id": "athletic-club-202627-30",
