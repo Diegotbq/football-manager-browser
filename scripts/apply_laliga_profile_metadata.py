@@ -16,9 +16,9 @@ def missing(v):
     return v is None or v == 0 or (isinstance(v, str) and v.strip().lower() in {"", "-", "—", "n/a", "unknown", "null"})
 
 def apply(db, approval):
-    if approval.get("approved") is not True or approval.get("operation") != "fill-missing-player-age-and-nationality-only":
+    if approval.get("approved") is not True or approval.get("operation") not in {"fill-missing-player-age-and-nationality-only", "fill-and-correct-approved-player-age-and-nationality"}:
         raise ValueError("Approval scope is not valid")
-    if approval.get("source") not in {"LALIGA official player profiles", "Official LALIGA and club player profiles", "Official LALIGA, club and UEFA player profiles"}:
+    if approval.get("source") not in {"LALIGA official player profiles", "Official LALIGA and club player profiles", "Official LALIGA, club and UEFA player profiles", "Official LALIGA, club, UEFA and verified football databases"}:
         raise ValueError("Unexpected source")
     teams = {str(t.get("id")): t for t in db.get("teams", [])}
     flat = {str(p.get("id")): p for p in db.get("players", [])}
@@ -32,7 +32,7 @@ def apply(db, approval):
         if not re.fullmatch(r"[A-Z]{3}", str(row.get("nationality", ""))):
             raise ValueError(f"Invalid ISO alpha-3 nationality for {pid}")
         provider = row.get("sourceProvider", "LALIGA")
-        allowed_prefix = {"LALIGA": "https://www.laliga.com/", "REAL_BETIS": "https://www.realbetisbalompie.es/", "ATHLETIC_CLUB": "https://www.athletic-club.eus/", "UEFA": "https://www.uefa.com/"}.get(provider)
+        allowed_prefix = {"LALIGA": "https://www.laliga.com/", "REAL_BETIS": "https://www.realbetisbalompie.es/", "ATHLETIC_CLUB": "https://www.athletic-club.eus/", "UEFA": "https://www.uefa.com/", "ZEROZERO": "https://www.zerozero.pt/", "TRANSFERMARKT": "https://www.transfermarkt.com/"}.get(provider)
         if not allowed_prefix or not str(row.get("sourceUrl", "")).startswith(allowed_prefix):
             raise ValueError(f"Non-official source URL/provider for {pid}")
         team = teams.get(str(row.get("teamId")))
@@ -47,13 +47,28 @@ def apply(db, approval):
         roster_player = team_rows[0]
         report["matched"] += 1
         age = age_on(row["dateOfBirth"], approval["asOf"])
+        overwrite_fields = set(row.get("overwriteFields", []))
+        if overwrite_fields - {"age", "nationality"}:
+            raise ValueError(f"Unsupported overwrite field for {pid}")
+        if overwrite_fields and approval.get("operation") != "fill-and-correct-approved-player-age-and-nationality":
+            raise ValueError(f"Overwrite not allowed by approval scope for {pid}")
+        report.setdefault("agesOverwritten", 0)
+        report.setdefault("nationalitiesOverwritten", 0)
         for target in (player, roster_player):
-            if missing(target.get("age")):
+            if "age" in overwrite_fields:
+                if target.get("age") != age:
+                    target["age"] = age
+                    report["agesOverwritten"] += 1
+            elif missing(target.get("age")):
                 target["age"] = age
                 report["agesFilled"] += 1
             elif int(target["age"]) != age and target is player:
                 report["preservedExisting"] += 1
-            if missing(target.get("nationality")):
+            if "nationality" in overwrite_fields:
+                if target.get("nationality") != row["nationality"]:
+                    target["nationality"] = row["nationality"]
+                    report["nationalitiesOverwritten"] += 1
+            elif missing(target.get("nationality")):
                 target["nationality"] = row["nationality"]
                 report["nationalitiesFilled"] += 1
             elif target["nationality"] != row["nationality"] and target is player:
