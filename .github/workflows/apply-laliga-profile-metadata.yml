@@ -10,6 +10,7 @@ on:
       - "data/approvals/openfootballbase-atletico-metadata-2026-27.json"
       - "scripts/apply_openfootballbase_verified_metadata.py"
       - "scripts/test_apply_openfootballbase_verified_metadata.py"
+      - ".github/workflows/apply-laliga-profile-metadata.yml"
 
 permissions:
   contents: write
