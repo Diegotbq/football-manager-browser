@@ -17654,6 +17654,18 @@
             "marketValue": "estimated; source does not provide market value",
             "position": "broad category; no exact role asserted"
           }
+        },
+        {
+          "id": "elche-202627-11",
+          "name": "David Affengruber",
+          "position": "CB",
+          "age": null,
+          "overall": 77,
+          "marketValue": 5000000,
+          "teamId": "fulham",
+          "nationality": "AUT",
+          "injured": false,
+          "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
         }
       ]
     },
@@ -25342,18 +25354,6 @@
       "color": "#0066b3",
       "players": [
         {
-          "id": "alaves-202627-01",
-          "name": "Jesús Owono",
-          "position": "GK",
-          "age": null,
-          "overall": 73,
-          "marketValue": 1800000,
-          "teamId": "alaves",
-          "nationality": "EQG",
-          "injured": false,
-          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
-        },
-        {
           "id": "alaves-202627-02",
           "name": "Antonio Sivera",
           "position": "GK",
@@ -26133,18 +26133,6 @@
           }
         },
         {
-          "id": "elche-202627-09",
-          "name": "John Donald",
-          "position": "CB",
-          "age": null,
-          "overall": 70,
-          "marketValue": 1000000,
-          "teamId": "elche",
-          "nationality": "ESP",
-          "injured": false,
-          "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
-        },
-        {
           "id": "elche-202627-10",
           "name": "Rubén Sánchez",
           "position": "RB",
@@ -26165,18 +26153,6 @@
             "section": "Squad",
             "license": "Squad data derived from Wikipedia (CC BY-SA 4.0); Wikidata fields CC0"
           }
-        },
-        {
-          "id": "elche-202627-11",
-          "name": "David Affengruber",
-          "position": "CB",
-          "age": null,
-          "overall": 77,
-          "marketValue": 5000000,
-          "teamId": "elche",
-          "nationality": "AUT",
-          "injured": false,
-          "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
         },
         {
           "id": "elche-202627-12",
@@ -26878,18 +26854,6 @@
             "section": "First-team squad",
             "license": "Squad data derived from Wikipedia (CC BY-SA 4.0); Wikidata fields CC0"
           }
-        },
-        {
-          "id": "getafe-202627-11",
-          "name": "Juan Berrocal",
-          "position": "CB",
-          "age": null,
-          "overall": 72,
-          "marketValue": 1800000,
-          "teamId": "getafe",
-          "nationality": "ESP",
-          "injured": false,
-          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
         },
         {
           "id": "getafe-202627-12",
@@ -28571,6 +28535,18 @@
             "dateOfBirth": "2007-01-17",
             "verifiedAt": "2026-11-25"
           }
+        },
+        {
+          "id": "getafe-202627-11",
+          "name": "Juan Berrocal",
+          "position": "CB",
+          "age": null,
+          "overall": 72,
+          "marketValue": 1800000,
+          "teamId": "malaga",
+          "nationality": "ESP",
+          "injured": false,
+          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
         }
       ]
     },
@@ -28956,18 +28932,6 @@
             "dateOfBirth": "2005-04-19",
             "verifiedAt": "2026-11-25"
           }
-        },
-        {
-          "id": "racing-santander-202627-21",
-          "name": "Diego Díaz Cacho",
-          "position": "CM",
-          "age": null,
-          "overall": 71,
-          "marketValue": 2500000,
-          "teamId": "racing-santander",
-          "nationality": null,
-          "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
         },
         {
           "id": "racing-santander-202627-22",
@@ -29869,6 +29833,19 @@
             "dateOfBirth": "1994-10-17",
             "verifiedAt": "2026-11-25"
           }
+        },
+        {
+          "id": "sevilla-202627-09",
+          "name": "Adrià Pedrosa",
+          "position": "LB",
+          "age": null,
+          "overall": 69,
+          "marketValue": 5000000,
+          "teamId": "rayo-vallecano",
+          "nationality": "ESP",
+          "injured": false,
+          "ratingEstimated": true,
+          "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement"
         }
       ]
     },
@@ -32953,19 +32930,6 @@
             "section": "First team squad",
             "license": "Squad data derived from Wikipedia (CC BY-SA 4.0); Wikidata fields CC0"
           }
-        },
-        {
-          "id": "sevilla-202627-09",
-          "name": "Adrià Pedrosa",
-          "position": "LB",
-          "age": null,
-          "overall": 69,
-          "marketValue": 5000000,
-          "teamId": "sevilla",
-          "nationality": "ESP",
-          "injured": false,
-          "ratingEstimated": true,
-          "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement"
         },
         {
           "id": "sevilla-202627-10",
@@ -147452,18 +147416,6 @@
       }
     },
     {
-      "id": "alaves-202627-01",
-      "name": "Jesús Owono",
-      "position": "GK",
-      "age": null,
-      "overall": 73,
-      "marketValue": 1800000,
-      "teamId": "alaves",
-      "nationality": "EQG",
-      "injured": false,
-      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
-    },
-    {
       "id": "alaves-202627-02",
       "name": "Antonio Sivera",
       "position": "GK",
@@ -148230,18 +148182,6 @@
       }
     },
     {
-      "id": "elche-202627-09",
-      "name": "John Donald",
-      "position": "CB",
-      "age": null,
-      "overall": 70,
-      "marketValue": 1000000,
-      "teamId": "elche",
-      "nationality": "ESP",
-      "injured": false,
-      "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
-    },
-    {
       "id": "elche-202627-10",
       "name": "Rubén Sánchez",
       "position": "RB",
@@ -148270,7 +148210,7 @@
       "age": null,
       "overall": 77,
       "marketValue": 5000000,
-      "teamId": "elche",
+      "teamId": "fulham",
       "nationality": "AUT",
       "injured": false,
       "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
@@ -148970,7 +148910,7 @@
       "age": null,
       "overall": 72,
       "marketValue": 1800000,
-      "teamId": "getafe",
+      "teamId": "malaga",
       "nationality": "ESP",
       "injured": false,
       "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
@@ -151001,18 +150941,6 @@
         "dateOfBirth": "2005-04-19",
         "verifiedAt": "2026-11-25"
       }
-    },
-    {
-      "id": "racing-santander-202627-21",
-      "name": "Diego Díaz Cacho",
-      "position": "CM",
-      "age": null,
-      "overall": 71,
-      "marketValue": 2500000,
-      "teamId": "racing-santander",
-      "nationality": null,
-      "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
     },
     {
       "id": "racing-santander-202627-22",
@@ -154864,7 +154792,7 @@
       "age": null,
       "overall": 69,
       "marketValue": 5000000,
-      "teamId": "sevilla",
+      "teamId": "rayo-vallecano",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
