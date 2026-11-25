@@ -32689,14 +32689,20 @@
           "id": "sevilla-202627-03",
           "name": "Rafa Romero",
           "position": "GK",
-          "age": null,
+          "age": 23,
           "overall": 72,
           "marketValue": 5000000,
           "teamId": "sevilla",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement"
+          "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/rafa-romero",
+            "dateOfBirth": "2003-08-07",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "sevilla-202627-04",
@@ -33014,14 +33020,20 @@
           "id": "sevilla-202627-18",
           "name": "Nico Guillén",
           "position": "CM",
-          "age": null,
+          "age": 18,
           "overall": 70,
           "marketValue": 5000000,
           "teamId": "sevilla",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement"
+          "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-GB/jugador/nico-guillen-1",
+            "dateOfBirth": "2008-01-30",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "sevilla-202627-19",
@@ -33073,14 +33085,20 @@
           "id": "sevilla-202627-21",
           "name": "Alfon González",
           "position": "LW",
-          "age": null,
+          "age": 27,
           "overall": 71,
           "marketValue": 5000000,
           "teamId": "sevilla",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement"
+          "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/alfonso-1",
+            "dateOfBirth": "1999-05-04",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "sevilla-202627-22",
@@ -33109,14 +33127,20 @@
           "id": "sevilla-202627-23",
           "name": "Peque Fernández",
           "position": "AM",
-          "age": null,
+          "age": 24,
           "overall": 71,
           "marketValue": 5000000,
           "teamId": "sevilla",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement"
+          "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/peque-1",
+            "dateOfBirth": "2002-10-04",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "sevilla-202627-24",
@@ -154409,14 +154433,20 @@
       "id": "sevilla-202627-03",
       "name": "Rafa Romero",
       "position": "GK",
-      "age": null,
+      "age": 23,
       "overall": 72,
       "marketValue": 5000000,
       "teamId": "sevilla",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement"
+      "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/rafa-romero",
+        "dateOfBirth": "2003-08-07",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "sevilla-202627-04",
@@ -154734,14 +154764,20 @@
       "id": "sevilla-202627-18",
       "name": "Nico Guillén",
       "position": "CM",
-      "age": null,
+      "age": 18,
       "overall": 70,
       "marketValue": 5000000,
       "teamId": "sevilla",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement"
+      "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-GB/jugador/nico-guillen-1",
+        "dateOfBirth": "2008-01-30",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "sevilla-202627-19",
@@ -154793,14 +154829,20 @@
       "id": "sevilla-202627-21",
       "name": "Alfon González",
       "position": "LW",
-      "age": null,
+      "age": 27,
       "overall": 71,
       "marketValue": 5000000,
       "teamId": "sevilla",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement"
+      "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/alfonso-1",
+        "dateOfBirth": "1999-05-04",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "sevilla-202627-22",
@@ -154829,14 +154871,20 @@
       "id": "sevilla-202627-23",
       "name": "Peque Fernández",
       "position": "AM",
-      "age": null,
+      "age": 24,
       "overall": 71,
       "marketValue": 5000000,
       "teamId": "sevilla",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement"
+      "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/peque-1",
+        "dateOfBirth": "2002-10-04",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "sevilla-202627-24",
