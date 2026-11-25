@@ -1436,8 +1436,24 @@
       "dateOfBirth": "1998-05-13",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/jugador/pedrosa-1"
+    },
+    {
+      "playerId": "atletico-madrid-202627-03",
+      "name": "Salvador Esquivel",
+      "teamId": "atletico-madrid",
+      "dateOfBirth": "2005-09-30",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/es-GB/jugador/salvi-esquivel"
+    },
+    {
+      "playerId": "atletico-madrid-202627-09",
+      "name": "Daniel Martínez",
+      "teamId": "atletico-madrid",
+      "dateOfBirth": "2004-05-05",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/daniel-martinez-2"
     }
   ],
-  "approvalRevision": 29,
-  "reviewNote": "Metadata approval reflects current clubs after verified roster corrections; profile records are matched to the corrected team IDs."
+  "approvalRevision": 30,
+  "reviewNote": "Adds official Atlético de Madrid profiles for Salvi Esquivel and Dani Martínez; exact player IDs mapped to the database's full display names."
 }
