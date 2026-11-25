@@ -17659,13 +17659,19 @@
           "id": "elche-202627-11",
           "name": "David Affengruber",
           "position": "CB",
-          "age": null,
+          "age": 25,
           "overall": 77,
           "marketValue": 5000000,
           "teamId": "fulham",
           "nationality": "AUT",
           "injured": false,
-          "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/david-affengruber",
+            "dateOfBirth": "2001-03-19",
+            "verifiedAt": "2026-11-25"
+          }
         }
       ]
     },
@@ -28540,13 +28546,19 @@
           "id": "getafe-202627-11",
           "name": "Juan Berrocal",
           "position": "CB",
-          "age": null,
+          "age": 27,
           "overall": 72,
           "marketValue": 1800000,
           "teamId": "malaga",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-GB/jugador/j-berrocal",
+            "dateOfBirth": "1999-02-05",
+            "verifiedAt": "2026-11-25"
+          }
         }
       ]
     },
@@ -29838,14 +29850,20 @@
           "id": "sevilla-202627-09",
           "name": "Adrià Pedrosa",
           "position": "LB",
-          "age": null,
+          "age": 28,
           "overall": 69,
           "marketValue": 5000000,
           "teamId": "rayo-vallecano",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement"
+          "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/pedrosa-1",
+            "dateOfBirth": "1998-05-13",
+            "verifiedAt": "2026-11-25"
+          }
         }
       ]
     },
@@ -148207,13 +148225,19 @@
       "id": "elche-202627-11",
       "name": "David Affengruber",
       "position": "CB",
-      "age": null,
+      "age": 25,
       "overall": 77,
       "marketValue": 5000000,
       "teamId": "fulham",
       "nationality": "AUT",
       "injured": false,
-      "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/david-affengruber",
+        "dateOfBirth": "2001-03-19",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "elche-202627-12",
@@ -148907,13 +148931,19 @@
       "id": "getafe-202627-11",
       "name": "Juan Berrocal",
       "position": "CB",
-      "age": null,
+      "age": 27,
       "overall": 72,
       "marketValue": 1800000,
       "teamId": "malaga",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-GB/jugador/j-berrocal",
+        "dateOfBirth": "1999-02-05",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "getafe-202627-12",
@@ -154789,14 +154819,20 @@
       "id": "sevilla-202627-09",
       "name": "Adrià Pedrosa",
       "position": "LB",
-      "age": null,
+      "age": 28,
       "overall": 69,
       "marketValue": 5000000,
       "teamId": "rayo-vallecano",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement"
+      "dataSource": "Sevilla FC official first-team squad and 2026/27 shirt-number announcement",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/pedrosa-1",
+        "dateOfBirth": "1998-05-13",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "sevilla-202627-10",
