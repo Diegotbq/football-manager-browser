@@ -53,6 +53,16 @@
       "fromTeamId": "racing-santander",
       "sourceUrl": "https://www.laliga.com/jugador/diego-diaz-3",
       "reason": "Official LALIGA profile lists FC Andorra, outside the database's covered leagues"
+    },
+    {
+      "action": "remove",
+      "playerId": "alaves-202627-13",
+      "name": "Mamadou Diarra",
+      "fromTeamId": "alaves",
+      "sourceUrl": "https://www.laliga.com/es-NG/jugador/moussa-diarra-1",
+      "transferSourceUrl": "https://as.com/futbol/primera/mercado-de-fichajes-de-laliga-ea-sports-202627-altas-y-bajas-f202605-n/",
+      "reason": "The Alavés defender record matches the official Moussa Diarra profile (CB, Mali); the 2026/27 transfer report lists him moving to Al-Wahda, outside the covered leagues."
     }
-  ]
+  ],
+  "reviewNote": "Current-club corrections based on official LALIGA profiles and a dated transfer report; includes one stale/misnamed Alavés player entry moved out of the covered league set."
 }
