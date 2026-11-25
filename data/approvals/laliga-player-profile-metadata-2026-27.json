@@ -1402,8 +1402,18 @@
       "dateOfBirth": "2004-11-30",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/es-DE/jugador/nizar-jmili"
+    },
+    {
+      "playerId": "athletic-club-202627-30",
+      "name": "Aritz Conde",
+      "teamId": "athletic-club",
+      "dateOfBirth": "2005-10-14",
+      "nationality": "ESP",
+      "sourceProvider": "ATHLETIC_CLUB",
+      "sourceUrl": "https://www.athletic-club.eus/jugadores/aritz-conde-albiol/",
+      "nationalitySourceUrl": "https://www.transfermarkt.es/aritz-conde/profil/spieler/1222475"
     }
   ],
-  "approvalRevision": 26,
-  "reviewNote": "Includes official LALIGA player profiles for verified first-team and academy players; exact database identity and club matching."
+  "approvalRevision": 27,
+  "reviewNote": "Includes official LALIGA, Real Betis and Athletic Club profile sources; nationality cross-source recorded where needed."
 }
