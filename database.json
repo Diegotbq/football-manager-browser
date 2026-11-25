@@ -25602,18 +25602,6 @@
           }
         },
         {
-          "id": "alaves-202627-13",
-          "name": "Mamadou Diarra",
-          "position": "CB",
-          "age": null,
-          "overall": 73,
-          "marketValue": 2000000,
-          "teamId": "alaves",
-          "nationality": "MLI",
-          "injured": false,
-          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
-        },
-        {
           "id": "alaves-202627-14",
           "name": "Xanet Oláiz",
           "position": "CB",
@@ -147782,18 +147770,6 @@
         "dateOfBirth": "1994-03-03",
         "verifiedAt": "2026-11-25"
       }
-    },
-    {
-      "id": "alaves-202627-13",
-      "name": "Mamadou Diarra",
-      "position": "CB",
-      "age": null,
-      "overall": 73,
-      "marketValue": 2000000,
-      "teamId": "alaves",
-      "nationality": "MLI",
-      "injured": false,
-      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
     },
     {
       "id": "alaves-202627-14",
