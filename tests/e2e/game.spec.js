@@ -79,3 +79,35 @@ test("joga uma partida completa, pausa, retoma e registra o resultado", async ({
   expect(typeof completedMatch.awayScore).toBe("number");
   expect(errors).toEqual([]);
 });
+
+
+test("aplica instruções táticas e realiza substituição durante a partida", async ({ page }) => {
+  const errors = [];
+  page.on("pageerror", error => errors.push(error.message));
+  await startCareer(page);
+
+  await page.locator('[data-view="match"]').click();
+  await page.locator("#match-opponent").selectOption("barcelona");
+  await page.getByRole("button", { name: /PREPARAR PARTIDA/ }).click();
+
+  const tactics = page.locator(".tactical-instructions select");
+  await expect(tactics).toHaveCount(5);
+  await tactics.nth(0).selectOption("attacking");
+  await tactics.nth(1).selectOption("high");
+  await expect(tactics.nth(0)).toHaveValue("attacking");
+  await expect(tactics.nth(1)).toHaveValue("high");
+
+  await page.getByRole("button", { name: /CONFIRMAR ESCALAÇÃO E JOGAR/ }).click();
+  await expect(page.locator(".match-status")).toHaveText("PARTIDA AO VIVO");
+  await page.getByRole("button", { name: /Pausar/ }).click();
+
+  await expect(page.locator("#sub-out")).toBeVisible();
+  await expect(page.locator("#sub-in")).toBeVisible();
+  await page.locator("#sub-out").selectOption({ index: 0 });
+  await page.locator("#sub-in").selectOption({ index: 0 });
+  await page.getByRole("button", { name: "CONFIRMAR" }).click();
+
+  await expect(page.locator(".substitution-card")).toContainText("1/5");
+  await expect(page.locator(".events-card")).toContainText("entrou no lugar");
+  expect(errors).toEqual([]);
+});
