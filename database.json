@@ -30249,14 +30249,20 @@
           "id": "espanyol-202627-03",
           "name": "Llorenç Serred",
           "position": "GK",
-          "age": null,
+          "age": 21,
           "overall": 70,
           "marketValue": 2500000,
           "teamId": "espanyol",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 31,
-          "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates."
+          "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/llorenc-serred",
+            "dateOfBirth": "2005-09-04",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "espanyol-202627-04",
@@ -30400,14 +30406,20 @@
           "id": "espanyol-202627-10",
           "name": "José Ángel López",
           "position": "LB",
-          "age": null,
+          "age": 20,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "espanyol",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 32,
-          "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates."
+          "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-GB/jugador/jose-angel-lopez",
+            "dateOfBirth": "2006-03-24",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "espanyol-202627-11",
@@ -30597,14 +30609,20 @@
           "id": "espanyol-202627-19",
           "name": "Javier Hernández",
           "position": "AM",
-          "age": null,
+          "age": 22,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "espanyol",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 28,
-          "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates."
+          "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/javi-hernandez-1",
+            "dateOfBirth": "2004-01-30",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "espanyol-202627-20",
@@ -30748,14 +30766,20 @@
           "id": "espanyol-202627-26",
           "name": "Kike García",
           "position": "ST",
-          "age": null,
+          "age": 37,
           "overall": 73,
           "marketValue": 2500000,
           "teamId": "espanyol",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 19,
-          "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates."
+          "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/kike-g",
+            "dateOfBirth": "1989-11-25",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "espanyol-202627-27",
@@ -151216,14 +151240,20 @@
       "id": "espanyol-202627-03",
       "name": "Llorenç Serred",
       "position": "GK",
-      "age": null,
+      "age": 21,
       "overall": 70,
       "marketValue": 2500000,
       "teamId": "espanyol",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 31,
-      "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates."
+      "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/llorenc-serred",
+        "dateOfBirth": "2005-09-04",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "espanyol-202627-04",
@@ -151367,14 +151397,20 @@
       "id": "espanyol-202627-10",
       "name": "José Ángel López",
       "position": "LB",
-      "age": null,
+      "age": 20,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "espanyol",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 32,
-      "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates."
+      "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-GB/jugador/jose-angel-lopez",
+        "dateOfBirth": "2006-03-24",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "espanyol-202627-11",
@@ -151564,14 +151600,20 @@
       "id": "espanyol-202627-19",
       "name": "Javier Hernández",
       "position": "AM",
-      "age": null,
+      "age": 22,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "espanyol",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 28,
-      "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates."
+      "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/javi-hernandez-1",
+        "dateOfBirth": "2004-01-30",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "espanyol-202627-20",
@@ -151715,14 +151757,20 @@
       "id": "espanyol-202627-26",
       "name": "Kike García",
       "position": "ST",
-      "age": null,
+      "age": 37,
       "overall": 73,
       "marketValue": 2500000,
       "teamId": "espanyol",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 19,
-      "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates."
+      "dataSource": "RCD Espanyol official first-team squad page 2026/27, cross-checked with LALIGA official squad page and current 24/11/2026 roster. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/kike-g",
+        "dateOfBirth": "1989-11-25",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "espanyol-202627-27",
