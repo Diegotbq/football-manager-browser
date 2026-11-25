@@ -32,3 +32,10 @@
 .instruction-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}
 .instruction-grid .lineup-slot select{width:100%;min-width:0;background:#0d1727;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:11px;font:inherit}
 @media(max-width:620px){.instruction-grid{grid-template-columns:1fr}}
+
+.match-stats{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;padding:12px 16px;margin:0 0 18px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.025);text-align:center}
+.match-stats>div:not(.stats-label){display:grid;grid-template-columns:auto auto;justify-content:center;align-items:center;gap:3px 10px}
+.match-stats strong{font:800 17px Manrope;color:var(--text)}
+.match-stats span{font-size:10px;color:var(--muted);text-align:left}
+.match-stats .stats-label{font-size:9px;letter-spacing:.12em;color:var(--green);font-weight:800}
+@media(max-width:420px){.match-stats{gap:5px;padding:10px 6px}.match-stats span{font-size:9px}.match-stats strong{font-size:15px}.match-stats .stats-label{font-size:8px}}
