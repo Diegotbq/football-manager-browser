@@ -27295,27 +27295,39 @@
           "id": "levante-202627-04",
           "name": "Ihor Galdin",
           "position": "GK",
-          "age": null,
+          "age": 16,
           "overall": 70,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "UKR",
           "injured": false,
           "shirtNumber": 36,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/en-NG/player/ihor-galdin",
+            "dateOfBirth": "2010-06-14",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-05",
           "name": "Aïssa Mandi",
           "position": "CB",
-          "age": null,
+          "age": 35,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "ALG",
           "injured": false,
           "shirtNumber": 2,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/mandi-1",
+            "dateOfBirth": "1991-10-22",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-06",
@@ -27363,235 +27375,343 @@
           "id": "levante-202627-09",
           "name": "Víctor García",
           "position": "RB",
-          "age": null,
+          "age": 29,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 17,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/victor-g-1",
+            "dateOfBirth": "1997-09-16",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-10",
           "name": "Jeremy Toljan",
           "position": "RB",
-          "age": null,
+          "age": 32,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "GER",
           "injured": false,
           "shirtNumber": 22,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/jeremy-toljan",
+            "dateOfBirth": "1994-08-08",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-11",
           "name": "Manu Sánchez",
           "position": "LB",
-          "age": null,
+          "age": 26,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 23,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/m-sanchez",
+            "dateOfBirth": "2000-08-24",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-12",
           "name": "Nacho Pérez",
           "position": "RB",
-          "age": null,
+          "age": 18,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 29,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/nacho-perez-1",
+            "dateOfBirth": "2008-08-29",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-13",
           "name": "Marc Santos",
           "position": "LB",
-          "age": null,
+          "age": 16,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 33,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/en-ES/player/marc-santos",
+            "dateOfBirth": "2010-11-09",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-14",
           "name": "Hugo Sotelo",
           "position": "CM",
-          "age": null,
+          "age": 22,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 5,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/hugo-sotelo",
+            "dateOfBirth": "2003-12-19",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-15",
           "name": "Dani Requena",
           "position": "CM",
-          "age": null,
+          "age": 22,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 6,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/daniel-requena",
+            "dateOfBirth": "2004-02-12",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-16",
           "name": "Jon Ander Olasagasti",
           "position": "CM",
-          "age": null,
+          "age": 26,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 8,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/jon-ander-olasagasti",
+            "dateOfBirth": "2000-08-16",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-17",
           "name": "Axel Tape",
           "position": "CM",
-          "age": null,
+          "age": 19,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "FRA",
           "injured": false,
           "shirtNumber": 16,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/axel-tape",
+            "dateOfBirth": "2007-08-10",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-18",
           "name": "Enzo Bardeli",
           "position": "CM",
-          "age": null,
+          "age": 25,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "FRA",
           "injured": false,
           "shirtNumber": 18,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/enzo-bardeli",
+            "dateOfBirth": "2001-04-11",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-19",
           "name": "Oriol Rey",
           "position": "DM",
-          "age": null,
+          "age": 28,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 20,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/en-GB/player/o-rey",
+            "dateOfBirth": "1998-02-25",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-20",
           "name": "Thiago Fernández",
           "position": "LW",
-          "age": null,
+          "age": 22,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "ARG",
           "injured": false,
           "shirtNumber": 24,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/thiago-fernandez",
+            "dateOfBirth": "2004-04-03",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-21",
           "name": "Paco Cortés",
           "position": "RW",
-          "age": null,
+          "age": 19,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 27,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/paco-cortes",
+            "dateOfBirth": "2007-08-11",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-22",
           "name": "Roger Brugué",
           "position": "RW",
-          "age": null,
+          "age": 30,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 7,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/r-brugue",
+            "dateOfBirth": "1996-11-04",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-23",
           "name": "Iván Romero",
           "position": "ST",
-          "age": null,
+          "age": 25,
           "overall": 72,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 9,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/ivan-2",
+            "dateOfBirth": "2001-04-10",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-24",
           "name": "Petar Ratkov",
           "position": "ST",
-          "age": null,
+          "age": 23,
           "overall": 72,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "SRB",
           "injured": false,
           "shirtNumber": 10,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-GB/jugador/petar-ratkov",
+            "dateOfBirth": "2003-08-18",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-25",
           "name": "Yanis Musuayi",
           "position": "ST",
-          "age": null,
+          "age": 19,
           "overall": 72,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "BEL",
           "injured": false,
           "shirtNumber": 11,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/yanis-musuayi",
+            "dateOfBirth": "2007-06-26",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "levante-202627-26",
           "name": "Karl Etta Eyong",
           "position": "ST",
-          "age": null,
+          "age": 23,
           "overall": 72,
           "marketValue": 2500000,
           "teamId": "levante",
-          "nationality": null,
+          "nationality": "CMR",
           "injured": false,
           "shirtNumber": 21,
-          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+          "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-AR/jugador/etta-eyong",
+            "dateOfBirth": "2003-10-14",
+            "verifiedAt": "2026-11-25"
+          }
         }
       ]
     },
@@ -148673,27 +148793,39 @@
       "id": "levante-202627-04",
       "name": "Ihor Galdin",
       "position": "GK",
-      "age": null,
+      "age": 16,
       "overall": 70,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "UKR",
       "injured": false,
       "shirtNumber": 36,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/en-NG/player/ihor-galdin",
+        "dateOfBirth": "2010-06-14",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-05",
       "name": "Aïssa Mandi",
       "position": "CB",
-      "age": null,
+      "age": 35,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "ALG",
       "injured": false,
       "shirtNumber": 2,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/mandi-1",
+        "dateOfBirth": "1991-10-22",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-06",
@@ -148741,235 +148873,343 @@
       "id": "levante-202627-09",
       "name": "Víctor García",
       "position": "RB",
-      "age": null,
+      "age": 29,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 17,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/victor-g-1",
+        "dateOfBirth": "1997-09-16",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-10",
       "name": "Jeremy Toljan",
       "position": "RB",
-      "age": null,
+      "age": 32,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "GER",
       "injured": false,
       "shirtNumber": 22,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/jeremy-toljan",
+        "dateOfBirth": "1994-08-08",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-11",
       "name": "Manu Sánchez",
       "position": "LB",
-      "age": null,
+      "age": 26,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 23,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/m-sanchez",
+        "dateOfBirth": "2000-08-24",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-12",
       "name": "Nacho Pérez",
       "position": "RB",
-      "age": null,
+      "age": 18,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 29,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/nacho-perez-1",
+        "dateOfBirth": "2008-08-29",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-13",
       "name": "Marc Santos",
       "position": "LB",
-      "age": null,
+      "age": 16,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 33,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/en-ES/player/marc-santos",
+        "dateOfBirth": "2010-11-09",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-14",
       "name": "Hugo Sotelo",
       "position": "CM",
-      "age": null,
+      "age": 22,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 5,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/hugo-sotelo",
+        "dateOfBirth": "2003-12-19",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-15",
       "name": "Dani Requena",
       "position": "CM",
-      "age": null,
+      "age": 22,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 6,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/daniel-requena",
+        "dateOfBirth": "2004-02-12",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-16",
       "name": "Jon Ander Olasagasti",
       "position": "CM",
-      "age": null,
+      "age": 26,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 8,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/jon-ander-olasagasti",
+        "dateOfBirth": "2000-08-16",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-17",
       "name": "Axel Tape",
       "position": "CM",
-      "age": null,
+      "age": 19,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "FRA",
       "injured": false,
       "shirtNumber": 16,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/axel-tape",
+        "dateOfBirth": "2007-08-10",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-18",
       "name": "Enzo Bardeli",
       "position": "CM",
-      "age": null,
+      "age": 25,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "FRA",
       "injured": false,
       "shirtNumber": 18,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/enzo-bardeli",
+        "dateOfBirth": "2001-04-11",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-19",
       "name": "Oriol Rey",
       "position": "DM",
-      "age": null,
+      "age": 28,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 20,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/en-GB/player/o-rey",
+        "dateOfBirth": "1998-02-25",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-20",
       "name": "Thiago Fernández",
       "position": "LW",
-      "age": null,
+      "age": 22,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "ARG",
       "injured": false,
       "shirtNumber": 24,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/thiago-fernandez",
+        "dateOfBirth": "2004-04-03",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-21",
       "name": "Paco Cortés",
       "position": "RW",
-      "age": null,
+      "age": 19,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 27,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/paco-cortes",
+        "dateOfBirth": "2007-08-11",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-22",
       "name": "Roger Brugué",
       "position": "RW",
-      "age": null,
+      "age": 30,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 7,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/r-brugue",
+        "dateOfBirth": "1996-11-04",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-23",
       "name": "Iván Romero",
       "position": "ST",
-      "age": null,
+      "age": 25,
       "overall": 72,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 9,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/ivan-2",
+        "dateOfBirth": "2001-04-10",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-24",
       "name": "Petar Ratkov",
       "position": "ST",
-      "age": null,
+      "age": 23,
       "overall": 72,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "SRB",
       "injured": false,
       "shirtNumber": 10,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-GB/jugador/petar-ratkov",
+        "dateOfBirth": "2003-08-18",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-25",
       "name": "Yanis Musuayi",
       "position": "ST",
-      "age": null,
+      "age": 19,
       "overall": 72,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "BEL",
       "injured": false,
       "shirtNumber": 11,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/yanis-musuayi",
+        "dateOfBirth": "2007-06-26",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-26",
       "name": "Karl Etta Eyong",
       "position": "ST",
-      "age": null,
+      "age": 23,
       "overall": 72,
       "marketValue": 2500000,
       "teamId": "levante",
-      "nationality": null,
+      "nationality": "CMR",
       "injured": false,
       "shirtNumber": 21,
-      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates."
+      "dataSource": "Levante UD official first-team squad and 2026/27 shirt-number list; UEFA squad cross-check (24/11/2026). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-AR/jugador/etta-eyong",
+        "dateOfBirth": "2003-10-14",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "malaga-202627-01",
