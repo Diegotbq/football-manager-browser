@@ -1338,8 +1338,40 @@
       "nationality": "ESP",
       "sourceProvider": "LALIGA",
       "sourceUrl": "https://www.laliga.com/jugador/hugo-perez-2"
+    },
+    {
+      "playerId": "racing-santander-202627-11",
+      "name": "Facundo González Molino",
+      "teamId": "racing-santander",
+      "dateOfBirth": "2003-06-06",
+      "nationality": "URY",
+      "sourceUrl": "https://www.laliga.com/jugador/facundo-gonzalez"
+    },
+    {
+      "playerId": "racing-santander-202627-26",
+      "name": "Jorge Castellanos del Olmo",
+      "teamId": "racing-santander",
+      "dateOfBirth": "2005-10-05",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/en-ID/player/jorge-castellanos"
+    },
+    {
+      "playerId": "racing-santander-202627-30",
+      "name": "Pedro Felipe de Jesus Gomes",
+      "teamId": "racing-santander",
+      "dateOfBirth": "2004-05-23",
+      "nationality": "BRA",
+      "sourceUrl": "https://www.laliga.com/es-GB/jugador/pedro-felipe"
+    },
+    {
+      "playerId": "malaga-202627-03",
+      "name": "Andrés",
+      "teamId": "malaga",
+      "dateOfBirth": "2004-07-22",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/andres-cespedes"
     }
   ],
-  "approvalRevision": 24,
-  "reviewNote": "Metadata from official LALIGA player profiles and official Real Betis Betis Deportivo profiles; exact database player IDs, names and team IDs; fill missing values only."
+  "approvalRevision": 25,
+  "reviewNote": "Includes official LALIGA player profiles and official club profiles; includes remaining verified Racing, Málaga, and Betis reserve metadata."
 }
