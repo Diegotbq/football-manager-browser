@@ -1416,7 +1416,7 @@
     {
       "playerId": "getafe-202627-11",
       "name": "Juan Berrocal",
-      "teamId": "getafe",
+      "teamId": "malaga",
       "dateOfBirth": "1999-02-05",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/es-GB/jugador/j-berrocal"
@@ -1424,7 +1424,7 @@
     {
       "playerId": "elche-202627-11",
       "name": "David Affengruber",
-      "teamId": "elche",
+      "teamId": "fulham",
       "dateOfBirth": "2001-03-19",
       "nationality": "AUT",
       "sourceUrl": "https://www.laliga.com/jugador/david-affengruber"
@@ -1432,12 +1432,12 @@
     {
       "playerId": "sevilla-202627-09",
       "name": "Adrià Pedrosa",
-      "teamId": "sevilla",
+      "teamId": "rayo-vallecano",
       "dateOfBirth": "1998-05-13",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/jugador/pedrosa-1"
     }
   ],
-  "approvalRevision": 28,
-  "reviewNote": "Includes verified LALIGA and official club profiles plus metadata for players moved to their current clubs by the roster-correction approval."
+  "approvalRevision": 29,
+  "reviewNote": "Metadata approval reflects current clubs after verified roster corrections; profile records are matched to the corrected team IDs."
 }
