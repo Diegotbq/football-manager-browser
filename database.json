@@ -27916,14 +27916,20 @@
           "id": "malaga-202627-03",
           "name": "Andrés",
           "position": "GK",
-          "age": null,
+          "age": 22,
           "overall": 70,
           "marketValue": 2500000,
           "teamId": "malaga",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 30,
-          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/andres-cespedes",
+            "dateOfBirth": "2004-07-22",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "malaga-202627-04",
@@ -28754,13 +28760,19 @@
           "id": "racing-santander-202627-11",
           "name": "Facundo González Molino",
           "position": "CB",
-          "age": null,
+          "age": 23,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "URY",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/facundo-gonzalez",
+            "dateOfBirth": "2003-06-06",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-12",
@@ -29016,13 +29028,19 @@
           "id": "racing-santander-202627-26",
           "name": "Jorge Castellanos del Olmo",
           "position": "CM",
-          "age": null,
+          "age": 21,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/en-ID/player/jorge-castellanos",
+            "dateOfBirth": "2005-10-05",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-27",
@@ -29086,13 +29104,19 @@
           "id": "racing-santander-202627-30",
           "name": "Pedro Felipe de Jesus Gomes",
           "position": "CB",
-          "age": null,
+          "age": 22,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "BRA",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-GB/jugador/pedro-felipe",
+            "dateOfBirth": "2004-05-23",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-31",
@@ -149917,14 +149941,20 @@
       "id": "malaga-202627-03",
       "name": "Andrés",
       "position": "GK",
-      "age": null,
+      "age": 22,
       "overall": 70,
       "marketValue": 2500000,
       "teamId": "malaga",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 30,
-      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/andres-cespedes",
+        "dateOfBirth": "2004-07-22",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "malaga-202627-04",
@@ -150742,13 +150772,19 @@
       "id": "racing-santander-202627-11",
       "name": "Facundo González Molino",
       "position": "CB",
-      "age": null,
+      "age": 23,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "URY",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/facundo-gonzalez",
+        "dateOfBirth": "2003-06-06",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-12",
@@ -151004,13 +151040,19 @@
       "id": "racing-santander-202627-26",
       "name": "Jorge Castellanos del Olmo",
       "position": "CM",
-      "age": null,
+      "age": 21,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/en-ID/player/jorge-castellanos",
+        "dateOfBirth": "2005-10-05",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-27",
@@ -151074,13 +151116,19 @@
       "id": "racing-santander-202627-30",
       "name": "Pedro Felipe de Jesus Gomes",
       "position": "CB",
-      "age": null,
+      "age": 22,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "BRA",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-GB/jugador/pedro-felipe",
+        "dateOfBirth": "2004-05-23",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-31",
