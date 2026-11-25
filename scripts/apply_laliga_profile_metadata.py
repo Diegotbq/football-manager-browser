@@ -18,7 +18,7 @@ def missing(v):
 def apply(db, approval):
     if approval.get("approved") is not True or approval.get("operation") != "fill-missing-player-age-and-nationality-only":
         raise ValueError("Approval scope is not valid")
-    if approval.get("source") not in {"LALIGA official player profiles", "Official LALIGA and club player profiles"}:
+    if approval.get("source") not in {"LALIGA official player profiles", "Official LALIGA and club player profiles", "Official LALIGA, club and UEFA player profiles"}:
         raise ValueError("Unexpected source")
     teams = {str(t.get("id")): t for t in db.get("teams", [])}
     flat = {str(p.get("id")): p for p in db.get("players", [])}
@@ -32,7 +32,7 @@ def apply(db, approval):
         if not re.fullmatch(r"[A-Z]{3}", str(row.get("nationality", ""))):
             raise ValueError(f"Invalid ISO alpha-3 nationality for {pid}")
         provider = row.get("sourceProvider", "LALIGA")
-        allowed_prefix = {"LALIGA": "https://www.laliga.com/", "REAL_BETIS": "https://www.realbetisbalompie.es/", "ATHLETIC_CLUB": "https://www.athletic-club.eus/"}.get(provider)
+        allowed_prefix = {"LALIGA": "https://www.laliga.com/", "REAL_BETIS": "https://www.realbetisbalompie.es/", "ATHLETIC_CLUB": "https://www.athletic-club.eus/", "UEFA": "https://www.uefa.com/"}.get(provider)
         if not allowed_prefix or not str(row.get("sourceUrl", "")).startswith(allowed_prefix):
             raise ValueError(f"Non-official source URL/provider for {pid}")
         team = teams.get(str(row.get("teamId")))
