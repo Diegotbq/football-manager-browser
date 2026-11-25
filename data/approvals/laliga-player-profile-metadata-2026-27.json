@@ -1141,8 +1141,24 @@
       "dateOfBirth": "2006-10-31",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/es-EG/jugador/hugo-burcio-1"
+    },
+    {
+      "playerId": "elche-202627-31",
+      "name": "Álvaro Padilla",
+      "teamId": "elche",
+      "dateOfBirth": "2006-04-25",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/alvaro-padilla"
+    },
+    {
+      "playerId": "elche-202627-33",
+      "name": "Nordin Al Lal",
+      "teamId": "elche",
+      "dateOfBirth": "2005-02-14",
+      "nationality": "MAR",
+      "sourceUrl": "https://www.laliga.com/es-BR/jugador/nordin-al-lal"
     }
   ],
-  "approvalRevision": 21,
-  "reviewNote": "Includes official LALIGA profile/squad sources for Athletic Club, RC Deportivo, Levante, Racing, Málaga, Betis Deportivo, Espanyol, Getafe, Alavés, Rayo Vallecano and Celta."
+  "approvalRevision": 22,
+  "reviewNote": "Includes official LALIGA profiles for Athletic Club, RC Deportivo, Levante, Racing, Málaga, Betis Deportivo, Espanyol, Getafe, Alavés, Rayo, Celta and Elche."
 }
