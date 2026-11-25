@@ -115,3 +115,14 @@ test("aplica instruções táticas e realiza substituição durante a partida", 
   await expect(page.locator(".events-card")).toContainText("entrou no lugar");
   expect(errors).toEqual([]);
 });
+
+test("gera atributo específico de goleiro para influenciar as defesas", async ({ page }) => {
+  await startCareer(page);
+  const keeperRatings = await page.evaluate(async () => {
+    const db = await fetch("database.json").then(response => response.json());
+    const keeper = db.players.find(player => String(player.position || "").toUpperCase() === "GK");
+    return keeper ? window.getPlayerAttributes(keeper) : null;
+  });
+  expect(keeperRatings).not.toBeNull();
+  expect(keeperRatings.goalkeeping).toBeGreaterThan(keeperRatings.shooting);
+});
