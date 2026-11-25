@@ -909,8 +909,80 @@
       "dateOfBirth": "1989-11-25",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/jugador/kike-g"
+    },
+    {
+      "playerId": "getafe-202627-04",
+      "name": "Dakonam Djené",
+      "teamId": "getafe",
+      "dateOfBirth": "1991-12-31",
+      "nationality": "TGO",
+      "sourceUrl": "https://www.laliga.com/jugador/djene"
+    },
+    {
+      "playerId": "getafe-202627-17",
+      "name": "Mohamed Hamdoune",
+      "teamId": "getafe",
+      "dateOfBirth": "2004-05-24",
+      "nationality": "MAR",
+      "sourceUrl": "https://www.laliga.com/jugador/mohamed-hamdoune"
+    },
+    {
+      "playerId": "getafe-202627-24",
+      "name": "Alberto Risco",
+      "teamId": "getafe",
+      "dateOfBirth": "2005-08-30",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/es-AR/jugador/alberto-risco"
+    },
+    {
+      "playerId": "getafe-202627-25",
+      "name": "Óscar López",
+      "teamId": "getafe",
+      "dateOfBirth": "2006-08-13",
+      "nationality": "BOL",
+      "sourceUrl": "https://www.laliga.com/jugador/oscar-lopez-2"
+    },
+    {
+      "playerId": "getafe-202627-26",
+      "name": "Jesús Martínez",
+      "teamId": "getafe",
+      "dateOfBirth": "2004-02-08",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/jesus-martinez"
+    },
+    {
+      "playerId": "getafe-202627-33",
+      "name": "Ebrahima Drammeh",
+      "teamId": "getafe",
+      "dateOfBirth": "2007-01-06",
+      "nationality": "GMB",
+      "sourceUrl": "https://www.laliga.com/jugador/ebrahima-drammeh"
+    },
+    {
+      "playerId": "getafe-202627-34",
+      "name": "Joselu Pérez",
+      "teamId": "getafe",
+      "dateOfBirth": "2004-03-12",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/joselu-7"
+    },
+    {
+      "playerId": "getafe-202627-35",
+      "name": "Moha Achraf",
+      "teamId": "getafe",
+      "dateOfBirth": "2006-07-28",
+      "nationality": "MAR",
+      "sourceUrl": "https://www.laliga.com/es-GB/jugador/moha-achraf"
+    },
+    {
+      "playerId": "getafe-202627-36",
+      "name": "Ibrahima Danfakha",
+      "teamId": "getafe",
+      "dateOfBirth": "2008-12-11",
+      "nationality": "GMB",
+      "sourceUrl": "https://www.laliga.com/jugador/ibrahima-danfakha"
     }
   ],
-  "approvalRevision": 17,
-  "reviewNote": "Includes official LALIGA profiles for Athletic Club, RC Deportivo, Levante UD, Racing de Santander, Málaga CF, selected Betis Deportivo players and Espanyol."
+  "approvalRevision": 18,
+  "reviewNote": "Includes official LALIGA profiles for Athletic Club, RC Deportivo, Levante UD, Racing, Málaga, Espanyol, selected Betis Deportivo and Getafe players."
 }
