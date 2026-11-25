@@ -47,7 +47,8 @@ test("avança o calendário e salva o novo dia na carreira", async ({ page }) =>
   await expect(page.locator("#current-date")).not.toHaveText(before);
 });
 
-test("prepara escalação, inicia e pausa uma partida", async ({ page }) => {
+test("joga uma partida completa, pausa, retoma e registra o resultado", async ({ page }) => {
+  test.setTimeout(60000);
   const errors = [];
   page.on("pageerror", error => errors.push(error.message));
   await startCareer(page);
@@ -64,6 +65,15 @@ test("prepara escalação, inicia e pausa uma partida", async ({ page }) => {
   await expect(page.locator(".match-status")).toHaveText("PARTIDA AO VIVO");
   await page.getByRole("button", { name: /Pausar/ }).click();
   await expect(page.locator(".match-status")).toHaveText("PARTIDA PAUSADA");
+  await page.getByRole("button", { name: /Continuar/ }).click();
+  await page.getByRole("button", { name: "4x" }).click();
 
+  await expect(page.locator(".match-status")).toHaveText("TEMPO INTEGRAL", { timeout: 45000 });
+  await expect(page.locator(".events-card")).toContainText("Fim de jogo! Partida encerrada.");
+  const savedMatches = await page.evaluate(() => JSON.parse(localStorage.getItem("fmb-match-history") || "[]"));
+  expect(savedMatches).toHaveLength(1);
+  expect(savedMatches[0]).toMatchObject({ homeId: "real-madrid", awayId: "barcelona" });
+  expect(typeof savedMatches[0].homeScore).toBe("number");
+  expect(typeof savedMatches[0].awayScore).toBe("number");
   expect(errors).toEqual([]);
 });
