@@ -720,8 +720,16 @@ function render() {
 
   const currentDate = $("#current-date");
 
-  if (currentDate) {
-    currentDate.textContent = dateLabel(state.day);
+  if (currentDate) currentDate.textContent = dateLabel(state.day);
+  document.querySelectorAll(".nav-item").forEach(button => {
+    const activeView = state.view === "player-profile" ? "squad" : state.view;
+    button.classList.toggle("active", button.dataset.view === activeView);
+  });
+  const inboxCount = $("#inbox-unread-count");
+  if (inboxCount) {
+    const unread = (state.inbox || []).filter(item => !item.read).length;
+    inboxCount.textContent = unread > 99 ? "99+" : String(unread);
+    inboxCount.hidden = unread === 0;
   }
 
   if (!state.selectedClubId) {
