@@ -1,7 +1,7 @@
 {
   "approved": true,
-  "operation": "fill-missing-player-age-and-nationality-only",
-  "source": "Official LALIGA, club and UEFA player profiles",
+  "operation": "fill-and-correct-approved-player-age-and-nationality",
+  "source": "Official LALIGA, club, UEFA and verified football databases",
   "season": "2026/27",
   "asOf": "2026-11-25",
   "policy": "exact-player-id-name-and-team; calculate age from official date of birth; ISO alpha-3 nationality; fill missing fields only; never overwrite existing values",
@@ -1560,8 +1560,46 @@
       "nationality": "ESP",
       "sourceProvider": "UEFA",
       "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/"
+    },
+    {
+      "playerId": "getafe-202627-16",
+      "name": "Curro Burgos",
+      "teamId": "getafe",
+      "dateOfBirth": "2004-05-30",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/curro-burgos"
+    },
+    {
+      "playerId": "getafe-202627-27",
+      "name": "Mady Macalou",
+      "teamId": "getafe",
+      "dateOfBirth": "2007-01-01",
+      "nationality": "MLI",
+      "sourceProvider": "ZEROZERO",
+      "overwriteFields": [
+        "nationality"
+      ],
+      "sourceUrl": "https://www.zerozero.pt/jogador/mady-macalou/3566114?epoca_id=156"
+    },
+    {
+      "playerId": "getafe-202627-37",
+      "name": "Sebas Salazar",
+      "teamId": "getafe",
+      "dateOfBirth": "2008-06-13",
+      "nationality": "ESP",
+      "sourceProvider": "ZEROZERO",
+      "sourceUrl": "https://www.zerozero.pt/jogador/sebas-salazar/2486800?epoca_id=156"
+    },
+    {
+      "playerId": "elche-202627-03",
+      "name": "Axel Werner",
+      "teamId": "elche",
+      "dateOfBirth": "1996-02-28",
+      "nationality": "ARG",
+      "sourceProvider": "TRANSFERMARKT",
+      "sourceUrl": "https://www.transfermarkt.com/axel-werner/profil/spieler/236734"
     }
   ],
-  "approvalRevision": 31,
-  "reviewNote": "UEFA official press kit supplies birth dates and nationalities for remaining Betis academy players; existing LALIGA and club profile records retained."
+  "approvalRevision": 32,
+  "reviewNote": "Final age and nationality gaps use official LALIGA pages and verified football databases; Mady Macalou's existing nationality corrected to Mali based on his current profile."
 }
