@@ -877,8 +877,40 @@
       "dateOfBirth": "2006-07-28",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/jugador/rodrigo-marina-1"
+    },
+    {
+      "playerId": "espanyol-202627-03",
+      "name": "Llorenç Serred",
+      "teamId": "espanyol",
+      "dateOfBirth": "2005-09-04",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/llorenc-serred"
+    },
+    {
+      "playerId": "espanyol-202627-10",
+      "name": "José Ángel López",
+      "teamId": "espanyol",
+      "dateOfBirth": "2006-03-24",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/es-GB/jugador/jose-angel-lopez"
+    },
+    {
+      "playerId": "espanyol-202627-19",
+      "name": "Javier Hernández",
+      "teamId": "espanyol",
+      "dateOfBirth": "2004-01-30",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/javi-hernandez-1"
+    },
+    {
+      "playerId": "espanyol-202627-26",
+      "name": "Kike García",
+      "teamId": "espanyol",
+      "dateOfBirth": "1989-11-25",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/kike-g"
     }
   ],
-  "approvalRevision": 16,
-  "reviewNote": "Includes official LALIGA profiles for Athletic Club, RC Deportivo, Levante UD, Racing de Santander, Málaga CF and selected Betis Deportivo players."
+  "approvalRevision": 17,
+  "reviewNote": "Includes official LALIGA profiles for Athletic Club, RC Deportivo, Levante UD, Racing de Santander, Málaga CF, selected Betis Deportivo players and Espanyol."
 }
