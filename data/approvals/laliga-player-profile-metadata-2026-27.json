@@ -981,8 +981,64 @@
       "dateOfBirth": "2008-12-11",
       "nationality": "GMB",
       "sourceUrl": "https://www.laliga.com/jugador/ibrahima-danfakha"
+    },
+    {
+      "playerId": "alaves-202627-04",
+      "name": "Grégoire Swiderski",
+      "teamId": "alaves",
+      "dateOfBirth": "2005-10-05",
+      "nationality": "CAN",
+      "sourceUrl": "https://www.laliga.com/jugador/gregoire-swiderski"
+    },
+    {
+      "playerId": "alaves-202627-05",
+      "name": "Rubén Montero",
+      "teamId": "alaves",
+      "dateOfBirth": "2005-08-28",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/es-FR/jugador/ruben-montero"
+    },
+    {
+      "playerId": "alaves-202627-12",
+      "name": "Jonny Otto",
+      "teamId": "alaves",
+      "dateOfBirth": "1994-03-03",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/es-ID/jugador/jonny"
+    },
+    {
+      "playerId": "alaves-202627-21",
+      "name": "Carlos Protesoni",
+      "teamId": "alaves",
+      "dateOfBirth": "1998-03-30",
+      "nationality": "URY",
+      "sourceUrl": "https://www.laliga.com/jugador/carlos-benavidez"
+    },
+    {
+      "playerId": "alaves-202627-23",
+      "name": "Mariano Díaz",
+      "teamId": "alaves",
+      "dateOfBirth": "1993-08-01",
+      "nationality": "DOM",
+      "sourceUrl": "https://www.laliga.com/jugador/mariano"
+    },
+    {
+      "playerId": "alaves-202627-24",
+      "name": "Toni Martínez",
+      "teamId": "alaves",
+      "dateOfBirth": "1997-06-30",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/es-ID/jugador/t-martinez"
+    },
+    {
+      "playerId": "alaves-202627-30",
+      "name": "Izei Hernández",
+      "teamId": "alaves",
+      "dateOfBirth": "2007-02-02",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/izei-hernandez"
     }
   ],
-  "approvalRevision": 18,
-  "reviewNote": "Includes official LALIGA profiles for Athletic Club, RC Deportivo, Levante UD, Racing, Málaga, Espanyol, selected Betis Deportivo and Getafe players."
+  "approvalRevision": 19,
+  "reviewNote": "Includes official LALIGA profiles for Athletic Club, RC Deportivo, Levante, Racing, Málaga, Betis Deportivo, Espanyol, Getafe and Deportivo Alavés."
 }
