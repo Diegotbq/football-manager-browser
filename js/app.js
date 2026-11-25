@@ -27,7 +27,8 @@ const state = {
   cupCompetitions: [],
   continentalQualifiers: {},
   seasonHistory: [],
-  selectedPlayerId: null
+  selectedPlayerId: null,
+  inbox: []
 };
 
 const $ = selector => document.querySelector(selector);
@@ -84,6 +85,8 @@ async function init() {
     if (advanceButton) {
       advanceButton.addEventListener("click", advanceDay);
     }
+    const advanceNextButton = $("#advance-next-match");
+    if (advanceNextButton) advanceNextButton.addEventListener("click", advanceToNextMatch);
 
     const nav = $("#main-nav");
 
@@ -619,37 +622,63 @@ function updateSquadMorale(){
   saveTransferCareer();
 }
 
-function advanceDay() {
-  state.day.setDate(state.day.getDate() + 1);
-  recoverPlayerConditions();
-  processLoanReturns();
-  processScouting();
-  if (state.day.getDay() === 1) {
-    processAITransfers();
-    processAIPlayerOffers();
-    updateSquadMorale();
-    processPlayerAgentDemands();
-    const club = userClub();
-    if (club) {
-      const weeklyPayroll = state.db.players
-        .filter(p => String(p.teamId) === String(club.id))
-        .reduce((sum,p) => sum + Number(getPlayerContract(p).weeklyWage || 0),0);
-      club.budget = Number(club.budget || 0) - weeklyPayroll;
-      saveTransferCareer();
-    }
-  }
-  try {
-    localStorage.setItem("fmb-current-day", state.day.toISOString().slice(0, 10));
-  } catch (_) {}
-
-  const currentDate = $("#current-date");
-
-  if (currentDate) {
-    currentDate.textContent = dateLabel(state.day);
-  }
-
-  render();
+function addInboxItem(type,title,message,important=false){
+  state.inbox=Array.isArray(state.inbox)?state.inbox:[];
+  state.inbox.unshift({id:'inbox-'+Date.now()+'-'+Math.floor(Math.random()*100000),type,title,message,date:state.day.toISOString().slice(0,10),important,read:false});
+  state.inbox=state.inbox.slice(0,100);
 }
+function hasPendingCareerDecision(){
+  return state.pendingOffers.some(o=>o.status==='pending')||state.playerAgentDemands.some(d=>d.status==='pending')||state.managerOffers.some(o=>o.status==='pending');
+}
+function processCareerDay(){
+  const beforeOffers=new Set(state.pendingOffers.filter(o=>o.status==='pending').map(o=>o.id));
+  const beforeDemands=new Set(state.playerAgentDemands.filter(d=>d.status==='pending').map(d=>d.id));
+  const beforeManagers=new Set(state.managerOffers.filter(o=>o.status==='pending').map(o=>o.id));
+  state.day.setDate(state.day.getDate()+1);
+  recoverPlayerConditions();processLoanReturns();processScouting();
+  if(state.day.getDay()===1){
+    processAITransfers();processAIPlayerOffers();updateSquadMorale();processPlayerAgentDemands();
+    const club=userClub();
+    if(club){const weeklyPayroll=state.db.players.filter(p=>String(p.teamId)===String(club.id)).reduce((sum,p)=>sum+Number(getPlayerContract(p).weeklyWage||0),0);club.budget=Number(club.budget||0)-weeklyPayroll;}
+  }
+  state.pendingOffers.filter(o=>o.status==='pending'&&!beforeOffers.has(o.id)).forEach(o=>addInboxItem('transfer','Proposta de transferência',o.fromName+' ofereceu '+money(o.fee)+' por '+o.playerName+'.',true));
+  state.playerAgentDemands.filter(d=>d.status==='pending'&&!beforeDemands.has(d.id)).forEach(d=>addInboxItem('contract','Pedido de renovação',d.playerName+' solicitou revisão do contrato.',true));
+  state.managerOffers.filter(o=>o.status==='pending'&&!beforeManagers.has(o.id)).forEach(o=>addInboxItem('manager','Proposta para treinar outro clube',o.clubName+' deseja contratar você.',true));
+  const squad=clubPlayers().filter(p=>!playerUnavailable(p));
+  if(squad.length&&Math.random()<0.012){
+    const player=squad[Math.floor(Math.random()*squad.length)];const days=2+Math.floor(Math.random()*13);
+    getPlayerCondition(player).injuryDays=Math.max(getPlayerCondition(player).injuryDays||0,days);
+    addInboxItem('injury','Lesão durante o treinamento',player.name+' sofreu uma lesão no treino e ficará afastado por '+days+' dias.',true);
+  }
+  if(Math.random()<0.28)addInboxItem('training','Relatório diário de treinamento','Treino concluído. Condição física e evolução do elenco foram atualizadas.',false);
+  try{localStorage.setItem('fmb-current-day',state.day.toISOString().slice(0,10));}catch(_){}
+  saveTransferCareer();
+  return state.inbox.some(item=>item.important&&item.date===state.day.toISOString().slice(0,10))||hasPendingCareerDecision();
+}
+function updateCalendarHeader(){const el=$('#current-date');if(el)el.textContent=dateLabel(state.day);}
+function advanceDay(){
+  if(hasPendingCareerDecision()){alert('Você tem uma decisão importante pendente. Resolva-a antes de avançar o calendário.');return;}
+  const interrupted=processCareerDay();updateCalendarHeader();render();
+  if(interrupted)alert('A simulação foi pausada: há um acontecimento importante aguardando sua decisão. Confira a caixa de entrada.');
+}
+function nextUserFixture(){
+  const id=String(state.db.userClubId||state.selectedClubId||'');
+  return [...(state.db.calendar?.events||[]),...(state.generatedFixtures||[])].filter(f=>(String(f.homeTeamId)===id||String(f.awayTeamId)===id)&&!state.matchHistory.some(m=>String(m.fixtureId)===String(f.id))&&f.date&&f.date>state.day.toISOString().slice(0,10)).sort((a,b)=>a.date.localeCompare(b.date))[0]||null;
+}
+function advanceToNextMatch(){
+  if(hasPendingCareerDecision()){alert('Resolva primeiro a decisão pendente na caixa de entrada.');return;}
+  const fixture=nextUserFixture();if(!fixture){alert('Não há próximo jogo futuro cadastrado para seu clube. Consulte o calendário.');return;}
+  let days=0,interrupted=false;const target=fixture.date;
+  while(state.day.toISOString().slice(0,10)<target&&days<120){interrupted=processCareerDay();days++;if(interrupted)break;}
+  updateCalendarHeader();render();
+  if(interrupted)alert('Avanço interrompido por um acontecimento importante. Resolva-o na caixa de entrada para continuar.');
+  else if(state.day.toISOString().slice(0,10)>=target)alert('Você chegou ao dia do próximo jogo! Prepare sua equipe na área Partidas.');
+}
+function renderInboxPanel(){
+  const items=(state.inbox||[]).slice(0,7);const unread=(state.inbox||[]).filter(x=>!x.read).length;
+  return '<article class="card span-12"><div class="section-head"><h2>📥 Caixa de entrada</h2><span class="tag">'+unread+' não lido(s)</span></div>'+(items.length?items.map(x=>'<div class="fixture inbox-item '+(x.important?'inbox-important':'')+'"><div><strong>'+(x.important?'⚠️ ':'')+x.title+'</strong><div class="subtle">'+x.message+'</div></div><span class="tag">'+x.date+'</span></div>').join(''):'<p class="empty">Ainda não há mensagens. Notícias e relatórios aparecerão aqui durante a temporada.</p>')+'</article>';
+}
+
 
 function userClub() {
   return state.db.teams.find(
@@ -719,6 +748,7 @@ function renderDashboard() {
     <div class="grid">
       ${renderBoardCareerPanel()}
       ${renderManagerOffersPanel()}
+      ${renderInboxPanel()}
 
       <article class="card span-3">
         <div class="card-label">Orçamento disponível</div>
@@ -1142,6 +1172,7 @@ function saveTransferCareer() {
       cupCompetitions: state.cupCompetitions,
       continentalQualifiers: state.continentalQualifiers,
       seasonHistory: state.seasonHistory,
+      inbox: state.inbox,
       seasonMeta: {season:state.db.meta?.season,seasonStart:state.db.calendar?.seasonStart,leagueTeams:(state.db.leagues||[]).map(l=>[l.id,[...(l.teams||[])]])}
     }));
   } catch (_) {
@@ -1182,6 +1213,7 @@ function loadTransferCareer() {
     state.cupCompetitions = Array.isArray(saved.cupCompetitions) ? saved.cupCompetitions : [];
     state.continentalQualifiers = saved.continentalQualifiers && typeof saved.continentalQualifiers === "object" ? saved.continentalQualifiers : {};
     state.seasonHistory = Array.isArray(saved.seasonHistory) ? saved.seasonHistory : [];
+    state.inbox = Array.isArray(saved.inbox) ? saved.inbox : [];
     if(saved.seasonMeta){
       if(saved.seasonMeta.season)state.db.meta.season=saved.seasonMeta.season;
       if(saved.seasonMeta.seasonStart){state.db.calendar=state.db.calendar||{};state.db.calendar.seasonStart=saved.seasonMeta.seasonStart;}
