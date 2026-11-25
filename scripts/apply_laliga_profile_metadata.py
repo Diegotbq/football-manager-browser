@@ -18,7 +18,7 @@ def missing(v):
 def apply(db, approval):
     if approval.get("approved") is not True or approval.get("operation") != "fill-missing-player-age-and-nationality-only":
         raise ValueError("Approval scope is not valid")
-    if approval.get("source") != "LALIGA official player profiles":
+    if approval.get("source") not in {"LALIGA official player profiles", "Official LALIGA and club player profiles"}:
         raise ValueError("Unexpected source")
     teams = {str(t.get("id")): t for t in db.get("teams", [])}
     flat = {str(p.get("id")): p for p in db.get("players", [])}
@@ -31,8 +31,10 @@ def apply(db, approval):
         seen.add(pid)
         if not re.fullmatch(r"[A-Z]{3}", str(row.get("nationality", ""))):
             raise ValueError(f"Invalid ISO alpha-3 nationality for {pid}")
-        if not str(row.get("sourceUrl", "")).startswith("https://www.laliga.com/"):
-            raise ValueError(f"Non-official source URL for {pid}")
+        provider = row.get("sourceProvider", "LALIGA")
+        allowed_prefix = {"LALIGA": "https://www.laliga.com/", "REAL_BETIS": "https://www.realbetisbalompie.es/"}.get(provider)
+        if not allowed_prefix or not str(row.get("sourceUrl", "")).startswith(allowed_prefix):
+            raise ValueError(f"Non-official source URL/provider for {pid}")
         team = teams.get(str(row.get("teamId")))
         player = flat.get(pid)
         if team is None or player is None:
@@ -57,7 +59,7 @@ def apply(db, approval):
             elif target["nationality"] != row["nationality"] and target is player:
                 report["preservedExisting"] += 1
             target["identitySource"] = {
-                "provider": "LALIGA",
+                "provider": provider,
                 "sourceUrl": row["sourceUrl"],
                 "dateOfBirth": row["dateOfBirth"],
                 "verifiedAt": approval["asOf"]
