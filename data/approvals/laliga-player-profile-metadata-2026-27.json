@@ -1037,8 +1037,72 @@
       "dateOfBirth": "2007-02-02",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/jugador/izei-hernandez"
+    },
+    {
+      "playerId": "rayo-vallecano-202627-01",
+      "name": "Dani Cárdenas",
+      "teamId": "rayo-vallecano",
+      "dateOfBirth": "1997-03-28",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/cardenas"
+    },
+    {
+      "playerId": "rayo-vallecano-202627-11",
+      "name": "Marco de las Sías",
+      "teamId": "rayo-vallecano",
+      "dateOfBirth": "2005-12-29",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/es-DE/jugador/marco-de-las-sias"
+    },
+    {
+      "playerId": "rayo-vallecano-202627-19",
+      "name": "Randy Nteka",
+      "teamId": "rayo-vallecano",
+      "dateOfBirth": "1997-12-06",
+      "nationality": "AGO",
+      "sourceUrl": "https://www.laliga.com/jugador/nteka"
+    },
+    {
+      "playerId": "rayo-vallecano-202627-24",
+      "name": "Becerra",
+      "teamId": "rayo-vallecano",
+      "dateOfBirth": "2006-06-01",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rayo-vallecano/plantilla"
+    },
+    {
+      "playerId": "rayo-vallecano-202627-25",
+      "name": "Marco Román",
+      "teamId": "rayo-vallecano",
+      "dateOfBirth": "2006-05-03",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rayo-vallecano/plantilla"
+    },
+    {
+      "playerId": "rayo-vallecano-202627-29",
+      "name": "Giorgi Tsitaishvili",
+      "teamId": "rayo-vallecano",
+      "dateOfBirth": "2000-11-18",
+      "nationality": "GEO",
+      "sourceUrl": "https://www.laliga.com/jugador/heorhii-tsitaishvili"
+    },
+    {
+      "playerId": "rayo-vallecano-202627-30",
+      "name": "Iván Alonso",
+      "teamId": "rayo-vallecano",
+      "dateOfBirth": "2006-03-15",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rayo-vallecano/plantilla"
+    },
+    {
+      "playerId": "rayo-vallecano-202627-32",
+      "name": "Raúl de Tomás",
+      "teamId": "rayo-vallecano",
+      "dateOfBirth": "1994-10-17",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rayo-vallecano/plantilla"
     }
   ],
-  "approvalRevision": 19,
-  "reviewNote": "Includes official LALIGA profiles for Athletic Club, RC Deportivo, Levante, Racing, Málaga, Betis Deportivo, Espanyol, Getafe and Deportivo Alavés."
+  "approvalRevision": 20,
+  "reviewNote": "Includes verified official LALIGA profiles for Athletic Club, RC Deportivo, Levante, Racing, Málaga, Betis Deportivo, Espanyol, Getafe, Alavés and Rayo Vallecano."
 }
