@@ -730,7 +730,8 @@ function render() {
   }
 
   const pages = {
-    dashboard: renderDashboard,\n    inbox: renderInboxPage,
+    dashboard: renderDashboard,
+    inbox: renderInboxPage,
     squad: renderSquad,
     market: renderMarket,
     table: renderTable,
