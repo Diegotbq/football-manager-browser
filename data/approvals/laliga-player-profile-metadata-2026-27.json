@@ -3,7 +3,7 @@
   "operation": "fill-missing-player-age-and-nationality-only",
   "source": "LALIGA official player profiles",
   "season": "2026/27",
-  "asOf": "2026-11-24",
+  "asOf": "2026-11-25",
   "policy": "exact-player-id-name-and-team; calculate age from official date of birth; ISO alpha-3 nationality; fill missing fields only; never overwrite existing values",
   "records": [
     {
@@ -237,7 +237,248 @@
       "dateOfBirth": "2005-08-05",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/jugador/txus-vizcay"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-01",
+      "name": "Germán Parreño",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "1993-02-16",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-02",
+      "name": "Leo Román",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2000-07-06",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-03",
+      "name": "Álvaro Ferllo",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "1998-04-13",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-04",
+      "name": "Adrià Altimira",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2001-03-28",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-05",
+      "name": "Arnau Comas",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2000-04-11",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-06",
+      "name": "Lucas Noubi",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2005-01-15",
+      "nationality": "BEL",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-07",
+      "name": "Dani Barcia",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2003-01-19",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-08",
+      "name": "Giacomo Quagliata",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2000-02-19",
+      "nationality": "ITA",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-09",
+      "name": "Miguel Loureiro",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "1996-11-21",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-10",
+      "name": "Angeliño",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "1997-01-04",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-11",
+      "name": "José María Giménez",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "1995-01-20",
+      "nationality": "URU",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-12",
+      "name": "Bright Ede",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2007-02-18",
+      "nationality": "POL",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-13",
+      "name": "Ximo Navarro",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "1990-01-23",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-14",
+      "name": "Marc Casadó",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2003-09-14",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-15",
+      "name": "Diego Villares",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "1996-06-17",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-16",
+      "name": "Yeremay Hernández",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2002-12-10",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-17",
+      "name": "David Mella",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2005-05-23",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-18",
+      "name": "Riki Rodríguez",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "1997-09-25",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-19",
+      "name": "Lorenzo Amatucci",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2004-02-05",
+      "nationality": "ITA",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-20",
+      "name": "Jonathan Asp Jensen",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2006-01-14",
+      "nationality": "DEN",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-21",
+      "name": "Mario Soriano",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2002-04-22",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-22",
+      "name": "Yayo",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2004-07-30",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-23",
+      "name": "Noé",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2006-12-28",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-24",
+      "name": "Pierre-Emerick Aubameyang",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "1989-06-18",
+      "nationality": "GAB",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-25",
+      "name": "Zakaria Eddahchouri",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2000-05-11",
+      "nationality": "NED",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-26",
+      "name": "Luismi Cruz",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2001-05-23",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-27",
+      "name": "Adama Traoré",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "1996-01-25",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-28",
+      "name": "Martín",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2004-12-20",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-29",
+      "name": "Bil Nsongo",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2004-09-21",
+      "nationality": "CMR",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
+    },
+    {
+      "playerId": "deportivo-la-coruna-202627-30",
+      "name": "Kevin",
+      "teamId": "deportivo-la-coruna",
+      "dateOfBirth": "2005-02-20",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/clubes/rc-deportivo/plantilla"
     }
   ],
-  "approvalRevision": 11
+  "approvalRevision": 12,
+  "reviewNote": "Added 30 RC Deportivo players from the official LALIGA 2026/27 squad page; cross-checked current squad against the club's official 2026/27 shirt-number announcement."
 }
