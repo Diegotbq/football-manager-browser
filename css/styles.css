@@ -42,3 +42,6 @@
 
 /* Career inbox and calendar simulation controls */
 .inbox-item{align-items:flex-start;padding:12px 14px;border-bottom:1px solid var(--line,#263448)}.inbox-important{border-left:3px solid #e7a83e;background:rgba(231,168,62,.07)}#advance-next-match{white-space:nowrap}.top-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}@media(max-width:760px){.top-actions{gap:6px}.top-actions button{font-size:10px;padding:9px 10px}}
+
+/* Full career inbox */
+.inbox-filters{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:12px 0 18px}.inbox-message{padding:16px 14px;margin:10px 0;border:1px solid var(--line,#27384d);border-radius:12px;background:#101d2d}.inbox-message.is-read{opacity:.72}.inbox-message-top{display:flex;justify-content:space-between;gap:12px;align-items:center}.inbox-message-top>div{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.inbox-message-top strong{font-size:14px}.inbox-message-top small{color:var(--muted);white-space:nowrap}.inbox-message p{font-size:12px;line-height:1.6;color:var(--muted);margin:10px 0}.inbox-message-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.inbox-important-tag{border-color:#c98b36;color:#f0b65c}.inbox-message.inbox-important{border-left:3px solid #e7a83e;background:rgba(231,168,62,.055)}
