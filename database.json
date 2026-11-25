@@ -26579,13 +26579,19 @@
           "id": "elche-202627-31",
           "name": "Álvaro Padilla",
           "position": "ST",
-          "age": null,
+          "age": 20,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "elche",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/alvaro-padilla",
+            "dateOfBirth": "2006-04-25",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "elche-202627-32",
@@ -26613,13 +26619,19 @@
           "id": "elche-202627-33",
           "name": "Nordin Al Lal",
           "position": "ST",
-          "age": null,
+          "age": 21,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "elche",
           "nationality": "MAR",
           "injured": false,
-          "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-BR/jugador/nordin-al-lal",
+            "dateOfBirth": "2005-02-14",
+            "verifiedAt": "2026-11-25"
+          }
         }
       ]
     },
@@ -148481,13 +148493,19 @@
       "id": "elche-202627-31",
       "name": "Álvaro Padilla",
       "position": "ST",
-      "age": null,
+      "age": 20,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "elche",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/alvaro-padilla",
+        "dateOfBirth": "2006-04-25",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "elche-202627-32",
@@ -148515,13 +148533,19 @@
       "id": "elche-202627-33",
       "name": "Nordin Al Lal",
       "position": "ST",
-      "age": null,
+      "age": 21,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "elche",
       "nationality": "MAR",
       "injured": false,
-      "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-BR/jugador/nordin-al-lal",
+        "dateOfBirth": "2005-02-14",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "getafe-202627-01",
