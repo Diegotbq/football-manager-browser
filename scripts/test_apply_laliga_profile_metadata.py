@@ -38,6 +38,19 @@ class MetadataTests(unittest.TestCase):
         self.assertEqual(updated["players"][0]["identitySource"]["provider"], "REAL_BETIS")
         self.assertEqual(report["matched"], 1)
 
+    def test_official_uefa_squad_source(self):
+        db = {"players":[{"id":"p3","name":"UEFA Player","teamId":"t3","age":None,"nationality":None}],
+              "teams":[{"id":"t3","players":[{"id":"p3","name":"UEFA Player","age":None,"nationality":None}]}]}
+        approval = {"approved":True,"operation":"fill-missing-player-age-and-nationality-only",
+          "source":"Official LALIGA, club and UEFA player profiles","asOf":"2026-11-25",
+          "records":[{"playerId":"p3","name":"UEFA Player","teamId":"t3","dateOfBirth":"2009-01-29",
+          "nationality":"ROU","sourceProvider":"UEFA",
+          "sourceUrl":"https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/"}]}
+        updated, report = apply(db, approval)
+        self.assertEqual(updated["players"][0]["age"], 17)
+        self.assertEqual(updated["players"][0]["nationality"], "ROU")
+        self.assertEqual(updated["players"][0]["identitySource"]["provider"], "UEFA")
+
     def test_existing_values_are_not_overwritten(self):
         db = {"players":[{"id":"p1","name":"Test Player","teamId":"t1","age":30,"nationality":"ARG"}],
               "teams":[{"id":"t1","players":[{"id":"p1","name":"Test Player","age":30,"nationality":"ARG"}]}]}
