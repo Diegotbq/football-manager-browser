@@ -138,6 +138,34 @@ test("abre o perfil individual e mostra estatísticas e histórico do jogador", 
   expect(errors).toEqual([]);
 });
 
+
+test("preserva estatísticas individuais no histórico entre temporadas", async ({ page }) => {
+  await startCareer(page);
+  await page.locator('[data-view="squad"]').click();
+  const profileButton = page.locator('#view-root button[onclick^="openPlayerProfile("]').first();
+  const onclick = await profileButton.getAttribute("onclick");
+  const playerId = onclick.match(/openPlayerProfile\('([^']+)'\)/)[1];
+  await page.evaluate(id => {
+    localStorage.setItem("fmb-transfer-save", JSON.stringify({
+      seasonHistory: [{
+        season: "2025/26",
+        matches: [{
+          homeId: "real-madrid", awayId: "barcelona", homeScore: 2, awayScore: 1,
+          date: "2026-05-20", competition: "La Liga", appearances: [id],
+          scorers: [{playerId: id, teamId: "real-madrid", minute: 42, assistPlayerId: null}]
+        }]
+      }]
+    }));
+  }, playerId);
+  await page.reload();
+  await expect(page.locator("#page-title")).toHaveText("Dashboard");
+  await page.locator('[data-view="squad"]').click();
+  await page.locator('#view-root button[onclick^="openPlayerProfile("]').first().click();
+  await expect(page.locator("#view-root")).toContainText("2025/26");
+  await expect(page.locator("#view-root")).toContainText("Estatísticas por temporada");
+  await expect(page.locator("#view-root")).toContainText("1</td><td>1</td><td>0");
+});
+
 test("gera atributo específico de goleiro para influenciar as defesas", async ({ page }) => {
   await startCareer(page);
   const keeperRatings = await page.evaluate(async () => {
