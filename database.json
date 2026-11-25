@@ -28700,13 +28700,19 @@
           "id": "racing-santander-202627-08",
           "name": "José Manuel Hernando Riol",
           "position": "CB",
-          "age": null,
+          "age": 28,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-DE/jugador/m-hernando",
+            "dateOfBirth": "1998-07-19",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-09",
@@ -28868,25 +28874,37 @@
           "id": "racing-santander-202627-18",
           "name": "Aarón Martín Caricol",
           "position": "LB",
-          "age": null,
+          "age": 29,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-US/jugador/aaron-1",
+            "dateOfBirth": "1997-04-22",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-19",
           "name": "Andrés Vallecillo Arce",
           "position": "DM",
-          "age": null,
+          "age": 20,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/andres-vallecillo",
+            "dateOfBirth": "2006-02-21",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-20",
@@ -28944,13 +28962,19 @@
           "id": "racing-santander-202627-23",
           "name": "Hugo Pérez Sañudo",
           "position": "LB",
-          "age": null,
+          "age": 19,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/hugo-perez-2",
+            "dateOfBirth": "2007-06-12",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-24",
@@ -31371,43 +31395,61 @@
           "id": "real-betis-202627-14",
           "name": "Jorge Oreiro",
           "position": "CB",
-          "age": null,
+          "age": 20,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 35,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "REAL_BETIS",
+            "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/j-oreiro-3196572",
+            "dateOfBirth": "2006-05-19",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-15",
           "name": "Oscar Masque",
           "position": "LB",
-          "age": null,
+          "age": 19,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 36,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "REAL_BETIS",
+            "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/o-masque-3328527",
+            "dateOfBirth": "2007-01-15",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-16",
           "name": "Miguel Cuevas",
           "position": "CB",
-          "age": null,
+          "age": 19,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 55,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "REAL_BETIS",
+            "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/m-cuevas-3328425",
+            "dateOfBirth": "2007-06-06",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-17",
@@ -31455,29 +31497,41 @@
           "id": "real-betis-202627-20",
           "name": "Fabian Embalo",
           "position": "CB",
-          "age": null,
+          "age": 20,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 68,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "REAL_BETIS",
+            "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/f-embalo-3406078",
+            "dateOfBirth": "2006-05-05",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-21",
           "name": "Marcos Solis",
           "position": "LB",
-          "age": null,
+          "age": 21,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 73,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "REAL_BETIS",
+            "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/marcos-solis-3191572",
+            "dateOfBirth": "2005-02-27",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-22",
@@ -31723,29 +31777,41 @@
           "id": "real-betis-202627-32",
           "name": "Ismael Barea",
           "position": "CM",
-          "age": null,
+          "age": 21,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 34,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "REAL_BETIS",
+            "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/ismael-barea-3330809",
+            "dateOfBirth": "2005-07-16",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-33",
           "name": "Rica",
           "position": "CM",
-          "age": null,
+          "age": 19,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 37,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "REAL_BETIS",
+            "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/r-funez-3328416",
+            "dateOfBirth": "2007-02-02",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-34",
@@ -32001,15 +32067,21 @@
           "id": "real-betis-202627-47",
           "name": "Kwame Sosu",
           "position": "ST",
-          "age": null,
+          "age": 20,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "GHA",
           "injured": false,
           "shirtNumber": 38,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "REAL_BETIS",
+            "sourceUrl": "https://www.realbetisbalompie.es/academy/jugador/k-junior-3596188",
+            "dateOfBirth": "2006-03-18",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-48",
@@ -32029,15 +32101,21 @@
           "id": "real-betis-202627-49",
           "name": "Antonio Gonzalez",
           "position": "ST",
-          "age": null,
+          "age": 19,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 61,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "REAL_BETIS",
+            "sourceUrl": "https://www.realbetisbalompie.es/academy/jugador/a-gonzalez-3328979",
+            "dateOfBirth": "2007-04-08",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-50",
@@ -150610,13 +150688,19 @@
       "id": "racing-santander-202627-08",
       "name": "José Manuel Hernando Riol",
       "position": "CB",
-      "age": null,
+      "age": 28,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-DE/jugador/m-hernando",
+        "dateOfBirth": "1998-07-19",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-09",
@@ -150778,25 +150862,37 @@
       "id": "racing-santander-202627-18",
       "name": "Aarón Martín Caricol",
       "position": "LB",
-      "age": null,
+      "age": 29,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-US/jugador/aaron-1",
+        "dateOfBirth": "1997-04-22",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-19",
       "name": "Andrés Vallecillo Arce",
       "position": "DM",
-      "age": null,
+      "age": 20,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/andres-vallecillo",
+        "dateOfBirth": "2006-02-21",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-20",
@@ -150854,13 +150950,19 @@
       "id": "racing-santander-202627-23",
       "name": "Hugo Pérez Sañudo",
       "position": "LB",
-      "age": null,
+      "age": 19,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/hugo-perez-2",
+        "dateOfBirth": "2007-06-12",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-24",
@@ -152471,43 +152573,61 @@
       "id": "real-betis-202627-14",
       "name": "Jorge Oreiro",
       "position": "CB",
-      "age": null,
+      "age": 20,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 35,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "REAL_BETIS",
+        "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/j-oreiro-3196572",
+        "dateOfBirth": "2006-05-19",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-15",
       "name": "Oscar Masque",
       "position": "LB",
-      "age": null,
+      "age": 19,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 36,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "REAL_BETIS",
+        "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/o-masque-3328527",
+        "dateOfBirth": "2007-01-15",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-16",
       "name": "Miguel Cuevas",
       "position": "CB",
-      "age": null,
+      "age": 19,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 55,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "REAL_BETIS",
+        "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/m-cuevas-3328425",
+        "dateOfBirth": "2007-06-06",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-17",
@@ -152555,29 +152675,41 @@
       "id": "real-betis-202627-20",
       "name": "Fabian Embalo",
       "position": "CB",
-      "age": null,
+      "age": 20,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 68,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "REAL_BETIS",
+        "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/f-embalo-3406078",
+        "dateOfBirth": "2006-05-05",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-21",
       "name": "Marcos Solis",
       "position": "LB",
-      "age": null,
+      "age": 21,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 73,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "REAL_BETIS",
+        "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/marcos-solis-3191572",
+        "dateOfBirth": "2005-02-27",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-22",
@@ -152823,29 +152955,41 @@
       "id": "real-betis-202627-32",
       "name": "Ismael Barea",
       "position": "CM",
-      "age": null,
+      "age": 21,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 34,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "REAL_BETIS",
+        "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/ismael-barea-3330809",
+        "dateOfBirth": "2005-07-16",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-33",
       "name": "Rica",
       "position": "CM",
-      "age": null,
+      "age": 19,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 37,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "REAL_BETIS",
+        "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/r-funez-3328416",
+        "dateOfBirth": "2007-02-02",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-34",
@@ -153101,15 +153245,21 @@
       "id": "real-betis-202627-47",
       "name": "Kwame Sosu",
       "position": "ST",
-      "age": null,
+      "age": 20,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "GHA",
       "injured": false,
       "shirtNumber": 38,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "REAL_BETIS",
+        "sourceUrl": "https://www.realbetisbalompie.es/academy/jugador/k-junior-3596188",
+        "dateOfBirth": "2006-03-18",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-48",
@@ -153129,15 +153279,21 @@
       "id": "real-betis-202627-49",
       "name": "Antonio Gonzalez",
       "position": "ST",
-      "age": null,
+      "age": 19,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 61,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "REAL_BETIS",
+        "sourceUrl": "https://www.realbetisbalompie.es/academy/jugador/a-gonzalez-3328979",
+        "dateOfBirth": "2007-04-08",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-50",
