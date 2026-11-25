@@ -25350,25 +25350,37 @@
           "id": "alaves-202627-04",
           "name": "Grégoire Swiderski",
           "position": "GK",
-          "age": null,
+          "age": 21,
           "overall": 68,
           "marketValue": 500000,
           "teamId": "alaves",
           "nationality": "CAN",
           "injured": false,
-          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/gregoire-swiderski",
+            "dateOfBirth": "2005-10-05",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "alaves-202627-05",
           "name": "Rubén Montero",
           "position": "GK",
-          "age": null,
+          "age": 21,
           "overall": 67,
           "marketValue": 400000,
           "teamId": "alaves",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-FR/jugador/ruben-montero",
+            "dateOfBirth": "2005-08-28",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "alaves-202627-06",
@@ -25506,13 +25518,19 @@
           "id": "alaves-202627-12",
           "name": "Jonny Otto",
           "position": "LB",
-          "age": null,
+          "age": 32,
           "overall": 77,
           "marketValue": 3000000,
           "teamId": "alaves",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-ID/jugador/jonny",
+            "dateOfBirth": "1994-03-03",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "alaves-202627-13",
@@ -25684,13 +25702,19 @@
           "id": "alaves-202627-21",
           "name": "Carlos Protesoni",
           "position": "DM",
-          "age": null,
+          "age": 28,
           "overall": 75,
           "marketValue": 2500000,
           "teamId": "alaves",
           "nationality": "URU",
           "injured": false,
-          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/carlos-benavidez",
+            "dateOfBirth": "1998-03-30",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "alaves-202627-22",
@@ -25718,25 +25742,37 @@
           "id": "alaves-202627-23",
           "name": "Mariano Díaz",
           "position": "ST",
-          "age": null,
+          "age": 33,
           "overall": 75,
           "marketValue": 2000000,
           "teamId": "alaves",
           "nationality": "DOM",
           "injured": false,
-          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/mariano",
+            "dateOfBirth": "1993-08-01",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "alaves-202627-24",
           "name": "Toni Martínez",
           "position": "ST",
-          "age": null,
+          "age": 29,
           "overall": 77,
           "marketValue": 4000000,
           "teamId": "alaves",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-ID/jugador/t-martinez",
+            "dateOfBirth": "1997-06-30",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "alaves-202627-25",
@@ -25852,13 +25888,19 @@
           "id": "alaves-202627-30",
           "name": "Izei Hernández",
           "position": "LW",
-          "age": null,
+          "age": 19,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "alaves",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/izei-hernandez",
+            "dateOfBirth": "2007-02-02",
+            "verifiedAt": "2026-11-25"
+          }
         }
       ]
     },
@@ -147145,25 +147187,37 @@
       "id": "alaves-202627-04",
       "name": "Grégoire Swiderski",
       "position": "GK",
-      "age": null,
+      "age": 21,
       "overall": 68,
       "marketValue": 500000,
       "teamId": "alaves",
       "nationality": "CAN",
       "injured": false,
-      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/gregoire-swiderski",
+        "dateOfBirth": "2005-10-05",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "alaves-202627-05",
       "name": "Rubén Montero",
       "position": "GK",
-      "age": null,
+      "age": 21,
       "overall": 67,
       "marketValue": 400000,
       "teamId": "alaves",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-FR/jugador/ruben-montero",
+        "dateOfBirth": "2005-08-28",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "alaves-202627-06",
@@ -147301,13 +147355,19 @@
       "id": "alaves-202627-12",
       "name": "Jonny Otto",
       "position": "LB",
-      "age": null,
+      "age": 32,
       "overall": 77,
       "marketValue": 3000000,
       "teamId": "alaves",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-ID/jugador/jonny",
+        "dateOfBirth": "1994-03-03",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "alaves-202627-13",
@@ -147479,13 +147539,19 @@
       "id": "alaves-202627-21",
       "name": "Carlos Protesoni",
       "position": "DM",
-      "age": null,
+      "age": 28,
       "overall": 75,
       "marketValue": 2500000,
       "teamId": "alaves",
       "nationality": "URU",
       "injured": false,
-      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/carlos-benavidez",
+        "dateOfBirth": "1998-03-30",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "alaves-202627-22",
@@ -147513,25 +147579,37 @@
       "id": "alaves-202627-23",
       "name": "Mariano Díaz",
       "position": "ST",
-      "age": null,
+      "age": 33,
       "overall": 75,
       "marketValue": 2000000,
       "teamId": "alaves",
       "nationality": "DOM",
       "injured": false,
-      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/mariano",
+        "dateOfBirth": "1993-08-01",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "alaves-202627-24",
       "name": "Toni Martínez",
       "position": "ST",
-      "age": null,
+      "age": 29,
       "overall": 77,
       "marketValue": 4000000,
       "teamId": "alaves",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-ID/jugador/t-martinez",
+        "dateOfBirth": "1997-06-30",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "alaves-202627-25",
@@ -147647,13 +147725,19 @@
       "id": "alaves-202627-30",
       "name": "Izei Hernández",
       "position": "LW",
-      "age": null,
+      "age": 19,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "alaves",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "UEFA: plantel oficial do Deportivo Alavés 2026/27; nomes, nacionalidades e setor conferidos na lista do clube; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/izei-hernandez",
+        "dateOfBirth": "2007-02-02",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "elche-202627-01",
