@@ -1,7 +1,7 @@
 {
   "approved": true,
   "operation": "fill-missing-player-age-and-nationality-only",
-  "source": "LALIGA official player profiles",
+  "source": "Official LALIGA and club player profiles",
   "season": "2026/27",
   "asOf": "2026-11-25",
   "policy": "exact-player-id-name-and-team; calculate age from official date of birth; ISO alpha-3 nationality; fill missing fields only; never overwrite existing values",
@@ -1221,8 +1221,125 @@
       "dateOfBirth": "1992-04-07",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/en-GB/player/gerard"
+    },
+    {
+      "playerId": "real-betis-202627-14",
+      "name": "Jorge Oreiro",
+      "teamId": "real-betis",
+      "dateOfBirth": "2006-05-19",
+      "nationality": "ESP",
+      "sourceProvider": "REAL_BETIS",
+      "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/j-oreiro-3196572"
+    },
+    {
+      "playerId": "real-betis-202627-15",
+      "name": "Oscar Masque",
+      "teamId": "real-betis",
+      "dateOfBirth": "2007-01-15",
+      "nationality": "ESP",
+      "sourceProvider": "REAL_BETIS",
+      "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/o-masque-3328527"
+    },
+    {
+      "playerId": "real-betis-202627-16",
+      "name": "Miguel Cuevas",
+      "teamId": "real-betis",
+      "dateOfBirth": "2007-06-06",
+      "nationality": "ESP",
+      "sourceProvider": "REAL_BETIS",
+      "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/m-cuevas-3328425"
+    },
+    {
+      "playerId": "real-betis-202627-20",
+      "name": "Fabian Embalo",
+      "teamId": "real-betis",
+      "dateOfBirth": "2006-05-05",
+      "nationality": "ESP",
+      "sourceProvider": "REAL_BETIS",
+      "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/f-embalo-3406078"
+    },
+    {
+      "playerId": "real-betis-202627-21",
+      "name": "Marcos Solis",
+      "teamId": "real-betis",
+      "dateOfBirth": "2005-02-27",
+      "nationality": "ESP",
+      "sourceProvider": "REAL_BETIS",
+      "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/marcos-solis-3191572"
+    },
+    {
+      "playerId": "real-betis-202627-32",
+      "name": "Ismael Barea",
+      "teamId": "real-betis",
+      "dateOfBirth": "2005-07-16",
+      "nationality": "ESP",
+      "sourceProvider": "REAL_BETIS",
+      "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/ismael-barea-3330809"
+    },
+    {
+      "playerId": "real-betis-202627-33",
+      "name": "Rica",
+      "teamId": "real-betis",
+      "dateOfBirth": "2007-02-02",
+      "nationality": "ESP",
+      "sourceProvider": "REAL_BETIS",
+      "sourceUrl": "https://www.realbetisbalompie.es/betis-deportivo/player/r-funez-3328416"
+    },
+    {
+      "playerId": "real-betis-202627-47",
+      "name": "Kwame Sosu",
+      "teamId": "real-betis",
+      "dateOfBirth": "2006-03-18",
+      "nationality": "GHA",
+      "sourceProvider": "REAL_BETIS",
+      "sourceUrl": "https://www.realbetisbalompie.es/academy/jugador/k-junior-3596188"
+    },
+    {
+      "playerId": "real-betis-202627-49",
+      "name": "Antonio Gonzalez",
+      "teamId": "real-betis",
+      "dateOfBirth": "2007-04-08",
+      "nationality": "ESP",
+      "sourceProvider": "REAL_BETIS",
+      "sourceUrl": "https://www.realbetisbalompie.es/academy/jugador/a-gonzalez-3328979"
+    },
+    {
+      "playerId": "racing-santander-202627-08",
+      "name": "José Manuel Hernando Riol",
+      "teamId": "racing-santander",
+      "dateOfBirth": "1998-07-19",
+      "nationality": "ESP",
+      "sourceProvider": "LALIGA",
+      "sourceUrl": "https://www.laliga.com/es-DE/jugador/m-hernando"
+    },
+    {
+      "playerId": "racing-santander-202627-18",
+      "name": "Aarón Martín Caricol",
+      "teamId": "racing-santander",
+      "dateOfBirth": "1997-04-22",
+      "nationality": "ESP",
+      "sourceProvider": "LALIGA",
+      "sourceUrl": "https://www.laliga.com/es-US/jugador/aaron-1"
+    },
+    {
+      "playerId": "racing-santander-202627-19",
+      "name": "Andrés Vallecillo Arce",
+      "teamId": "racing-santander",
+      "dateOfBirth": "2006-02-21",
+      "nationality": "ESP",
+      "sourceProvider": "LALIGA",
+      "sourceUrl": "https://www.laliga.com/jugador/andres-vallecillo"
+    },
+    {
+      "playerId": "racing-santander-202627-202627-23",
+      "name": "Hugo Pérez Sañudo",
+      "teamId": "racing-santander",
+      "dateOfBirth": "2007-06-12",
+      "nationality": "ESP",
+      "sourceProvider": "LALIGA",
+      "sourceUrl": "https://www.laliga.com/jugador/hugo-perez-2"
     }
   ],
   "approvalRevision": 24,
-  "reviewNote": "Includes official LALIGA player profiles for the previously reviewed clubs and four current Sevilla FC players. Adrià Pedrosa remains excluded because his official profile lists Rayo Vallecano. Revision 24: four official LALIGA profiles for Enzo Boyomo, José Copete, José Gayà and Gerard Moreno; exact team/player matches confirmed by the audit."
+  "reviewNote": "Metadata from official LALIGA player profiles and official Real Betis Betis Deportivo profiles; exact database player IDs, names and team IDs; fill missing values only."
 }
