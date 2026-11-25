@@ -20,7 +20,7 @@ class RosterCorrectionTests(unittest.TestCase):
             "teams":[{"id":"t1","players":[{"id":"p1","name":"Player"}]}]}
         approval={"approved":True,"season":"2026/27","operations":[
             {"action":"remove","playerId":"p1","name":"Player","fromTeamId":"t1",
-             "sourceUrl":"https://www.laliga.com/jugador/player","reason":"now at an uncovered club"}]}
+             "sourceUrl":"https://www.laliga.com/jugador/player","transferSourceUrl":"https://as.com/futbol/mercado/","reason":"now at an uncovered club"}]}
         updated,report=apply(db,approval)
         self.assertEqual(updated["players"],[])
         self.assertEqual(updated["teams"][0]["players"],[])
