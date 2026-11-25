@@ -22,6 +22,22 @@ class MetadataTests(unittest.TestCase):
         self.assertEqual(updated["teams"][0]["players"][0]["age"], 26)
         self.assertEqual(report["matched"], 1)
 
+    def test_official_club_profile_source(self):
+        db = {
+            "players": [{"id":"p2","name":"Betis Player","teamId":"t2","age":None,"nationality":None}],
+            "teams": [{"id":"t2","players":[{"id":"p2","name":"Betis Player","age":None,"nationality":None}]}]
+        }
+        approval = {"approved":True,"operation":"fill-missing-player-age-and-nationality-only",
+          "source":"Official LALIGA and club player profiles","asOf":"2026-11-24",
+          "records":[{"playerId":"p2","name":"Betis Player","teamId":"t2","dateOfBirth":"2006-05-19",
+          "nationality":"ESP","sourceProvider":"REAL_BETIS",
+          "sourceUrl":"https://www.realbetisbalompie.es/betis-deportivo/player/test"}]}
+        updated, report = apply(db, approval)
+        self.assertEqual(updated["players"][0]["age"], 20)
+        self.assertEqual(updated["players"][0]["nationality"], "ESP")
+        self.assertEqual(updated["players"][0]["identitySource"]["provider"], "REAL_BETIS")
+        self.assertEqual(report["matched"], 1)
+
     def test_existing_values_are_not_overwritten(self):
         db = {"players":[{"id":"p1","name":"Test Player","teamId":"t1","age":30,"nationality":"ARG"}],
               "teams":[{"id":"t1","players":[{"id":"p1","name":"Test Player","age":30,"nationality":"ARG"}]}]}
