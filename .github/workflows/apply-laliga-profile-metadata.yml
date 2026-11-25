@@ -7,6 +7,9 @@ on:
       - "data/approvals/laliga-player-profile-metadata-2026-27.json"
       - "scripts/apply_laliga_profile_metadata.py"
       - "scripts/test_apply_laliga_profile_metadata.py"
+      - "data/approvals/openfootballbase-atletico-metadata-2026-27.json"
+      - "scripts/apply_openfootballbase_verified_metadata.py"
+      - "scripts/test_apply_openfootballbase_verified_metadata.py"
 
 permissions:
   contents: write
@@ -20,7 +23,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Run regression tests
-        run: python -m unittest scripts/test_apply_laliga_profile_metadata.py
+        run: python -m unittest scripts/test_apply_laliga_profile_metadata.py scripts/test_apply_openfootballbase_verified_metadata.py
       - name: Apply exact-identity, fill-only profile metadata
         run: |
           python scripts/apply_laliga_profile_metadata.py \
@@ -38,10 +41,17 @@ jobs:
               raise SystemExit(f"Expected exactly {expected} approved player identity matches")
           print(json.dumps(report, ensure_ascii=False, indent=2))
           PY
+      - name: Apply manually reviewed OpenFootballBase metadata
+        run: |
+          python scripts/apply_openfootballbase_verified_metadata.py \\
+            --database /tmp/database-updated.json \\
+            --approval data/approvals/openfootballbase-atletico-metadata-2026-27.json \\
+            --out /tmp/database-final.json \\
+            --report /tmp/openfootballbase-metadata-report.json
       - name: Commit database update
         run: |
           set -euo pipefail
-          cp /tmp/database-updated.json database.json
+          cp /tmp/database-final.json database.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add database.json
