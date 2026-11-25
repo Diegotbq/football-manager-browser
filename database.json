@@ -24209,13 +24209,19 @@
           "id": "osasuna-202627-06",
           "name": "Enzo Boyomo",
           "position": "CB",
-          "age": null,
+          "age": 25,
           "overall": 77,
           "marketValue": 7000000,
           "teamId": "osasuna",
           "nationality": "CMR",
           "injured": false,
-          "dataSource": "CA Osasuna: plantilla oficial del primer equipo y dorsales 2026/27; posiciones específicas, nacionalidades, overall y valor de mercado tratados como datos de cadastro/estimativas de gameplay quando não publicados."
+          "dataSource": "CA Osasuna: plantilla oficial del primer equipo y dorsales 2026/27; posiciones específicas, nacionalidades, overall y valor de mercado tratados como datos de cadastro/estimativas de gameplay quando não publicados.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/en-GB/player/boyomo",
+            "dateOfBirth": "2001-10-07",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "osasuna-202627-07",
@@ -33405,14 +33411,20 @@
           "id": "valencia-202627-04",
           "name": "José Copete",
           "position": "CB",
-          "age": null,
+          "age": 27,
           "overall": 70,
           "marketValue": 5000000,
           "teamId": "valencia",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "Valencia CF official first-team squad 2026/27"
+          "dataSource": "Valencia CF official first-team squad 2026/27",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/en-GB/player/copete",
+            "dateOfBirth": "1999-10-10",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "valencia-202627-05",
@@ -33487,14 +33499,20 @@
           "id": "valencia-202627-08",
           "name": "José Gayà",
           "position": "LB",
-          "age": null,
+          "age": 31,
           "overall": 69,
           "marketValue": 5000000,
           "teamId": "valencia",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "Valencia CF official first-team squad 2026/27"
+          "dataSource": "Valencia CF official first-team squad 2026/27",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/en-GB/player/gaya",
+            "dateOfBirth": "1995-05-25",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "valencia-202627-09",
@@ -34474,14 +34492,20 @@
           "id": "villarreal-202627-22",
           "name": "Gerard Moreno",
           "position": "ST",
-          "age": null,
+          "age": 34,
           "overall": 71,
           "marketValue": 5000000,
           "teamId": "villarreal",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "Villarreal CF official 2026/27 first-team photo and UEFA squad list"
+          "dataSource": "Villarreal CF official 2026/27 first-team photo and UEFA squad list",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/en-GB/player/gerard",
+            "dateOfBirth": "1992-04-07",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "villarreal-202627-23",
@@ -146281,13 +146305,19 @@
       "id": "osasuna-202627-06",
       "name": "Enzo Boyomo",
       "position": "CB",
-      "age": null,
+      "age": 25,
       "overall": 77,
       "marketValue": 7000000,
       "teamId": "osasuna",
       "nationality": "CMR",
       "injured": false,
-      "dataSource": "CA Osasuna: plantilla oficial del primer equipo y dorsales 2026/27; posiciones específicas, nacionalidades, overall y valor de mercado tratados como datos de cadastro/estimativas de gameplay quando não publicados."
+      "dataSource": "CA Osasuna: plantilla oficial del primer equipo y dorsales 2026/27; posiciones específicas, nacionalidades, overall y valor de mercado tratados como datos de cadastro/estimativas de gameplay quando não publicados.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/en-GB/player/boyomo",
+        "dateOfBirth": "2001-10-07",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "osasuna-202627-07",
@@ -155074,14 +155104,20 @@
       "id": "valencia-202627-04",
       "name": "José Copete",
       "position": "CB",
-      "age": null,
+      "age": 27,
       "overall": 70,
       "marketValue": 5000000,
       "teamId": "valencia",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "Valencia CF official first-team squad 2026/27"
+      "dataSource": "Valencia CF official first-team squad 2026/27",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/en-GB/player/copete",
+        "dateOfBirth": "1999-10-10",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "valencia-202627-05",
@@ -155156,14 +155192,20 @@
       "id": "valencia-202627-08",
       "name": "José Gayà",
       "position": "LB",
-      "age": null,
+      "age": 31,
       "overall": 69,
       "marketValue": 5000000,
       "teamId": "valencia",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "Valencia CF official first-team squad 2026/27"
+      "dataSource": "Valencia CF official first-team squad 2026/27",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/en-GB/player/gaya",
+        "dateOfBirth": "1995-05-25",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "valencia-202627-09",
@@ -156066,14 +156108,20 @@
       "id": "villarreal-202627-22",
       "name": "Gerard Moreno",
       "position": "ST",
-      "age": null,
+      "age": 34,
       "overall": 71,
       "marketValue": 5000000,
       "teamId": "villarreal",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "Villarreal CF official 2026/27 first-team photo and UEFA squad list"
+      "dataSource": "Villarreal CF official 2026/27 first-team photo and UEFA squad list",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/en-GB/player/gerard",
+        "dateOfBirth": "1992-04-07",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "villarreal-202627-23",
