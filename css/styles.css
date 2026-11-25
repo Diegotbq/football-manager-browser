@@ -39,3 +39,6 @@
 .match-stats span{font-size:10px;color:var(--muted);text-align:left}
 .match-stats .stats-label{font-size:9px;letter-spacing:.12em;color:var(--green);font-weight:800}
 @media(max-width:420px){.match-stats{gap:5px;padding:10px 6px}.match-stats span{font-size:9px}.match-stats strong{font-size:15px}.match-stats .stats-label{font-size:8px}}
+
+/* Career inbox and calendar simulation controls */
+.inbox-item{align-items:flex-start;padding:12px 14px;border-bottom:1px solid var(--line,#263448)}.inbox-important{border-left:3px solid #e7a83e;background:rgba(231,168,62,.07)}#advance-next-match{white-space:nowrap}.top-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}@media(max-width:760px){.top-actions{gap:6px}.top-actions button{font-size:10px;padding:9px 10px}}
