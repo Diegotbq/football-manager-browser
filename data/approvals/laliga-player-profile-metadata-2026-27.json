@@ -1,7 +1,7 @@
 {
   "approved": true,
   "operation": "fill-missing-player-age-and-nationality-only",
-  "source": "Official LALIGA and club player profiles",
+  "source": "Official LALIGA, club and UEFA player profiles",
   "season": "2026/27",
   "asOf": "2026-11-25",
   "policy": "exact-player-id-name-and-team; calculate age from official date of birth; ISO alpha-3 nationality; fill missing fields only; never overwrite existing values",
@@ -1452,8 +1452,116 @@
       "dateOfBirth": "2004-05-05",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/jugador/daniel-martinez-2"
+    },
+    {
+      "playerId": "real-betis-202627-04",
+      "name": "Victor Kroes",
+      "teamId": "real-betis",
+      "dateOfBirth": "2009-01-29",
+      "nationality": "ROU",
+      "sourceProvider": "UEFA",
+      "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/"
+    },
+    {
+      "playerId": "real-betis-202627-17",
+      "name": "Alvaro Díez",
+      "teamId": "real-betis",
+      "dateOfBirth": "2009-05-14",
+      "nationality": "ESP",
+      "sourceProvider": "UEFA",
+      "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/"
+    },
+    {
+      "playerId": "real-betis-202627-18",
+      "name": "Carlos Lara",
+      "teamId": "real-betis",
+      "dateOfBirth": "2009-01-29",
+      "nationality": "ESP",
+      "sourceProvider": "UEFA",
+      "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/"
+    },
+    {
+      "playerId": "real-betis-202627-19",
+      "name": "Curro Macías",
+      "teamId": "real-betis",
+      "dateOfBirth": "2008-07-08",
+      "nationality": "ESP",
+      "sourceProvider": "UEFA",
+      "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/"
+    },
+    {
+      "playerId": "real-betis-202627-35",
+      "name": "Miguel Ángel Castilla",
+      "teamId": "real-betis",
+      "dateOfBirth": "2008-05-04",
+      "nationality": "ESP",
+      "sourceProvider": "UEFA",
+      "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/"
+    },
+    {
+      "playerId": "real-betis-202627-36",
+      "name": "Kike Collantes",
+      "teamId": "real-betis",
+      "dateOfBirth": "2009-02-12",
+      "nationality": "ESP",
+      "sourceProvider": "UEFA",
+      "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/"
+    },
+    {
+      "playerId": "real-betis-202627-37",
+      "name": "Rubén Lidueña",
+      "teamId": "real-betis",
+      "dateOfBirth": "2008-08-21",
+      "nationality": "ESP",
+      "sourceProvider": "UEFA",
+      "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/"
+    },
+    {
+      "playerId": "real-betis-202627-38",
+      "name": "Marcos Mora",
+      "teamId": "real-betis",
+      "dateOfBirth": "2007-01-30",
+      "nationality": "ESP",
+      "sourceProvider": "UEFA",
+      "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/"
+    },
+    {
+      "playerId": "real-betis-202627-39",
+      "name": "Miguel Ángel",
+      "teamId": "real-betis",
+      "dateOfBirth": "2008-03-22",
+      "nationality": "ESP",
+      "sourceProvider": "UEFA",
+      "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/"
+    },
+    {
+      "playerId": "real-betis-202627-48",
+      "name": "Cayetano Cordón",
+      "teamId": "real-betis",
+      "dateOfBirth": "2007-02-04",
+      "nationality": "ESP",
+      "sourceProvider": "UEFA",
+      "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/"
+    },
+    {
+      "playerId": "real-betis-202627-50",
+      "name": "Fran Batán",
+      "teamId": "real-betis",
+      "dateOfBirth": "2009-04-10",
+      "nationality": "ESP",
+      "sourceProvider": "UEFA",
+      "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/"
+    },
+    {
+      "playerId": "real-betis-202627-51",
+      "name": "Juan Rodriguez",
+      "teamId": "real-betis",
+      "dateOfBirth": "2008-10-30",
+      "nationality": "ESP",
+      "sourceProvider": "UEFA",
+      "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/"
     }
   ],
-  "approvalRevision": 30,
-  "reviewNote": "Adds official Atlético de Madrid profiles for Salvi Esquivel and Dani Martínez; exact player IDs mapped to the database's full display names."
+  "approvalRevision": 31,
+  "reviewNote": "UEFA official press kit supplies birth dates and nationalities for remaining Betis academy players; existing LALIGA and club profile records retained."
 }
