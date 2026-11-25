@@ -121,6 +121,23 @@ test("aplica instruções táticas e realiza substituição durante a partida", 
   expect(errors).toEqual([]);
 });
 
+
+test("abre o perfil individual e mostra estatísticas e histórico do jogador", async ({ page }) => {
+  const errors = [];
+  page.on("pageerror", error => errors.push(error.message));
+  await startCareer(page);
+  await page.locator('[data-view="squad"]').click();
+  const firstProfile = page.locator('#view-root button[onclick^="openPlayerProfile("]').first();
+  await expect(firstProfile).toBeVisible();
+  await firstProfile.click();
+  await expect(page.locator("#page-title")).toHaveText("Perfil do jogador");
+  await expect(page.locator("#view-root")).toContainText("Atributos");
+  await expect(page.locator("#view-root")).toContainText("Últimas partidas");
+  await page.getByRole("button", { name: "VOLTAR AO ELENCO" }).click();
+  await expect(page.locator("#page-title")).toContainText("Elenco");
+  expect(errors).toEqual([]);
+});
+
 test("gera atributo específico de goleiro para influenciar as defesas", async ({ page }) => {
   await startCareer(page);
   const keeperRatings = await page.evaluate(async () => {
