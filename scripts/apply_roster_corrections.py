@@ -16,6 +16,8 @@ def apply(db, approval):
         seen.add(pid)
         if not str(op.get("sourceUrl","")).startswith("https://www.laliga.com/"):
             raise ValueError(f"Non-official source URL: {pid}")
+        if op.get("transferSourceUrl") and not str(op["transferSourceUrl"]).startswith("https://as.com/"):
+            raise ValueError(f"Non-official transfer source URL: {pid}")
         kind=op.get("action")
         player=players.get(pid)
         source=teams.get(str(op.get("fromTeamId")))
