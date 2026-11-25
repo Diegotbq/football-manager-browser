@@ -631,9 +631,13 @@ function hasPendingCareerDecision(){
   return state.pendingOffers.some(o=>o.status==='pending')||state.playerAgentDemands.some(d=>d.status==='pending')||state.managerOffers.some(o=>o.status==='pending');
 }
 function processCareerDay(){
-  const beforeOffers=new Set(state.pendingOffers.filter(o=>o.status==='pending').map(o=>o.id));
-  const beforeDemands=new Set(state.playerAgentDemands.filter(d=>d.status==='pending').map(d=>d.id));
-  const beforeManagers=new Set(state.managerOffers.filter(o=>o.status==='pending').map(o=>o.id));
+  const todayBefore=state.day.toISOString().slice(0,10);
+  const beforeOffers=new Set(state.pendingOffers.filter(o=>o.status==="pending").map(o=>o.id));
+  const beforeDemands=new Set(state.playerAgentDemands.filter(d=>d.status==="pending").map(d=>d.id));
+  const beforeManagers=new Set(state.managerOffers.filter(o=>o.status==="pending").map(o=>o.id));
+  const transferCount=state.transferHistory.length;
+  const scoutingBefore=new Set(state.scoutingReports.filter(r=>!r.completed).map(r=>r.id));
+  const loansBefore=new Set(state.loanRecords.filter(r=>!r.returned).map(r=>r.id));
   state.day.setDate(state.day.getDate()+1);
   recoverPlayerConditions();processLoanReturns();processScouting();
   if(state.day.getDay()===1){
@@ -641,17 +645,21 @@ function processCareerDay(){
     const club=userClub();
     if(club){const weeklyPayroll=state.db.players.filter(p=>String(p.teamId)===String(club.id)).reduce((sum,p)=>sum+Number(getPlayerContract(p).weeklyWage||0),0);club.budget=Number(club.budget||0)-weeklyPayroll;}
   }
-  state.pendingOffers.filter(o=>o.status==='pending'&&!beforeOffers.has(o.id)).forEach(o=>addInboxItem('transfer','Proposta de transferência',o.fromName+' ofereceu '+money(o.fee)+' por '+o.playerName+'.',true));
-  state.playerAgentDemands.filter(d=>d.status==='pending'&&!beforeDemands.has(d.id)).forEach(d=>addInboxItem('contract','Pedido de renovação',d.playerName+' solicitou revisão do contrato.',true));
-  state.managerOffers.filter(o=>o.status==='pending'&&!beforeManagers.has(o.id)).forEach(o=>addInboxItem('manager','Proposta para treinar outro clube',o.clubName+' deseja contratar você.',true));
+  state.pendingOffers.filter(o=>o.status==="pending"&&!beforeOffers.has(o.id)).forEach(o=>addInboxItem("transfer","Proposta de transferência",o.fromName+" ofereceu "+money(o.fee)+" por "+o.playerName+".",true));
+  state.playerAgentDemands.filter(d=>d.status==="pending"&&!beforeDemands.has(d.id)).forEach(d=>addInboxItem("contract","Pedido de renovação",d.playerName+" solicitou revisão do contrato.",true));
+  state.managerOffers.filter(o=>o.status==="pending"&&!beforeManagers.has(o.id)).forEach(o=>addInboxItem("manager","Proposta para treinar outro clube",o.clubName+" deseja contratar você.",true));
+  const newTransfers=state.transferHistory.slice(transferCount).filter(t=>t.aiTransfer);
+  newTransfers.forEach(t=>addInboxItem("news","Movimentação no mercado",t.playerName+" foi transferido do "+t.fromName+" para "+t.toName+".",false));
+  state.scoutingReports.filter(r=>r.completed&&!scoutingBefore.has(r.id)).forEach(r=>addInboxItem("scouting","Relatório de observação concluído","O relatório de "+(state.db.players.find(p=>String(p.id)===String(r.playerId))?.name||"jogador observado")+" está disponível no mercado.",false));
+  state.loanRecords.filter(r=>r.returned&&!loansBefore.has(r.id)).forEach(r=>addInboxItem("loan","Retorno de empréstimo","Um jogador retornou ao clube após o fim do empréstimo.",false));
   const squad=clubPlayers().filter(p=>!playerUnavailable(p));
   if(squad.length&&Math.random()<0.012){
-    const player=squad[Math.floor(Math.random()*squad.length)];const days=2+Math.floor(Math.random()*13);
+    const player=squad[Math.floor(Math.random()*squad.length)],days=2+Math.floor(Math.random()*13);
     getPlayerCondition(player).injuryDays=Math.max(getPlayerCondition(player).injuryDays||0,days);
-    addInboxItem('injury','Lesão durante o treinamento',player.name+' sofreu uma lesão no treino e ficará afastado por '+days+' dias.',true);
+    addInboxItem("injury","Lesão durante o treinamento",player.name+" sofreu uma lesão no treino e ficará afastado por "+days+" dias.",true);
   }
-  if(Math.random()<0.28)addInboxItem('training','Relatório diário de treinamento','Treino concluído. Condição física e evolução do elenco foram atualizadas.',false);
-  try{localStorage.setItem('fmb-current-day',state.day.toISOString().slice(0,10));}catch(_){}
+  if(Math.random()<0.28)addInboxItem("training","Relatório de condição física","A condição física do elenco foi atualizada após a rotina diária.",false);
+  try{localStorage.setItem("fmb-current-day",state.day.toISOString().slice(0,10));}catch(_){}
   saveTransferCareer();
   return state.inbox.some(item=>item.important&&item.date===state.day.toISOString().slice(0,10))||hasPendingCareerDecision();
 }
@@ -674,9 +682,17 @@ function advanceToNextMatch(){
   if(interrupted)alert('Avanço interrompido por um acontecimento importante. Resolva-o na caixa de entrada para continuar.');
   else if(state.day.toISOString().slice(0,10)>=target)alert('Você chegou ao dia do próximo jogo! Prepare sua equipe na área Partidas.');
 }
+function markInboxItemRead(id){const item=state.inbox.find(x=>x.id===id);if(item)item.read=true;saveTransferCareer();render();}
+function markInboxAllRead(){state.inbox.forEach(x=>x.read=true);saveTransferCareer();render();}
+function openInboxItem(id){const item=state.inbox.find(x=>x.id===id);if(!item)return;item.read=true;saveTransferCareer();if(item.type==="transfer"||item.type==="contract")state.view="market";else if(item.type==="injury"||item.type==="training"||item.type==="scouting")state.view="squad";else state.view="dashboard";render();}
 function renderInboxPanel(){
-  const items=(state.inbox||[]).slice(0,7);const unread=(state.inbox||[]).filter(x=>!x.read).length;
-  return '<article class="card span-12"><div class="section-head"><h2>📥 Caixa de entrada</h2><span class="tag">'+unread+' não lido(s)</span></div>'+(items.length?items.map(x=>'<div class="fixture inbox-item '+(x.important?'inbox-important':'')+'"><div><strong>'+(x.important?'⚠️ ':'')+x.title+'</strong><div class="subtle">'+x.message+'</div></div><span class="tag">'+x.date+'</span></div>').join(''):'<p class="empty">Ainda não há mensagens. Notícias e relatórios aparecerão aqui durante a temporada.</p>')+'</article>';
+  const items=(state.inbox||[]).slice(0,5),unread=(state.inbox||[]).filter(x=>!x.read).length;
+  return '<article class="card span-12"><div class="section-head"><h2>📥 Caixa de entrada</h2><span class="tag">'+unread+' não lido(s)</span></div>'+(items.length?items.map(x=>'<div class="fixture inbox-item '+(x.important?'inbox-important':'')+'"><div><strong>'+(x.read?'':'● ')+(x.important?'⚠️ ':'')+x.title+'</strong><div class="subtle">'+x.message+'</div></div><span class="tag">'+x.date+'</span></div>').join(''):'<p class="empty">Ainda não há mensagens. Notícias e relatórios aparecerão aqui durante a temporada.</p>')+'<button class="secondary-btn" onclick="state.view=\'inbox\';render()">ABRIR CAIXA DE ENTRADA</button></article>';
+}
+function renderInboxPage(){
+  const items=state.inbox||[],unread=items.filter(x=>!x.read).length;
+  const ordered=items.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+  setPage("Caixa de entrada",'<div class="grid"><article class="card span-12"><div class="section-head"><div><h2>📥 Central de mensagens</h2><p class="subtle">Decisões importantes, notícias e relatórios da sua carreira.</p></div><span class="tag">'+unread+' não lido(s)</span></div><div class="inbox-filters"><span class="tag inbox-important-tag">Atenção: '+items.filter(x=>x.important).length+'</span><span class="tag">Notícias e relatórios: '+items.filter(x=>!x.important).length+'</span><button class="secondary-btn" onclick="markInboxAllRead()">MARCAR TODAS COMO LIDAS</button></div>'+(ordered.length?ordered.map(x=>'<div class="inbox-message '+(x.important?'inbox-important':'')+' '+(x.read?'is-read':'')+'"><div class="inbox-message-top"><div><strong>'+(x.important?'⚠️ ':'')+x.title+'</strong><span class="tag">'+(x.important?'DECISÃO IMPORTANTE':x.type.toUpperCase())+'</span></div><small>'+x.date+'</small></div><p>'+x.message+'</p><div class="inbox-message-actions"><button class="secondary-btn" onclick="openInboxItem(\''+x.id+'\')">'+(x.important?'ANALISAR ACONTECIMENTO':'ABRIR')+'</button>'+(x.read?'':'<button class="text-link" onclick="markInboxItemRead(\''+x.id+'\')">Marcar como lida</button>')+'</div></div>').join(''):'<p class="empty">Sua caixa de entrada está vazia. Notícias e relatórios aparecerão conforme os dias forem simulados.</p>')+'</article></div>');
 }
 
 
@@ -714,7 +730,7 @@ function render() {
   }
 
   const pages = {
-    dashboard: renderDashboard,
+    dashboard: renderDashboard,\n    inbox: renderInboxPage,
     squad: renderSquad,
     market: renderMarket,
     table: renderTable,
