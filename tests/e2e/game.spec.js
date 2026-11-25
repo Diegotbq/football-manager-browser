@@ -71,12 +71,16 @@ test("joga uma partida completa, pausa, retoma e registra o resultado", async ({
 
   await expect(page.locator(".match-status")).toHaveText("TEMPO INTEGRAL", { timeout: 45000 });
   await expect(page.locator(".events-card")).toContainText("Fim de jogo! Partida encerrada.");
+  await expect(page.locator(".match-stats")).toBeVisible();
   const savedMatches = await page.evaluate(() => JSON.parse(localStorage.getItem("fmb-match-history") || "[]"));
   expect(savedMatches).toHaveLength(matchesBefore + 1);
   const completedMatch = savedMatches[savedMatches.length - 1];
   expect(completedMatch).toMatchObject({ homeId: "real-madrid", awayId: "barcelona" });
   expect(typeof completedMatch.homeScore).toBe("number");
   expect(typeof completedMatch.awayScore).toBe("number");
+  expect(completedMatch.stats.home.shots + completedMatch.stats.away.shots).toBeGreaterThan(0);
+  expect(completedMatch.stats.home.shots).toBeGreaterThanOrEqual(completedMatch.stats.home.onTarget);
+  expect(completedMatch.stats.away.shots).toBeGreaterThanOrEqual(completedMatch.stats.away.onTarget);
   expect(errors).toEqual([]);
 });
 
