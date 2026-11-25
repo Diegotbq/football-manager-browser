@@ -53,6 +53,7 @@ test("joga uma partida completa, pausa, retoma e registra o resultado", async ({
   page.on("pageerror", error => errors.push(error.message));
   await startCareer(page);
 
+  const matchesBefore = await page.evaluate(() => JSON.parse(localStorage.getItem("fmb-match-history") || "[]").length);
   await page.locator('[data-view="match"]').click();
   await expect(page.locator("#match-opponent")).toBeVisible();
   await page.locator("#match-opponent").selectOption("barcelona");
@@ -71,9 +72,10 @@ test("joga uma partida completa, pausa, retoma e registra o resultado", async ({
   await expect(page.locator(".match-status")).toHaveText("TEMPO INTEGRAL", { timeout: 45000 });
   await expect(page.locator(".events-card")).toContainText("Fim de jogo! Partida encerrada.");
   const savedMatches = await page.evaluate(() => JSON.parse(localStorage.getItem("fmb-match-history") || "[]"));
-  expect(savedMatches).toHaveLength(1);
-  expect(savedMatches[0]).toMatchObject({ homeId: "real-madrid", awayId: "barcelona" });
-  expect(typeof savedMatches[0].homeScore).toBe("number");
-  expect(typeof savedMatches[0].awayScore).toBe("number");
+  expect(savedMatches).toHaveLength(matchesBefore + 1);
+  const completedMatch = savedMatches[savedMatches.length - 1];
+  expect(completedMatch).toMatchObject({ homeId: "real-madrid", awayId: "barcelona" });
+  expect(typeof completedMatch.homeScore).toBe("number");
+  expect(typeof completedMatch.awayScore).toBe("number");
   expect(errors).toEqual([]);
 });
