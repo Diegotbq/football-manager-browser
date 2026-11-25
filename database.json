@@ -28420,37 +28420,55 @@
           "id": "racing-santander-202627-03",
           "name": "Sergio Canales Madrazo",
           "position": "CM",
-          "age": null,
+          "age": 35,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/canales",
+            "dateOfBirth": "1991-02-16",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-04",
           "name": "Álvaro Mantilla Pérez",
           "position": "RB",
-          "age": null,
+          "age": 26,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/alvaro-mantilla",
+            "dateOfBirth": "2000-05-09",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-05",
           "name": "Iván Martín Núñez",
           "position": "CM",
-          "age": null,
+          "age": 27,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/ivan-martin",
+            "dateOfBirth": "1999-02-14",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-06",
@@ -28478,13 +28496,19 @@
           "id": "racing-santander-202627-07",
           "name": "Gustavo Adolfo Puerta Molano",
           "position": "CM",
-          "age": null,
+          "age": 23,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "COL",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/gustavo-puerta",
+            "dateOfBirth": "2003-07-23",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-08",
@@ -28502,25 +28526,37 @@
           "id": "racing-santander-202627-09",
           "name": "Andrés Martín García",
           "position": "RW",
-          "age": null,
+          "age": 27,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/andres-2",
+            "dateOfBirth": "1999-07-11",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-10",
           "name": "Pablo García Fernández",
           "position": "RW",
-          "age": null,
+          "age": 20,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/pablo-garcia-5",
+            "dateOfBirth": "2006-06-13",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-11",
@@ -28538,73 +28574,109 @@
           "id": "racing-santander-202627-12",
           "name": "Jorge Salinas Viadero",
           "position": "LB",
-          "age": null,
+          "age": 19,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/jorge-salinas",
+            "dateOfBirth": "2007-04-03",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-13",
           "name": "Pablo Ramón Parra",
           "position": "CB",
-          "age": null,
+          "age": 25,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/pablo-ramon",
+            "dateOfBirth": "2001-06-30",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-14",
           "name": "Asier Villalibre Molina",
           "position": "ST",
-          "age": null,
+          "age": 29,
           "overall": 72,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/villalibre",
+            "dateOfBirth": "1997-09-30",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-15",
           "name": "Domingos André Ribeiro Almeida",
           "position": "AM",
-          "age": null,
+          "age": 26,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "POR",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/andre-almeida-1",
+            "dateOfBirth": "2000-05-30",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-16",
           "name": "Íñigo Vicente Elorduy",
           "position": "LW",
-          "age": null,
+          "age": 28,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/i-vicente",
+            "dateOfBirth": "1998-01-06",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-17",
           "name": "Julen Agirrezabala Astúlez",
           "position": "GK",
-          "age": null,
+          "age": 25,
           "overall": 70,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/julen-agirrezabala",
+            "dateOfBirth": "2000-12-26",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-18",
@@ -28634,13 +28706,19 @@
           "id": "racing-santander-202627-20",
           "name": "Carlos Sánchez Martos",
           "position": "RB",
-          "age": null,
+          "age": 21,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/carlos-sanchez-5",
+            "dateOfBirth": "2005-04-19",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-21",
@@ -28692,25 +28770,37 @@
           "id": "racing-santander-202627-24",
           "name": "Iker Luque Sierra",
           "position": "AM",
-          "age": null,
+          "age": 21,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/iker-luque-1",
+            "dateOfBirth": "2005-06-05",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-25",
           "name": "Íñigo Sáinz-Maza Serna",
           "position": "DM",
-          "age": null,
+          "age": 28,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/inigo",
+            "dateOfBirth": "1998-06-16",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-26",
@@ -28728,25 +28818,37 @@
           "id": "racing-santander-202627-27",
           "name": "Juan Carlos Arana Gómez",
           "position": "ST",
-          "age": null,
+          "age": 26,
           "overall": 72,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/juan-carlos-arana",
+            "dateOfBirth": "2000-02-08",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-28",
           "name": "Laro Gómez Rodríguez",
           "position": "GK",
-          "age": null,
+          "age": 20,
           "overall": 70,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/laro-gomez",
+            "dateOfBirth": "2006-10-17",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "racing-santander-202627-29",
@@ -28786,13 +28888,19 @@
           "id": "racing-santander-202627-31",
           "name": "Simon Olof Eriksson",
           "position": "GK",
-          "age": null,
+          "age": 20,
           "overall": 70,
           "marketValue": 2500000,
           "teamId": "racing-santander",
-          "nationality": null,
+          "nationality": "SWE",
           "injured": false,
-          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+          "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/simon-eriksson",
+            "dateOfBirth": "2006-04-24",
+            "verifiedAt": "2026-11-25"
+          }
         }
       ]
     },
@@ -149892,37 +150000,55 @@
       "id": "racing-santander-202627-03",
       "name": "Sergio Canales Madrazo",
       "position": "CM",
-      "age": null,
+      "age": 35,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/canales",
+        "dateOfBirth": "1991-02-16",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-04",
       "name": "Álvaro Mantilla Pérez",
       "position": "RB",
-      "age": null,
+      "age": 26,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/alvaro-mantilla",
+        "dateOfBirth": "2000-05-09",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-05",
       "name": "Iván Martín Núñez",
       "position": "CM",
-      "age": null,
+      "age": 27,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/ivan-martin",
+        "dateOfBirth": "1999-02-14",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-06",
@@ -149950,13 +150076,19 @@
       "id": "racing-santander-202627-07",
       "name": "Gustavo Adolfo Puerta Molano",
       "position": "CM",
-      "age": null,
+      "age": 23,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "COL",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/gustavo-puerta",
+        "dateOfBirth": "2003-07-23",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-08",
@@ -149974,25 +150106,37 @@
       "id": "racing-santander-202627-09",
       "name": "Andrés Martín García",
       "position": "RW",
-      "age": null,
+      "age": 27,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/andres-2",
+        "dateOfBirth": "1999-07-11",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-10",
       "name": "Pablo García Fernández",
       "position": "RW",
-      "age": null,
+      "age": 20,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/pablo-garcia-5",
+        "dateOfBirth": "2006-06-13",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-11",
@@ -150010,73 +150154,109 @@
       "id": "racing-santander-202627-12",
       "name": "Jorge Salinas Viadero",
       "position": "LB",
-      "age": null,
+      "age": 19,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/jorge-salinas",
+        "dateOfBirth": "2007-04-03",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-13",
       "name": "Pablo Ramón Parra",
       "position": "CB",
-      "age": null,
+      "age": 25,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/pablo-ramon",
+        "dateOfBirth": "2001-06-30",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-14",
       "name": "Asier Villalibre Molina",
       "position": "ST",
-      "age": null,
+      "age": 29,
       "overall": 72,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/villalibre",
+        "dateOfBirth": "1997-09-30",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-15",
       "name": "Domingos André Ribeiro Almeida",
       "position": "AM",
-      "age": null,
+      "age": 26,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "POR",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/andre-almeida-1",
+        "dateOfBirth": "2000-05-30",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-16",
       "name": "Íñigo Vicente Elorduy",
       "position": "LW",
-      "age": null,
+      "age": 28,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/i-vicente",
+        "dateOfBirth": "1998-01-06",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-17",
       "name": "Julen Agirrezabala Astúlez",
       "position": "GK",
-      "age": null,
+      "age": 25,
       "overall": 70,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/julen-agirrezabala",
+        "dateOfBirth": "2000-12-26",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-18",
@@ -150106,13 +150286,19 @@
       "id": "racing-santander-202627-20",
       "name": "Carlos Sánchez Martos",
       "position": "RB",
-      "age": null,
+      "age": 21,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/carlos-sanchez-5",
+        "dateOfBirth": "2005-04-19",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-21",
@@ -150164,25 +150350,37 @@
       "id": "racing-santander-202627-24",
       "name": "Iker Luque Sierra",
       "position": "AM",
-      "age": null,
+      "age": 21,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/iker-luque-1",
+        "dateOfBirth": "2005-06-05",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-25",
       "name": "Íñigo Sáinz-Maza Serna",
       "position": "DM",
-      "age": null,
+      "age": 28,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/inigo",
+        "dateOfBirth": "1998-06-16",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-26",
@@ -150200,25 +150398,37 @@
       "id": "racing-santander-202627-27",
       "name": "Juan Carlos Arana Gómez",
       "position": "ST",
-      "age": null,
+      "age": 26,
       "overall": 72,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/juan-carlos-arana",
+        "dateOfBirth": "2000-02-08",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-28",
       "name": "Laro Gómez Rodríguez",
       "position": "GK",
-      "age": null,
+      "age": 20,
       "overall": 70,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/laro-gomez",
+        "dateOfBirth": "2006-10-17",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-29",
@@ -150258,13 +150468,19 @@
       "id": "racing-santander-202627-31",
       "name": "Simon Olof Eriksson",
       "position": "GK",
-      "age": null,
+      "age": 20,
       "overall": 70,
       "marketValue": 2500000,
       "teamId": "racing-santander",
-      "nationality": null,
+      "nationality": "SWE",
       "injured": false,
-      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates."
+      "dataSource": "2026/27 Primera División Senior registration roster (federation statistics published via MaratonFutbol), cross-checked against Real Racing Club official 2026/27 squad announcements. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/simon-eriksson",
+        "dateOfBirth": "2006-04-24",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "deportivo-la-coruna-202627-01",
