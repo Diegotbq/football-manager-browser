@@ -51,6 +51,19 @@ class MetadataTests(unittest.TestCase):
         self.assertEqual(updated["players"][0]["nationality"], "ROU")
         self.assertEqual(updated["players"][0]["identitySource"]["provider"], "UEFA")
 
+    def test_verified_database_source_can_correct_nationality(self):
+        db = {"players":[{"id":"p4","name":"Player","teamId":"t4","age":None,"nationality":"ESP"}],
+              "teams":[{"id":"t4","players":[{"id":"p4","name":"Player","age":None,"nationality":"ESP"}]}]}
+        approval = {"approved":True,"operation":"fill-and-correct-approved-player-age-and-nationality",
+          "source":"Official LALIGA, club, UEFA and verified football databases","asOf":"2026-11-25",
+          "records":[{"playerId":"p4","name":"Player","teamId":"t4","dateOfBirth":"2007-01-01",
+          "nationality":"MLI","sourceProvider":"ZEROZERO","overwriteFields":["nationality"],
+          "sourceUrl":"https://www.zerozero.pt/jogador/player/123"}]}
+        updated, report = apply(db, approval)
+        self.assertEqual(updated["players"][0]["age"], 19)
+        self.assertEqual(updated["players"][0]["nationality"], "MLI")
+        self.assertEqual(report["nationalitiesOverwritten"], 2)
+
     def test_existing_values_are_not_overwritten(self):
         db = {"players":[{"id":"p1","name":"Test Player","teamId":"t1","age":30,"nationality":"ARG"}],
               "teams":[{"id":"t1","players":[{"id":"p1","name":"Test Player","age":30,"nationality":"ARG"}]}]}
