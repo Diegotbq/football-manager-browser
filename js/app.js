@@ -1204,10 +1204,11 @@ function getPlayerAttributes(player) {
     passing: ["CM","AM","DM","MF"].includes(position) ? 11 : position === "GK" ? -8 : 0,
     dribbling: ["LW","RW","AM","FW"].includes(position) ? 12 : ["CB","GK","DF"].includes(position) ? -8 : 0,
     defending: ["CB","LB","RB","DM","DF"].includes(position) ? 14 : ["ST","LW","RW","FW"].includes(position) ? -12 : 0,
-    physical: ["CB","ST","DM","DF","FW"].includes(position) ? 9 : 2
+    physical: ["CB","ST","DM","DF","FW"].includes(position) ? 9 : 2,
+    goalkeeping: position === "GK" ? 22 : -18
   };
   const seed = String(player.id).split("").reduce((sum,ch)=>sum+ch.charCodeAt(0),0);
-  const keys = ["pace","shooting","passing","dribbling","defending","physical"];
+  const keys = ["pace","shooting","passing","dribbling","defending","physical","goalkeeping"];
   const attrs = {};
   keys.forEach((key,index) => {
     const variation = ((seed + index * 7) % 13) - 6;
@@ -2103,24 +2104,32 @@ function simulateMatchAttack(m,isHome,strength,bias) {
   if(!m.stats)m.stats={home:{shots:0,onTarget:0,saves:0},away:{shots:0,onTarget:0,saves:0}};
   const side=isHome?m.stats.home:m.stats.away;
   const opponent=isHome?m.stats.away:m.stats.home;
+  const teamId=isHome?m.homeId:m.awayId;
+  const opponentId=isHome?m.awayId:m.homeId;
   const teamName=isHome?m.homeName:m.awayName;
-  const shotChance=Math.max(0.055,Math.min(0.15,0.105+(strength-60)*0.001+(bias||0)*0.002));
+  const managed=String(state.db.userClubId||state.selectedClubId);
+  const lineup=String(teamId)===managed?m.lineup:m.aiLineup;
+  const opponentLineup=String(opponentId)===managed?m.lineup:m.aiLineup;
+  const players=(lineup||[]).map(id=>state.db.players.find(p=>String(p.id)===String(id))).filter(Boolean);
+  const opponents=(opponentLineup||[]).map(id=>state.db.players.find(p=>String(p.id)===String(id))).filter(Boolean);
+  const attackers=players.filter(p=>["ST","CF","LW","RW","FW","AM"].includes(String(p.position||"").toUpperCase()));
+  const shooterPool=attackers.length?attackers:players.filter(p=>String(p.position||"").toUpperCase()!=="GK");
+  const shooter=[...shooterPool].sort((a,b)=>getPlayerAttributes(b).shooting-getPlayerAttributes(a).shooting)[0];
+  const keeper=opponents.find(p=>String(p.position||"").toUpperCase()==="GK");
+  const shooterSkill=shooter?getPlayerAttributes(shooter).shooting:Math.max(40,strength);
+  const keeperSkill=keeper?getPlayerAttributes(keeper).goalkeeping:48;
+  const midfield=players.filter(p=>["CM","AM","DM","MF"].includes(String(p.position||"").toUpperCase()));
+  const passingSkill=midfield.length?midfield.reduce((sum,p)=>sum+getPlayerAttributes(p).passing,0)/midfield.length:50;
+  const shotChance=Math.max(0.055,Math.min(0.15,0.105+(strength-60)*0.001+(bias||0)*0.002+(passingSkill-50)*0.0005));
   if(Math.random()>=shotChance)return;
   side.shots++;
-  const accuracy=Math.max(0.22,Math.min(0.46,0.34+(strength-60)*0.003));
-  if(Math.random()>=accuracy){
-    m.events.unshift({minute:m.minute,text:"🎯 "+teamName+" arrisca de fora, mas a bola vai para fora."});
-    return;
-  }
+  const shooterName=shooter?.name||teamName;
+  const accuracy=Math.max(0.18,Math.min(0.55,0.32+(shooterSkill-60)*0.003+(passingSkill-50)*0.001));
+  if(Math.random()>=accuracy){m.events.unshift({minute:m.minute,text:"🎯 "+shooterName+" finaliza, mas a bola vai para fora."});return;}
   side.onTarget++;
-  const goalChance=Math.max(0.12,Math.min(0.34,0.23+(strength-60)*0.0025+(bias||0)*0.004));
-  if(Math.random()<goalChance){
-    if(isHome)m.homeScore++;else m.awayScore++;
-    m.events.unshift({minute:m.minute,text:"⚽ GOL do "+teamName+"! Finalização certeira!"});
-  }else{
-    opponent.saves++;
-    m.events.unshift({minute:m.minute,text:"🧤 Defesa do goleiro! Boa finalização do "+teamName+"."});
-  }
+  const goalChance=Math.max(0.09,Math.min(0.38,0.23+(shooterSkill-60)*0.003-(keeperSkill-60)*0.003+(bias||0)*0.003));
+  if(Math.random()<goalChance){if(isHome)m.homeScore++;else m.awayScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+teamName+"! "+shooterName+" marca após boa jogada!"});}
+  else{opponent.saves++;m.events.unshift({minute:m.minute,text:"🧤 "+(keeper?.name||"O goleiro")+" defende! Finalização de "+shooterName+"."});}
 }
 function tickMatch() {
   const m=state.match;if(!m||m.paused||m.finished)return;
