@@ -1,0 +1,58 @@
+{
+  "approved": true,
+  "season": "2026/27",
+  "source": "Official LALIGA player profile current-club verification",
+  "operations": [
+    {
+      "action": "move",
+      "playerId": "getafe-202627-11",
+      "name": "Juan Berrocal",
+      "fromTeamId": "getafe",
+      "toTeamId": "malaga",
+      "sourceUrl": "https://www.laliga.com/es-GB/jugador/j-berrocal",
+      "reason": "Official LALIGA profile lists Málaga CF"
+    },
+    {
+      "action": "move",
+      "playerId": "elche-202627-11",
+      "name": "David Affengruber",
+      "fromTeamId": "elche",
+      "toTeamId": "fulham",
+      "sourceUrl": "https://www.laliga.com/jugador/david-affengruber",
+      "reason": "Official LALIGA profile lists Fulham"
+    },
+    {
+      "action": "move",
+      "playerId": "sevilla-202627-09",
+      "name": "Adrià Pedrosa",
+      "fromTeamId": "sevilla",
+      "toTeamId": "rayo-vallecano",
+      "sourceUrl": "https://www.laliga.com/jugador/pedrosa-1",
+      "reason": "Official LALIGA profile lists Rayo Vallecano"
+    },
+    {
+      "action": "remove",
+      "playerId": "elche-202627-09",
+      "name": "John Donald",
+      "fromTeamId": "elche",
+      "sourceUrl": "https://www.laliga.com/jugador/john-c",
+      "reason": "Official LALIGA profile lists RCD Mallorca, outside the database's covered leagues"
+    },
+    {
+      "action": "remove",
+      "playerId": "alaves-202627-01",
+      "name": "Jesús Owono",
+      "fromTeamId": "alaves",
+      "sourceUrl": "https://www.laliga.com/es-DE/jugador/jesus-owono",
+      "reason": "Official LALIGA profile lists FC Andorra, outside the database's covered leagues"
+    },
+    {
+      "action": "remove",
+      "playerId": "racing-santander-202627-21",
+      "name": "Diego Díaz Cacho",
+      "fromTeamId": "racing-santander",
+      "sourceUrl": "https://www.laliga.com/jugador/diego-diaz-3",
+      "reason": "Official LALIGA profile lists FC Andorra, outside the database's covered leagues"
+    }
+  ]
+}
