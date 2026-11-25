@@ -837,8 +837,48 @@
       "dateOfBirth": "2007-01-17",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/es-GB/jugador/juan-fernandez-2"
+    },
+    {
+      "playerId": "real-betis-202627-03",
+      "name": "Manu González",
+      "teamId": "real-betis",
+      "dateOfBirth": "2007-04-18",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/manu-gonzalez"
+    },
+    {
+      "playerId": "real-betis-202627-13",
+      "name": "Carlos De Roa",
+      "teamId": "real-betis",
+      "dateOfBirth": "2007-07-10",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/carlos-de-roa"
+    },
+    {
+      "playerId": "real-betis-202627-34",
+      "name": "Iván Corralejo",
+      "teamId": "real-betis",
+      "dateOfBirth": "2007-05-01",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/ivan-corralejo"
+    },
+    {
+      "playerId": "real-betis-202627-45",
+      "name": "José Antonio Morante",
+      "teamId": "real-betis",
+      "dateOfBirth": "2007-06-28",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/jose-morante"
+    },
+    {
+      "playerId": "real-betis-202627-46",
+      "name": "Rodrigo Marina",
+      "teamId": "real-betis",
+      "dateOfBirth": "2006-07-28",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/rodrigo-marina-1"
     }
   ],
-  "approvalRevision": 15,
-  "reviewNote": "Includes official LALIGA player profiles for Athletic Club, RC Deportivo, Levante UD, Racing de Santander and Málaga CF; fill-only and exact ID/name/team matching."
+  "approvalRevision": 16,
+  "reviewNote": "Includes official LALIGA profiles for Athletic Club, RC Deportivo, Levante UD, Racing de Santander, Málaga CF and selected Betis Deportivo players."
 }
