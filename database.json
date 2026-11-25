@@ -23471,7 +23471,16 @@
           "overall": 62,
           "marketValue": 69192000,
           "teamId": "athletic-club",
-          "injured": false
+          "injured": false,
+          "age": 21,
+          "nationality": "ESP",
+          "identitySource": {
+            "provider": "ATHLETIC_CLUB",
+            "sourceUrl": "https://www.athletic-club.eus/jugadores/aritz-conde-albiol/",
+            "dateOfBirth": "2005-10-14",
+            "verifiedAt": "2026-11-25",
+            "nationalitySourceUrl": "https://www.transfermarkt.es/aritz-conde/profil/spieler/1222475"
+          }
         }
       ]
     },
@@ -118067,7 +118076,16 @@
       "overall": 62,
       "marketValue": 69192000,
       "teamId": "athletic-club",
-      "injured": false
+      "injured": false,
+      "age": 21,
+      "nationality": "ESP",
+      "identitySource": {
+        "provider": "ATHLETIC_CLUB",
+        "sourceUrl": "https://www.athletic-club.eus/jugadores/aritz-conde-albiol/",
+        "dateOfBirth": "2005-10-14",
+        "verifiedAt": "2026-11-25",
+        "nationalitySourceUrl": "https://www.transfermarkt.es/aritz-conde/profil/spieler/1222475"
+      }
     },
     {
       "id": "angers-202627-01",
