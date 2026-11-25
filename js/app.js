@@ -815,10 +815,26 @@ function renderPlayerProfile() {
   const p = state.db.players.find(x => String(x.id) === String(state.selectedPlayerId));
   if (!p) { state.view = "squad"; renderSquad(); return; }
   const team = state.db.teams.find(x => String(x.id) === String(p.teamId));
-  const games = state.matchHistory.filter(m => (m.appearances || m.playerIds || []).some(id => String(id) === String(p.id)));
+  const archivedGames = (state.seasonHistory || []).flatMap(season => (season.matches || []).map(match => ({...match, season: season.season})));
+  const currentGames = state.matchHistory.map(match => ({...match, season: state.db.meta?.season || "Temporada atual"}));
+  const games = [...archivedGames, ...currentGames].filter(m =>
+    (m.appearances || m.playerIds || []).some(id => String(id) === String(p.id)) ||
+    (m.scorers || []).some(goal => String(goal.playerId) === String(p.id) || String(goal.assistPlayerId) === String(p.id))
+  );
+
   let goals = 0, assists = 0;
   games.forEach(m => (m.scorers || []).forEach(g => { if (String(g.playerId) === String(p.id)) goals++; if (String(g.assistPlayerId) === String(p.id)) assists++; }));
   const attrs = getPlayerAttributes(p);
+  const seasonRows = [...new Set(games.map(match => match.season || "Temporada atual"))].map(season => {
+    const seasonGames = games.filter(match => (match.season || "Temporada atual") === season);
+    let seasonGoals = 0, seasonAssists = 0;
+    seasonGames.forEach(match => (match.scorers || []).forEach(goal => {
+      if (String(goal.playerId) === String(p.id)) seasonGoals++;
+      if (String(goal.assistPlayerId) === String(p.id)) seasonAssists++;
+    }));
+    const appearances = seasonGames.filter(match => (match.appearances || match.playerIds || []).some(id => String(id) === String(p.id))).length;
+    return "<tr><td>" + season + "</td><td>" + appearances + "</td><td>" + seasonGoals + "</td><td>" + seasonAssists + "</td></tr>";
+  }).reverse().join("") || '<tr><td colspan="4">As estatísticas serão registradas ao longo da carreira.</td></tr>';
   const recent = games.slice(-8).reverse().map(m => {
     const home = state.db.teams.find(t => String(t.id) === String(m.homeId));
     const away = state.db.teams.find(t => String(t.id) === String(m.awayId));
@@ -827,6 +843,7 @@ function renderPlayerProfile() {
   }).join("") || '<tr><td colspan="4">Nenhuma partida registrada para este jogador.</td></tr>';
   setPage("Perfil do jogador", '<div class="card"><h2>' + p.name + '</h2><p class="subtle">' + (team?.name || "Sem clube") + ' · ' + (p.positionName || p.position || "—") + ' · ' + (p.age ?? "—") + ' anos · ' + (p.nationality || "—") + '</p><div class="grid"><article class="card span-3"><div class="card-label">Jogos</div><div class="metric">' + games.length + '</div></article><article class="card span-3"><div class="card-label">Gols</div><div class="metric">' + goals + '</div></article><article class="card span-3"><div class="card-label">Assistências</div><div class="metric">' + assists + '</div></article><article class="card span-3"><div class="card-label">Overall</div><div class="metric">' + p.overall + '</div></article></div></div>' +
   '<div class="card"><h2>Atributos</h2><p>' + Object.entries(attrs).map(([k,v]) => k + ': ' + v).join(' · ') + '</p></div>' +
+  '<div class="card"><h2>Estatísticas por temporada</h2><table class="table"><thead><tr><th>TEMPORADA</th><th>JOGOS</th><th>GOLS</th><th>ASSIST.</th></tr></thead><tbody>' + seasonRows + '</tbody></table></div>' +
   '<div class="card"><h2>Últimas partidas</h2><table class="table"><thead><tr><th>DATA</th><th>COMPETIÇÃO</th><th>ADVERSÁRIO</th><th>PLACAR</th></tr></thead><tbody>' + recent + '</tbody></table></div>' +
   '<button class="secondary-btn" onclick="state.view=\'squad\';render()">VOLTAR AO ELENCO</button>');
 }
@@ -1594,7 +1611,7 @@ function finishSeason() {
       board.targetPosition=rank<=2?Math.min(3,count):rank<=Math.ceil(count*.35)?Math.max(3,Math.ceil(count*.3)):Math.max(1,Math.ceil(count*.65));
     }
   }
-  state.seasonHistory.unshift({season,prizes,promoted,relegated,continentalQualifiers:JSON.parse(JSON.stringify(state.continentalQualifiers))});
+  state.seasonHistory.unshift({season,prizes,promoted,relegated,continentalQualifiers:JSON.parse(JSON.stringify(state.continentalQualifiers)),matches:JSON.parse(JSON.stringify(state.matchHistory))});
   const match=String(season).match(/(\d{4})\/(\d{2,4})/),year=match?Number(match[1])+1:state.day.getFullYear()+1;
   const nextSeason=year+"/"+String((year+1)%100).padStart(2,"0");
   state.db.meta.season=nextSeason;state.db.calendar=state.db.calendar||{};state.db.calendar.seasonStart=year+"-07-01";
