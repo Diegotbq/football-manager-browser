@@ -2104,6 +2104,14 @@ function runMatchClock() {
   if(!state.match||state.match.paused||state.match.finished)return;
   state.matchTimer=setInterval(tickMatch,Math.max(120,1000/state.match.speed));
 }
+function selectMatchPlayer(players,attribute) {
+  if(!players.length)return null;
+  const weights=players.map(p=>Math.max(1,Number(getPlayerAttributes(p)[attribute])||50));
+  const total=weights.reduce((sum,n)=>sum+n,0);
+  let roll=Math.random()*total;
+  for(let i=0;i<players.length;i++){roll-=weights[i];if(roll<=0)return players[i];}
+  return players[players.length-1];
+}
 function simulateMatchAttack(m,isHome,strength,bias) {
   if(!m.stats)m.stats={home:{shots:0,onTarget:0,saves:0},away:{shots:0,onTarget:0,saves:0}};
   const side=isHome?m.stats.home:m.stats.away;
@@ -2118,21 +2126,26 @@ function simulateMatchAttack(m,isHome,strength,bias) {
   const opponents=(opponentLineup||[]).map(id=>state.db.players.find(p=>String(p.id)===String(id))).filter(Boolean);
   const attackers=players.filter(p=>["ST","CF","LW","RW","FW","AM"].includes(String(p.position||"").toUpperCase()));
   const shooterPool=attackers.length?attackers:players.filter(p=>String(p.position||"").toUpperCase()!=="GK");
-  const shooter=[...shooterPool].sort((a,b)=>getPlayerAttributes(b).shooting-getPlayerAttributes(a).shooting)[0];
+  const shooter=selectMatchPlayer(shooterPool,"shooting");
   const keeper=opponents.find(p=>String(p.position||"").toUpperCase()==="GK");
   const shooterSkill=shooter?getPlayerAttributes(shooter).shooting:Math.max(40,strength);
   const keeperSkill=keeper?getPlayerAttributes(keeper).goalkeeping:48;
   const midfield=players.filter(p=>["CM","AM","DM","MF"].includes(String(p.position||"").toUpperCase()));
-  const passingSkill=midfield.length?midfield.reduce((sum,p)=>sum+getPlayerAttributes(p).passing,0)/midfield.length:50;
-  const shotChance=Math.max(0.055,Math.min(0.15,0.105+(strength-60)*0.001+(bias||0)*0.002+(passingSkill-50)*0.0005));
+  const creator=selectMatchPlayer(midfield,"passing");
+  const passingSkill=creator?getPlayerAttributes(creator).passing:50;
+  const defenders=opponents.filter(p=>["CB","LB","RB","DM","DF"].includes(String(p.position||"").toUpperCase()));
+  const defensiveSkill=defenders.length?defenders.reduce((sum,p)=>sum+getPlayerAttributes(p).defending,0)/defenders.length:48;
+  const dribblingSkill=shooter?getPlayerAttributes(shooter).dribbling:50;
+  const shotChance=Math.max(0.045,Math.min(0.16,0.105+(strength-60)*0.001+(bias||0)*0.002+(passingSkill-50)*0.0006+(dribblingSkill-50)*0.00035-(defensiveSkill-50)*0.00055));
   if(Math.random()>=shotChance)return;
   side.shots++;
   const shooterName=shooter?.name||teamName;
-  const accuracy=Math.max(0.18,Math.min(0.55,0.32+(shooterSkill-60)*0.003+(passingSkill-50)*0.001));
-  if(Math.random()>=accuracy){m.events.unshift({minute:m.minute,text:"🎯 "+shooterName+" finaliza, mas a bola vai para fora."});return;}
+  const accuracy=Math.max(0.16,Math.min(0.58,0.31+(shooterSkill-60)*0.003+(passingSkill-50)*0.001+(dribblingSkill-50)*0.0005-(defensiveSkill-50)*0.00045));
+  const setup=creator&&creator.id!==shooter?.id?" após passe de "+creator.name:"";
+  if(Math.random()>=accuracy){m.events.unshift({minute:m.minute,text:"🎯 "+shooterName+" finaliza"+setup+", mas a bola vai para fora."});return;}
   side.onTarget++;
-  const goalChance=Math.max(0.09,Math.min(0.38,0.23+(shooterSkill-60)*0.003-(keeperSkill-60)*0.003+(bias||0)*0.003));
-  if(Math.random()<goalChance){if(isHome)m.homeScore++;else m.awayScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+teamName+"! "+shooterName+" marca após boa jogada!"});}
+  const goalChance=Math.max(0.075,Math.min(0.4,0.22+(shooterSkill-60)*0.003-(keeperSkill-60)*0.003-(defensiveSkill-50)*0.0007+(bias||0)*0.003));
+  if(Math.random()<goalChance){if(isHome)m.homeScore++;else m.awayScore++;m.events.unshift({minute:m.minute,text:"⚽ GOL do "+teamName+"! "+shooterName+" marca"+setup+"!"});}
   else{opponent.saves++;m.events.unshift({minute:m.minute,text:"🧤 "+(keeper?.name||"O goleiro")+" defende! Finalização de "+shooterName+"."});}
 }
 function tickMatch() {
