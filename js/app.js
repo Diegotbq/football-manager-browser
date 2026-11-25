@@ -1195,7 +1195,11 @@ function finishMatchSuspensions(m) {
 }
 function getPlayerAttributes(player) {
   if (!player) return {pace:50,shooting:50,passing:50,dribbling:50,defending:50,physical:50};
-  if (state.playerAttributes[player.id]) return state.playerAttributes[player.id];
+  if (state.playerAttributes[player.id]) {
+    const cached=state.playerAttributes[player.id];
+    if (!Number.isFinite(Number(cached.goalkeeping))) cached.goalkeeping=Math.max(25,Math.min(99,Math.round((Number(player.overall)||50)+(String(player.position||"").toUpperCase()==="GK"?22:-18))));
+    return cached;
+  }
   const overall = Math.max(25, Math.min(90, Number(player.overall) || 50));
   const position = String(player.position || "").toUpperCase();
   const boosts = {
