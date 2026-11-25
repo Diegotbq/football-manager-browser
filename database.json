@@ -23490,25 +23490,53 @@
           "id": "atletico-madrid-202627-01",
           "name": "Juan Musso",
           "position": "GK",
-          "age": null,
+          "age": 32,
           "overall": 78,
           "marketValue": 9000000,
           "teamId": "atletico-madrid",
           "nationality": "ARG",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q5951550",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "1994-05-06",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-02",
           "name": "Jan Oblak",
           "position": "GK",
-          "age": null,
+          "age": 33,
           "overall": 88,
           "marketValue": 25000000,
           "teamId": "atletico-madrid",
           "nationality": "SVN",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q2058682",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "1993-01-07",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-03",
@@ -23526,61 +23554,131 @@
           "id": "atletico-madrid-202627-04",
           "name": "Dávid Hancko",
           "position": "CB",
-          "age": null,
+          "age": 28,
           "overall": 84,
           "marketValue": 35000000,
           "teamId": "atletico-madrid",
           "nationality": "SVK",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q23771427",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "1997-12-13",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-05",
           "name": "Marc Pubill",
           "position": "RB",
-          "age": null,
+          "age": 23,
           "overall": 78,
           "marketValue": 18000000,
           "teamId": "atletico-madrid",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q110220404",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "2003-06-20",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-06",
           "name": "Cristian Romero",
           "position": "CB",
-          "age": null,
+          "age": 28,
           "overall": 86,
           "marketValue": 55000000,
           "teamId": "atletico-madrid",
           "nationality": "ARG",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q28058687",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "1998-04-27",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-07",
           "name": "Álex Grimaldo",
           "position": "LB",
-          "age": null,
+          "age": 31,
           "overall": 86,
           "marketValue": 45000000,
           "teamId": "atletico-madrid",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q921324",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "1995-09-20",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-08",
           "name": "Robin Le Normand",
           "position": "CB",
-          "age": null,
+          "age": 30,
           "overall": 83,
           "marketValue": 30000000,
           "teamId": "atletico-madrid",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q27469970",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "1996-11-11",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-09",
@@ -23598,181 +23696,391 @@
           "id": "atletico-madrid-202627-10",
           "name": "Obed Vargas",
           "position": "CM",
-          "age": null,
+          "age": 21,
           "overall": 72,
           "marketValue": 7000000,
           "teamId": "atletico-madrid",
           "nationality": "MEX",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q106778770",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "2005-08-05",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-11",
           "name": "Rodrigo Mendoza",
           "position": "CM",
-          "age": null,
+          "age": 21,
           "overall": 72,
           "marketValue": 8000000,
           "teamId": "atletico-madrid",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q122910207",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "2005-03-15",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-12",
           "name": "Johnny Cardoso",
           "position": "DM",
-          "age": null,
+          "age": 25,
           "overall": 80,
           "marketValue": 25000000,
           "teamId": "atletico-madrid",
           "nationality": "USA",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q72219351",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "2001-09-20",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-13",
           "name": "Koke",
           "position": "CM",
-          "age": null,
+          "age": 34,
           "overall": 82,
           "marketValue": 12000000,
           "teamId": "atletico-madrid",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q276091",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "1992-01-08",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-14",
           "name": "Lee Kang-in",
           "position": "RW",
-          "age": null,
+          "age": 25,
           "overall": 82,
           "marketValue": 30000000,
           "teamId": "atletico-madrid",
           "nationality": "KOR",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q16174734",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "2001-02-19",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-15",
           "name": "Pablo Barrios",
           "position": "CM",
-          "age": null,
+          "age": 23,
           "overall": 84,
           "marketValue": 40000000,
           "teamId": "atletico-madrid",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q114924158",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "2003-06-15",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-16",
           "name": "Álex Baena",
           "position": "AM",
-          "age": null,
+          "age": 25,
           "overall": 85,
           "marketValue": 45000000,
           "teamId": "atletico-madrid",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q97404267",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "2001-07-20",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-17",
           "name": "Marcos Llorente",
           "position": "CM",
-          "age": null,
+          "age": 31,
           "overall": 85,
           "marketValue": 40000000,
           "teamId": "atletico-madrid",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q21130285",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "1995-01-30",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-18",
           "name": "Arnau Ortiz",
           "position": "RW",
-          "age": null,
+          "age": 25,
           "overall": 68,
           "marketValue": 1500000,
           "teamId": "atletico-madrid",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q116849701",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "2001-10-29",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-19",
           "name": "Giuliano Simeone",
           "position": "RW",
-          "age": null,
+          "age": 23,
           "overall": 80,
           "marketValue": 25000000,
           "teamId": "atletico-madrid",
           "nationality": "ARG",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q111672750",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "2002-12-18",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-20",
           "name": "Morten Hjulmand",
           "position": "DM",
-          "age": null,
+          "age": 27,
           "overall": 84,
           "marketValue": 40000000,
           "teamId": "atletico-madrid",
           "nationality": "DEN",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q55761514",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "1999-06-25",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-21",
           "name": "Alexander Sørloth",
           "position": "ST",
-          "age": null,
+          "age": 30,
           "overall": 83,
           "marketValue": 30000000,
           "teamId": "atletico-madrid",
           "nationality": "NOR",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q13784739",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "1995-12-05",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-22",
           "name": "Ademola Lookman",
           "position": "LW",
-          "age": null,
+          "age": 29,
           "overall": 84,
           "marketValue": 40000000,
           "teamId": "atletico-madrid",
           "nationality": "NGA",
           "injured": true,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q21484766",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "1997-10-20",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-23",
           "name": "Jonathan David",
           "position": "ST",
-          "age": null,
+          "age": 26,
           "overall": 84,
           "marketValue": 45000000,
           "teamId": "atletico-madrid",
           "nationality": "CAN",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q56085180",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "2000-01-14",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         },
         {
           "id": "atletico-madrid-202627-24",
           "name": "Julián Álvarez",
           "position": "ST",
-          "age": null,
+          "age": 26,
           "overall": 88,
           "marketValue": 90000000,
           "teamId": "atletico-madrid",
           "nationality": "ARG",
           "injured": false,
-          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+          "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+          "metadataSources": [
+            {
+              "provider": "OpenFootballBase-Data",
+              "release": "data-1.24.6",
+              "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+              "sourcePlayerQid": "Q59381180",
+              "sourceTitle": "2026–27 Atlético Madrid season",
+              "sourceRevision": 1384566416,
+              "dateOfBirth": "2000-01-31",
+              "verifiedAt": "2026-11-24",
+              "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+              "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+            }
+          ]
         }
       ]
     },
@@ -141219,25 +141527,53 @@
       "id": "atletico-madrid-202627-01",
       "name": "Juan Musso",
       "position": "GK",
-      "age": null,
+      "age": 32,
       "overall": 78,
       "marketValue": 9000000,
       "teamId": "atletico-madrid",
       "nationality": "ARG",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q5951550",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "1994-05-06",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-02",
       "name": "Jan Oblak",
       "position": "GK",
-      "age": null,
+      "age": 33,
       "overall": 88,
       "marketValue": 25000000,
       "teamId": "atletico-madrid",
       "nationality": "SVN",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q2058682",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "1993-01-07",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-03",
@@ -141255,61 +141591,131 @@
       "id": "atletico-madrid-202627-04",
       "name": "Dávid Hancko",
       "position": "CB",
-      "age": null,
+      "age": 28,
       "overall": 84,
       "marketValue": 35000000,
       "teamId": "atletico-madrid",
       "nationality": "SVK",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q23771427",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "1997-12-13",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-05",
       "name": "Marc Pubill",
       "position": "RB",
-      "age": null,
+      "age": 23,
       "overall": 78,
       "marketValue": 18000000,
       "teamId": "atletico-madrid",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q110220404",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "2003-06-20",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-06",
       "name": "Cristian Romero",
       "position": "CB",
-      "age": null,
+      "age": 28,
       "overall": 86,
       "marketValue": 55000000,
       "teamId": "atletico-madrid",
       "nationality": "ARG",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q28058687",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "1998-04-27",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-07",
       "name": "Álex Grimaldo",
       "position": "LB",
-      "age": null,
+      "age": 31,
       "overall": 86,
       "marketValue": 45000000,
       "teamId": "atletico-madrid",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q921324",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "1995-09-20",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-08",
       "name": "Robin Le Normand",
       "position": "CB",
-      "age": null,
+      "age": 30,
       "overall": 83,
       "marketValue": 30000000,
       "teamId": "atletico-madrid",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q27469970",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "1996-11-11",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-09",
@@ -141327,181 +141733,391 @@
       "id": "atletico-madrid-202627-10",
       "name": "Obed Vargas",
       "position": "CM",
-      "age": null,
+      "age": 21,
       "overall": 72,
       "marketValue": 7000000,
       "teamId": "atletico-madrid",
       "nationality": "MEX",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q106778770",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "2005-08-05",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-11",
       "name": "Rodrigo Mendoza",
       "position": "CM",
-      "age": null,
+      "age": 21,
       "overall": 72,
       "marketValue": 8000000,
       "teamId": "atletico-madrid",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q122910207",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "2005-03-15",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-12",
       "name": "Johnny Cardoso",
       "position": "DM",
-      "age": null,
+      "age": 25,
       "overall": 80,
       "marketValue": 25000000,
       "teamId": "atletico-madrid",
       "nationality": "USA",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q72219351",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "2001-09-20",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-13",
       "name": "Koke",
       "position": "CM",
-      "age": null,
+      "age": 34,
       "overall": 82,
       "marketValue": 12000000,
       "teamId": "atletico-madrid",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q276091",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "1992-01-08",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-14",
       "name": "Lee Kang-in",
       "position": "RW",
-      "age": null,
+      "age": 25,
       "overall": 82,
       "marketValue": 30000000,
       "teamId": "atletico-madrid",
       "nationality": "KOR",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q16174734",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "2001-02-19",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-15",
       "name": "Pablo Barrios",
       "position": "CM",
-      "age": null,
+      "age": 23,
       "overall": 84,
       "marketValue": 40000000,
       "teamId": "atletico-madrid",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q114924158",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "2003-06-15",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-16",
       "name": "Álex Baena",
       "position": "AM",
-      "age": null,
+      "age": 25,
       "overall": 85,
       "marketValue": 45000000,
       "teamId": "atletico-madrid",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q97404267",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "2001-07-20",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-17",
       "name": "Marcos Llorente",
       "position": "CM",
-      "age": null,
+      "age": 31,
       "overall": 85,
       "marketValue": 40000000,
       "teamId": "atletico-madrid",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q21130285",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "1995-01-30",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-18",
       "name": "Arnau Ortiz",
       "position": "RW",
-      "age": null,
+      "age": 25,
       "overall": 68,
       "marketValue": 1500000,
       "teamId": "atletico-madrid",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q116849701",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "2001-10-29",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-19",
       "name": "Giuliano Simeone",
       "position": "RW",
-      "age": null,
+      "age": 23,
       "overall": 80,
       "marketValue": 25000000,
       "teamId": "atletico-madrid",
       "nationality": "ARG",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q111672750",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "2002-12-18",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-20",
       "name": "Morten Hjulmand",
       "position": "DM",
-      "age": null,
+      "age": 27,
       "overall": 84,
       "marketValue": 40000000,
       "teamId": "atletico-madrid",
       "nationality": "DEN",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q55761514",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "1999-06-25",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-21",
       "name": "Alexander Sørloth",
       "position": "ST",
-      "age": null,
+      "age": 30,
       "overall": 83,
       "marketValue": 30000000,
       "teamId": "atletico-madrid",
       "nationality": "NOR",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q13784739",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "1995-12-05",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-22",
       "name": "Ademola Lookman",
       "position": "LW",
-      "age": null,
+      "age": 29,
       "overall": 84,
       "marketValue": 40000000,
       "teamId": "atletico-madrid",
       "nationality": "NGA",
       "injured": true,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q21484766",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "1997-10-20",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-23",
       "name": "Jonathan David",
       "position": "ST",
-      "age": null,
+      "age": 26,
       "overall": 84,
       "marketValue": 45000000,
       "teamId": "atletico-madrid",
       "nationality": "CAN",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q56085180",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "2000-01-14",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "atletico-madrid-202627-24",
       "name": "Julián Álvarez",
       "position": "ST",
-      "age": null,
+      "age": 26,
       "overall": 88,
       "marketValue": 90000000,
       "teamId": "atletico-madrid",
       "nationality": "ARG",
       "injured": false,
-      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted."
+      "dataSource": "Atlético de Madrid official first-team squad 2026/27 (club website, consulted 2026-11-24); nationality/position cross-checks from official club and UEFA match reports; overall and market value are gameplay estimates; unverified age omitted.",
+      "metadataSources": [
+        {
+          "provider": "OpenFootballBase-Data",
+          "release": "data-1.24.6",
+          "license": "CC BY-SA 4.0 (Wikipedia-derived squad data; preserve attribution)",
+          "sourcePlayerQid": "Q59381180",
+          "sourceTitle": "2026–27 Atlético Madrid season",
+          "sourceRevision": 1384566416,
+          "dateOfBirth": "2000-01-31",
+          "verifiedAt": "2026-11-24",
+          "officialRosterUrl": "https://www.atleticodemadrid.com/jugadores-primer-equipo/",
+          "uefaRosterUrl": "https://www.uefa.com/nationalassociations/teams/50124--atletico-madrid/squad/"
+        }
+      ]
     },
     {
       "id": "benfica-202627-01",
