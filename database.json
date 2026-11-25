@@ -27753,14 +27753,20 @@
           "id": "malaga-202627-02",
           "name": "Carlos López",
           "position": "GK",
-          "age": null,
+          "age": 22,
           "overall": 70,
           "marketValue": 2500000,
           "teamId": "malaga",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 13,
-          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/carlos-lopez-2",
+            "dateOfBirth": "2004-11-13",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "malaga-202627-03",
@@ -28032,14 +28038,20 @@
           "id": "malaga-202627-15",
           "name": "Ramón Enríquez",
           "position": "CM",
-          "age": null,
+          "age": 25,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "malaga",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 6,
-          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/ramon-2",
+            "dateOfBirth": "2001-04-19",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "malaga-202627-16",
@@ -28091,14 +28103,20 @@
           "id": "malaga-202627-18",
           "name": "Rafa Rodríguez",
           "position": "CM",
-          "age": null,
+          "age": 23,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "malaga",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 14,
-          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/rafa-rodriguez",
+            "dateOfBirth": "2003-07-10",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "malaga-202627-19",
@@ -28173,14 +28191,20 @@
           "id": "malaga-202627-22",
           "name": "Otu Jr",
           "position": "CM",
-          "age": null,
+          "age": 21,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "malaga",
-          "nationality": null,
+          "nationality": "NGA",
           "injured": false,
           "shirtNumber": 28,
-          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/joseph-otunenche",
+            "dateOfBirth": "2005-06-27",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "malaga-202627-23",
@@ -28209,27 +28233,39 @@
           "id": "malaga-202627-24",
           "name": "Haitam Abaida",
           "position": "LW",
-          "age": null,
+          "age": 24,
           "overall": 71,
           "marketValue": 2500000,
           "teamId": "malaga",
-          "nationality": null,
+          "nationality": "MAR",
           "injured": false,
           "shirtNumber": 7,
-          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/haitam",
+            "dateOfBirth": "2002-06-01",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "malaga-202627-25",
           "name": "Chupe",
           "position": "ST",
-          "age": null,
+          "age": 22,
           "overall": 72,
           "marketValue": 2500000,
           "teamId": "malaga",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 9,
-          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/chupete",
+            "dateOfBirth": "2004-08-24",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "malaga-202627-26",
@@ -28350,14 +28386,20 @@
           "id": "malaga-202627-31",
           "name": "Juani",
           "position": "ST",
-          "age": null,
+          "age": 19,
           "overall": 72,
           "marketValue": 2500000,
           "teamId": "malaga",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 32,
-          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+          "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-GB/jugador/juan-fernandez-2",
+            "dateOfBirth": "2007-01-17",
+            "verifiedAt": "2026-11-25"
+          }
         }
       ]
     },
@@ -149346,14 +149388,20 @@
       "id": "malaga-202627-02",
       "name": "Carlos López",
       "position": "GK",
-      "age": null,
+      "age": 22,
       "overall": 70,
       "marketValue": 2500000,
       "teamId": "malaga",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 13,
-      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/carlos-lopez-2",
+        "dateOfBirth": "2004-11-13",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "malaga-202627-03",
@@ -149625,14 +149673,20 @@
       "id": "malaga-202627-15",
       "name": "Ramón Enríquez",
       "position": "CM",
-      "age": null,
+      "age": 25,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "malaga",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 6,
-      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/ramon-2",
+        "dateOfBirth": "2001-04-19",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "malaga-202627-16",
@@ -149684,14 +149738,20 @@
       "id": "malaga-202627-18",
       "name": "Rafa Rodríguez",
       "position": "CM",
-      "age": null,
+      "age": 23,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "malaga",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 14,
-      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/rafa-rodriguez",
+        "dateOfBirth": "2003-07-10",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "malaga-202627-19",
@@ -149766,14 +149826,20 @@
       "id": "malaga-202627-22",
       "name": "Otu Jr",
       "position": "CM",
-      "age": null,
+      "age": 21,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "malaga",
-      "nationality": null,
+      "nationality": "NGA",
       "injured": false,
       "shirtNumber": 28,
-      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/joseph-otunenche",
+        "dateOfBirth": "2005-06-27",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "malaga-202627-23",
@@ -149802,27 +149868,39 @@
       "id": "malaga-202627-24",
       "name": "Haitam Abaida",
       "position": "LW",
-      "age": null,
+      "age": 24,
       "overall": 71,
       "marketValue": 2500000,
       "teamId": "malaga",
-      "nationality": null,
+      "nationality": "MAR",
       "injured": false,
       "shirtNumber": 7,
-      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/haitam",
+        "dateOfBirth": "2002-06-01",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "malaga-202627-25",
       "name": "Chupe",
       "position": "ST",
-      "age": null,
+      "age": 22,
       "overall": 72,
       "marketValue": 2500000,
       "teamId": "malaga",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 9,
-      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/chupete",
+        "dateOfBirth": "2004-08-24",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "malaga-202627-26",
@@ -149943,14 +150021,20 @@
       "id": "malaga-202627-31",
       "name": "Juani",
       "position": "ST",
-      "age": null,
+      "age": 19,
       "overall": 72,
       "marketValue": 2500000,
       "teamId": "malaga",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 32,
-      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates."
+      "dataSource": "LALIGA official Málaga CF 2026/27 squad; cross-checked with Málaga CF official first-team page and 19/11/2026 training update. Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-GB/jugador/juan-fernandez-2",
+        "dateOfBirth": "2007-01-17",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "racing-santander-202627-01",
