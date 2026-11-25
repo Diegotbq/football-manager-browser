@@ -14,12 +14,17 @@ on:
       - "scripts/check-league-readiness.mjs"
       - ".github/workflows/roster-audit.yml"
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Apply verified LALIGA player profile metadata"]
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: read
 
 jobs:
   audit:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     name: Audit squads and league coverage
     runs-on: ubuntu-latest
     steps:
