@@ -24513,13 +24513,19 @@
           "id": "osasuna-202627-20",
           "name": "Raúl García de Haro",
           "position": "ST",
-          "age": null,
+          "age": 26,
           "overall": 76,
           "marketValue": 4500000,
           "teamId": "osasuna",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "CA Osasuna: plantilla oficial del primer equipo y dorsales 2026/27; posiciones específicas, nacionalidades, overall y valor de mercado tratados como datos de cadastro/estimativas de gameplay quando não publicados."
+          "dataSource": "CA Osasuna: plantilla oficial del primer equipo y dorsales 2026/27; posiciones específicas, nacionalidades, overall y valor de mercado tratados como datos de cadastro/estimativas de gameplay quando não publicados.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/raul-4",
+            "dateOfBirth": "2000-11-03",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "osasuna-202627-21",
@@ -26700,13 +26706,19 @@
           "id": "getafe-202627-03",
           "name": "Diego Ferrer",
           "position": "GK",
-          "age": null,
+          "age": 19,
           "overall": 66,
           "marketValue": 400000,
           "teamId": "getafe",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/diego-ferrer",
+            "dateOfBirth": "2007-04-17",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "getafe-202627-04",
@@ -29398,14 +29410,20 @@
           "id": "rayo-vallecano-202627-12",
           "name": "Lozano",
           "position": "CB",
-          "age": null,
+          "age": 20,
           "overall": 70,
           "marketValue": 5000000,
           "teamId": "rayo-vallecano",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-GB/jugador/sergio-lozano",
+            "dateOfBirth": "2006-03-30",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "rayo-vallecano-202627-13",
@@ -34659,14 +34677,20 @@
           "id": "villarreal-202627-25",
           "name": "Nizar El Jmili",
           "position": "ST",
-          "age": null,
+          "age": 21,
           "overall": 71,
           "marketValue": 5000000,
           "teamId": "villarreal",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "Villarreal CF official 2026/27 first-team photo and UEFA squad list"
+          "dataSource": "Villarreal CF official 2026/27 first-team photo and UEFA squad list",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-DE/jugador/nizar-jmili",
+            "dateOfBirth": "2004-11-30",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "ofb-202627-q5550103",
@@ -146711,13 +146735,19 @@
       "id": "osasuna-202627-20",
       "name": "Raúl García de Haro",
       "position": "ST",
-      "age": null,
+      "age": 26,
       "overall": 76,
       "marketValue": 4500000,
       "teamId": "osasuna",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "CA Osasuna: plantilla oficial del primer equipo y dorsales 2026/27; posiciones específicas, nacionalidades, overall y valor de mercado tratados como datos de cadastro/estimativas de gameplay quando não publicados."
+      "dataSource": "CA Osasuna: plantilla oficial del primer equipo y dorsales 2026/27; posiciones específicas, nacionalidades, overall y valor de mercado tratados como datos de cadastro/estimativas de gameplay quando não publicados.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/raul-4",
+        "dateOfBirth": "2000-11-03",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "osasuna-202627-21",
@@ -148751,13 +148781,19 @@
       "id": "getafe-202627-03",
       "name": "Diego Ferrer",
       "position": "GK",
-      "age": null,
+      "age": 19,
       "overall": 66,
       "marketValue": 400000,
       "teamId": "getafe",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/diego-ferrer",
+        "dateOfBirth": "2007-04-17",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "getafe-202627-04",
@@ -153620,14 +153656,20 @@
       "id": "rayo-vallecano-202627-12",
       "name": "Lozano",
       "position": "CB",
-      "age": null,
+      "age": 20,
       "overall": 70,
       "marketValue": 5000000,
       "teamId": "rayo-vallecano",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-GB/jugador/sergio-lozano",
+        "dateOfBirth": "2006-03-30",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "rayo-vallecano-202627-13",
@@ -156377,14 +156419,20 @@
       "id": "villarreal-202627-25",
       "name": "Nizar El Jmili",
       "position": "ST",
-      "age": null,
+      "age": 21,
       "overall": 71,
       "marketValue": 5000000,
       "teamId": "villarreal",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "Villarreal CF official 2026/27 first-team photo and UEFA squad list"
+      "dataSource": "Villarreal CF official 2026/27 first-team photo and UEFA squad list",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-DE/jugador/nizar-jmili",
+        "dateOfBirth": "2004-11-30",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "ofb-202627-q19949691",
