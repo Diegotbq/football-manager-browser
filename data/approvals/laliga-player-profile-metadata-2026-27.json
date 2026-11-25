@@ -1157,8 +1157,40 @@
       "dateOfBirth": "2005-02-14",
       "nationality": "MAR",
       "sourceUrl": "https://www.laliga.com/es-BR/jugador/nordin-al-lal"
+    },
+    {
+      "playerId": "sevilla-202627-03",
+      "name": "Rafa Romero",
+      "teamId": "sevilla",
+      "dateOfBirth": "2003-08-07",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/rafa-romero"
+    },
+    {
+      "playerId": "sevilla-202627-18",
+      "name": "Nico Guillén",
+      "teamId": "sevilla",
+      "dateOfBirth": "2008-01-30",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/es-GB/jugador/nico-guillen-1"
+    },
+    {
+      "playerId": "sevilla-202627-21",
+      "name": "Alfon González",
+      "teamId": "sevilla",
+      "dateOfBirth": "1999-05-04",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/alfonso-1"
+    },
+    {
+      "playerId": "sevilla-202627-23",
+      "name": "Peque Fernández",
+      "teamId": "sevilla",
+      "dateOfBirth": "2002-10-04",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/peque-1"
     }
   ],
-  "approvalRevision": 22,
-  "reviewNote": "Includes official LALIGA profiles for Athletic Club, RC Deportivo, Levante, Racing, Málaga, Betis Deportivo, Espanyol, Getafe, Alavés, Rayo, Celta and Elche."
+  "approvalRevision": 23,
+  "reviewNote": "Includes official LALIGA player profiles for the previously reviewed clubs and four current Sevilla FC players. Adrià Pedrosa remains excluded because his official profile lists Rayo Vallecano."
 }
