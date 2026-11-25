@@ -162,7 +162,10 @@ test("preserva estatísticas individuais no histórico entre temporadas", async 
   await page.locator('#view-root button[onclick^="openPlayerProfile("]').first().click();
   await expect(page.locator("#view-root")).toContainText("2025/26");
   await expect(page.locator("#view-root")).toContainText("Estatísticas por temporada");
-  await expect(page.locator("#view-root")).toContainText("1</td><td>1</td><td>0");
+  const seasonRow = page.locator("#view-root .card").filter({ hasText: "Estatísticas por temporada" }).locator("tbody tr").first();
+  await expect(seasonRow.locator("td").nth(1)).toHaveText("1");
+  await expect(seasonRow.locator("td").nth(2)).toHaveText("1");
+  await expect(seasonRow.locator("td").nth(3)).toHaveText("0");
 });
 
 test("gera atributo específico de goleiro para influenciar as defesas", async ({ page }) => {
