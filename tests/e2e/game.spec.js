@@ -81,6 +81,11 @@ test("joga uma partida completa, pausa, retoma e registra o resultado", async ({
   expect(completedMatch.stats.home.shots + completedMatch.stats.away.shots).toBeGreaterThan(0);
   expect(completedMatch.stats.home.shots).toBeGreaterThanOrEqual(completedMatch.stats.home.onTarget);
   expect(completedMatch.stats.away.shots).toBeGreaterThanOrEqual(completedMatch.stats.away.onTarget);
+  expect(completedMatch.scorers).toHaveLength(completedMatch.homeScore + completedMatch.awayScore);
+  expect(completedMatch.scorers.every(goal => goal.playerId)).toBe(true);
+  await page.locator('[data-view="table"]').click();
+  await expect(page.locator("#view-root")).toContainText("Artilharia");
+  await expect(page.locator("#view-root")).toContainText("Assistências");
   expect(errors).toEqual([]);
 });
 
