@@ -43,12 +43,7 @@ jobs:
           print(json.dumps(report, ensure_ascii=False, indent=2))
           PY
       - name: Apply manually reviewed OpenFootballBase metadata
-        run: |
-          python scripts/apply_openfootballbase_verified_metadata.py \\
-            --database /tmp/database-updated.json \\
-            --approval data/approvals/openfootballbase-atletico-metadata-2026-27.json \\
-            --out /tmp/database-final.json \\
-            --report /tmp/openfootballbase-metadata-report.json
+        run: python scripts/apply_openfootballbase_verified_metadata.py --database /tmp/database-updated.json --approval data/approvals/openfootballbase-atletico-metadata-2026-27.json --out /tmp/database-final.json --report /tmp/openfootballbase-metadata-report.json
       - name: Commit database update
         run: |
           set -euo pipefail
