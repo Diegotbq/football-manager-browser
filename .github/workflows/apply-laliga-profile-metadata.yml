@@ -63,9 +63,32 @@ jobs:
         run: |
           set -euo pipefail
           cp /tmp/database-final.json database.json
+          WRITE_ROSTER_AUDIT=1 node scripts/audit-rosters.mjs database.json > /tmp/final-roster-audit.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("/tmp/final-roster-audit.json").read_text())
+          league = report["leagues"].get("la-liga")
+          if league is None:
+              raise SystemExit("La Liga missing from final roster audit")
+          checks = {
+              "20 clubs": league["clubs"] == 20,
+              "all clubs have players": league["clubsWithPlayers"] == 20,
+              "all player ages filled": league["metadataCompleteness"]["missing"]["age"] == 0,
+              "all player nationalities filled": league["metadataCompleteness"]["missing"]["nationality"] == 0,
+              "no duplicate player IDs": report["integrity"]["duplicatePlayerIds"] == 0,
+              "no players without valid team": report["integrity"]["playersWithoutValidTeam"] == 0,
+              "no squad reference issues": report["integrity"]["clubsWithSquadReferenceIssues"] == 0,
+              "no clubs below minimum": league["clubsBelowMinimum"] == 0,
+          }
+          print(json.dumps({"checks": checks, "laLiga": league, "integrity": report["integrity"]}, ensure_ascii=False, indent=2))
+          failed = [name for name, passed in checks.items() if not passed]
+          if failed:
+              raise SystemExit("Final La Liga audit failed: " + ", ".join(failed))
+          PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add database.json
+          git add database.json data/roster-audit.json
           if git diff --cached --quiet; then
             echo "No database changes."
           else
