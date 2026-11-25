@@ -1461,15 +1461,15 @@ function renderTable(leagueFilter) {
     </div>
     <div class="grid">
       <article class="card span-6">
-        <div class="section-head"><h2>⚽ Artilharia</h2><span class="tag">Top 10 · \${selectedLeague?.name||"Liga"}</span></div>
-        \${leaders.length?leaders.map((s,i)=>'<div class="player-row"><div><strong>'+(i+1)+'. '+s.player.name+'</strong><small>'+((state.db.teams.find(t=>String(t.id)===String(s.player.teamId))||{}).name||"Clube")+' · '+s.appearances+' jogos</small></div><span class="rating">'+s.goals+' gols</span></div>').join(""):'<p class="subtle">A artilharia será preenchida conforme as partidas forem disputadas com escalações registradas.</p>'}
+        <div class="section-head"><h2>⚽ Artilharia</h2><span class="tag">Top 10 · ${selectedLeague?.name||"Liga"}</span></div>
+        ${leaders.length?leaders.map((s,i)=>'<div class="player-row"><div><strong>'+(i+1)+'. '+s.player.name+'</strong><small>'+((state.db.teams.find(t=>String(t.id)===String(s.player.teamId))||{}).name||"Clube")+' · '+s.appearances+' jogos</small></div><span class="rating">'+s.goals+' gols</span></div>').join(""):'<p class="subtle">A artilharia será preenchida conforme as partidas forem disputadas com escalações registradas.</p>'}
       </article>
       <article class="card span-6">
         <div class="section-head"><h2>🎯 Assistências</h2><span class="tag">Top 5</span></div>
-        \${assistLeaders.length?assistLeaders.map((s,i)=>'<div class="player-row"><div><strong>'+(i+1)+'. '+s.player.name+'</strong><small>'+((state.db.teams.find(t=>String(t.id)===String(s.player.teamId))||{}).name||"Clube")+'</small></div><span class="rating">'+s.assists+' assist.</span></div>').join(""):'<p class="subtle">As assistências aparecerão quando houver gols com passe decisivo identificado.</p>'}
+        ${assistLeaders.length?assistLeaders.map((s,i)=>'<div class="player-row"><div><strong>'+(i+1)+'. '+s.player.name+'</strong><small>'+((state.db.teams.find(t=>String(t.id)===String(s.player.teamId))||{}).name||"Clube")+'</small></div><span class="rating">'+s.assists+' assist.</span></div>').join(""):'<p class="subtle">As assistências aparecerão quando houver gols com passe decisivo identificado.</p>'}
       </article>
     </div>
-  \`);
+  `);
 }
 
 
