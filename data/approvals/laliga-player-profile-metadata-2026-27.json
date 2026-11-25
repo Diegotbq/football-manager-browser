@@ -1189,8 +1189,40 @@
       "dateOfBirth": "2002-10-04",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/jugador/peque-1"
+    },
+    {
+      "playerId": "osasuna-202627-06",
+      "name": "Enzo Boyomo",
+      "teamId": "osasuna",
+      "dateOfBirth": "2001-10-07",
+      "nationality": "CMR",
+      "sourceUrl": "https://www.laliga.com/en-GB/player/boyomo"
+    },
+    {
+      "playerId": "valencia-202627-04",
+      "name": "José Copete",
+      "teamId": "valencia",
+      "dateOfBirth": "1999-10-10",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/en-GB/player/copete"
+    },
+    {
+      "playerId": "valencia-202627-08",
+      "name": "José Gayà",
+      "teamId": "valencia",
+      "dateOfBirth": "1995-05-25",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/en-GB/player/gaya"
+    },
+    {
+      "playerId": "villarreal-202627-22",
+      "name": "Gerard Moreno",
+      "teamId": "villarreal",
+      "dateOfBirth": "1992-04-07",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/en-GB/player/gerard"
     }
   ],
-  "approvalRevision": 23,
-  "reviewNote": "Includes official LALIGA player profiles for the previously reviewed clubs and four current Sevilla FC players. Adrià Pedrosa remains excluded because his official profile lists Rayo Vallecano."
+  "approvalRevision": 24,
+  "reviewNote": "Includes official LALIGA player profiles for the previously reviewed clubs and four current Sevilla FC players. Adrià Pedrosa remains excluded because his official profile lists Rayo Vallecano. Revision 24: four official LALIGA profiles for Enzo Boyomo, José Copete, José Gayà and Gerard Moreno; exact team/player matches confirmed by the audit."
 }
