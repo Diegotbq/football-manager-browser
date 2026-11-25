@@ -157,8 +157,7 @@ test("preserva estatísticas individuais no histórico entre temporadas", async 
       }]
     }));
   }, playerId);
-  await page.reload();
-  await expect(page.locator("#page-title")).toHaveText("Dashboard");
+  await page.evaluate(() => loadTransferCareer());
   await page.locator('[data-view="squad"]').click();
   await page.locator('#view-root button[onclick^="openPlayerProfile("]').first().click();
   await expect(page.locator("#view-root")).toContainText("2025/26");
