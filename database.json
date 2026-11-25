@@ -29057,14 +29057,20 @@
           "id": "rayo-vallecano-202627-01",
           "name": "Dani Cárdenas",
           "position": "GK",
-          "age": null,
+          "age": 29,
           "overall": 72,
           "marketValue": 5000000,
           "teamId": "rayo-vallecano",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/cardenas",
+            "dateOfBirth": "1997-03-28",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "rayo-vallecano-202627-02",
@@ -29277,14 +29283,20 @@
           "id": "rayo-vallecano-202627-11",
           "name": "Marco de las Sías",
           "position": "LB",
-          "age": null,
+          "age": 20,
           "overall": 69,
           "marketValue": 5000000,
           "teamId": "rayo-vallecano",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/es-DE/jugador/marco-de-las-sias",
+            "dateOfBirth": "2005-12-29",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "rayo-vallecano-202627-12",
@@ -29441,14 +29453,20 @@
           "id": "rayo-vallecano-202627-19",
           "name": "Randy Nteka",
           "position": "AM",
-          "age": null,
+          "age": 28,
           "overall": 71,
           "marketValue": 5000000,
           "teamId": "rayo-vallecano",
           "nationality": "ANG",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/nteka",
+            "dateOfBirth": "1997-12-06",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "rayo-vallecano-202627-20",
@@ -29546,27 +29564,39 @@
           "id": "rayo-vallecano-202627-24",
           "name": "Becerra",
           "position": "CM",
-          "age": null,
+          "age": 20,
           "overall": 70,
           "marketValue": 5000000,
           "teamId": "rayo-vallecano",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/clubes/rayo-vallecano/plantilla",
+            "dateOfBirth": "2006-06-01",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "rayo-vallecano-202627-25",
           "name": "Marco Román",
           "position": "CM",
-          "age": null,
+          "age": 20,
           "overall": 70,
           "marketValue": 5000000,
           "teamId": "rayo-vallecano",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/clubes/rayo-vallecano/plantilla",
+            "dateOfBirth": "2006-05-03",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "rayo-vallecano-202627-26",
@@ -29641,27 +29671,39 @@
           "id": "rayo-vallecano-202627-29",
           "name": "Giorgi Tsitaishvili",
           "position": "LW",
-          "age": null,
+          "age": 26,
           "overall": 71,
           "marketValue": 5000000,
           "teamId": "rayo-vallecano",
           "nationality": "GEO",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/heorhii-tsitaishvili",
+            "dateOfBirth": "2000-11-18",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "rayo-vallecano-202627-30",
           "name": "Iván Alonso",
           "position": "ST",
-          "age": null,
+          "age": 20,
           "overall": 71,
           "marketValue": 5000000,
           "teamId": "rayo-vallecano",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/clubes/rayo-vallecano/plantilla",
+            "dateOfBirth": "2006-03-15",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "rayo-vallecano-202627-31",
@@ -29690,14 +29732,20 @@
           "id": "rayo-vallecano-202627-32",
           "name": "Raúl de Tomás",
           "position": "ST",
-          "age": null,
+          "age": 32,
           "overall": 71,
           "marketValue": 5000000,
           "teamId": "rayo-vallecano",
           "nationality": "ESP",
           "injured": false,
           "ratingEstimated": true,
-          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+          "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/clubes/rayo-vallecano/plantilla",
+            "dateOfBirth": "1994-10-17",
+            "verifiedAt": "2026-11-25"
+          }
         }
       ]
     },
@@ -152985,14 +153033,20 @@
       "id": "rayo-vallecano-202627-01",
       "name": "Dani Cárdenas",
       "position": "GK",
-      "age": null,
+      "age": 29,
       "overall": 72,
       "marketValue": 5000000,
       "teamId": "rayo-vallecano",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/cardenas",
+        "dateOfBirth": "1997-03-28",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "rayo-vallecano-202627-02",
@@ -153205,14 +153259,20 @@
       "id": "rayo-vallecano-202627-11",
       "name": "Marco de las Sías",
       "position": "LB",
-      "age": null,
+      "age": 20,
       "overall": 69,
       "marketValue": 5000000,
       "teamId": "rayo-vallecano",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/es-DE/jugador/marco-de-las-sias",
+        "dateOfBirth": "2005-12-29",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "rayo-vallecano-202627-12",
@@ -153369,14 +153429,20 @@
       "id": "rayo-vallecano-202627-19",
       "name": "Randy Nteka",
       "position": "AM",
-      "age": null,
+      "age": 28,
       "overall": 71,
       "marketValue": 5000000,
       "teamId": "rayo-vallecano",
       "nationality": "ANG",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/nteka",
+        "dateOfBirth": "1997-12-06",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "rayo-vallecano-202627-20",
@@ -153474,27 +153540,39 @@
       "id": "rayo-vallecano-202627-24",
       "name": "Becerra",
       "position": "CM",
-      "age": null,
+      "age": 20,
       "overall": 70,
       "marketValue": 5000000,
       "teamId": "rayo-vallecano",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/clubes/rayo-vallecano/plantilla",
+        "dateOfBirth": "2006-06-01",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "rayo-vallecano-202627-25",
       "name": "Marco Román",
       "position": "CM",
-      "age": null,
+      "age": 20,
       "overall": 70,
       "marketValue": 5000000,
       "teamId": "rayo-vallecano",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/clubes/rayo-vallecano/plantilla",
+        "dateOfBirth": "2006-05-03",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "rayo-vallecano-202627-26",
@@ -153569,27 +153647,39 @@
       "id": "rayo-vallecano-202627-29",
       "name": "Giorgi Tsitaishvili",
       "position": "LW",
-      "age": null,
+      "age": 26,
       "overall": 71,
       "marketValue": 5000000,
       "teamId": "rayo-vallecano",
       "nationality": "GEO",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/heorhii-tsitaishvili",
+        "dateOfBirth": "2000-11-18",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "rayo-vallecano-202627-30",
       "name": "Iván Alonso",
       "position": "ST",
-      "age": null,
+      "age": 20,
       "overall": 71,
       "marketValue": 5000000,
       "teamId": "rayo-vallecano",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/clubes/rayo-vallecano/plantilla",
+        "dateOfBirth": "2006-03-15",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "rayo-vallecano-202627-31",
@@ -153618,14 +153708,20 @@
       "id": "rayo-vallecano-202627-32",
       "name": "Raúl de Tomás",
       "position": "ST",
-      "age": null,
+      "age": 32,
       "overall": 71,
       "marketValue": 5000000,
       "teamId": "rayo-vallecano",
       "nationality": "ESP",
       "injured": false,
       "ratingEstimated": true,
-      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting"
+      "dataSource": "LALIGA official 2026/27 squad; corroborated with club roster reporting",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/clubes/rayo-vallecano/plantilla",
+        "dateOfBirth": "1994-10-17",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-sociedad-202627-01",
