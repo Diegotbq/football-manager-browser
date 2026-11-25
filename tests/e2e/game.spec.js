@@ -178,3 +178,40 @@ test("gera atributo específico de goleiro para influenciar as defesas", async (
   expect(keeperRatings).not.toBeNull();
   expect(keeperRatings.goalkeeping).toBeGreaterThan(keeperRatings.shooting);
 });
+
+test("La Liga tem 20 clubes, elencos completos e metadados sem lacunas", async ({ page }) => {
+  await page.goto("/");
+  const audit = await page.evaluate(async () => {
+    const response = await fetch("database.json");
+    if (!response.ok) throw new Error("Não foi possível carregar database.json");
+    const db = await response.json();
+    const teams = db.teams.filter(team => team.leagueId === "la-liga");
+    const teamIds = new Set(teams.map(team => String(team.id)));
+    const players = db.players.filter(player => teamIds.has(String(player.teamId)));
+    const ids = players.map(player => String(player.id));
+    return {
+      clubs: teams.length,
+      players: players.length,
+      clubsWithMinimumSquad: teams.filter(team =>
+        players.filter(player => String(player.teamId) === String(team.id)).length >= 18
+      ).length,
+      missingAges: players.filter(player =>
+        !Number.isFinite(Number(player.age)) || Number(player.age) <= 0
+      ).length,
+      missingNationalities: players.filter(player =>
+        !String(player.nationality || "").trim() ||
+        ["—", "-", "n/a", "na", "null", "unknown"].includes(String(player.nationality).trim().toLowerCase())
+      ).length,
+      duplicateIds: ids.length - new Set(ids).size,
+      playersWithoutValidTeam: players.filter(player => !teamIds.has(String(player.teamId))).length
+    };
+  });
+
+  expect(audit.clubs).toBe(20);
+  expect(audit.players).toBeGreaterThanOrEqual(360);
+  expect(audit.clubsWithMinimumSquad).toBe(20);
+  expect(audit.missingAges).toBe(0);
+  expect(audit.missingNationalities).toBe(0);
+  expect(audit.duplicateIds).toBe(0);
+  expect(audit.playersWithoutValidTeam).toBe(0);
+});
