@@ -31227,15 +31227,21 @@
           "id": "real-betis-202627-04",
           "name": "Victor Kroes",
           "position": "GK",
-          "age": null,
+          "age": 17,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ROU",
           "injured": false,
           "shirtNumber": 41,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "UEFA",
+            "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+            "dateOfBirth": "2009-01-29",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-05",
@@ -31513,43 +31519,61 @@
           "id": "real-betis-202627-17",
           "name": "Alvaro Díez",
           "position": "RB",
-          "age": null,
+          "age": 17,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 58,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "UEFA",
+            "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+            "dateOfBirth": "2009-05-14",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-18",
           "name": "Carlos Lara",
           "position": "CB",
-          "age": null,
+          "age": 17,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 62,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "UEFA",
+            "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+            "dateOfBirth": "2009-01-29",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-19",
           "name": "Curro Macías",
           "position": "CB",
-          "age": null,
+          "age": 18,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 65,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "UEFA",
+            "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+            "dateOfBirth": "2008-07-08",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-20",
@@ -31895,71 +31919,101 @@
           "id": "real-betis-202627-35",
           "name": "Miguel Ángel Castilla",
           "position": "CM",
-          "age": null,
+          "age": 18,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 52,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "UEFA",
+            "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+            "dateOfBirth": "2008-05-04",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-36",
           "name": "Kike Collantes",
           "position": "CM",
-          "age": null,
+          "age": 17,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 53,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "UEFA",
+            "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+            "dateOfBirth": "2009-02-12",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-37",
           "name": "Rubén Lidueña",
           "position": "CM",
-          "age": null,
+          "age": 18,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 63,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "UEFA",
+            "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+            "dateOfBirth": "2008-08-21",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-38",
           "name": "Marcos Mora",
           "position": "CM",
-          "age": null,
+          "age": 19,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 66,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "UEFA",
+            "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+            "dateOfBirth": "2007-01-30",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-39",
           "name": "Miguel Ángel",
           "position": "CM",
-          "age": null,
+          "age": 18,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 71,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "UEFA",
+            "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+            "dateOfBirth": "2008-03-22",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-40",
@@ -32145,15 +32199,21 @@
           "id": "real-betis-202627-48",
           "name": "Cayetano Cordón",
           "position": "ST",
-          "age": null,
+          "age": 19,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 54,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "UEFA",
+            "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+            "dateOfBirth": "2007-02-04",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-49",
@@ -32179,29 +32239,41 @@
           "id": "real-betis-202627-50",
           "name": "Fran Batán",
           "position": "ST",
-          "age": null,
+          "age": 17,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 64,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "UEFA",
+            "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+            "dateOfBirth": "2009-04-10",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "real-betis-202627-51",
           "name": "Juan Rodriguez",
           "position": "ST",
-          "age": null,
+          "age": 18,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "real-betis",
-          "nationality": null,
+          "nationality": "ESP",
           "injured": false,
           "shirtNumber": 70,
           "squadList": "B",
-          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+          "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+          "identitySource": {
+            "provider": "UEFA",
+            "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+            "dateOfBirth": "2008-10-30",
+            "verifiedAt": "2026-11-25"
+          }
         }
       ]
     },
@@ -152431,15 +152503,21 @@
       "id": "real-betis-202627-04",
       "name": "Victor Kroes",
       "position": "GK",
-      "age": null,
+      "age": 17,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ROU",
       "injured": false,
       "shirtNumber": 41,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "UEFA",
+        "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+        "dateOfBirth": "2009-01-29",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-05",
@@ -152717,43 +152795,61 @@
       "id": "real-betis-202627-17",
       "name": "Alvaro Díez",
       "position": "RB",
-      "age": null,
+      "age": 17,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 58,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "UEFA",
+        "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+        "dateOfBirth": "2009-05-14",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-18",
       "name": "Carlos Lara",
       "position": "CB",
-      "age": null,
+      "age": 17,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 62,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "UEFA",
+        "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+        "dateOfBirth": "2009-01-29",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-19",
       "name": "Curro Macías",
       "position": "CB",
-      "age": null,
+      "age": 18,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 65,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "UEFA",
+        "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+        "dateOfBirth": "2008-07-08",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-20",
@@ -153099,71 +153195,101 @@
       "id": "real-betis-202627-35",
       "name": "Miguel Ángel Castilla",
       "position": "CM",
-      "age": null,
+      "age": 18,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 52,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "UEFA",
+        "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+        "dateOfBirth": "2008-05-04",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-36",
       "name": "Kike Collantes",
       "position": "CM",
-      "age": null,
+      "age": 17,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 53,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "UEFA",
+        "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+        "dateOfBirth": "2009-02-12",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-37",
       "name": "Rubén Lidueña",
       "position": "CM",
-      "age": null,
+      "age": 18,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 63,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "UEFA",
+        "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+        "dateOfBirth": "2008-08-21",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-38",
       "name": "Marcos Mora",
       "position": "CM",
-      "age": null,
+      "age": 19,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 66,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "UEFA",
+        "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+        "dateOfBirth": "2007-01-30",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-39",
       "name": "Miguel Ángel",
       "position": "CM",
-      "age": null,
+      "age": 18,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 71,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "UEFA",
+        "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+        "dateOfBirth": "2008-03-22",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-40",
@@ -153349,15 +153475,21 @@
       "id": "real-betis-202627-48",
       "name": "Cayetano Cordón",
       "position": "ST",
-      "age": null,
+      "age": 19,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 54,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "UEFA",
+        "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+        "dateOfBirth": "2007-02-04",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-49",
@@ -153383,29 +153515,41 @@
       "id": "real-betis-202627-50",
       "name": "Fran Batán",
       "position": "ST",
-      "age": null,
+      "age": 17,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 64,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "UEFA",
+        "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+        "dateOfBirth": "2009-04-10",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "real-betis-202627-51",
       "name": "Juan Rodriguez",
       "position": "ST",
-      "age": null,
+      "age": 18,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "real-betis",
-      "nationality": null,
+      "nationality": "ESP",
       "injured": false,
       "shirtNumber": 70,
       "squadList": "B",
-      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates."
+      "dataSource": "UEFA Champions League 2026/27 official Real Betis squad list (List A / List B). Overall and market value are fictional gameplay estimates.",
+      "identitySource": {
+        "provider": "UEFA",
+        "sourceUrl": "https://www.uefa.com/news-media/mediaservices/informationkits/competitions/uefachampionsleague/2027/match/2049632/printmatchpresskits/",
+        "dateOfBirth": "2008-10-30",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "rayo-vallecano-202627-01",
