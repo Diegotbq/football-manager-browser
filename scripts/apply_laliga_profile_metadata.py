@@ -32,7 +32,7 @@ def apply(db, approval):
         if not re.fullmatch(r"[A-Z]{3}", str(row.get("nationality", ""))):
             raise ValueError(f"Invalid ISO alpha-3 nationality for {pid}")
         provider = row.get("sourceProvider", "LALIGA")
-        allowed_prefix = {"LALIGA": "https://www.laliga.com/", "REAL_BETIS": "https://www.realbetisbalompie.es/"}.get(provider)
+        allowed_prefix = {"LALIGA": "https://www.laliga.com/", "REAL_BETIS": "https://www.realbetisbalompie.es/", "ATHLETIC_CLUB": "https://www.athletic-club.eus/"}.get(provider)
         if not allowed_prefix or not str(row.get("sourceUrl", "")).startswith(allowed_prefix):
             raise ValueError(f"Non-official source URL/provider for {pid}")
         team = teams.get(str(row.get("teamId")))
@@ -64,6 +64,8 @@ def apply(db, approval):
                 "dateOfBirth": row["dateOfBirth"],
                 "verifiedAt": approval["asOf"]
             }
+            if row.get("nationalitySourceUrl"):
+                target["identitySource"]["nationalitySourceUrl"] = row["nationalitySourceUrl"]
         report["records"].append({"playerId": pid, "name": row["name"], "age": age, "nationality": row["nationality"]})
     return db, report
 
