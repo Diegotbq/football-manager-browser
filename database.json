@@ -26032,13 +26032,19 @@
           "id": "elche-202627-03",
           "name": "Axel Werner",
           "position": "GK",
-          "age": null,
+          "age": 30,
           "overall": 70,
           "marketValue": 700000,
           "teamId": "elche",
           "nationality": "ARG",
           "injured": false,
-          "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "TRANSFERMARKT",
+            "sourceUrl": "https://www.transfermarkt.com/axel-werner/profil/spieler/236734",
+            "dateOfBirth": "1996-02-28",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "elche-202627-04",
@@ -26965,13 +26971,19 @@
           "id": "getafe-202627-16",
           "name": "Curro Burgos",
           "position": "CB",
-          "age": null,
+          "age": 22,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "getafe",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "LALIGA",
+            "sourceUrl": "https://www.laliga.com/jugador/curro-burgos",
+            "dateOfBirth": "2004-05-30",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "getafe-202627-17",
@@ -27181,13 +27193,19 @@
           "id": "getafe-202627-27",
           "name": "Mady Macalou",
           "position": "CM",
-          "age": null,
+          "age": 19,
           "overall": 67,
           "marketValue": 500000,
           "teamId": "getafe",
-          "nationality": "ESP",
+          "nationality": "MLI",
           "injured": false,
-          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "ZEROZERO",
+            "sourceUrl": "https://www.zerozero.pt/jogador/mady-macalou/3566114?epoca_id=156",
+            "dateOfBirth": "2007-01-01",
+            "verifiedAt": "2026-11-25"
+          }
         },
         {
           "id": "getafe-202627-28",
@@ -27375,13 +27393,19 @@
           "id": "getafe-202627-37",
           "name": "Sebas Salazar",
           "position": "ST",
-          "age": null,
+          "age": 18,
           "overall": 66,
           "marketValue": 500000,
           "teamId": "getafe",
           "nationality": "ESP",
           "injured": false,
-          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+          "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+          "identitySource": {
+            "provider": "ZEROZERO",
+            "sourceUrl": "https://www.zerozero.pt/jogador/sebas-salazar/2486800?epoca_id=156",
+            "dateOfBirth": "2008-06-13",
+            "verifiedAt": "2026-11-25"
+          }
         }
       ]
     },
@@ -148177,13 +148201,19 @@
       "id": "elche-202627-03",
       "name": "Axel Werner",
       "position": "GK",
-      "age": null,
+      "age": 30,
       "overall": 70,
       "marketValue": 700000,
       "teamId": "elche",
       "nationality": "ARG",
       "injured": false,
-      "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "UEFA: elenco oficial do Elche CF 2026/27; nomes e nacionalidades conferidos na lista da competição; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "TRANSFERMARKT",
+        "sourceUrl": "https://www.transfermarkt.com/axel-werner/profil/spieler/236734",
+        "dateOfBirth": "1996-02-28",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "elche-202627-04",
@@ -149133,13 +149163,19 @@
       "id": "getafe-202627-16",
       "name": "Curro Burgos",
       "position": "CB",
-      "age": null,
+      "age": 22,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "getafe",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "LALIGA",
+        "sourceUrl": "https://www.laliga.com/jugador/curro-burgos",
+        "dateOfBirth": "2004-05-30",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "getafe-202627-17",
@@ -149349,13 +149385,19 @@
       "id": "getafe-202627-27",
       "name": "Mady Macalou",
       "position": "CM",
-      "age": null,
+      "age": 19,
       "overall": 67,
       "marketValue": 500000,
       "teamId": "getafe",
-      "nationality": "ESP",
+      "nationality": "MLI",
       "injured": false,
-      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "ZEROZERO",
+        "sourceUrl": "https://www.zerozero.pt/jogador/mady-macalou/3566114?epoca_id=156",
+        "dateOfBirth": "2007-01-01",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "getafe-202627-28",
@@ -149543,13 +149585,19 @@
       "id": "getafe-202627-37",
       "name": "Sebas Salazar",
       "position": "ST",
-      "age": null,
+      "age": 18,
       "overall": 66,
       "marketValue": 500000,
       "teamId": "getafe",
       "nationality": "ESP",
       "injured": false,
-      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay."
+      "dataSource": "Getafe CF: plantilla oficial LALIGA/UEFA 2026/27; nomes e nacionalidades conferidos nas listas oficiais; idades não verificadas omitidas; overall e valor de mercado são estimativas de gameplay.",
+      "identitySource": {
+        "provider": "ZEROZERO",
+        "sourceUrl": "https://www.zerozero.pt/jogador/sebas-salazar/2486800?epoca_id=156",
+        "dateOfBirth": "2008-06-13",
+        "verifiedAt": "2026-11-25"
+      }
     },
     {
       "id": "levante-202627-01",
