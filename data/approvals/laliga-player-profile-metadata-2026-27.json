@@ -1370,8 +1370,40 @@
       "dateOfBirth": "2004-07-22",
       "nationality": "ESP",
       "sourceUrl": "https://www.laliga.com/jugador/andres-cespedes"
+    },
+    {
+      "playerId": "getafe-202627-03",
+      "name": "Diego Ferrer",
+      "teamId": "getafe",
+      "dateOfBirth": "2007-04-17",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/diego-ferrer"
+    },
+    {
+      "playerId": "osasuna-202627-20",
+      "name": "Raúl García de Haro",
+      "teamId": "osasuna",
+      "dateOfBirth": "2000-11-03",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/jugador/raul-4"
+    },
+    {
+      "playerId": "rayo-vallecano-202627-12",
+      "name": "Lozano",
+      "teamId": "rayo-vallecano",
+      "dateOfBirth": "2006-03-30",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/es-GB/jugador/sergio-lozano"
+    },
+    {
+      "playerId": "villarreal-202627-25",
+      "name": "Nizar El Jmili",
+      "teamId": "villarreal",
+      "dateOfBirth": "2004-11-30",
+      "nationality": "ESP",
+      "sourceUrl": "https://www.laliga.com/es-DE/jugador/nizar-jmili"
     }
   ],
-  "approvalRevision": 25,
-  "reviewNote": "Includes official LALIGA player profiles and official club profiles; includes remaining verified Racing, Málaga, and Betis reserve metadata."
+  "approvalRevision": 26,
+  "reviewNote": "Includes official LALIGA player profiles for verified first-team and academy players; exact database identity and club matching."
 }
