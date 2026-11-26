@@ -257,6 +257,7 @@ test("gera temporada completa de ida e volta para todas as ligas com clubes", as
 });
 
 test("encerra temporada, registra resultados e inicia a próxima com calendário novo", async ({ page }) => {
+  page.on("dialog", dialog => dialog.accept());
   await startCareer(page);
   const before = await page.evaluate(() => ({
     season: state.db.meta.season,
