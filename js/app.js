@@ -1693,43 +1693,57 @@ function renderSeasonPanel() {
 // GERAÇÃO DE CALENDÁRIOS DE LIGA (tabela fictícia de carreira, não calendário oficial)
 function ensureGeneratedFixtures() {
   if (!state.db) return;
-  const existingCompetitions = new Set((state.generatedFixtures || []).map(f => f.competitionId).filter(Boolean));
+  const existingFixtureIds = new Set((state.generatedFixtures || []).map(f => String(f.id)));
   const seasonStart = state.db.calendar?.seasonStart || "2026-07-01";
   const baseDate = new Date(seasonStart + "T12:00:00");
   let added = false;
-  (state.db.leagues || []).filter(league => league.type === "league" && Array.isArray(league.teams) && league.teams.length >= 2).forEach(league => {
-    if (existingCompetitions.has(league.id)) return;
-    const ids = [...league.teams];
-    if (ids.length % 2) ids.push(null);
-    const rounds = ids.length - 1;
-    const half = ids.length / 2;
-    let rotation = [...ids];
-    for (let round = 0; round < rounds * 2; round++) {
-      for (let match = 0; match < half; match++) {
-        const first = rotation[match], second = rotation[ids.length - 1 - match];
-        if (!first || !second) continue;
-        const home = round < rounds ? first : second;
-        const away = round < rounds ? second : first;
-        const date = new Date(baseDate);
-        date.setDate(date.getDate() + round * 7);
-        state.generatedFixtures.push({
-          id: "career-" + league.id + "-" + (round + 1) + "-" + (match + 1),
-          competition: league.name,
-          competitionId: league.id,
-          round: round + 1,
-          date: date.toISOString().slice(0, 10),
-          homeTeamId: home,
-          awayTeamId: away,
-          generated: true
-        });
-        added = true;
+
+  // Recalcula a lista esperada por liga e completa apenas os jogos ausentes.
+  // Assim, um save antigo ou parcialmente gerado não deixa uma temporada incompleta.
+  (state.db.leagues || [])
+    .filter(league => league.type === "league" && Array.isArray(league.teams) && league.teams.length >= 2)
+    .forEach(league => {
+      const ids = [...new Set(league.teams.map(String))];
+      if (ids.length < 2) return;
+      const rotationIds = ids.length % 2 ? [...ids, null] : [...ids];
+      const roundsPerLeg = rotationIds.length - 1;
+      const half = rotationIds.length / 2;
+      let rotation = [...rotationIds];
+
+      for (let round = 0; round < roundsPerLeg * 2; round++) {
+        for (let match = 0; match < half; match++) {
+          const first = rotation[match];
+          const second = rotation[rotation.length - 1 - match];
+          if (!first || !second) continue;
+
+          const home = round < roundsPerLeg ? first : second;
+          const away = round < roundsPerLeg ? second : first;
+          const fixtureId = "career-" + league.id + "-" + (round + 1) + "-" + (match + 1);
+          if (existingFixtureIds.has(fixtureId)) continue;
+
+          const date = new Date(baseDate);
+          date.setDate(date.getDate() + round * 7);
+          state.generatedFixtures.push({
+            id: fixtureId,
+            competition: league.name,
+            competitionId: league.id,
+            round: round + 1,
+            date: date.toISOString().slice(0, 10),
+            homeTeamId: home,
+            awayTeamId: away,
+            generated: true
+          });
+          existingFixtureIds.add(fixtureId);
+          added = true;
+        }
+
+        const fixed = rotation[0];
+        const rest = rotation.slice(1);
+        rest.unshift(rest.pop());
+        rotation = [fixed, ...rest];
       }
-      const fixed = rotation[0];
-      const rest = rotation.slice(1);
-      rest.unshift(rest.pop());
-      rotation = [fixed, ...rest];
-    }
-  });
+    });
+
   if (added) saveTransferCareer();
 }
 
