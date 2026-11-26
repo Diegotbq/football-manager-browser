@@ -20,7 +20,7 @@ test("carrega o banco, escolhe clube e navega pelas áreas principais", async ({
   await expect(page.locator("#page-title")).toHaveText("Dashboard");
   await expect(page.locator("#view-root")).toContainText("Tamanho do elenco");
   const rosterOptions = await page.locator("#main-nav .nav-item").count();
-  expect(rosterOptions).toBe(6);
+  expect(rosterOptions).toBe(7);
 
   await page.locator('[data-view="squad"]').click();
   await expect(page.locator("#page-title")).toContainText("Elenco");
@@ -67,6 +67,9 @@ test("joga uma partida completa, pausa, retoma e registra o resultado", async ({
   await page.getByRole("button", { name: /Pausar/ }).click();
   await expect(page.locator(".match-status")).toHaveText("PARTIDA PAUSADA");
   await page.getByRole("button", { name: /Continuar/ }).click();
+  await expect(page.locator(".match-status")).toHaveText("INTERVALO · FIM DO PRIMEIRO TEMPO", { timeout: 45000 });
+  await expect(page.getByRole("button", { name: /COMEÇAR SEGUNDO TEMPO/ })).toBeVisible();
+  await page.getByRole("button", { name: /COMEÇAR SEGUNDO TEMPO/ }).click();
   await page.getByRole("button", { name: "4x" }).click();
 
   await expect(page.locator(".match-status")).toHaveText("TEMPO INTEGRAL", { timeout: 45000 });
