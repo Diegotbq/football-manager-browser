@@ -218,3 +218,40 @@ test("La Liga tem 20 clubes, elencos completos e metadados sem lacunas", async (
   expect(audit.duplicateIds).toBe(0);
   expect(audit.playersWithoutValidTeam).toBe(0);
 });
+
+test("gera temporada completa de ida e volta para todas as ligas com clubes", async ({ page }) => {
+  await startCareer(page);
+  const audit = await page.evaluate(() => {
+    const saved = JSON.parse(localStorage.getItem("fmb-transfer-save") || "{}");
+    const fixtures = saved.generatedFixtures || [];
+    return (state.db.leagues || [])
+      .filter(league => league.type === "league" && Array.isArray(league.teams) && league.teams.length >= 2)
+      .map(league => {
+        const ids = [...new Set(league.teams.map(String))];
+        const matches = fixtures.filter(f => f.competitionId === league.id);
+        const pairs = new Map();
+        matches.forEach(f => {
+          const key = [String(f.homeTeamId), String(f.awayTeamId)].sort().join("::");
+          pairs.set(key, [...(pairs.get(key) || []), f]);
+        });
+        const validPairs = [...pairs.values()].every(pair =>
+          pair.length === 2 &&
+          pair.some(f => String(f.homeTeamId) === String(pair[0].awayTeamId) && String(f.awayTeamId) === String(pair[0].homeTeamId))
+        );
+        return {
+          id: league.id,
+          clubs: ids.length,
+          fixtures: matches.length,
+          expected: ids.length * (ids.length - 1),
+          uniqueIds: new Set(matches.map(f => f.id)).size === matches.length,
+          validPairs: validPairs && pairs.size === (ids.length * (ids.length - 1)) / 2
+        };
+      });
+  });
+  expect(audit.length).toBeGreaterThan(0);
+  for (const league of audit) {
+    expect(league.fixtures, league.id).toBe(league.expected);
+    expect(league.uniqueIds, league.id).toBe(true);
+    expect(league.validPairs, league.id).toBe(true);
+  }
+});
