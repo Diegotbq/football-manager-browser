@@ -273,7 +273,7 @@ test("encerra temporada, registra resultados e inicia a próxima com calendário
     history: state.seasonHistory[0],
     savedSeason: JSON.parse(localStorage.getItem("fmb-transfer-save") || "{}").seasonMeta?.season
   }));
-  const year = Number(String(before.season).match(/^(\\d{4})/)?.[1]) + 1;
+  const year = Number(String(before.season).match(/^(\d{4})/)?.[1]) + 1;
   expect(after.season).toBe(year + "/" + String((year + 1) % 100).padStart(2, "0"));
   expect(after.savedSeason).toBe(after.season);
   expect(after.currentMatches).toBe(0);
