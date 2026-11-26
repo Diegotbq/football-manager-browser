@@ -255,3 +255,30 @@ test("gera temporada completa de ida e volta para todas as ligas com clubes", as
     expect(league.validPairs, league.id).toBe(true);
   }
 });
+
+test("encerra temporada, registra resultados e inicia a próxima com calendário novo", async ({ page }) => {
+  await startCareer(page);
+  const before = await page.evaluate(() => ({
+    season: state.db.meta.season,
+    expectedFixtures: state.generatedFixtures.length
+  }));
+  expect(before.expectedFixtures).toBeGreaterThan(0);
+
+  await page.evaluate(() => finishSeason());
+
+  const after = await page.evaluate(() => ({
+    season: state.db.meta.season,
+    currentMatches: state.matchHistory.length,
+    nextFixtures: state.generatedFixtures.length,
+    history: state.seasonHistory[0],
+    savedSeason: JSON.parse(localStorage.getItem("fmb-transfer-save") || "{}").seasonMeta?.season
+  }));
+  const year = Number(String(before.season).match(/^(\\d{4})/)?.[1]) + 1;
+  expect(after.season).toBe(year + "/" + String((year + 1) % 100).padStart(2, "0"));
+  expect(after.savedSeason).toBe(after.season);
+  expect(after.currentMatches).toBe(0);
+  expect(after.nextFixtures).toBe(before.expectedFixtures);
+  expect(after.history.season).toBe(before.season);
+  expect(after.history.matches.length).toBe(before.expectedFixtures);
+  expect(after.history.matches.every(match => typeof match.homeScore === "number" && typeof match.awayScore === "number")).toBe(true);
+});
