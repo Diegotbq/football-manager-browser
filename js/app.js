@@ -670,6 +670,8 @@ function processCareerDay(){
   const scoutingBefore=new Set(state.scoutingReports.filter(r=>!r.completed).map(r=>r.id));
   const loansBefore=new Set(state.loanRecords.filter(r=>!r.returned).map(r=>r.id));
   state.day.setDate(state.day.getDate()+1);
+  const today=state.day.toISOString().slice(0,10);
+  simulateScheduledAILeagueFixtures(today);
   recoverPlayerConditions();processLoanReturns();processScouting();
   if(state.day.getDay()===1){
     processAITransfers();processAIPlayerOffers();updateSquadMorale();processPlayerAgentDemands();
