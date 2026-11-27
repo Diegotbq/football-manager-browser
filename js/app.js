@@ -672,6 +672,7 @@ function processCareerDay(){
   state.day.setDate(state.day.getDate()+1);
   const today=state.day.toISOString().slice(0,10);
   simulateScheduledAILeagueFixtures(today);
+  advanceCupTournaments();
   recoverPlayerConditions();processLoanReturns();processScouting();
   if(state.day.getDay()===1){
     processAITransfers();processAIPlayerOffers();updateSquadMorale();processPlayerAgentDemands();
@@ -1929,6 +1930,7 @@ function cupDate(round) {
 function advanceCupTournaments() {
   if (!state.db || !Array.isArray(state.cupCompetitions)) return;
   const userId=String(state.db.userClubId||state.selectedClubId||"");
+  const today=state.day.toISOString().slice(0,10);
   state.cupCompetitions.forEach(cup=>{
     if(cup.format==="uefa-league"&&cup.phase==="league"){
       let guard=0;
@@ -1955,6 +1957,7 @@ function advanceCupTournaments() {
           }
           fixtures=state.generatedFixtures.filter(f=>f.cupId===cup.id&&f.cupRound===cup.round);
         }
+        if(fixtures.some(f=>f.date&&f.date>today))break;
         const playedIds=new Set(state.matchHistory.map(match=>match.fixtureId));
         const userFixture=fixtures.find(f=>String(f.homeTeamId)===userId||String(f.awayTeamId)===userId);
         fixtures.forEach(f=>{
@@ -1998,6 +2001,7 @@ function advanceCupTournaments() {
         pairs.forEach((pair,index)=>state.generatedFixtures.push({id:"cup-"+cup.id+"-"+cup.round+"-"+index,cupId:cup.id,cupRound:cup.round,competition:cup.name,round:cup.format==="uefa-league"&&cup.round===8?"Playoffs da fase eliminatória":cupRoundName(teams.length),date:cupDate(cup.round),homeTeamId:pair[0],awayTeamId:pair[1],generated:true,isCup:true}));
         fixtures=state.generatedFixtures.filter(f=>f.cupId===cup.id&&f.cupRound===cup.round);
       }
+      if(fixtures.some(f=>f.date&&f.date>today))break;
       const playedIds=new Set(state.matchHistory.map(m=>m.fixtureId));
       const userFixture=fixtures.find(f=>String(f.homeTeamId)===userId||String(f.awayTeamId)===userId);
       fixtures.forEach(f=>{
