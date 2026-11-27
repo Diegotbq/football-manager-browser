@@ -630,6 +630,37 @@ function addInboxItem(type,title,message,important=false){
 function hasPendingCareerDecision(){
   return state.pendingOffers.some(o=>o.status==='pending')||state.playerAgentDemands.some(d=>d.status==='pending')||state.managerOffers.some(o=>o.status==='pending');
 }
+function simulateScheduledAILeagueFixtures(today){
+  const managedId=String(state.db.userClubId||state.selectedClubId||"");
+  const fixtures=[...(state.db.calendar?.events||[]),...(state.generatedFixtures||[])];
+  const played=new Set(state.matchHistory.filter(m=>m.fixtureId).map(m=>String(m.fixtureId)));
+  let simulated=0;
+  fixtures.forEach(f=>{
+    if(!f||f.date!==today||f.isCup||!f.competition||!f.id||played.has(String(f.id)))return;
+    const league=(state.db.leagues||[]).find(l=>l.type==="league"&&l.name===f.competition);
+    if(!league)return;
+    const homeId=String(f.homeTeamId),awayId=String(f.awayTeamId);
+    if(!homeId||!awayId||homeId===managedId||awayId===managedId)return;
+    const home=state.db.teams.find(t=>String(t.id)===homeId);
+    const away=state.db.teams.find(t=>String(t.id)===awayId);
+    if(!home||!away)return;
+    const homeStrength=teamCupStrength(home),awayStrength=teamCupStrength(away);
+    const homeScore=Math.max(0,Math.min(7,Math.round(Math.random()*2+(homeStrength-awayStrength)/24)));
+    const awayScore=Math.max(0,Math.min(7,Math.round(Math.random()*2+(awayStrength-homeStrength)/24)));
+    state.matchHistory.push({
+      homeId:home.id,awayId:away.id,homeScore,awayScore,date:today,
+      fixtureId:f.id,competition:f.competition,round:f.round??null,
+      playerIds:[],appearances:[],scorers:[],autoSimulated:true
+    });
+    played.add(String(f.id));
+    simulated++;
+  });
+  if(simulated){
+    try{localStorage.setItem("fmb-match-history",JSON.stringify(state.matchHistory));}catch(_){}
+  }
+  return simulated;
+}
+
 function processCareerDay(){
   const todayBefore=state.day.toISOString().slice(0,10);
   const beforeOffers=new Set(state.pendingOffers.filter(o=>o.status==="pending").map(o=>o.id));
