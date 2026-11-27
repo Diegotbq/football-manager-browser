@@ -259,27 +259,35 @@ test("gera temporada completa de ida e volta para todas as ligas com clubes", as
 test("encerra temporada, registra resultados e inicia a próxima com calendário novo", async ({ page }) => {
   page.on("dialog", dialog => dialog.accept());
   await startCareer(page);
-  const before = await page.evaluate(() => ({
-    season: state.db.meta.season,
-    expectedFixtures: state.generatedFixtures.length
-  }));
-  expect(before.expectedFixtures).toBeGreaterThan(0);
+  const before = await page.evaluate(() => {
+    const leagues = (state.db.leagues || []).filter(league => league.type === "league");
+    return {
+      season: state.db.meta.season,
+      expectedLeagueFixtures: state.generatedFixtures.filter(f => f.competitionId && !f.isCup).length,
+      leagueNames: leagues.map(league => league.name)
+    };
+  });
+  expect(before.expectedLeagueFixtures).toBeGreaterThan(0);
 
   await page.evaluate(() => finishSeason());
 
-  const after = await page.evaluate(() => ({
-    season: state.db.meta.season,
-    currentMatches: state.matchHistory.length,
-    nextFixtures: state.generatedFixtures.length,
-    history: state.seasonHistory[0],
-    savedSeason: JSON.parse(localStorage.getItem("fmb-transfer-save") || "{}").seasonMeta?.season
-  }));
+  const after = await page.evaluate(leagueNames => {
+    const history = state.seasonHistory[0];
+    return {
+      season: state.db.meta.season,
+      currentMatches: state.matchHistory.length,
+      nextLeagueFixtures: state.generatedFixtures.filter(f => f.competitionId && !f.isCup).length,
+      history,
+      historyLeagueMatches: history.matches.filter(match => leagueNames.includes(match.competition)).length,
+      savedSeason: JSON.parse(localStorage.getItem("fmb-transfer-save") || "{}").seasonMeta?.season
+    };
+  }, before.leagueNames);
   const year = Number(String(before.season).match(/^(\d{4})/)?.[1]) + 1;
   expect(after.season).toBe(year + "/" + String((year + 1) % 100).padStart(2, "0"));
   expect(after.savedSeason).toBe(after.season);
   expect(after.currentMatches).toBe(0);
-  expect(after.nextFixtures).toBe(before.expectedFixtures);
+  expect(after.nextLeagueFixtures).toBe(before.expectedLeagueFixtures);
   expect(after.history.season).toBe(before.season);
-  expect(after.history.matches.length).toBe(before.expectedFixtures);
+  expect(after.historyLeagueMatches).toBe(before.expectedLeagueFixtures);
   expect(after.history.matches.every(match => typeof match.homeScore === "number" && typeof match.awayScore === "number")).toBe(true);
 });
