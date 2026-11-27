@@ -445,9 +445,11 @@ function processAITransfers() {
 function processAIPlayerOffers() {
   const club=userClub();if(!club)return;
   const today=state.day.toISOString().slice(0,10);
+  // Encerrar propostas vencidas mesmo fora das janelas de transferência.
+  state.pendingOffers.forEach(o=>{if(o.status==="pending"&&o.expires&&o.expires<today)o.status="expired";});
+  state.pendingOffers=state.pendingOffers.filter(o=>o.status==="pending");
   const windows=state.db.calendar?.transferWindows||[];
-  if(!windows.some(w=>today>=w.start&&today<=w.end))return;
-  state.pendingOffers=state.pendingOffers.filter(o=>o.status==="pending"&&o.expires>=today);
+  if(!windows.some(w=>today>=w.start&&today<=w.end)){saveTransferCareer();return;}
   if(Math.random()>0.48)return;
   const roster=state.db.players.filter(p=>String(p.teamId)===String(club.id));
   const buyers=state.db.teams.filter(t=>String(t.id)!==String(club.id)&&Number(t.budget||0)>750000);
@@ -628,7 +630,30 @@ function addInboxItem(type,title,message,important=false){
   state.inbox=state.inbox.slice(0,100);
 }
 function hasPendingCareerDecision(){
-  return state.pendingOffers.some(o=>o.status==='pending')||state.playerAgentDemands.some(d=>d.status==='pending')||state.managerOffers.some(o=>o.status==='pending');
+  const today=state.day.toISOString().slice(0,10);
+  const clubId=String(state.db?.userClubId||state.selectedClubId||"");
+  let cleaned=false;
+  // Propostas expiradas, retiradas ou que já não dizem respeito ao nosso elenco
+  // não podem manter o calendário bloqueado.
+  state.pendingOffers.forEach(o=>{
+    if(o.status!=="pending")return;
+    const player=state.db.players.find(p=>String(p.id)===String(o.playerId));
+    const expired=o.expires&&o.expires<today;
+    const unrelated=String(o.toTeamId)!==clubId||!player||String(player.teamId)!==clubId;
+    if(expired||unrelated){o.status=expired?"expired":"withdrawn";cleaned=true;}
+  });
+  // Pedidos de agentes só são decisões quando pertencem ao clube atual
+  // e o jogador ainda faz parte do elenco.
+  state.playerAgentDemands.forEach(d=>{
+    if(d.status!=="pending")return;
+    const player=state.db.players.find(p=>String(p.id)===String(d.playerId));
+    if(String(d.clubId)!==clubId||!player||String(player.teamId)!==clubId){d.status="withdrawn";cleaned=true;}
+  });
+  const hasOffer=state.pendingOffers.some(o=>o.status==="pending"&&String(o.toTeamId)===clubId);
+  const hasDemand=state.playerAgentDemands.some(d=>d.status==="pending"&&String(d.clubId)===clubId);
+  const hasManagerOffer=state.managerOffers.some(o=>o.status==="pending");
+  if(cleaned)saveTransferCareer();
+  return hasOffer||hasDemand||hasManagerOffer;
 }
 function simulateScheduledAILeagueFixtures(today){
   const managedId=String(state.db.userClubId||state.selectedClubId||"");
