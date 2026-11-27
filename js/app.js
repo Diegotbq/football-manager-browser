@@ -649,9 +649,24 @@ function hasPendingCareerDecision(){
     const player=state.db.players.find(p=>String(p.id)===String(d.playerId));
     if(String(d.clubId)!==clubId||!player||String(player.teamId)!==clubId){d.status="withdrawn";cleaned=true;}
   });
+  // Propostas para assumir outros clubes só bloqueiam o calendário
+  // enquanto o clube ofertante ainda existe, é diferente do atual e a oferta
+  // continua dentro do prazo. Isso também limpa ofertas antigas da carreira salva.
+  state.managerOffers.forEach(o=>{
+    if(o.status!=="pending")return;
+    const offeredClub=state.db.teams.find(t=>String(t.id)===String(o.clubId));
+    const receivedAt=o.date?new Date(o.date+"T12:00:00"):null;
+    const ageDays=receivedAt&&!Number.isNaN(receivedAt.getTime())
+      ?(new Date(today+"T12:00:00")-receivedAt)/86400000:0;
+    if(!offeredClub||String(o.clubId)===clubId||ageDays>14){
+      o.status="expired";
+      o.resolvedDate=today;
+      cleaned=true;
+    }
+  });
   const hasOffer=state.pendingOffers.some(o=>o.status==="pending"&&String(o.toTeamId)===clubId);
   const hasDemand=state.playerAgentDemands.some(d=>d.status==="pending"&&String(d.clubId)===clubId);
-  const hasManagerOffer=state.managerOffers.some(o=>o.status==="pending");
+  const hasManagerOffer=state.managerOffers.some(o=>o.status==="pending"&&String(o.clubId)!==clubId&&state.db.teams.some(t=>String(t.id)===String(o.clubId)));
   if(cleaned)saveTransferCareer();
   return hasOffer||hasDemand||hasManagerOffer;
 }
