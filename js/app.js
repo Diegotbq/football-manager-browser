@@ -738,8 +738,22 @@ function processCareerDay(){
   return state.inbox.some(item=>item.important&&item.date===state.day.toISOString().slice(0,10))||hasPendingCareerDecision();
 }
 function updateCalendarHeader(){const el=$('#current-date');if(el)el.textContent=dateLabel(state.day);}
+function getPendingCareerDecisionReport(){
+  const clubId=String(state.db?.userClubId||state.selectedClubId||"");
+  const lines=[];
+  state.pendingOffers.filter(o=>o.status==="pending"&&String(o.toTeamId)===clubId).forEach(o=>lines.push("Proposta por "+(o.playerName||"jogador sem nome")+" ("+(o.fromName||"clube interessado")+")"));
+  state.playerAgentDemands.filter(d=>d.status==="pending"&&String(d.clubId)===clubId).forEach(d=>lines.push("Pedido de renovação: "+(d.playerName||"jogador sem nome")));
+  state.managerOffers.filter(o=>o.status==="pending"&&String(o.clubId)!==clubId).forEach(o=>lines.push("Proposta para treinar: "+(o.clubName||"outro clube")+" · "+(o.date||"data não registrada")));
+  return lines;
+}
 function advanceDay(){
-  if(hasPendingCareerDecision()){alert('Você tem uma decisão importante pendente. Resolva-a antes de avançar o calendário.');return;}
+  if(hasPendingCareerDecision()){
+    const details=getPendingCareerDecisionReport();
+    const message=details.length
+      ? "O calendário está bloqueado por estas decisões:\n\n• "+details.slice(0,6).join("\n• ")+(details.length>6?"\n… e mais "+(details.length-6):"")+"\n\nAbra Mercado ou a área de propostas para resolver."
+      : "O jogo detectou uma decisão pendente, mas não conseguiu identificar sua origem. Envie uma captura desta mensagem para investigarmos.";
+    alert(message);return;
+  }
   const interrupted=processCareerDay();updateCalendarHeader();render();
   if(interrupted)alert('A simulação foi pausada: há um acontecimento importante aguardando sua decisão. Confira a caixa de entrada.');
 }
